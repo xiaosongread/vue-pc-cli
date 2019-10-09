@@ -39,6 +39,7 @@ export default {
 
 <style rel="stylesheet/scss" lang="scss" scoped>
   @import "src/styles/reset.scss";
+  @import "src/styles/class.scss";
   .wrapper{
     width: 1200px;
     margin: 0 auto;

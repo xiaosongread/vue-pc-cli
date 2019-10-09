@@ -1,0 +1,173 @@
+.text-center,.tc {
+  text-align: center;
+}
+
+.text-right,.tr {
+  text-align: right;
+}
+
+.a-hover {
+  color: #3C8DBF;
+  cursor: pointer;
+}
+
+.a-hover:hover {
+  // color: #9fcae6
+  opacity: 0.8;
+}
+
+.edui-editor.edui-default {
+  width: 100% !important;
+}
+
+// 浮动
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+// 定位
+.pr {
+  position: relative;
+}
+
+.pf {
+  position: fixed;
+}
+
+.pa {
+  position: absolute;
+}
+
+// 背景色
+.bg-white {
+  background: #fff
+}
+
+.over {
+  overflow: hidden;
+}
+
+.inline{
+  display: inline-block;
+}
+.flex-box {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex {
+  flex: 1;
+}
+
+.middle {
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-between {
+  justify-content: space-between;
+}
+
+.middle-j {
+  justify-content: center;
+}
+
+.middle-a {
+  align-items: center;
+}
+
+.break-word {
+  word-wrap: break-word
+}
+.break-all {
+  word-break: break-all
+}
+.block{
+  display: block;
+}
+@for $i from 1 through 10 {
+  .flex#{$i} {
+      flex: $i;
+  }
+}
+@for $i from 12 through 50 {
+  .f#{$i} {
+      font-size: $i+px;
+  }
+}
+
+.noSelect {
+  user-select: none;
+}
+
+.pointer {
+  cursor: pointer;
+}
+//文字超出省略
+@mixin line_over($num:2) {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $num;
+}
+
+.ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+}
+
+.ellipsis2 {
+  display: block;
+  @include line_over(2);
+}
+
+.ellipsis3 {
+  display: block;
+  @include line_over(3);
+}
+@for $i from 0 through 100 {
+  .f#{$i} {
+      font-size: 1px * $i !important;
+  }
+  .mt#{$i} {
+      margin-top:#{$i}px !important;
+  }
+  .ml#{$i} {
+      margin-left:#{$i}px !important;
+  }
+  .mr#{$i} {
+      margin-right:#{$i}px !important;
+  }
+  .mb#{$i} {
+      margin-bottom:#{$i}px !important;
+  }
+  .pd#{$i} {
+      padding:#{$i}px !important;
+  }
+  .pd-l#{$i} {
+      padding-left:#{$i}px !important;
+  }
+  .pd-r#{$i} {
+      padding-right:#{$i}px !important;
+  }
+  .pd-t#{$i} {
+      padding-top:#{$i}px !important;
+  }
+  .pd-b#{$i} {
+      padding-bottom:#{$i}px !important;
+  }
+  .radius#{$i}{
+      border-radius: #{$i}px !important;
+  }
+}

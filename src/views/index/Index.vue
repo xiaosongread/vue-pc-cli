@@ -32,7 +32,6 @@ export default {
       }
     },
     durationNotify () {
-      console.log('aaa')
       this.$notify.open({
         content: '10秒后自动关闭！',
         duration: 1000

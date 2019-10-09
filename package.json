@@ -1,5 +1,5 @@
 {
-  "name": "my-project",
+  "name": "vue前端框架模板",
   "version": "1.0.0",
   "description": "A Vue.js project",
   "author": "xiaosongread <598349146@qq.com>",
@@ -15,10 +15,11 @@
   },
   "dependencies": {
     "axios": "0.18.0",
+    "element-ui": "^2.9.0",
     "vue": "^2.5.2",
     "vue-blu": "^0.1.9",
     "vue-router": "^3.0.1",
-    "element-ui": "^2.9.0"
+    "vuex": "^3.1.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

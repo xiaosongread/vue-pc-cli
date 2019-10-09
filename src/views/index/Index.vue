@@ -1,6 +1,6 @@
 <template>
 <div>
-  <data-table :data="dataSource2" bordered>
+  <data-table :data="$store.state.dataSource2" bordered>
     <column label="姓名" field="name"></column>
     <column label="工号" field="work_no"></column>
     <column label="生日" field="birthday" :width="200"></column>
@@ -17,18 +17,12 @@ import { getAllDict } from '@/utils/api'
 export default {
   data () {
     return {
-      dataSource2: [{
-        'name': '张三',
-        'work_no': '1012',
-        'birthday': '2019-10-02',
-        'email': '123@qq.com',
-        'gender': '男',
-        'achievement': '98'
-      }]
+
     }
   },
   created () {
     this.getDict()
+    console.log('store数据', this.$store.state.dataSource2)
   },
   methods: {
     async getDict () {

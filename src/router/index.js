@@ -9,6 +9,7 @@ export default new Router({
     {
       path: '/',
       name: 'Index',
+      redirect: '/index',
       component: Layout,
       // component: () => import('@/components/HelloWorld'),
       children: [

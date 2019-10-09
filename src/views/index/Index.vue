@@ -1,6 +1,6 @@
 <template>
 <div>
-  <data-table :data="dataSource2" bordered :height="280">
+  <data-table :data="dataSource2" bordered>
     <column label="姓名" field="name"></column>
     <column label="工号" field="work_no"></column>
     <column label="生日" field="birthday" :width="200"></column>
@@ -8,10 +8,12 @@
     <column label="性别" field="gender"></column>
     <column label="成绩" field="achievement"></column>
   </data-table>
+  <button class="button" @click="durationNotify">10秒关闭</button>
 </div>
 </template>
 
 <script>
+import { getAllDict } from '@/utils/api'
 export default {
   data () {
     return {
@@ -23,6 +25,24 @@ export default {
         'gender': '男',
         'achievement': '98'
       }]
+    }
+  },
+  created () {
+    this.getDict()
+  },
+  methods: {
+    async getDict () {
+      const data = await getAllDict()
+      if (data.code === 1 && data.data) {
+        console.log('接口数据', data)
+      }
+    },
+    durationNotify () {
+      console.log('aaa')
+      this.$notify.open({
+        content: '10秒后自动关闭！',
+        duration: 1000
+      })
     }
   }
 }

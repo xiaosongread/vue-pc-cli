@@ -3,14 +3,15 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import '@/utils/request.js'
+import '@/utils/request'
 import VueBlu from 'vue-blu'
 import 'vue-blu/dist/css/vue-blu.min.css'
+// import { Message } from 'element-ui'
+// Vue.prototype.$message = Message
 
 Vue.use(VueBlu)
 
 Vue.config.productionTip = false
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

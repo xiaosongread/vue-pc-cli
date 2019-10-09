@@ -3,6 +3,9 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
+var serverConfig = require('./server.config')
+const merge = require('webpack-merge')
+
 
 module.exports = {
   dev: {
@@ -10,7 +13,9 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable:merge({},serverConfig.proxyTable,{
+      //其他的代理配置，一般需要改动
+    }),
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST

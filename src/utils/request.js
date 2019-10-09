@@ -1,7 +1,9 @@
 import axios from 'axios'
+import { Message } from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+// MessageBox
 // import store from '../store'
 // import router from '../router'
-
 // 创建axios实例
 const service = axios.create({
   timeout: 20000 // 请求超时时间
@@ -81,6 +83,12 @@ service.interceptors.response.use(
       //   //   duration: 5 * 1000
       //   // })
       // }
+      Message({
+        showClose: true,
+        message: res.desc,
+        type: 'error',
+        duration: 5 * 1000
+      })
       return response.data
     } else {
       return response.data

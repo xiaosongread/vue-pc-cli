@@ -38,7 +38,7 @@ export default {
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-  // @import "src/styles/mixin.scss";
+  @import "src/styles/reset.scss";
   .wrapper{
     width: 1200px;
     margin: 0 auto;

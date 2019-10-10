@@ -1,4 +1,4 @@
-import request from '@/utils/request'
+import request from '@/utils/request.ts'
 import config from '@/config'
 export const urlMap = {
   // 获取所有码表信息

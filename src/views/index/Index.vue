@@ -12,31 +12,31 @@
 </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue'
 import { getAllDict } from '@/utils/api'
-export default {
-  data () {
-    return {
+import Component from 'vue-class-component'
 
-    }
-  },
-  created () {
+@Component({})
+export default class extends Vue {
+  mounted () {
     this.getDict()
     console.log('store数据', this.$store.state.dataSource2)
-  },
-  methods: {
-    async getDict () {
-      const data = await getAllDict()
-      if (data.code === 1 && data.data) {
-        console.log('接口数据', data)
-      }
-    },
-    durationNotify () {
-      this.$notify.open({
-        content: '10秒后自动关闭！',
-        duration: 1000
-      })
+  }
+
+  private async getDict() {
+    const data = await getAllDict()
+    // console.log("数据", data)
+    if (data.data) {
+      console.log('接口数据', data)
     }
+  }
+
+  durationNotify () {
+    // this.$notify.open({
+    //   content: '10秒后自动关闭！',
+    //   duration: 1000
+    // })
   }
 }
 </script>

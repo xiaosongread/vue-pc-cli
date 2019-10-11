@@ -6,6 +6,8 @@
 </template>
 
 <script>
+// <div>test merge file to other brnach</div>
+
 export default {
   name: 'App'
 }

@@ -9,6 +9,7 @@
     <column label="成绩" field="achievement"></column>
   </data-table>
   <button class="button" @click="durationNotify">10秒关闭</button>
+  <div>test merge file to other brnach</div>
 </div>
 </template>
 

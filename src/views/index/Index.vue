@@ -14,9 +14,10 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import { getAllDict } from '@/utils/api'
-import Component from 'vue-class-component'
+// import Vue from 'vue'
+import { Component, Vue } from 'vue-property-decorator'
+import { getAllDict } from '@/utils/api.js'
+// import Component from 'vue-class-component'
 
 @Component({})
 export default class extends Vue {
@@ -27,10 +28,9 @@ export default class extends Vue {
 
   private async getDict() {
     const data = await getAllDict()
-    // console.log("数据", data)
-    if (data.data) {
-      console.log('接口数据', data)
-    }
+    // if (data.data) {
+    //   console.log('接口数据', data)
+    // }
   }
 
   durationNotify () {

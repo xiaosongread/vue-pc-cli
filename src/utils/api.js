@@ -5,6 +5,7 @@ export const urlMap = {
   getAllDict: '/data/dict/all'
 
 }
+const apiGetDouBanMovieList = 'https://douban.uieee.com/v2/movie/in_theaters'
 // 批量增加url前缀
 Object.keys(urlMap).forEach(key => {
   urlMap[key] = config.BASE_API + urlMap[key]
@@ -15,5 +16,16 @@ export function getAllDict (parm) {
     url: urlMap['getAllDict'],
     method: 'get',
     params: parm || {}
+  })
+}
+
+export function getDouBanMovieList (parm) {
+  return request({
+    url: apiGetDouBanMovieList,
+    method: 'get',
+    params: {
+      start: 0,
+      count: 10
+    }
   })
 }

@@ -9,11 +9,20 @@
     <column label="成绩" field="achievement"></column>
   </data-table>
   <button class="button" @click="durationNotify">10秒关闭</button>
+
+  <div>
+    <a class="button is-primary" @click="addAppCount">+</a>
+    {{$store.state.appConut}}
+    {{$store.getters.watchAppConut}}
+    <a class="button" @click="deieteAppCount">-</a>
+  </div>
+  请求提示： {{$store.state.actionDes}}
 </div>
 </template>
 
 <script>
-import { getAllDict } from '@/utils/api'
+import { getAllDict, getDouBanMovieList } from '@/utils/api'
+let that
 export default {
   data () {
     return {
@@ -21,10 +30,23 @@ export default {
     }
   },
   created () {
-    this.getDict()
-    console.log('store数据', this.$store.state.dataSource2)
+    // this.getDict()
+    that = this
+    this.getDouBanMovieList()
   },
   methods: {
+    addAppCount () {
+      this.$store.commit('ADD_COUNT', 1)
+    },
+    deieteAppCount () {
+      if (this.$store.state.appConut) this.$store.commit('DELETE_COUNT', 1)
+    },
+    // 获取热门电影
+    getDouBanMovieList () {
+      getDouBanMovieList().then(function (data) {
+        that.$store.dispatch('RESET_ACCTION_APP_COUNT', data.title)
+      })
+    },
     async getDict () {
       const data = await getAllDict()
       if (data.code === 1 && data.data) {

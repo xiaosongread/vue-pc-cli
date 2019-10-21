@@ -11,7 +11,6 @@ export default new Router({
       name: 'Index',
       redirect: '/index',
       component: Layout,
-      // component: () => import('@/components/HelloWorld'),
       children: [
         {
           path: 'index',
@@ -20,6 +19,11 @@ export default new Router({
           meta: { title: '首页' }
         }
       ]
+    },
+    {
+      path: '/test',
+      name: 'test',
+      component: () => import('@/components/Test')
     }
   ]
 })

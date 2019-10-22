@@ -17,6 +17,7 @@
     <a class="button" @click="deieteAppCount">-</a>
   </div>
   请求提示： {{$store.state.actionDes}}
+  
 </div>
 </template>
 

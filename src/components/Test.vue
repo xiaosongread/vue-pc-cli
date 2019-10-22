@@ -11,29 +11,29 @@ export default {
     }
   },
   created () {
-    // new Promise((resolve, reject) => {
-    //   console.log('log: 外部promise-1')
-    //   resolve()
-    // })
-    //   .then(() => {
-    //     console.log('log: 外部第一个then-2')
-    //     new Promise((resolve, reject) => {
-    //       console.log('log: 内部promise-3')
-    //       resolve()
-    //     })
-    //       .then(() => {
-    //         console.log('log: 内部第一个then-4')
-    //         new Promise((resolve, reject) => {
-    //           resolve()
-    //         }).then(() => { console.log('log: 内部第二个then-6') })
-    //       })
-    //       .then(() => {
-    //         // console.log('log: 内部第二个then-6')
-    //       })
-    //   })
-    //   .then(() => {
-    //     console.log('log: 外部第二个then-5')
-    //   })
+    new Promise((resolve, reject) => {
+      console.log('log: 外部promise-1')
+      resolve()
+    })
+      .then(() => {
+        console.log('log: 外部第一个then-2')
+        new Promise((resolve, reject) => {
+          console.log('log: 内部promise-3')
+          resolve()
+        })
+          .then(() => {
+            console.log('log: 内部第一个then-4')
+            new Promise((resolve, reject) => {
+              resolve()
+            }).then(() => { console.log('log: 内部第二个then-6') })
+          })
+          .then(() => {
+            // console.log('log: 内部第二个then-6')
+          })
+      })
+      .then(() => {
+        console.log('log: 外部第二个then-5')
+      })
 
     // log: 外部promise
     // log: 外部第一个then
@@ -54,6 +54,12 @@ export default {
     // p.then(() => {
     //   console.log('log: 外部第三个then')
     // })
+  },
+  methods: {
+    getEleNodeType () {
+      // 2 3 7
+
+    }
   }
 }
 </script>

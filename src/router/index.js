@@ -24,6 +24,11 @@ export default new Router({
       path: '/test',
       name: 'test',
       component: () => import('@/components/Test')
+    },
+    {
+      path: '/video',
+      name: 'video',
+      component: () => import('@/components/Video')
     }
   ]
 })

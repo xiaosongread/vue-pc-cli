@@ -1,5 +1,5 @@
 <template>
-  <div class="custom-video_container noOpen">
+  <div :class="videoState.startPlay ? 'custom-video_container' : 'custom-video_container noOpen'">
     <video
         class="custom-video_video"
         ref="custom-video"
@@ -9,12 +9,14 @@
     </video>
     <div class="custom-video_control">
       <div class="custom-video_play" @click="play">
-        <i class="iconfont icon-play1"></i>
+        <i :class="videoState.play ? 'iconfont icon-play' : 'iconfont icon-play1'"></i>
       </div>
       <div class="custom-video_time_line">
-        <div class="custom-video_time_point"></div>
+        <div class="videoPro" ref="videoPro"></div>
+        <div class="custom-video_time_point" ref="videoPoint"></div>
       </div>
-      <div class="custom-video_time_show">01:29:30</div>
+      <div class="custom-video_time_show" v-if="!videoState.startPlay">{{duration}}</div>
+      <div class="custom-video_time_show" v-else>{{currentTime}}</div>
       <div class="custom-video_volume">
         <i class="iconfont icon-yinliang"></i>
       </div>
@@ -33,16 +35,51 @@ export default {
       videoOption: {
         src: require('../assets/babel-01-05-gulp.mp4') // 视频
       },
-      videoDom: null // video
+      videoState: {
+        play: false, // 播放状态(播放，暂停)
+        startPlay: false // 标记视频是否已经开始播放
+      },
+      videoDom: null, // video
+      duration: 0, // 总长时间
+      currentTime: 0 // 当前播放时间
+
     }
   },
-  components: { },
-  created () {
+  mounted () {
     this.videoDom = this.$refs['custom-video']
+    this.videoPro = this.$refs['videoPro']
+    this.videoPoint = this.$refs['videoPoint']
+
+    this.initMedaData()
+  },
+  created () {
   },
   methods: {
+    timeTranslate (t) { // 时间转化
+      let m = Math.floor(t / 60)
+      m < 10 && (m = '0' + m)
+      return m + ':' + (t % 60 / 100).toFixed(2).slice(-2)
+    },
+    initMedaData () {
+      this.videoDom.addEventListener('loadedmetadata', () => { // 获取视频总时长
+        this.duration = this.timeTranslate(this.videoDom.duration)
+      })
+      this.videoDom.addEventListener('timeupdate', () => { // 监听视频播放过程中的时间
+        if (!this.videoState.startPlay) this.videoState.startPlay = true
+        const percentage = 100 * this.videoDom.currentTime / this.videoDom.duration
+        this.videoPro.style.width = percentage + '%'
+        this.videoPoint.style.left = percentage - 1 + '%'
+        this.currentTime = this.timeTranslate(this.videoDom.currentTime)
+      })
+    },
     play () {
-
+      if (!this.videoState.play) {
+        this.videoState.play = true
+        this.videoDom.play()
+      } else {
+        this.videoState.play = false
+        this.videoDom.pause()
+      }
     }
   }
 }
@@ -104,6 +141,13 @@ export default {
       background: #ffffff;
       margin-left: 15px;
       position: relative;
+      .videoPro{
+        height: 2px;
+        border-radius: 2px;
+        background: cornflowerblue;
+        position: absolute;
+        left: 0;
+      }
       // jingduxiaoyuanquan
       .custom-video_time_point{
         width: 9px;

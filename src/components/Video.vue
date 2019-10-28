@@ -18,7 +18,15 @@
       <div class="custom-video_time_show" v-if="!videoState.startPlay">{{duration}}</div>
       <div class="custom-video_time_show" v-else>{{currentTime}}</div>
       <div class="custom-video_volume">
-        <i class="iconfont icon-yinliang"></i>
+        <div class="custom-video_volume_bar">
+          <div class="custom-video_volume_bar_point"
+               ref="videoYlPoint"
+               @mousedown="handleVolPrograssDown"
+               @mousemove="handleVolPrograssMove"
+               @mouseup="handleVolPrograssUp"
+          ></div>
+        </div>
+        <i :class="!videoState.muted? 'iconfont icon-yinliang' : 'iconfont icon-mute'" @click='enableMute'></i>
       </div>
       <div class="custom-video_time_full_screen">
         <i class="iconfont icon-tubiaozhizuomoban-"></i>
@@ -37,11 +45,15 @@ export default {
       },
       videoState: {
         play: false, // 播放状态(播放，暂停)
-        startPlay: false // 标记视频是否已经开始播放
+        startPlay: false, // 标记视频是否已经开始播放
+        muted: false // 标记是否静音
       },
       videoDom: null, // video
       duration: 0, // 总长时间
-      currentTime: 0 // 当前播放时间
+      currentTime: 0, // 当前播放时间
+      videoYlPointCurrent: 0, // 移动按钮开始移动的位置
+      videoYlPointFlag: false, // 移动按钮是否开始
+      videoYlPointY: 90 // 移动按钮的top值
 
     }
   },
@@ -49,6 +61,7 @@ export default {
     this.videoDom = this.$refs['custom-video']
     this.videoPro = this.$refs['videoPro']
     this.videoPoint = this.$refs['videoPoint']
+    this.videoYlPoint = this.$refs['videoYlPoint']
 
     this.initMedaData()
   },
@@ -71,6 +84,10 @@ export default {
         this.videoPoint.style.left = percentage - 1 + '%'
         this.currentTime = this.timeTranslate(this.videoDom.currentTime)
       })
+      this.videoDom.addEventListener('volumechange', () => {
+        const percentage = this.videoDom.volume * 100
+        console.log('yinliang', percentage)
+      })
     },
     play () {
       if (!this.videoState.play) {
@@ -80,6 +97,37 @@ export default {
         this.videoState.play = false
         this.videoDom.pause()
       }
+    },
+    enableMute () {
+      if (!this.videoState.muted) {
+        this.videoDom.muted = true
+        this.videoDom.volume = 0
+        this.videoState.muted = true
+      } else {
+        this.videoDom.muted = false
+        this.videoState.muted = false
+      }
+    },
+    handleVolPrograssDown (ev) {
+      this.videoYlPointCurrent = ev.pageY
+      this.videoYlPointFlag = true
+      console.log('开始', this.videoYlPointCurrent)
+    },
+    handleVolPrograssMove (ev) {
+      if (!this.videoYlPointFlag) return
+      const moveY = this.videoYlPointCurrent - ev.pageY
+      console.log('123', this.videoYlPointCurrent, moveY)
+      if (moveY + 10 > this.videoYlPointY) return
+      this.videoYlPointTop = this.videoYlPointY - moveY
+      this.videoYlPoint.style.top = this.videoYlPointTop + 'px'
+      console.log('移动', moveY)
+    },
+    handleVolPrograssUp (ev) {
+      const moveY = this.videoYlPointCurrent - ev.pageY
+      this.videoYlPointY = this.videoYlPointY - moveY
+      this.videoYlPointCurrent = 0
+      this.videoYlPointFlag = false
+      console.log('结束', this.videoYlPointCurrent)
     }
   }
 }
@@ -168,6 +216,32 @@ export default {
     .custom-video_volume{
       color: #ffffff;
       margin-left: 15px;
+      position: relative;
+      &:hover{
+        color: cornflowerblue;
+        .custom-video_volume_bar{
+          display: block;
+        }
+      }
+      .custom-video_volume_bar{
+        width: 4px;
+        height: 100px;
+        border-radius: 4px;
+        background: rgba(255, 255, 255, .5);
+        position: absolute;
+        top: -100px;
+        left: 7px;
+        // display: none;
+        .custom-video_volume_bar_point{
+          width: 10px;
+          height: 10px;
+          border-radius: 10px;
+          background: #ffffff;
+          position: absolute;
+          top: 90px;
+          left: -3px;
+        }
+      }
       .iconfont{
         font-size: 20px;
       }

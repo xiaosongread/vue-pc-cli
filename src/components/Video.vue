@@ -1,5 +1,5 @@
 <template>
-  <div :class="videoState.startPlay ? 'custom-video_container' : 'custom-video_container noOpen'">
+  <div :class="videoState.startPlay ? 'custom-video_container' : 'custom-video_container noOpen'" ref="custom-video_container">
     <video
         class="custom-video_video"
         ref="custom-video"
@@ -29,7 +29,7 @@
         </div>
         <i :class="!videoState.muted? 'iconfont icon-yinliang' : 'iconfont icon-mute'" @click='enableMute'></i>
       </div>
-      <div class="custom-video_time_full_screen">
+      <div class="custom-video_time_full_screen" @click="handleScreen">
         <i class="iconfont icon-tubiaozhizuomoban-"></i>
       </div>
     </div>
@@ -47,7 +47,8 @@ export default {
       videoState: {
         play: false, // 播放状态(播放，暂停)
         startPlay: false, // 标记视频是否已经开始播放
-        muted: false // 标记是否静音
+        muted: false, // 标记是否静音
+        screenState: false
       },
       videoDom: null, // video
       duration: 0, // 总长时间
@@ -122,12 +123,44 @@ export default {
       this.videoYlPointTop = this.ylMovePointStartY - moveY
       if (this.videoYlPointTop > 90 || this.videoYlPointTop < 0) return
       this.videoYlPoint.style.top = this.videoYlPointTop + 'px'
-      this.videoYlIng.style.height = moveY + 'px'
-      // this.videoDom.volume = Math.round((moveY / 90) * 100)
-      // console.log('aaaa', Math.round((moveY / 90) * 100))
+      this.videoYlIng.style.height = (90 - this.videoYlPointTop) + 'px'
+      this.videoDom.volume = ((90 - this.videoYlPointTop) / 100).toFixed(1)
+      console.log('aaaa', ((90 - this.videoYlPointTop) / 100).toFixed(1))
     },
     handleVolPrograssUp (ev) {
       this.videoYlPointFlag = false
+    },
+    handleScreen () { // 全屏操作
+      this.videoState.screenState = !this.videoState.screenState
+      if (this.videoState.screenState) {
+        this.fullScreen()
+      } else {
+        this.exitFullscreen()
+      }
+    },
+    fullScreen () {
+      let ele = document.documentElement
+      if (ele.requestFullscreen) {
+        ele.requestFullscreen()
+      } else if (ele.mozRequestFullScreen) {
+        ele.mozRequestFullScreen()
+      } else if (ele.webkitRequestFullScreen) {
+        ele.webkitRequestFullScreen()
+      }
+      this.$refs['custom-video_container'].style.width = '100%'
+      this.$refs['custom-video_container'].style.height = '100%'
+    },
+    exitFullscreen () {
+      let de = document
+      if (de.exitFullscreen) {
+        de.exitFullscreen()
+      } else if (de.mozCancelFullScreen) {
+        de.mozCancelFullScreen()
+      } else if (de.webkitCancelFullScreen) {
+        de.webkitCancelFullScreen()
+      }
+      this.$refs['custom-video_container'].style.width = '500px'
+      this.$refs['custom-video_container'].style.height = '300px'
     }
   }
 }
@@ -231,7 +264,7 @@ export default {
         position: absolute;
         top: -100px;
         left: 7px;
-        // display: none;
+        display: none;
         .custom-video_volume_bar_point{
           width: 10px;
           height: 10px;

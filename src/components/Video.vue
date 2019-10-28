@@ -25,6 +25,7 @@
                @mousemove="handleVolPrograssMove"
                @mouseup="handleVolPrograssUp"
           ></div>
+          <div class="custom-video_volume_bar_ing" ref="videoYl_ing"></div>
         </div>
         <i :class="!videoState.muted? 'iconfont icon-yinliang' : 'iconfont icon-mute'" @click='enableMute'></i>
       </div>
@@ -51,9 +52,10 @@ export default {
       videoDom: null, // video
       duration: 0, // 总长时间
       currentTime: 0, // 当前播放时间
+      ylMovePointStartY: 0, // 开始移动的位置
       videoYlPointCurrent: 0, // 移动按钮开始移动的位置
-      videoYlPointFlag: false, // 移动按钮是否开始
-      videoYlPointY: 90 // 移动按钮的top值
+      videoYlPointFlag: false // 移动按钮是否开始
+      // videoYlPointY: 90 // 移动按钮的top值
 
     }
   },
@@ -62,6 +64,7 @@ export default {
     this.videoPro = this.$refs['videoPro']
     this.videoPoint = this.$refs['videoPoint']
     this.videoYlPoint = this.$refs['videoYlPoint']
+    this.videoYlIng = this.$refs['videoYl_ing']
 
     this.initMedaData()
   },
@@ -110,24 +113,21 @@ export default {
     },
     handleVolPrograssDown (ev) {
       this.videoYlPointCurrent = ev.pageY
+      this.ylMovePointStartY = this.videoYlPoint.offsetTop
       this.videoYlPointFlag = true
-      console.log('开始', this.videoYlPointCurrent)
     },
     handleVolPrograssMove (ev) {
       if (!this.videoYlPointFlag) return
       const moveY = this.videoYlPointCurrent - ev.pageY
-      console.log('123', this.videoYlPointCurrent, moveY)
-      if (moveY + 10 > this.videoYlPointY) return
-      this.videoYlPointTop = this.videoYlPointY - moveY
+      this.videoYlPointTop = this.ylMovePointStartY - moveY
+      if (this.videoYlPointTop > 90 || this.videoYlPointTop < 0) return
       this.videoYlPoint.style.top = this.videoYlPointTop + 'px'
-      console.log('移动', moveY)
+      this.videoYlIng.style.height = moveY + 'px'
+      // this.videoDom.volume = Math.round((moveY / 90) * 100)
+      // console.log('aaaa', Math.round((moveY / 90) * 100))
     },
     handleVolPrograssUp (ev) {
-      const moveY = this.videoYlPointCurrent - ev.pageY
-      this.videoYlPointY = this.videoYlPointY - moveY
-      this.videoYlPointCurrent = 0
       this.videoYlPointFlag = false
-      console.log('结束', this.videoYlPointCurrent)
     }
   }
 }
@@ -240,6 +240,14 @@ export default {
           position: absolute;
           top: 90px;
           left: -3px;
+        }
+        .custom-video_volume_bar_ing{
+          width: 4px;
+          border-radius: 4px;
+          background: cornflowerblue;
+          position: absolute;
+          bottom: 0;
+          left: 0;
         }
       }
       .iconfont{

@@ -11,9 +11,13 @@
       <div class="custom-video_play" @click="play">
         <i :class="videoState.play ? 'iconfont icon-play' : 'iconfont icon-play1'"></i>
       </div>
-      <div class="custom-video_time_line">
+      <div class="custom-video_time_line" ref="videoTimeLine">
         <div class="videoPro" ref="videoPro"></div>
-        <div class="custom-video_time_point" ref="videoPoint"></div>
+        <div class="custom-video_time_point"
+             ref="videoPoint"
+             @mousedown="timePrograssDown"
+             @mousemove="timePrograssMove"
+        ></div>
       </div>
       <div class="custom-video_time_show" v-if="!videoState.startPlay">{{duration}}</div>
       <div class="custom-video_time_show" v-else>{{currentTime}}</div>
@@ -55,8 +59,11 @@ export default {
       currentTime: 0, // 当前播放时间
       ylMovePointStartY: 0, // 开始移动的位置
       videoYlPointCurrent: 0, // 移动按钮开始移动的位置
-      videoYlPointFlag: false // 移动按钮是否开始
+      videoYlPointFlag: false, // 移动按钮是否开始
       // videoYlPointY: 90 // 移动按钮的top值
+      timeStartL: 0,
+      timeMoveStartL: 0,
+      timeFlag: false
 
     }
   },
@@ -66,6 +73,7 @@ export default {
     this.videoPoint = this.$refs['videoPoint']
     this.videoYlPoint = this.$refs['videoYlPoint']
     this.videoYlIng = this.$refs['videoYl_ing']
+    this.videoTimeLine = this.$refs['videoTimeLine']
 
     this.initMedaData()
   },
@@ -160,6 +168,21 @@ export default {
       }
       this.$refs['custom-video_container'].style.width = '500px'
       this.$refs['custom-video_container'].style.height = '300px'
+    },
+    timePrograssDown (ev) {
+      this.timeStartL = this.videoYlPoint.offsetLeft
+      this.timeMoveStartL = ev.pageX
+      this.timeFlag = true
+      console.log('开始')
+    },
+    timePrograssMove (ev) {
+      const timeLineWidth = this.videoTimeLine.offsetWidth
+      const timePointWidth = this.videoPoint.offsetWidth
+      if (!this.timeFlag) return
+      const moveNum = ev.pageX - this.timeMoveStartL
+      if (moveNum < 0 || moveNum > (timeLineWidth - timePointWidth)) return
+      this.videoPoint.style.left = moveNum + 'px'
+      console.log('移动', moveNum)
     }
   }
 }

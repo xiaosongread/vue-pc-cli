@@ -125,7 +125,6 @@ export default {
       this.videoYlPoint.style.top = this.videoYlPointTop + 'px'
       this.videoYlIng.style.height = (90 - this.videoYlPointTop) + 'px'
       this.videoDom.volume = ((90 - this.videoYlPointTop) / 100).toFixed(1)
-      console.log('aaaa', ((90 - this.videoYlPointTop) / 100).toFixed(1))
     },
     handleVolPrograssUp (ev) {
       this.videoYlPointFlag = false

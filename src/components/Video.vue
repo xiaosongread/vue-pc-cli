@@ -87,6 +87,7 @@ export default {
     },
     initMedaData () {
       this.videoDom.addEventListener('loadedmetadata', () => { // 获取视频总时长
+        console.log('时长', this.videoDom.duration)
         this.duration = this.timeTranslate(this.videoDom.duration)
       })
       this.videoDom.addEventListener('timeupdate', () => { // 监听视频播放过程中的时间
@@ -176,13 +177,16 @@ export default {
       console.log('开始')
     },
     timePrograssMove (ev) {
+      if (!this.timeFlag) return
       const timeLineWidth = this.videoTimeLine.offsetWidth
       const timePointWidth = this.videoPoint.offsetWidth
-      if (!this.timeFlag) return
       const moveNum = ev.pageX - this.timeMoveStartL
       if (moveNum < 0 || moveNum > (timeLineWidth - timePointWidth)) return
       this.videoPoint.style.left = moveNum + 'px'
-      console.log('移动', moveNum)
+      if (!moveNum) return
+      this.videoDom.currentTime = this.videoDom.duration * (moveNum / timeLineWidth)
+      this.currentTime = this.timeTranslate(this.videoDom.currentTime)
+      // console.log('移动', this.duration, moveNum, timeLineWidth, this.duration * (moveNum / timeLineWidth))
     }
   }
 }

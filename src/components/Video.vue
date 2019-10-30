@@ -187,6 +187,9 @@ export default {
       this.videoDom.currentTime = this.videoDom.duration * (moveNum / timeLineWidth)
       this.currentTime = this.timeTranslate(this.videoDom.currentTime)
       // console.log('移动', this.duration, moveNum, timeLineWidth, this.duration * (moveNum / timeLineWidth))
+    },
+    timePrograssUp (ev) {
+      this.timeFlag = false
     }
   }
 }

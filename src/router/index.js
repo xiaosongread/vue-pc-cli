@@ -22,8 +22,18 @@ export default new Router({
     },
     {
       path: '/test',
-      name: 'test',
+      name: '渐隐渐出',
       component: () => import('@/components/Test')
+    },
+    {
+      path: '/test1',
+      name: '购物车',
+      component: () => import('@/components/Test1')
+    },
+    {
+      path: '/test2',
+      name: '购物车',
+      component: () => import('@/components/Test2')
     },
     {
       path: '/video',

@@ -1,45 +1,50 @@
 <template>
-  <div>
-    <Render :mes="mesg" ></Render>
+  <div class="transition_test">
+    <p>淡入淡出</p>
+    <button @click="show = !show">click</button>
+    <!-- 页面有多个transition时可以加name区分,如果没有加name,默认CSS类名为v-开头 -->
+    <transition name="slide-fade">
+      <div v-if="show" class="circle"></div>
+    </transition>
   </div>
 </template>
-
 <script>
-import Render from './Render'
+// import Render from './Render'
 export default {
   name: 'Test',
   data () {
     return {
-      mesg: 'mesg!'
+      show: false
     }
   },
-  components: { Render },
+  components: { },
   created () {
 
   },
   methods: {
-    getEleNodeType () {
-      // 2 3 7
 
-    }
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+  .transition_test {
+    text-align: left;
+    padding-bottom: 300px;
+  }
+  .circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: aquamarine;
+  }
+
+  .slide-fade-enter-active, .slide-fade-leave-active {
+    transition: all .5s ease-out;
+  }
+  .slide-fade-enter, .slide-fade-leave-to {
+    /* transform: translateX(500px); */
+    opacity: 0;
+  }
 </style>

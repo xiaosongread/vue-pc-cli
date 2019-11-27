@@ -32,8 +32,13 @@ export default new Router({
     },
     {
       path: '/test2',
-      name: '购物车',
+      name: '全部动画',
       component: () => import('@/components/Test2')
+    },
+    {
+      path: '/test3',
+      name: '测试',
+      component: () => import('@/components/Test3')
     },
     {
       path: '/video',

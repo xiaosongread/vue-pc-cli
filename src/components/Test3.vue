@@ -31,9 +31,10 @@ export default {
     return {
       goosList: [],
       show: false,
+      wHeight: document.documentElement.clientHeight || document.body.clientHeight, // 屏幕的高度
       ball: {
         startLeft: '',
-        startBottom: ''
+        startTop: ''
       }
     }
   },
@@ -47,21 +48,26 @@ export default {
   },
   methods: {
     addGood (el) {
-      console.log(1, el, el.target.getBoundingClientRect())
       this.show = true
       let rectInfo = el.target.getBoundingClientRect()
+      console.log(rectInfo)
       this.ball.startLeft = rectInfo.left
-      this.ball.startBottom = rectInfo.bottom
+      this.ball.startTop = rectInfo.top
     },
     beforeEnter (el) {
-      el.style.left = this.ball.startLeft + 'px'
-      el.style.bottom = this.ball.startBottom + 'px'
+      // let ballRectInfo = el.getBoundingClientRect()
+      // console.log(ballRectInfo)
+      // el.style.left = this.ball.startLeft + 'px'
+      // el.style.top = -(this.wHeight - 100 - this.ball.startTop) + 'px' // 100 => 底部黑框的高度
+
+      let x = this.ball.startLeft
+      let y = -(this.wHeight - 100 - this.ball.startTop)
+      el.style.webkitTransform = `translate3d(${x}px, ${y}px, 0)`
     },
     enter (el) {
-      console.log(2)
     },
     afterEnter (el) {
-      console.log(3)
+      // this.show = false
     }
   }
 }
@@ -122,9 +128,12 @@ export default {
     background: red;
     border-radius: 30px;
     position: absolute;
-    bottom: 35px;
+    top: 35px;
     left: 40px;
     z-index: 10;
+  }
+  .ball-enter-active{
+     transition: all 2s;
   }
 }
 </style>

@@ -18,7 +18,7 @@
         name="ball"
         @before-enter="beforeEnter"
         @enter="enter"
-        @after-enter="afterEnter">
+        @after-leave="afterEnter">
         <div class="ball" v-if="show"></div>
       </transition>
     </div>
@@ -59,15 +59,18 @@ export default {
       // console.log(ballRectInfo)
       // el.style.left = this.ball.startLeft + 'px'
       // el.style.top = -(this.wHeight - 100 - this.ball.startTop) + 'px' // 100 => 底部黑框的高度
-
       let x = this.ball.startLeft
       let y = -(this.wHeight - 100 - this.ball.startTop)
-      el.style.webkitTransform = `translate3d(${x}px, ${y}px, 0)`
+      console.log(x, y)
+      el.style.webkitTransform = `translate(${x}px, ${y}px)`
     },
-    enter (el) {
+    enter (el, done) {
+      el.style.webkitTransform = `translate(0, 0)`
+      el.style.transition = 'all 1s ease'
+      done()
     },
     afterEnter (el) {
-      // this.show = false
+      this.show = false
     }
   }
 }
@@ -132,8 +135,8 @@ export default {
     left: 40px;
     z-index: 10;
   }
-  .ball-enter-active{
-     transition: all 2s;
-  }
+  // .ball-enter-active{
+  //    transition: all 2s;
+  // }
 }
 </style>

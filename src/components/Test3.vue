@@ -1,11 +1,12 @@
 <template>
   <div>
     <ul class="good_box">
+      <!--  -->
       <li v-for="(item, index) in goosList" :key="index">
         <img src= "'../assets/goods/1.jpg'">
         <div class="good_des">
-          <p class="good_title">{{item.title}}</p>
-          <p class="good_js">{{item.js}}</p>
+          <p class="good_title">aa</p>
+          <p class="good_js">bb</p>
           <div class="addGood" @click="addGood">
             <i class="iconfont icon-tianjiagouwuche"></i>
           </div>
@@ -18,7 +19,7 @@
         name="ball"
         @before-enter="beforeEnter"
         @enter="enter"
-        @after-leave="afterEnter">
+        @after-enter="afterEnter">
         <div class="ball" v-if="show"></div>
       </transition>
     </div>
@@ -55,22 +56,22 @@ export default {
       this.ball.startTop = rectInfo.top
     },
     beforeEnter (el) {
-      // let ballRectInfo = el.getBoundingClientRect()
-      // console.log(ballRectInfo)
-      // el.style.left = this.ball.startLeft + 'px'
-      // el.style.top = -(this.wHeight - 100 - this.ball.startTop) + 'px' // 100 => 底部黑框的高度
-      let x = this.ball.startLeft
-      let y = -(this.wHeight - 100 - this.ball.startTop)
-      console.log(x, y)
-      el.style.webkitTransform = `translate(${x}px, ${y}px)`
+      let ballRectInfo = el.getBoundingClientRect()
+      console.log(ballRectInfo)
+      el.style.left = this.ball.startLeft + 'px'
+      el.style.top = -(this.wHeight - 100 - this.ball.startTop) + 'px' // 100 => 底部黑框的高度
     },
     enter (el, done) {
-      el.style.webkitTransform = `translate(0, 0)`
-      el.style.transition = 'all 1s ease'
+      // 触发动画重绘
+      if (el.offsetHeight) {}
+      el.style.left = '35px'
+      el.style.top = '40px'
+      el.style.transition = 'all 1s'
       done()
     },
     afterEnter (el) {
       this.show = false
+      // el.style.display = 'none'
     }
   }
 }
@@ -136,7 +137,7 @@ export default {
     z-index: 10;
   }
   // .ball-enter-active{
-  //    transition: all 2s;
+  //    transition: all 1s;
   // }
 }
 </style>

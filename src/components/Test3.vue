@@ -5,9 +5,9 @@
       <li v-for="(item, index) in goosList" :key="index">
         <img src= "'../assets/goods/1.jpg'">
         <div class="good_des">
-          <p class="good_title">aa</p>
-          <p class="good_js">bb</p>
-          <div class="addGood" @click="addGood">
+          <p class="good_title">{{item.title}}</p>
+          <p class="good_js">{{item.js}}</p>
+          <div class="addGood" @click="addGood($event, item)">
             <i class="iconfont icon-tianjiagouwuche"></i>
           </div>
         </div>
@@ -15,6 +15,7 @@
     </ul>
     <div class="fix_bar">
       <i class="iconfont icon-tianjiagouwuche1"></i>
+      <span class="addGoodListLength">共 {{addGoodList.length}} 件商品</span>
       <transition
         name="ball"
         @before-enter="beforeEnter"
@@ -36,7 +37,8 @@ export default {
       ball: {
         startLeft: '',
         startTop: ''
-      }
+      },
+      addGoodList: []
     }
   },
   created () {
@@ -48,16 +50,20 @@ export default {
     }
   },
   methods: {
-    addGood (el) {
+    addGood (el, item) {
       this.show = true
+      let obj = {
+        title: item.title,
+        js: item.js
+      }
+      this.addGoodList.push(obj)
       let rectInfo = el.target.getBoundingClientRect()
-      console.log(rectInfo)
       this.ball.startLeft = rectInfo.left
       this.ball.startTop = rectInfo.top
     },
     beforeEnter (el) {
-      let ballRectInfo = el.getBoundingClientRect()
-      console.log(ballRectInfo)
+      // let ballRectInfo = el.getBoundingClientRect()
+      // console.log(ballRectInfo)
       el.style.left = this.ball.startLeft + 'px'
       el.style.top = -(this.wHeight - 100 - this.ball.startTop) + 'px' // 100 => 底部黑框的高度
     },
@@ -125,6 +131,10 @@ export default {
     font-size: 50px;
     margin-left: 30px;
     color: #ffffff;
+  }
+  .addGoodListLength{
+    color: #ffffff;
+    margin-left: 30px;
   }
   .ball{
     width: 30px;

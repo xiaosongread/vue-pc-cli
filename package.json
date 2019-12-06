@@ -14,7 +14,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "axios": "0.18.0",
+    "axios": "0.18.1",
     "element-ui": "^2.9.0",
     "fundebug-javascript": "^2.0.0",
     "fundebug-revideo": "^0.6.0",

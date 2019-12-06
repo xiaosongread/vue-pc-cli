@@ -7,12 +7,18 @@ import store from './store'
 import '@/utils/request'
 import VueBlu from 'vue-blu'
 import 'vue-blu/dist/css/vue-blu.min.css'
+
+import * as fundebug from 'fundebug-javascript'
+import fundebugVue from 'fundebug-vue'
+require('fundebug-revideo')
 // import { Message } from 'element-ui'
 // Vue.prototype.$message = Message
 
 Vue.use(VueBlu)
 
 Vue.config.productionTip = false
+fundebug.apikey = '5cc43efc67a0f518af7111081e7b648a4a20e5ed90933eed407b2e733d1d8bab'
+fundebugVue(fundebug, Vue)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

@@ -5,7 +5,7 @@ export const urlMap = {
   getAllDict: '/data/dict/all'
 
 }
-const apiGetDouBanMovieList = 'https://douban.uieee.com/v2/movie/in_theaters'
+const apiGetDouBanMovieList = 'https://douban.uieee.com/v2/movie/in_theaters_1'
 // 批量增加url前缀
 Object.keys(urlMap).forEach(key => {
   urlMap[key] = config.BASE_API + urlMap[key]

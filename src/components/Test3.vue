@@ -52,11 +52,13 @@ export default {
   methods: {
     addGood (el, item) {
       this.show = true
-      let obj = {
-        title: item.title,
-        js: item.js
-      }
-      this.addGoodList.push(obj)
+      setTimeout(() => {
+        let obj = {
+          title: item.title,
+          js: item.js
+        }
+        this.addGoodList.push(obj)
+      }, 1000)
       let rectInfo = el.target.getBoundingClientRect()
       this.ball.startLeft = rectInfo.left
       this.ball.startTop = rectInfo.top

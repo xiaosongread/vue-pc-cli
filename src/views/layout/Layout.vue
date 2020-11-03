@@ -6,16 +6,18 @@
       <app-main/>
     </div> -->
     <app-main/>
+    <Footer/>
   </div>
 </template>
 
 <script>
 import { AppMain } from './components'
-
+import Footer from '@/components/footer'
 export default {
   name: 'Layout',
   components: {
-    AppMain
+    AppMain,
+    Footer
   },
   mixins: [],
   computed: {

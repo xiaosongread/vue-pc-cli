@@ -4,45 +4,36 @@
     <div class="index_banner">
       <img src="//public.danke.com.cn/public-20200326-Fkn8aiQeF2EiRi46JhC37emlVsRb">
     </div>
-    <div class="index_section">
-      <div class="index_section_title">
-        特价房源
-      </div>
-      <div class="index_section_sub_title">特价房源，限时秒杀</div>
-    </div>
-     <div class="index_good_properties">
+    <SectionTitle title="特价房源"
+                  subTitle="特价房源，限时秒杀"
+                  url="https:www.baidu.com">
+    </SectionTitle>
+    <div class="index_good_properties">
       <div v-for="(item, index) in 3" :key="index" class="index_good_properties_item">
         <RoomItem></RoomItem>
       </div>
     </div>
-    <div class="index_section">
-      <div class="index_section_title">
-        优质房源
-      </div>
-      <div class="index_section_sub_title">优质房源，选到就是赚到</div>
-    </div>
+    <SectionTitle title="优质房源"
+                  subTitle="优质房源，选到就是赚到"
+                  url="https:www.baidu.com">
+    </SectionTitle>
     <div class="index_good_properties">
       <div v-for="(item, index) in 6" :key="index" class="index_good_properties_item">
         <RoomItem></RoomItem>
       </div>
     </div>
-    <div class="index_section">
-      <div class="index_section_title">
-        成交故事
-      </div>
-      <div class="index_section_sub_title">您的认可，是对我们最大的鼓励</div>
-    </div>
+    <SectionTitle title="成交故事"
+                  subTitle="您的认可，是对我们最大的鼓励"
+                  url="https:www.baidu.com">
+    </SectionTitle>
     <div class="index_story">
       <div v-for="(item, index) in 4" :key="index" class="index_story_item">
         <DealStory></DealStory>
       </div>
     </div>
-    <div class="index_section">
-      <div class="index_section_title">
-        优秀经纪人
-      </div>
-      <div class="index_section_sub_title">您的认可，是对我们最大的鼓励</div>
-    </div>
+    <SectionTitle title="优秀经纪人"
+                  subTitle="您的认可，是对我们最大的鼓励">
+    </SectionTitle>
     <div class="index_agent">
       <div v-for="(item, index) in 8" :key="index" class="index_agent_item">
         <img src="https://img.dyrs.cc/store/626/623/000/8185b51457fd7ca1.jpg!zmm">
@@ -53,6 +44,7 @@
         </div>
       </div>
     </div>
+    
   </div>
 </template>
 
@@ -61,6 +53,8 @@ import { getAllDict, getDouBanMovieList } from '@/utils/api'
 import Header from '@/components/header'
 import RoomItem from '@/components/roomItem'
 import DealStory from '@/components/dealStory'
+import Footer from '@/components/footer'
+import SectionTitle from '@/components/sectionTitle'
 let that
 export default {
   data () {
@@ -70,8 +64,10 @@ export default {
   },
   components: {
     Header,
+    SectionTitle,
     RoomItem,
-    DealStory
+    DealStory,
+    Footer
   },
   created () {
     // this.getDict()

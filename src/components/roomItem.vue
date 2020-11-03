@@ -1,5 +1,5 @@
 <template>
-  <div class="roomItem">
+  <div class="roomItem" @click="jumpDetail">
     <div class="roomItem_header">
       <img src="//img.ziroom.com/pic/house_images/g2m3/M00/37/D2/ChAZVF-T7r-AM31cAAp7TkQX5o8614.jpg_C_640_480_Q100.jpg" class="zoomBox">
     </div>
@@ -28,17 +28,25 @@ export default {
     return {
       
     }
+  },
+  methods: {
+    jumpDetail() {
+      this.$router.push({
+        name: 'Detail',
+        query: { id: 1 }
+      })
+    }
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .roomItem{
   width: 370px;
   border: 1px solid rgba(0,0,0,.12);
   border-radius: 10px;
   overflow: hidden;
+  cursor: pointer;
   &_header{
     height: 270px;
     overflow: hidden;

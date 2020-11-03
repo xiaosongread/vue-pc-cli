@@ -21,9 +21,9 @@ export default new Router({
       ]
     },
     {
-      path: '/test',
-      name: '渐隐渐出',
-      component: () => import('@/components/Test')
+      path: '/detail',
+      name: 'Detail',
+      component: () => import('@/views/detail/Index')
     },
     {
       path: '/test1',

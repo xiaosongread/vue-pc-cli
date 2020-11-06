@@ -5,6 +5,7 @@ Vue.use(Vuex)
 const state = { // 初始化状态值--一定要有该属性对象
   scrollHeaderBarFlag: false,
   scrollConsBarFlag: false,
+  subBarActive: 'xmld'
   // dataSource2: [{
   //   'name': '张三',
   //   'work_no': '1012',
@@ -23,6 +24,9 @@ const mutations = { // 自定义改变state初始值的方法--一定要有该�
   },
   SET_CONS_BAR: (state, val) => {
     state.scrollConsBarFlag = val
+  },
+  SET_SUB_BAR_ACTIVE: (state, val) => {
+    state.subBarActive = val
   }
   // ADD_COUNT: (state, n) => {
   //   state.appConut += n
@@ -46,7 +50,10 @@ const actions = { // 异步操作状态--该属性对象不是必须的
   },
   TOGGLE_CONS_BAR({ commit }, bool) {
     commit('SET_CONS_BAR', bool)
-  }
+  },
+  TOGGLE_SUB_BAR_ACTIVE({ commit }, bool) {
+    commit('SET_SUB_BAR_ACTIVE', bool)
+  },
   // RESET_ACCTION_APP_COUNT: ({ commit }, mes) => {
   //   commit('RESET_APP_COUNT', mes)
   // }

@@ -4,12 +4,34 @@
       <img src="//webimg.ziroom.com/a8f8d17a-229b-4246-a856-6c9aee9d7323.png" class="header_cons_logo">
       <div class="header_cons_location">北京</div>
       <ul>
-        <li class="active">首页</li>
-        <li>二手房</li>
-        <li>新房</li>
-        <li>经纪人</li>
-        <li>服务</li>
-        <li>关于我们</li>
+        <li class="active">
+          <router-link :to="{name:'Index'}">首页</router-link>
+        </li>
+        <li>
+          <router-link :to="{name:'Detail',query:{id:123}}">
+            二手房
+          </router-link>
+        </li>
+        <li>
+          <router-link :to="{name:'Detail',query:{id:123}}">
+            新房
+          </router-link>
+        </li>
+        <li>
+          <router-link :to="{name:'Detail',query:{id:123}}">
+            经纪人
+          </router-link>
+        </li>
+        <li>
+          <router-link :to="{name:'Detail',query:{id:123}}">
+            服务
+          </router-link>
+        </li>
+        <li>
+          <router-link :to="{name:'Detail',query:{id:123}}">
+            关于我们
+          </router-link>
+        </li>
       </ul>
       <div class="header_cons_lr">
         <div class="login">登录</div>
@@ -62,9 +84,6 @@ ul {
 }
 li {
   margin: 0 10px;
-}
-a {
-  color: #42b983;
 }
 .header{
   width: 100%;

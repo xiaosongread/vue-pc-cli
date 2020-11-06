@@ -41,16 +41,28 @@
       </div>
     </div>
     <div :class="!$store.state.scrollConsBarFlag ? 'detail_bar' : 'detail_bar detail_bar_fix'">
-      <ul class="detail_bar_box">
-        <li>项目亮点</li>
-        <li>周边概括</li>
-        <li>户型介绍</li>
-        <li>房屋装修</li>
-        <li>楼盘详情</li>
-      </ul>
+      <div class="detail_bar_cons">
+        <ul class="detail_bar_box">
+          <li :class="$store.state.subBarActive === 'xmld' ? 'active' : ''" @click="scrollToFn('xmld')">项目亮点</li>
+          <li :class="$store.state.subBarActive === 'hxjs' ? 'active' : ''" @click="scrollToFn('hxjs')">户型介绍</li>
+          <li :class="$store.state.subBarActive === 'zbgk' ? 'active' : ''" @click="scrollToFn('zbgk')">周边概括</li>
+          <li :class="$store.state.subBarActive === 'fwzx' ? 'active' : ''" @click="scrollToFn('fwzx')">房屋装修</li>
+          <li :class="$store.state.subBarActive === 'lpxq' ? 'active' : ''" @click="scrollToFn('lpxq')">楼盘详情</li>
+        </ul>
+        <div class="callMe" v-if="$store.state.scrollConsBarFlag">
+          <div>
+            <i class="iconfont iconbodadianhua"></i>
+            <span>热线电话:13212331221</span>
+          </div>
+          <div class="yykf">
+            <i class="iconfont iconfangzi"></i>
+            预约看房
+          </div>
+        </div>
+      </div>
     </div>
     <div class="detail_des">
-      <section>
+      <section id="info_xmld">
         <p class="section_title">项目亮点</p>
         <h3>家境龙源 - 法式大花园</h3>
         <p class="detail_des_det">万科翡翠天地，是万科高端“翡翠系”作品，建筑面积约150-450㎡奢景大宅，屹立中央绿轴，市政府、博物馆、大剧院等城市资源环伺，世纪公园、三垟湿地公园、中央度假都市公园三园汇聚，兼得都市繁华与自然生态</p>
@@ -82,16 +94,16 @@
           </li>
         </ul>
       </section>
-      <section>
+      <section id="info_hxjs">
         <p class="section_title">户型介绍</p>
         <div class="hxjs">
           <img class="zoomBox" :src="require('../../../static/2.jpg')">
         </div>
       </section>
-      <section>
+      <section id="info_zbgk">
         <p class="section_title">周边概括</p>
       </section>
-      <section>
+      <section id="info_fwzx">
         <p class="section_title">房屋装修</p>
         <div class="fwzx">
           <div class="imgItem">
@@ -105,7 +117,7 @@
           </div>
         </div>
       </section>
-      <section>
+      <section id="info_lpxq">
         <p class="section_title">楼盘详情</p>
         <div class="lpxq">
           <div class="lpxq_left">
@@ -163,12 +175,19 @@
         </div>
       </section>
     </div>
+    <div class="tjfy">
+      <h3>推荐房源</h3>
+      <div class="roomItems">
+        <RoomItem v-for="(item, index) in 3" :key="index"></RoomItem>
+      </div>
+    </div>
     <Footer></Footer>
   </div>
 </template>
 
 <script>
 import Header from '@/components/header'
+import RoomItem from '@/components/roomItem'
 import Footer from '@/components/footer'
 let that
 export default {
@@ -179,12 +198,20 @@ export default {
   },
   components: {
     Header,
+    RoomItem,
     Footer
   },
   created () {
     that = this
   },
   methods: {
+    scrollToFn(key) {
+      var PageId = document.querySelector('#info_' + key)
+      window.scrollTo({
+        'top': PageId.offsetTop - 95,
+        'behavior': 'smooth'
+      })
+    },
     durationNotify () {
       this.$notify.open({
         content: '10秒后自动关闭！',
@@ -281,19 +308,75 @@ export default {
   font-size: 14px;
   color: $bar-color;
   background: #ffffff;
+  border-bottom: 1px solid $border_color;
   &.detail_bar_fix{
     width: 100%;
     position: fixed;
+    z-index: 2;
     top: 50px;
     left: 0;
   }
-  &_box{
+  .detail_bar_cons{
     width: 1250px;
     height: 100%;
     margin: 0 auto;
     display: flex;
-    li:not(:last-child){
-      padding-right: 20px;
+    justify-content: space-between;
+    .detail_bar_box{
+      height: 100%;
+      padding-left: 100px;
+      display: flex;
+      li{
+        height: 100%;
+        line-height: 50px;
+        position: relative;
+        &.active::after{
+          width: 100%;
+        }
+        &:hover{
+          &::after{
+            width: 100%;
+          }
+        }
+      }
+      li{
+        &::after{
+          content: "";
+          display: block;
+          width: 0;
+          height: 2px;
+          position: absolute;
+          bottom: 10px;
+          left: 50%;
+          -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+          transition: width .3s;
+          background: #ffa000;
+        }
+      }
+      li:not(:last-child){
+        margin-right: 20px;
+      }
+    }
+    .callMe{
+      display: flex;
+      font-size: 14px;
+      align-items: center;
+      color: #000000;
+      padding-right: 50px;
+      .iconbodadianhua{
+        color: $red_color;
+        margin-right: 5px;
+      }
+      .yykf{
+        width: 100px;
+        line-height: 30px;
+        color: #ffffff;
+        background: $btn-color;
+        text-align: center;
+        font-weight: bold;
+        margin-left: 20px;
+      }
     }
   }
 }
@@ -399,6 +482,22 @@ export default {
         padding: 0 20px;
       }
     }
+  }
+}
+.tjfy{
+  width: 1250px;
+  padding: 20px 15px;
+  margin: 20px auto;
+  background: #ffffff;
+  h3{
+    font-size: 16px;
+    color: $sub_title_color;
+    margin-bottom: 30px;
+  }
+  .roomItems{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 }
 </style>

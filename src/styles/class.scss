@@ -6,6 +6,9 @@
   text-align: right;
 }
 
+.a{
+  cursor: pointer;
+}
 .a-hover {
   color: #3C8DBF;
   cursor: pointer;
@@ -14,10 +17,6 @@
 .a-hover:hover {
   // color: #9fcae6
   opacity: 0.8;
-}
-
-.edui-editor.edui-default {
-  width: 100% !important;
 }
 
 // 浮动

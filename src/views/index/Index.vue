@@ -72,7 +72,7 @@ export default {
   created () {
     // this.getDict()
     that = this
-    this.getDouBanMovieList()
+    // this.getDouBanMovieList()
   },
   methods: {
     addAppCount () {
@@ -82,23 +82,23 @@ export default {
       if (this.$store.state.appConut) this.$store.commit('DELETE_COUNT', 1)
     },
     // 获取热门电影
-    getDouBanMovieList () {
-      getDouBanMovieList().then(function (data) {
-        that.$store.dispatch('RESET_ACCTION_APP_COUNT', data.title)
-      })
-    },
-    async getDict () {
-      const data = await getAllDict()
-      if (data.code === 1 && data.data) {
-        console.log('接口数据', data)
-      }
-    },
-    durationNotify () {
-      this.$notify.open({
-        content: '10秒后自动关闭！',
-        duration: 1000
-      })
-    }
+    // getDouBanMovieList () {
+    //   getDouBanMovieList().then(function (data) {
+    //     that.$store.dispatch('RESET_ACCTION_APP_COUNT', data.title)
+    //   })
+    // },
+    // async getDict () {
+    //   const data = await getAllDict()
+    //   if (data.code === 1 && data.data) {
+    //     console.log('接口数据', data)
+    //   }
+    // },
+    // durationNotify () {
+    //   this.$notify.open({
+    //     content: '10秒后自动关闭！',
+    //     duration: 1000
+    //   })
+    // }
   }
 }
 </script>

@@ -33,4 +33,5 @@ export default {
   @import "src/styles/reset.scss";
   @import "src/styles/class.scss";
   @import "src/styles/animation.scss";
+  @import "src/styles/color.scss";
 </style>

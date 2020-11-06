@@ -1,5 +1,5 @@
 <template>
-  <div :class="scrollFlag ? 'header header_anmation' : 'header'">
+  <div :class="$store.state.scrollHeaderBarFlag ? 'header header_anmation' : 'header'">
     <div class="header_cons">
       <img src="//webimg.ziroom.com/a8f8d17a-229b-4246-a856-6c9aee9d7323.png" class="header_cons_logo">
       <div class="header_cons_location">北京</div>
@@ -20,36 +20,38 @@
 </template>
 
 <script>
+import {
+  scrollMixins
+} from '@/mixins/index'
 export default {
   name: 'header',
   data () {
     return {
-      scrollFlag: false
+      // scrollFlag: false
     }
   },
+  mixins: [scrollMixins],
   created () {
-    this.listenerFunction();
+    // this.listenerFunction();
   },
   beforeDestroy () {
-    document.removeEventListener("scroll", this.listenerFunction);
+    // document.removeEventListener("scroll", this.listenerFunction);
   },
   methods:{
-    listenerFunction(e) {
-        document.addEventListener('scroll', this.handleScroll, true);
-    },
-    handleScroll() {
-        console.log(window.pageYOffset)
-        if(window.pageYOffset > 100) {
-          this.scrollFlag = true
-        } else {
-          this.scrollFlag = false
-        }
-    }
+    // listenerFunction(e) {
+    //   document.addEventListener('scroll', this.handleScroll, true);
+    // },
+    // handleScroll() {
+    //   if(window.pageYOffset > 100) {
+    //     this.scrollFlag = true
+    //   } else {
+    //     this.scrollFlag = false
+    //   }
+    // }
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 h1, h2 {
   font-weight: normal;

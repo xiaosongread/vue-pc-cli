@@ -4,7 +4,9 @@
       {{title}}
     </div>
     <div class="index_section_sub_title">{{subTitle}}</div>
-    <div class="index_section_more" v-if="url">更多</div>
+    <div class="index_section_more" v-if="url">
+      <router-link :to="{name:url}">更多</router-link>
+    </div>
   </div>
 </template>
 

@@ -6,7 +6,7 @@
     </div>
     <SectionTitle title="特价房源"
                   subTitle="特价房源，限时秒杀"
-                  url="https:www.baidu.com">
+                  url="RoomList">
     </SectionTitle>
     <div class="index_good_properties">
       <div v-for="(item, index) in 3" :key="index" class="index_good_properties_item">
@@ -15,7 +15,7 @@
     </div>
     <SectionTitle title="优质房源"
                   subTitle="优质房源，选到就是赚到"
-                  url="https:www.baidu.com">
+                  url="RoomList">
     </SectionTitle>
     <div class="index_good_properties">
       <div v-for="(item, index) in 6" :key="index" class="index_good_properties_item">
@@ -40,7 +40,9 @@
         <div class="index_agent_item_des">
           <p class="name">张三</p>
           <p class="motto">您的认可是我最大的鼓励</p>
-          <div class="index_agent_item_des_btn">查看详情</div>
+          <div class="index_agent_item_des_btn">
+            <router-link :to="{name:'Agent'}">查看详情</router-link>
+          </div>
         </div>
       </div>
     </div>

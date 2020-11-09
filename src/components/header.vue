@@ -8,12 +8,12 @@
           <router-link :to="{name:'Index'}">首页</router-link>
         </li>
         <li>
-          <router-link :to="{name:'Detail',query:{id:123}}">
+          <router-link :to="{name:'RoomList',query:{id:123}}">
             二手房
           </router-link>
         </li>
         <li>
-          <router-link :to="{name:'Detail',query:{id:123}}">
+          <router-link :to="{name:'RoomList',query:{id:123}}">
             新房
           </router-link>
         </li>
@@ -28,7 +28,7 @@
           </router-link>
         </li>
         <li>
-          <router-link :to="{name:'Detail',query:{id:123}}">
+          <router-link :to="{name:'AboutUs'}">
             关于我们
           </router-link>
         </li>

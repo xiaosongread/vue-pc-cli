@@ -5,7 +5,10 @@ Vue.use(Vuex)
 const state = { // 初始化状态值--一定要有该属性对象
   scrollHeaderBarFlag: false,
   scrollConsBarFlag: false,
-  subBarActive: 'xmld'
+  subBarActive: 'xmld',
+  loginFlag: false,
+  isLogin: true,
+  yykfFlag: false,
   // dataSource2: [{
   //   'name': '张三',
   //   'work_no': '1012',
@@ -27,6 +30,15 @@ const mutations = { // 自定义改变state初始值的方法--一定要有该�
   },
   SET_SUB_BAR_ACTIVE: (state, val) => {
     state.subBarActive = val
+  },
+  SET_LOGIN_FLAG: (state, val) => {
+    state.loginFlag = val
+  },
+  SET_IS_LOGIN: (state, val) => {
+    state.isLogin = val
+  },
+  SET_YYKF_FLAG: (state, val) => {
+    state.yykfFlag = val
   }
   // ADD_COUNT: (state, n) => {
   //   state.appConut += n
@@ -45,15 +57,34 @@ const getters = { // 状态计算属性--该属性对象不是必须的
   // }
 }
 const actions = { // 异步操作状态--该属性对象不是必须的
-  TOGGLE_HEADER_BAR({ commit }, bool) {
-    commit('SET_HEADER_BAR', bool)
+  /* eslint-disable */
+  TOGGLE_HEADER_BAR({
+    commit
+  }, boolen) {
+    commit('SET_HEADER_BAR', boolen)
   },
-  TOGGLE_CONS_BAR({ commit }, bool) {
-    commit('SET_CONS_BAR', bool)
+  /* eslint-disable */
+  TOGGLE_CONS_BAR({
+    commit
+  }, boolen) {
+    commit('SET_CONS_BAR', boolen)
   },
-  TOGGLE_SUB_BAR_ACTIVE({ commit }, bool) {
-    commit('SET_SUB_BAR_ACTIVE', bool)
+  /* eslint-disable */
+  TOGGLE_SUB_BAR_ACTIVE({
+    commit
+  }, boolen) {
+    commit('SET_SUB_BAR_ACTIVE', boolen)
   },
+  TOGGLE_LOGIN_FLAG({
+    commit
+  }, boolen) {
+    commit('SET_LOGIN_FLAG', boolen)
+  },
+  TOGGLE_IS_LOGIN({
+    commit
+  }, boolen) {
+    commit('SET_IS_LOGIN', boolen)
+  }
   // RESET_ACCTION_APP_COUNT: ({ commit }, mes) => {
   //   commit('RESET_APP_COUNT', mes)
   // }

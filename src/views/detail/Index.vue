@@ -35,7 +35,7 @@
                 <span>小区绿化面积：30%</span>
               </p>
             </div>
-            <div class="yykf">预约看房</div>
+            <div class="yykf" @click="yykfFn">预约看房</div>
           </div>
         </div>
       </div>
@@ -181,6 +181,7 @@
         <RoomItem v-for="(item, index) in 3" :key="index"></RoomItem>
       </div>
     </div>
+    <Yykf v-if="$store.state.yykfFlag"></Yykf>
     <Footer></Footer>
   </div>
 </template>
@@ -188,6 +189,7 @@
 <script>
 import Header from '@/components/header'
 import RoomItem from '@/components/roomItem'
+import Yykf from '@/components/yykf'
 import Footer from '@/components/footer'
 let that
 export default {
@@ -199,12 +201,16 @@ export default {
   components: {
     Header,
     RoomItem,
+    Yykf,
     Footer
   },
   created () {
     that = this
   },
   methods: {
+    yykfFn() {
+      this.$store.commit('SET_YYKF_FLAG', true)
+    },
     scrollToFn(key) {
       var PageId = document.querySelector('#info_' + key)
       window.scrollTo({
@@ -276,6 +282,24 @@ export default {
           margin-top: 20px;
           height: 160px;
           overflow: auto;
+          &::-webkit-scrollbar{
+            width:10px;
+            height:160px;
+          }
+          &::-webkit-scrollbar-track{
+            background: rgb(239, 239, 239);
+            border-radius:2px;
+          }
+          &::-webkit-scrollbar-thumb{
+            background: #bfbfbf;
+            border-radius:10px;
+          }
+          &::-webkit-scrollbar-thumb:hover{
+            background: #333;
+          }
+          &::-webkit-scrollbar-corner{
+            background: #179a16;
+          }
           p{
             line-height: 40px;
             border-top: 1px solid $border_color;

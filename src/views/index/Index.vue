@@ -46,13 +46,14 @@
         </div>
       </div>
     </div>
-    
+    <!-- <Login v-if="$store.state.loginFlag"></Login> -->
   </div>
 </template>
 
 <script>
 import { getAllDict, getDouBanMovieList } from '@/utils/api'
 import Header from '@/components/header'
+// import Login from '@/components/login'
 import RoomItem from '@/components/roomItem'
 import DealStory from '@/components/dealStory'
 import Footer from '@/components/footer'
@@ -66,6 +67,7 @@ export default {
   },
   components: {
     Header,
+    // Login,
     SectionTitle,
     RoomItem,
     DealStory,

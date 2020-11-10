@@ -2,12 +2,17 @@
   <div id="app">
     <!-- <img src="./assets/logo.png"> -->
     <router-view/>
+    <Login v-if="$store.state.loginFlag"></Login>
   </div>
 </template>
 
 <script>
+import Login from '@/components/login'
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    Login,
+  },
 }
 </script>
 

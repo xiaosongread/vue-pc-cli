@@ -34,8 +34,8 @@
         </li>
       </ul>
       <div class="header_cons_lr">
-        <div class="login">登录</div>
-        <div>注册</div>
+        <div class="login" @click.self="loginFn">登录</div>
+        <div @click.self="regsFn">注册</div>
       </div>
     </div>
   </div>
@@ -60,6 +60,14 @@ export default {
     // document.removeEventListener("scroll", this.listenerFunction);
   },
   methods:{
+    loginFn() {
+      this.$store.dispatch('TOGGLE_LOGIN_FLAG', true)
+      this.$store.dispatch('TOGGLE_IS_LOGIN', true)
+    },
+    regsFn() {
+      this.$store.dispatch('TOGGLE_LOGIN_FLAG', true)
+      this.$store.dispatch('TOGGLE_IS_LOGIN', false)
+    }
     // listenerFunction(e) {
     //   document.addEventListener('scroll', this.handleScroll, true);
     // },

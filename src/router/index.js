@@ -41,21 +41,6 @@ export default new Router({
       component: () => import('@/views/aboutUs/Index')
     },
     {
-      path: '/test1',
-      name: '购物车',
-      component: () => import('@/components/Test1')
-    },
-    {
-      path: '/test2',
-      name: '全部动画',
-      component: () => import('@/components/Test2')
-    },
-    {
-      path: '/test3',
-      name: '测试',
-      component: () => import('@/components/Test3')
-    },
-    {
       path: '/video',
       name: 'video',
       component: () => import('@/components/Video')

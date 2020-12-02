@@ -9,8 +9,8 @@
                   url="RoomList">
     </SectionTitle>
     <div class="index_good_properties">
-      <div v-for="(item, index) in 3" :key="index" class="index_good_properties_item">
-        <RoomItem></RoomItem>
+      <div v-for="(item, index) in tjRoomList" :key="index" class="index_good_properties_item">
+        <RoomItem :info="item"></RoomItem>
       </div>
     </div>
     <SectionTitle title="优质房源"
@@ -18,8 +18,8 @@
                   url="RoomList">
     </SectionTitle>
     <div class="index_good_properties">
-      <div v-for="(item, index) in 6" :key="index" class="index_good_properties_item">
-        <RoomItem></RoomItem>
+      <div v-for="(item, index) in yzRoomList" :key="index" class="index_good_properties_item">
+        <RoomItem :info="item"></RoomItem>
       </div>
     </div>
     <SectionTitle title="成交故事"
@@ -50,8 +50,9 @@
   </div>
 </template>
 
+
 <script>
-import { getAllDict, getDouBanMovieList } from '@/utils/api'
+import { getCategory, getDict, getRoomList } from '@/utils/api'
 import Header from '@/components/header'
 // import Login from '@/components/login'
 import RoomItem from '@/components/roomItem'
@@ -62,7 +63,8 @@ let that
 export default {
   data () {
     return {
-
+      tjRoomList: [],
+      yzRoomList: [],
     }
   },
   components: {
@@ -74,9 +76,10 @@ export default {
     Footer
   },
   created () {
+    this.getCategory()
     // this.getDict()
+    this.getRoomList()
     that = this
-    // this.getDouBanMovieList()
   },
   methods: {
     addAppCount () {
@@ -85,18 +88,26 @@ export default {
     deieteAppCount () {
       if (this.$store.state.appConut) this.$store.commit('DELETE_COUNT', 1)
     },
-    // 获取热门电影
-    // getDouBanMovieList () {
-    //   getDouBanMovieList().then(function (data) {
-    //     that.$store.dispatch('RESET_ACCTION_APP_COUNT', data.title)
-    //   })
-    // },
+    async getCategory () {
+      const data = await getCategory()
+      if (data.code === 1 && data.data) {
+        console.log('接口数据', data)
+      }
+    },
     // async getDict () {
-    //   const data = await getAllDict()
+    //   const data = await getDict()
     //   if (data.code === 1 && data.data) {
-    //     console.log('接口数据', data)
+    //     console.log('字典表接口数据', data)
     //   }
     // },
+    async getRoomList () {
+      const data = await getRoomList()
+      if (data.code === 1 && data.data) {
+        console.log('接口数据', data)
+        this.tjRoomList = data.data.tjRoomList
+        this.yzRoomList = data.data.yzRoomList
+      }
+    },
     // durationNotify () {
     //   this.$notify.open({
     //     content: '10秒后自动关闭！',

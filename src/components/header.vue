@@ -54,10 +54,10 @@ export default {
   },
   mixins: [scrollMixins],
   created () {
-    // this.listenerFunction();
+    
   },
   beforeDestroy () {
-    // document.removeEventListener("scroll", this.listenerFunction);
+    
   },
   methods:{
     loginFn() {
@@ -68,16 +68,6 @@ export default {
       this.$store.dispatch('TOGGLE_LOGIN_FLAG', true)
       this.$store.dispatch('TOGGLE_IS_LOGIN', false)
     }
-    // listenerFunction(e) {
-    //   document.addEventListener('scroll', this.handleScroll, true);
-    // },
-    // handleScroll() {
-    //   if(window.pageYOffset > 100) {
-    //     this.scrollFlag = true
-    //   } else {
-    //     this.scrollFlag = false
-    //   }
-    // }
   }
 }
 </script>

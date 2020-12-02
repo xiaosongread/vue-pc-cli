@@ -13,6 +13,12 @@ export default {
   components: {
     Login,
   },
+  created () {
+    this.$store.dispatch('GET_DICT_DATA')
+  },
+  methods: {
+
+  }
 }
 </script>
 

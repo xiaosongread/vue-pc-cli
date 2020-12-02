@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import { getDict } from '@/utils/api'
 
 Vue.use(Vuex)
 const state = { // 初始化状态值--一定要有该属性对象
@@ -9,6 +10,7 @@ const state = { // 初始化状态值--一定要有该属性对象
   loginFlag: false,
   isLogin: true,
   yykfFlag: false,
+  dictData: [],
   // dataSource2: [{
   //   'name': '张三',
   //   'work_no': '1012',
@@ -39,6 +41,9 @@ const mutations = { // 自定义改变state初始值的方法--一定要有该�
   },
   SET_YYKF_FLAG: (state, val) => {
     state.yykfFlag = val
+  },
+  SET_DICT_DATA: (state, val) => {
+    state.dictData = val
   }
   // ADD_COUNT: (state, n) => {
   //   state.appConut += n
@@ -84,6 +89,13 @@ const actions = { // 异步操作状态--该属性对象不是必须的
     commit
   }, boolen) {
     commit('SET_IS_LOGIN', boolen)
+  },
+  async GET_DICT_DATA({
+    commit
+  }) {
+    const data = await getDict()
+    console.log(123123, data.data)
+    commit('SET_DICT_DATA', data.data)
   }
   // RESET_ACCTION_APP_COUNT: ({ commit }, mes) => {
   //   commit('RESET_APP_COUNT', mes)

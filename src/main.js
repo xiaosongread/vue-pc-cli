@@ -16,6 +16,12 @@ require('fundebug-revideo')
 
 Vue.use(VueBlu)
 
+import * as filters from './filters'
+Vue.prototype.filters = filters
+// 注册全局过滤器
+Object.keys(filters).forEach(key => {
+  Vue.filter(key, filters[key])
+})
 Vue.config.productionTip = false
 fundebug.apikey = '5cc43efc67a0f518af7111081e7b648a4a20e5ed90933eed407b2e733d1d8bab'
 fundebugVue(fundebug, Vue)

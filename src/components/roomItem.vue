@@ -1,21 +1,22 @@
 <template>
-  <div class="roomItem" @click="jumpDetail">
+  <div class="roomItem" @click="jumpDetail(info._id)">
     <div class="roomItem_header">
-      <img src="//img.ziroom.com/pic/house_images/g2m3/M00/37/D2/ChAZVF-T7r-AM31cAAp7TkQX5o8614.jpg_C_640_480_Q100.jpg" class="zoomBox">
+      <!-- <img src="//img.ziroom.com/pic/house_images/g2m3/M00/37/D2/ChAZVF-T7r-AM31cAAp7TkQX5o8614.jpg_C_640_480_Q100.jpg" class="zoomBox"> -->
+      <img :src="info.imagePath" class="zoomBox">
     </div>
     <div class="roomItem_cons">
       <div class="roomItem_cons_header">
-        <h3>合租·石韵浩庭4居室-南卧</h3>
-        <div class="roomItem_cons_header_tag">住宅</div>
+        <h3>{{info.name}}</h3>
+        <div class="roomItem_cons_header_tag">{{info.roompPoperty | dictT('roompPoperty')}}</div>
       </div>
       <div class="roomItem_cons_des">
-        <div>19.6㎡ | 三室两厅 | 3/15层 | 南北朝向</div>
-        <div>单价：12300元/㎡  市场价：430000元</div>
+        <div>{{info.roomArea}}㎡ | {{info.doorModel | dictT('doorModel')}} | {{info.roomDirection | dictT('roomDirection')}}</div>
+        <div>单价：{{info.unitPrice}}元/㎡  市场价：1212121元</div>
         <div class="roomItem_cons_des_local">
           <i class="iconfont iconlocation"></i>
-          <div>小区距九龙山行约500米</div>
+          <div>{{info.address}}</div>
         </div>
-        <div class="price">¥41000元</div>
+        <div class="price">¥{{info.salePrice}}元</div>
       </div>
     </div>
   </div>
@@ -24,16 +25,22 @@
 <script>
 export default {
   name: 'roomItem',
+  props: {
+    info: {
+      type: Object,
+      default: {}
+    },
+  },
   data () {
     return {
       
     }
   },
   methods: {
-    jumpDetail() {
+    jumpDetail(id) {
       this.$router.push({
         name: 'Detail',
-        query: { id: 1 }
+        query: { id: id }
       })
     }
   }
@@ -50,6 +57,9 @@ export default {
   &_header{
     height: 270px;
     overflow: hidden;
+    img{
+      height: 100%;
+    }
   }
   &_cons{
     padding: 20px 15px;

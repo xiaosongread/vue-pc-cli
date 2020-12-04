@@ -6,6 +6,8 @@ export const urlMap = {
   getCategory: 'api/category',
   getRoomList: 'api/room/list',
   getRoomInfo: 'api/room/info',
+  getAgentList: 'api/agent/list',
+  getAgentInfo: 'api/agent/info',
 }
 // 批量增加url前缀
 Object.keys(urlMap).forEach(key => {
@@ -39,4 +41,18 @@ export function getRoomInfo (id) {
     }
   })
 }
-
+export function getAgentList () {
+  return request({
+    url: urlMap['getAgentList'],
+    method: 'get'
+  })
+}
+export function getAgentInfo (id) {
+  return request({
+    url: urlMap['getAgentInfo'],
+    method: 'get',
+    params: {
+      id: id
+    }
+  })
+}

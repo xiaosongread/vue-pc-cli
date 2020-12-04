@@ -35,13 +35,13 @@
                   subTitle="您的认可，是对我们最大的鼓励">
     </SectionTitle>
     <div class="index_agent">
-      <div v-for="(item, index) in 8" :key="index" class="index_agent_item">
-        <img src="https://img.dyrs.cc/store/626/623/000/8185b51457fd7ca1.jpg!zmm">
+      <div v-for="(item, index) in agentList" :key="index" class="index_agent_item">
+        <img :src="item.headerPath">
         <div class="index_agent_item_des">
-          <p class="name">张三</p>
+          <p class="name">{{item.name}}</p>
           <p class="motto">您的认可是我最大的鼓励</p>
           <div class="index_agent_item_des_btn">
-            <router-link :to="{name:'Agent'}">查看详情</router-link>
+            <router-link :to="{name: 'Agent',query: {id:item._id}}">查看详情</router-link>
           </div>
         </div>
       </div>
@@ -52,7 +52,7 @@
 
 
 <script>
-import { getCategory, getDict, getRoomList } from '@/utils/api'
+import { getCategory, getDict, getRoomList, getAgentList } from '@/utils/api'
 import Header from '@/components/header'
 // import Login from '@/components/login'
 import RoomItem from '@/components/roomItem'
@@ -65,6 +65,7 @@ export default {
     return {
       tjRoomList: [],
       yzRoomList: [],
+      agentList: []
     }
   },
   components: {
@@ -79,6 +80,7 @@ export default {
     this.getCategory()
     // this.getDict()
     this.getRoomList()
+    this.getAgentList()
     that = this
   },
   methods: {
@@ -106,6 +108,13 @@ export default {
         console.log('接口数据', data)
         this.tjRoomList = data.data.tjRoomList
         this.yzRoomList = data.data.yzRoomList
+      }
+    },
+    async getAgentList () {
+      const data = await getAgentList()
+      if (data.code === 1 && data.data) {
+        console.log('接口数据1', data)
+        this.agentList = data.data.agentList
       }
     },
     // durationNotify () {

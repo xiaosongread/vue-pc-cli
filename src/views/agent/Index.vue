@@ -4,36 +4,34 @@
     <div class="agent">
       <div class="agent_info">
         <div class="agent_info_img">
-          <img  :src="require('../../../static/agent.jpg')">
+          <img :src="agentInfo.headerPath">
         </div>
         <div class="agent_info_des">
-          <p class="name">张立宇<span>资深销售</span></p>
-          <div class="agent_service"><span>服务商圈：</span>中央别墅区 | 亚奥商圈</div>
-          <div class="agent_service"><span>熟悉楼盘：</span>北京壹号庄园 | 北京院子</div>
-          <div class="agent_history_total">历史成交100套</div>
+          <p class="name">{{agentInfo.name}}<span>{{ agentInfo.agentType | dictT('agentType')}}</span></p>
+          <div class="agent_service"><span>服务商圈：</span>{{agentInfo.serviceShop}}</div>
+          <div class="agent_service"><span>熟悉楼盘：</span>{{agentInfo.serviceLp}}</div>
+          <div class="agent_history_total">历史成交{{agentInfo.okNumber}}套</div>
           <ul class="agent_tag">
-            <li>活泼开朗</li>
-            <li>人缘好</li>
-            <li>认真负责</li>
+            <li v-for="(item,index) in agentInfo.tag" :key="index">{{item}}</li>
           </ul>
         </div>
       </div>
-      <div class="agent_w">
-        富文本的内容
-      </div>
+      <div class="agent_w" v-html="agentInfo.des"></div>
     </div>
     <Footer></Footer>
   </div>
 </template>
 
 <script>
+import { getAgentInfo } from '@/utils/api'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 let that
 export default {
   data () {
     return {
-
+      id: this.$route.query.id || '',
+      agentInfo: null
     }
   },
   components: {
@@ -42,9 +40,15 @@ export default {
   },
   created () {
     that = this
+    this.getAgentInfo()
   },
   methods: {
-    
+    async getAgentInfo() {
+      const data = await getAgentInfo(this.id)
+      if (data.code === 1 && data.data) {
+        this.agentInfo = data.data.agentInfo
+      }
+    }
   }
 }
 </script>
@@ -119,6 +123,7 @@ export default {
   &_w{
     background: #ffffff;
     margin-top: 20px;
+    padding: 20px;
   }
 }
 </style>

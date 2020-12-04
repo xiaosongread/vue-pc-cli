@@ -65,7 +65,7 @@
       <div class="detail_des">
         <section id="info_xmld">
           <p class="section_title">项目亮点</p>
-          <h3>家境龙源 - 法式大花园</h3>
+          <h3>{{roomInfo.name}}</h3>
           <p class="detail_des_det">万科翡翠天地，是万科高端“翡翠系”作品，建筑面积约150-450㎡奢景大宅，屹立中央绿轴，市政府、博物馆、大剧院等城市资源环伺，世纪公园、三垟湿地公园、中央度假都市公园三园汇聚，兼得都市繁华与自然生态</p>
           <ul>
             <li>
@@ -98,7 +98,7 @@
         <section id="info_hxjs">
           <p class="section_title">户型介绍</p>
           <div class="hxjs">
-            <img class="zoomBox" :src="require('../../../static/2.jpg')">
+            <img class="zoomBox" :src="roomInfo.doorModelImg">
           </div>
         </section>
         <section id="info_zbgk">
@@ -124,53 +124,53 @@
             <div class="lpxq_left">
               <p>
                 <span>交房时间</span>
-                <span>2020-10-12</span>
+                <span>{{roomInfo.makeTimeToRoom}}</span>
               </p>
               <p>
                 <span>装修标准</span>
-                <span>3888或5888元/平米</span>
+                <span>{{roomInfo.decorateAStandard}}</span>
               </p>
               <p>
                 <span>开发商</span>
-                <span>温州万聚置业有限公司</span>
+                <span>{{roomInfo.developers}}</span>
               </p>
               <p>
                 <span>容积率</span>
-                <span>4</span>
+                <span>{{roomInfo.ratio}}</span>
               </p>
               <p>
                 <span>物业公司</span>
-                <span>万科物业</span>
+                <span>{{roomInfo.propertyCompany}}</span>
               </p>
               <p>
                 <span>总占地面积</span>
-                <span>约55896㎡</span>
+                <span>{{roomInfo.totalFloorArea}}㎡</span>
               </p>
             </div>
             <div class="lpxq_right">
               <p>
                 <span>绿化率</span>
-                <span>40%</span>
+                <span>{{roomInfo.greenArea}}%</span>
               </p>
               <p>
                 <span>物业费（住宅／别墅）</span>
-                <span>6.98 元/㎡ （月）</span>
+                <span>{{roomInfo.managementFee}} 元/㎡ （月）</span>
               </p>
               <p>
                 <span>车位比</span>
-                <span>1:1.57</span>
+                <span>{{roomInfo.parkingSpaceThan}}</span>
               </p>
               <p>
                 <span>物业类型</span>
-                <span>高层 , 超高层</span>
+                <span>{{roomInfo.propertyType}}</span>
               </p>
               <p>
                 <span>产权年限</span>
-                <span>70年</span>
+                <span>{{roomInfo.propertyRightsYears}}年</span>
               </p>
               <p>
                 <span>规划户数</span>
-                <span>1089</span>
+                <span>{{roomInfo.planningString}}</span>
               </p>
             </div>
           </div>

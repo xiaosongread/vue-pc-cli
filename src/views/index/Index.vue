@@ -1,27 +1,47 @@
 <template>
 <div>
+  <IndexLogoHeader/>
   <Header/>
   <div class="mbmain">
     <div class="mb1">
       <IndexMb1Left/>
       <NavYwsd/>
       <img src="@/assets/SXWB/img/mbimg31.jpg" class="mbimg1">
+      <IndexMb2Left/>
+      <IndexMb2Right/>
+      <img src="@/assets/SXWB/img/mbimg31.jpg" class="mbimg1">
+      <IndexMb3Left/>
+      <IndexMb3Right/>
+      <img src="@/assets/SXWB/img/mg3.jpg" class="mg3">
     </div>
   </div>
+  <Footer/>
 </div>
 </template>
 
 <script>
 import { getAllDict, getDouBanMovieList } from '@/utils/api'
+import IndexLogoHeader from '@/components/IndexLogoHeader'
 import Header from '@/components/Header'
 import IndexMb1Left from '@/components/IndexMb1Left'
 import NavYwsd from '@/components/NavYwsd'
+import IndexMb2Left from '@/components/IndexMb2Left'
+import IndexMb2Right from '@/components/IndexMb2Right'
+import IndexMb3Left from '@/components/IndexMb3Left'
+import IndexMb3Right from '@/components/IndexMb3Right'
+import Footer from '@/components/Footer'
 let that
 export default {
   components: {
+    IndexLogoHeader,
     Header,
     IndexMb1Left,
-    NavYwsd
+    NavYwsd,
+    IndexMb2Left,
+    IndexMb2Right,
+    IndexMb3Left,
+    IndexMb3Right,
+    Footer
   },
   data () {
     return {
@@ -69,7 +89,6 @@ export default {
 }
 .mb1 {
   margin-top: 95px;
-  height: 840px;
   width: 1080px;
 }
 .mbimg1 {

@@ -138,7 +138,7 @@ export default {
   }
 }
 </script>
-<style rel="stylesheet/scss" lang="scss" scoped>
+<style>
 a:link {
     color: black;
     text-decoration: none;

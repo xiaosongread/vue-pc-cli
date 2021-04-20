@@ -36,7 +36,6 @@ export default {
 	height:61px;
 	width:100%;
 	background:#B28147;
-	float:left;
 	overflow:hidden;
 }
 .nav1{

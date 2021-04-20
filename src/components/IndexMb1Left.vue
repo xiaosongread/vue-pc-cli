@@ -4,22 +4,28 @@
     <div id="header">
       <div class="wrap">
         <div class="swiper-container">
-            <div class="swiper-wrapper">
+          <div class="swiper-wrapper">
+              <div class="swiper-slide">
                 <div class="swiper-slide">
                   <img src="../assets/SXWB/img/mb.jpg">
                   <div class="swiper-tit">第十六届深圳文博会开幕 山西线上VR展馆正式亮相“云上文博会”</div>
                 </div>
-                <div class="swiper-slide">
-                  <img src="../assets/SXWB/img/whcy.jpg">
-                  <div class="swiper-tit">第十六届深圳文博会  山西线上VR展馆”</div>
-                </div>
+              </div>
+              <div class="swiper-slide">
                 <div class="swiper-slide">
                   <img src="../assets/SXWB/img/mb.jpg">
-                  <div class="swiper-tit">山西文旅业“加速”跨越升级</div>
+                  <div class="swiper-tit">1111111”</div>
                 </div>
-            </div>
-            <!-- 如果需要分页器 -->
-            <div class="swiper-pagination"></div>
+              </div>
+              <div class="swiper-slide">
+                <div class="swiper-slide">
+                  <img src="../assets/SXWB/img/mb.jpg">
+                  <div class="swiper-tit">asdasdadadasdas馆正式亮相“云上文博会”</div>
+                </div>
+              </div>
+          </div>
+          <!-- 如果需要分页器 -->
+          <div class="swiper-pagination"></div>
         </div>
       </div>
     </div>
@@ -110,6 +116,12 @@
 </div>
 </template>
 <script>
+
+import Swiper from "swiper"
+import "../../node_modules/swiper/css/swiper.min.css";
+import {tab} from '@/utils/util.js'
+// import Swiper from 'swiper/js/swiper.min.js'
+// import 'swiper/css/swiper.min.css'
 export default {
   name: 'IndexMb1Left',
   data () {
@@ -117,12 +129,35 @@ export default {
       
     }
   },
-  components: { },
+  components: {
+    
+  },
   created () {
-
+    setTimeout(()=>{
+      var mySwiper = new Swiper ('.swiper-container', {
+        direction: 'horizontal', // 垂直切换选项
+        loop: true, // 循环模式选项
+        speed:2000,
+        observer:true,
+        observeParents:true,
+        autoplayDisableOnInteraction : false,
+        autoplay:1500,
+        effect:'fade',
+        // 如果需要分页器
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+      })
+      new tab('test1_li_now_', '_', null, 'onmouseover');
+      new tab('test2_li_now_', '_', null, 'onmouseover');
+      new tab('test3_li_now_', '_', null, 'onmouseover');
+      new tab('test4_li_now_', '_', null, 'onmouseover');
+      new tab('test5_li_now_', '_', null, 'onmouseover');
+    },1000)
   },
   methods: {
-
+    
   }
 }
 </script>
@@ -361,6 +396,9 @@ export default {
   position: relative;
   overflow: hidden;
 }
+.wrap{
+  position: relative;
+}
 .swiper-wrapper {
     position: relative;
     width: 100%;
@@ -397,6 +435,11 @@ export default {
   font-size: 18px;
   font-weight: bold;
   background: rgba(0,0,0,0.6);
+}
+.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction{
+  width: auto !important;
+  right: 10px !important;
+  left: inherit !important;
 }
 .swiper-pagination{
   /* width: 690px;

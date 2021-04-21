@@ -25,6 +25,12 @@ export default new Router({
           meta: { title: '文产时讯' }
         },
         {
+          path: 'photos',
+          name: 'Photos',
+          component: () => import('@/views/photos/Index'),
+          meta: { title: '美丽山西' }
+        },
+        {
           path: 'hall',
           name: 'Hall',
           component: () => import('@/views/hall/Index'),

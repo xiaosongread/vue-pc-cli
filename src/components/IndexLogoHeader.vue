@@ -1,6 +1,14 @@
 <template>
 <div class="top">
-  <div class="first" title="山西文化产业博览交易网"></div>
+  <div class="first" title="山西文化产业博览交易网">
+    <img v-if="type === 'index'" src="@/assets/SXWB/img/logo9.jpg" >
+    <img v-if="type === 'article'" src="@/assets/SXWB/img/article_logo.jpg" style="width:423px;height:63px;">
+    <img v-if="type === 'photos'" src="@/assets/SXWB/img/photos.jpg" style="width:423px;height:63px;">
+    <img v-if="type === 'hall'" src="@/assets/SXWB/img/hall.jpg" style="width:423px;height:63px;">
+    <img v-if="type === 'dock'" src="@/assets/SXWB/img/dock.jpg" style="width:423px;height:63px;">
+    <img v-if="type === 'wenbo'" src="@/assets/SXWB/img/wenbo.jpg" style="width:423px;height:63px;">
+    <img v-if="type === 'BBS'" src="@/assets/SXWB/img/BBS.jpg" style="width:423px;height:63px;">
+  </div>
   <div class="searchlist">
     <div id="menu">
       <em></em><a href="/loginnew.html">登录</a>&nbsp;&nbsp;<a
@@ -29,6 +37,13 @@
 <script>
 export default {
   name: "IndexLogoHeader",
+  props: {
+    // 1 首页  2 article
+    type: {
+      type: String,
+      default: 'index'
+    },
+  },
   data() {
     return {};
   },
@@ -49,7 +64,7 @@ export default {
   height: 117px;
   width: 601px;
   float: left;
-  background: url("../assets/SXWB/img/logo9.jpg");
+  // background: url("../assets/SXWB/img/logo9.jpg");
 }
 .logo {
   height: 117px;

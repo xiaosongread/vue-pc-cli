@@ -1,6 +1,6 @@
 <template>
 <div>
-  <IndexLogoHeader/>
+  <IndexLogoHeader type="article"/>
   <Header/>
   <SwiperBanner></SwiperBanner>
   <div class="secondnav">

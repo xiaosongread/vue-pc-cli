@@ -1,20 +1,20 @@
 import request from '@/utils/request'
 import config from '@/config'
+var host = 'http://abcd.shanxiwenbow.com:8080/'
 export const urlMap = {
   // 首页左侧数据
-  getAllDict: 'http://abcd.shanxiwenbow.com:8080/wenbo/channel/dataListJson'
+  channelDataListJson: 'wenbo/channel/dataListJson'
 
 }
-// http://abcd.shanxiwenbow.com:8080/wenbo/channel/dataListJson
 const apiGetDouBanMovieList = 'https://douban.uieee.com/v2/movie/in_theaters_1'
 // 批量增加url前缀
 Object.keys(urlMap).forEach(key => {
-  urlMap[key] = urlMap[key]
+  urlMap[key] = host + urlMap[key]
 })
 
-export function getAllDict (parm) {
+export function channelDataListJson (parm) {
   return request({
-    url: urlMap['getAllDict'],
+    url: urlMap['channelDataListJson'],
     method: 'get',
     params: parm || {}
   })

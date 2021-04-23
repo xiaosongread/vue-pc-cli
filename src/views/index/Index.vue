@@ -4,7 +4,7 @@
   <Header/>
   <div class="mbmain">
     <div class="mb1">
-      <IndexMb1Left/>
+      <IndexMb1Left :listData="wczxData"/>
       <NavYwsd/>
       <img src="@/assets/SXWB/img/mbimg31.jpg" class="mbimg1">
       <IndexMb2Left/>
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { getAllDict, getDouBanMovieList } from '@/utils/api'
+import { channelDataListJson, getDouBanMovieList } from '@/utils/api'
 import IndexLogoHeader from '@/components/IndexLogoHeader'
 import Header from '@/components/Header'
 import IndexMb1Left from '@/components/IndexMb1Left'
@@ -30,7 +30,7 @@ import IndexMb2Right from '@/components/IndexMb2Right'
 import IndexMb3Left from '@/components/IndexMb3Left'
 import IndexMb3Right from '@/components/IndexMb3Right'
 import Footer from '@/components/Footer'
-let that
+let _that
 export default {
   components: {
     IndexLogoHeader,
@@ -45,29 +45,44 @@ export default {
   },
   data () {
     return {
-
+      whltData: [],
+      wswbData: [],
+      cydjData: [],
+      whhgData: [],
+      mlsxData: [],
+      wczxData: [],
     }
   },
   created () {
-    this.getDict()
-    that = this
+    this.channelDataListJson()
+    _that = this
     // this.getDouBanMovieList()
   },
   methods: {
-    addAppCount () {
-      this.$store.commit('ADD_COUNT', 1)
-    },
-    deieteAppCount () {
-      if (this.$store.state.appConut) this.$store.commit('DELETE_COUNT', 1)
-    },
-    // 获取热门电影
-    getDouBanMovieList () {
-      getDouBanMovieList().then(function (data) {
-        that.$store.dispatch('RESET_ACCTION_APP_COUNT', data.title)
+    async channelDataListJson () {
+      const data = await channelDataListJson()
+      data.data.forEach((item, index)=>{
+        switch(item.id) {
+          case 20:
+            _that.whltData = item.data
+            break; 
+          case 19:
+            _that.wswbData = item.data
+            break; 
+          case 18:
+            _that.cydjData = item.data
+            break; 
+          case 17:
+            _that.whhgData = item.data
+            break; 
+          case 15:
+            _that.mlsxData = item.data
+            break; 
+          case 13:
+            _that.wczxData = item.data
+            break; 
+        }
       })
-    },
-    async getDict () {
-      const data = await getAllDict()
       console.log('接口数据', data)
     },
     durationNotify () {

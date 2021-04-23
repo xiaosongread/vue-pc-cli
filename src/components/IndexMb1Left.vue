@@ -38,78 +38,27 @@
     </div>
   </div>
   <div class="mb1314">
-    <div class="mbl3">
+    <div class="mbl3" v-if="item.id===60 || item.id===61" v-for="(item, index) in listData" :key="index">
       <div class="mb1left3">
         <!--产业咨询-->
         <div class="mbr3left1">
           <div class="redb3">
-            <a href="/article/60.html" target="_blank">文化聚焦</a><span id="red3"> Focus</span>
+            <a href="/article/60.html" target="_blank" v-if="item.id===60">{{item.title}}</a><span id="red3"> Focus</span>
+            <a href="/article/61.html" target="_blank" v-if="item.id===61">{{item.title}}</a><span id="red3"> Information</span>
           </div>
         </div>
       </div>
-      <div class="main-left ilist">
-
-        <a title="天龙山石窟国宝回归暨数字复原特展开幕" href="/article/show-5685.html" target="_blank"><span class="mb1left4_2">天龙山石窟国宝回归暨数字复原特展开幕</span>
-          <img src="../assets/SXWB/img/mb.jpg">
-        </a>
-
-      </div>
-      <div class="mb1left5">
-
-        <p>
-          <a title="我省召开国宝级文物保护利用专题会" href="/article/show-5671.html" target="_blank">我省召开国宝级文物保护利用专题会</a>
-        </p>
-
-        <p>
-          <a title="山西青铜博物馆推出“山西传统银饰展”" href="/article/show-5648.html" target="_blank">山西青铜博物馆推出“山西传统银饰展”</a>
-        </p>
-
-        <p>
-          <a title="2020“唱游三晋”活动圆满落幕" href="/article/show-5614.html" target="_blank">2020“唱游三晋”活动圆满落幕</a>
-        </p>
-
-        <p>
-          <a title="傅山生平、思想与学术展亮相山西博物院" href="/article/show-5584.html" target="_blank">傅山生平、思想与学术展亮相山西博物院</a>
-        </p>
-
-      </div>
-    </div>
-    <div class="mbl4">
-      <div class="mb1left3">
-        <!--产业咨询-->
-        <div class="mbr3left1">
-          <div class="redb3">
-            <a href="/article/61.html" target="_blank">产业资讯</a><span id="red3"> Information</span>
-          </div>
+      <div v-for="(item1, index1) in item.content" :key="index1" v-if="index1 === 0 || index1 !== 0 || index1 < 5">
+        <div class="main-left ilist" v-if="index1 === 0">
+          <a :title="item1.title" href="/article/show-5685.html" target="_blank"><span class="mb1left4_2">{{item1.title}}</span>
+            <img src="../assets/SXWB/img/mb.jpg">
+          </a>
         </div>
-      </div>
-      <div class="main-left ilist">
-
-        <a title="春节长假山西旅游揽金112.14亿元" href="/article/show-5697.html" target="_blank"><span class="mb1left4_2">春节长假山西旅游揽金112.14亿元</span> <span class="txt2">
-            <p></p>
-          </span>
-          <img src="../assets/SXWB/img/mb.jpg">
-        </a>
-
-      </div>
-      <div class="mb1left5">
-
-        <p>
-          <a title="舞蹈史诗《黄河》4月开启全国巡演" href="/article/show-5696.html" target="_blank">舞蹈史诗《黄河》4月开启全国巡演</a>
-        </p>
-
-        <p>
-          <a title="《山西省长城保护办法》将于4月1日起实施" href="/article/show-5693.html" target="_blank">《山西省长城保护办法》将于4月1日起实施</a>
-        </p>
-
-        <p>
-          <a title="我省发布2020年文化旅游业大数据报告" href="/article/show-5691.html" target="_blank">我省发布2020年文化旅游业大数据报告</a>
-        </p>
-
-        <p>
-          <a title="我省9家景区上榜历史遗址型景区品牌100强" href="/article/show-5631.html" target="_blank">我省9家景区上榜历史遗址型景区品牌100强</a>
-        </p>
-
+        <div class="mb1left5" v-if="index1 !== 0 && index1 < 5">
+          <p>
+            <a :title="item1.title" href="/article/show-5671.html" target="_blank">{{item1.title}}</a>
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -124,6 +73,12 @@ import {tab} from '@/utils/util.js'
 // import 'swiper/css/swiper.min.css'
 export default {
   name: 'IndexMb1Left',
+  props: {
+    listData: {
+      type: Array,
+      default: []
+    },
+  },
   data () {
     return {
       
@@ -309,10 +264,10 @@ export default {
 	background:rgba(0,0,0,0.6);
 }
 .mb1left5{
-	padding-top:10px;
+	/* padding-top:10px;
 	padding-left:5px;
 	margin-top:5px;
-	height:105px;
+	height:105px; */
 	width:326px;
 	float:left;
 	font-size:15px;
@@ -376,7 +331,7 @@ export default {
     min-height: 100%;
     _height: 100%;
 }
-.mb1left5 {
+/* .mb1left5 {
     padding-top: 10px;
     padding-left: 5px;
     margin-top: 5px;
@@ -385,7 +340,7 @@ export default {
     float: left;
     font-size: 15px;
     line-height: 28px;
-}
+} */
 #header{
   width: 100%;
   height: 100%;

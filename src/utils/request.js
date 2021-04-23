@@ -57,7 +57,8 @@ service.interceptors.response.use(
     // RemoveRequest()
     const res = response.data
     res.code = Number(res.code)
-    if (res.code !== 1) {
+    console.log('aaa', res)
+    if (res.code !== '200') {
       // 4002:非法的token; 4003 oken 过期了token验证失败
       // if (res.code === 4003 || res.code === 4004) {
       //   if (router.currentRoute.path !== '/login') {

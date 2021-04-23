@@ -1,14 +1,15 @@
 import request from '@/utils/request'
 import config from '@/config'
 export const urlMap = {
-  // 获取所有码表信息
-  getAllDict: '/data/dict/all'
+  // 首页左侧数据
+  getAllDict: 'http://abcd.shanxiwenbow.com:8080/wenbo/channel/dataListJson'
 
 }
+// http://abcd.shanxiwenbow.com:8080/wenbo/channel/dataListJson
 const apiGetDouBanMovieList = 'https://douban.uieee.com/v2/movie/in_theaters_1'
 // 批量增加url前缀
 Object.keys(urlMap).forEach(key => {
-  urlMap[key] = config.BASE_API + urlMap[key]
+  urlMap[key] = urlMap[key]
 })
 
 export function getAllDict (parm) {

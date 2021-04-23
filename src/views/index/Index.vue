@@ -49,9 +49,9 @@ export default {
     }
   },
   created () {
-    // this.getDict()
+    this.getDict()
     that = this
-    this.getDouBanMovieList()
+    // this.getDouBanMovieList()
   },
   methods: {
     addAppCount () {
@@ -68,9 +68,7 @@ export default {
     },
     async getDict () {
       const data = await getAllDict()
-      if (data.code === 1 && data.data) {
-        console.log('接口数据', data)
-      }
+      console.log('接口数据', data)
     },
     durationNotify () {
       this.$notify.open({

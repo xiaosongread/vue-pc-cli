@@ -53,6 +53,12 @@ export default new Router({
           name: 'Bbs',
           component: () => import('@/views/bbs/Index'),
           meta: { title: '文化论坛' }
+        },
+        {
+          path: 'secondIndex',
+          name: 'SecondIndex',
+          component: () => import('@/views/secondIndex/Index'),
+          meta: { title: '二级首页' }
         }
       ]
     }

@@ -1,29 +1,36 @@
 <template>
   <!-- 图文 -->
-  <div class="tssxpart">
-    <div class="tssxpart1">
-      <div class="tssxpart1img">
-        <a title="朔州展区：塞上绿洲·美丽朔州" href="/photos/show-4805.html" target="_blank">
-          <img src="../assets/SXWB/img/mb.jpg" width="340" height="230"></a></div>
-      <div class="tssxpart1font">
-        <div class="tssxpart1font1">
-          <a title="朔州展区：塞上绿洲·美丽朔州" href="/photos/show-4805.html" target="_blank">朔州展区：塞上绿洲·美丽朔州</a></div>
-        <div class="tssxpart1font2">
-          朔州市通过舞台表演区、文创产品展示区、文创产品实际操作区以及媒体融合展示区的展示展演，给予观众丰富多样的观展体验。</div>
-        <div class="tssxpart1font3">
-          2019年12月09日
-          <div class="tssxxx">
-            <a href="/photos/show-4805.html">
-              <img src="../assets/SXWB/img/xx.jpg"></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+	<div class="tssxpart">
+		<div class="tssxpart1" v-for="(item, index) in listData" :key="index" v-if="index<3">
+			<div class="tssxpart1img">
+				<a :title="item.title" href="/photos/show-4805.html" target="_blank">
+					<img src="../assets/SXWB/img/mb.jpg" width="340" height="230">
+				</a>
+			</div>
+			<div class="tssxpart1font">
+				<div class="tssxpart1font1">
+					<a :title="item.title" href="/photos/show-4805.html" target="_blank">{{item.title}}</a></div>
+				<div class="tssxpart1font2">{{item.zhaiyao}}</div>
+				<div class="tssxpart1font3">
+					2019年12月09日
+					<div class="tssxxx">
+						<a href="/photos/show-4805.html">
+							<img src="../assets/SXWB/img/xx.jpg"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
 <script>
 export default {
-  name: 'PhotoTw',
+	name: 'PhotoTw',
+	props: {
+		listData: {
+			type: Array,
+			default: []
+		}
+	},
   data () {
     return {
       

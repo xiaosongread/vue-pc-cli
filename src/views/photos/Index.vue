@@ -6,62 +6,60 @@
   <!-- 主内容 -->
   <!-- 图说文博 -->
   <div class="photoBox">
-    <PhotoTit></PhotoTit>
-    <PhotoTw></PhotoTw>
+    <PhotoTit type="tswb"></PhotoTit>
+    <PhotoTw :listData="tswb"></PhotoTw>
   </div>
   <!-- 图说山西 -->
   <div class="photoBox">
-    <PhotoTit></PhotoTit>
-    <PhotoTw></PhotoTw>
+    <PhotoTit type="tssx"></PhotoTit>
+    <PhotoTw :listData="tssx"></PhotoTw>
   </div>
   <!-- 视觉三晋 -->
   <div class="photoBox">
-    <PhotoTit></PhotoTit>
+    <PhotoTit type="sjsj"></PhotoTit>
     <div class="mlsxpart3">
       <div class="mlsxpart2-video">
         <div class="vid">
-          <a title="看他们！把漆玩得飞起的人" href="/videos/show-5417.html" target="_blank">
+          <a :title="sjsj[0].title" href="/videos/show-5417.html" target="_blank">
             <img src="../../assets/SXWB/img/mb.jpg" width="700" height="420">
           </a>
         </div>
       </div>
       <div class="mlsxpart2-font">
-        <div class="mlsxpart2-font1">
-          <a title="【汾酒集团专栏】中国酒魂" href="/videos/show-5550.html" target="_blank">【汾酒集团专栏】中国酒魂</a></div>
-        <div class="mlsxpart2-font2">
-          汾酒是国酒之源，清香之祖，文化之根，是中华五千年文明进程的同行者、见证者、记录者，是中国酒魂。</div>
-        <div class="mlsxpart2-font1">
-          <a title="【文博视窗】  山西文化 光影传达" href="/videos/show-5439.html" target="_blank">【文博视窗】 山西文化 光影传达</a></div>
-        <div class="mlsxpart2-font2">
-          黄河之东，太行之西，山河表里，炎黄祖地。你好，这里是山西。</div>
-        <div class="mlsxpart2-font1">
-          <a title="朝元窑，为珐华而“生”" href="/videos/show-5418.html" target="_blank">朝元窑，为珐华而“生”</a></div>
-        <div class="mlsxpart2-font2">
-          珐华，一门奇特的工艺，在历史沉浮里跌宕；一朵绚丽奇葩，于盛世的窑火中涅槃重生。</div>
+        <div v-for="(item, index) in sjsj" :key="index" v-if="index !== 1 && index < 4">
+          <div class="mlsxpart2-font1">
+            <a :title="item.title" href="/videos/show-5550.html" target="_blank">{{item.title}}</a></div>
+          <div class="mlsxpart2-font2">{{item.zhaiyao}}</div>
+        </div>
       </div>
     </div>
   </div>
+  <!-- 非遗大展 -->
+  <div class="photoBox">
+    <PhotoTit type="fydz"></PhotoTit>
+    <PhotoTwTab :listData="fydz" type="one"></PhotoTwTab>
+  </div>
   <!-- 特色文化 -->
   <div class="photoBox">
-    <PhotoTit></PhotoTit>
-    <PhotoTwTab></PhotoTwTab>
+    <PhotoTit type="tswh"></PhotoTit>
+    <PhotoTwTab :listData="tswh"></PhotoTwTab>
   </div>
   <!-- 网上展馆 -->
   <div class="photoBox">
-    <PhotoTit></PhotoTit>
-    <PhotoTw></PhotoTw>
+    <PhotoTit type="wszg"></PhotoTit>
+    <PhotoTw :listData="wszg"></PhotoTw>
   </div>
   <!-- 便游三晋 -->
   <div class="photoBox">
-    <PhotoTit></PhotoTit>
-    <PhotoTwTab></PhotoTwTab>
+    <PhotoTit type="bysj"></PhotoTit>
+    <PhotoTwTab :listData="bysj"></PhotoTwTab>
   </div>
   <Footer/>
 </div>
 </template>
 
 <script>
-// import { getAllDict, getDouBanMovieList } from '@/utils/api'
+import { channelDataListJson } from '@/utils/api'
 import IndexLogoHeader from '@/components/IndexLogoHeader'
 import Header from '@/components/Header'
 import SwiperBanner from '@/components/SwiperBanner'
@@ -69,7 +67,7 @@ import PhotoTit from '@/components/PhotoTit'
 import PhotoTw from '@/components/PhotoTw'
 import PhotoTwTab from '@/components/PhotoTwTab'
 import Footer from '@/components/Footer'
-let that
+let _that
 export default {
   components: {
     IndexLogoHeader,
@@ -83,27 +81,53 @@ export default {
   },
   data () {
     return {
-
+      mlsxData: [],
+      tswb: [],
+      tssx: [],
+      tswh: [],
+      bysj: [],
+      sjsj: []
     }
   },
   created () {
-    // // this.getDict()
-    // that = this
-    // this.getDouBanMovieList()
+    _that = this
+    this.channelDataListJson()
   },
   methods: {
-    // async getDict () {
-    //   const data = await getAllDict()
-    //   if (data.code === 1 && data.data) {
-    //     console.log('接口数据', data)
-    //   }
-    // },
-    // durationNotify () {
-    //   this.$notify.open({
-    //     content: '10秒后自动关闭！',
-    //     duration: 1000
-    //   })
-    // }
+    async channelDataListJson () {
+      const data = await channelDataListJson()
+      data.data.forEach((item, index)=>{
+        if (item.id === 15) {
+          _that.mlsxData = item.data
+        }
+      })
+      this.mlsxData.forEach((item, index)=>{
+        switch(item.id) {
+          case 148:
+            _that.tswb = item.content
+            break; 
+          case 87:
+            _that.tssx = item.content
+            break; 
+          case 183:
+            _that.wszg = item.data
+            break; 
+          case 75:
+            _that.tswh = item.data
+            break;
+          case 76:
+            _that.bysj = item.data
+            break;
+          case 90:
+            _that.sjsj = item.content
+            break;
+          case 89:
+            _that.fydz = item.data
+            break;
+        }
+      })
+      console.log('接口数据', this.ywsd)
+    },
   }
 }
 </script>

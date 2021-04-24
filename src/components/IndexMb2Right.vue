@@ -208,7 +208,6 @@ export default {
 	width:350px;
 	float:left;
 	line-height:15px;
-	background:rgba(0,0,0,0.6);
 	text-align:center;
 	color:#000;
 }

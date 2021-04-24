@@ -9,24 +9,15 @@
     </div>
   </div>
 
-  <div class="mb1right2-1">
-    <a title="山西：文化旅游强势推进" href="/article/show-5601.html" target="_blank">山西：文化旅游强势推进</a>
-  </div>
-  <!--<div class="space2"></div>-->
-  <div class="mb1right3">
-    <p>过去一年，文旅业深度融合、高品质发展的态势已经形成，正在成为释放绿色经济新动能、推动高质量发展、高水平崛起的重要抓手。</p>
-  </div>
-  <div class="space1">
-  </div>
-
-  <div class="mb1right2-1">
-    <a title="山西文旅业“加速”跨越升级" href="/article/show-5608.html" target="_blank">山西文旅业“加速”跨越升级</a>
-  </div>
-  <!--<div class="space2"></div>-->
-  <div class="mb1right3">
-    <p>2020年是我省黄河、长城、太行三大文旅品牌建设年，也是我省转方式、优结构、换动能的转型攻坚期。文旅产业可谓亮点频出。</p>
-  </div>
-  <div class="space1">
+  <div v-for="(item, index) in ywsdData" :key="index" v-if="index===0 || index<2">
+    <div class="mb1right2-1">
+      <a title="山西：文化旅游强势推进" href="/article/show-5601.html" target="_blank">{{item.title}}</a>
+    </div>
+    <div class="mb1right3">
+      <p>{{item.zhaiyao}}</p>
+    </div>
+    <div class="space1">
+    </div>
   </div>
 
   <div class="space1">
@@ -41,40 +32,14 @@
     <div class="garyb2">
     </div>
   </div>
-  <div class="mb1right4">
-
-    <ul>
+  <div class="mb1right4" >
+    <ul v-for="(item, index) in zcfgData" :key="index" v-if="index===0 || index<4">
       <li>
         <p style="width: 335px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"><img
             src="../assets/SXWB/img/dian.jpg">&nbsp;<a title="国务院办公厅关于加强石窟寺保护利用工作的指导意见" href="/article/show-5678.html"
-            target="_blank">国务院办公厅关于加强石窟寺保护利用工作的指导意见</a></p>
+            target="_blank">{{item.title}}</a></p>
       </li>
     </ul>
-
-    <ul>
-      <li>
-        <p style="width: 335px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"><img
-            src="../assets/SXWB/img/dian.jpg">&nbsp;<a title="关于加快推进媒体深度融合发展的意见" href="/article/show-5677.html"
-            target="_blank">关于加快推进媒体深度融合发展的意见</a></p>
-      </li>
-    </ul>
-
-    <ul>
-      <li>
-        <p style="width: 335px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"><img
-            src="../assets/SXWB/img/dian.jpg">&nbsp;<a title="山西省加强文物保护利用改革工作方案" href="/article/show-5676.html"
-            target="_blank">山西省加强文物保护利用改革工作方案</a></p>
-      </li>
-    </ul>
-
-    <ul>
-      <li>
-        <p style="width: 335px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"><img
-            src="../assets/SXWB/img/dian.jpg">&nbsp;<a title="关于进一步激发文化和旅游消费潜力的实施意见" href="/article/show-5673.html"
-            target="_blank">关于进一步激发文化和旅游消费潜力的实施意见</a></p>
-      </li>
-    </ul>
-
   </div>
   <div class="mb1right1">
     <div class="redb2">
@@ -84,36 +49,12 @@
     </div>
   </div>
   <div class="mb1right4">
-
-    <ul>
+    <ul v-for="(item, index) in ggtzData" :key="index" v-if="index===0 || index<4">
       <li>
         <p style="width: 335px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"><img
             src="../assets/SXWB/img/dian.jpg">&nbsp;<a title="关于开展2021年度国家社会科学基金艺术学项目申报工作和2021年度国家社会科学基金艺术学重大项目招标公告的通知"
-            href="/article/show-5666.html" target="_blank">关于开展2021年度国家社会科学基金艺术学项目申报工作和2021年度国家社会科学基金艺术学重大项目招标公告的通知</a>
+            href="/article/show-5666.html" target="_blank">{{item.title}}</a>
         </p>
-      </li>
-    </ul>
-
-    <ul>
-      <li>
-        <p style="width: 335px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"><img
-            src="../assets/SXWB/img/dian.jpg">&nbsp;<a title="关于公布全省第一批革命文物名录的通知" href="/article/show-5651.html"
-            target="_blank">关于公布全省第一批革命文物名录的通知</a></p>
-      </li>
-    </ul>
-
-    <ul>
-      <li>
-        <p style="width: 335px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"><img
-            src="../assets/SXWB/img/dian.jpg">&nbsp;<a title="关于印发“游山西·读历史”活动实施方案的通知" href="/article/show-5675.html"
-            target="_blank">关于印发“游山西·读历史”活动实施方案的通知</a></p>
-      </li>
-    </ul>
-    <ul>
-      <li>
-        <p style="width: 335px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"><img
-            src="../assets/SXWB/img/dian.jpg">&nbsp;<a title="关于公布山西省历史文化街区的通知" href="/article/show-5672.html"
-            target="_blank">关于公布山西省历史文化街区的通知</a></p>
       </li>
     </ul>
   </div>
@@ -124,6 +65,20 @@
 <script>
 export default {
   name: 'NavYwsd',
+   props: {
+    ywsdData: {
+      type: Array,
+      default: []
+    },
+    zcfgData: {
+      type: Array,
+      default: []
+    },
+    ggtzData: {
+      type: Array,
+      default: []
+    },
+  },
   data () {
     return {
       

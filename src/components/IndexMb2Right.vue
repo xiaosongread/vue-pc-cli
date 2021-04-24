@@ -12,40 +12,27 @@
   <!--视频-->
 
   <div class="mb2right2">
-    <div class="tssxpart1">
+    <div class="tssxpart1" v-if="item.id===5418" v-for="(item, index) in sjsjData" :key="index">
       <div class="tssxpart1img">
         <a title="朝元窑，为珐华而“生”" href="/videos/show-5418.html" target="_blank">
           <img src="../assets/SXWB/img/mb.jpg" width="350" height="230"></a></div>
       <div class="tssxpart1font">
-        <a title="朝元窑，为珐华而“生”" href="/videos/show-5418.html" target="_blank">朝元窑，为珐华而“生”</a>
-        <p>珐华，一门奇特的工艺，在历史沉浮里跌宕；一朵绚丽奇葩，于盛世的窑火中涅槃重生。</p>
+        <a title="朝元窑，为珐华而“生”" href="/videos/show-5418.html" target="_blank">{{item.title}}</a>
+        <p>{{item.zhaiyao}}</p>
         <div class="tssxpart1font1">
         </div>
       </div>
     </div>
-
     <div class="mb2right2_3">
-      <div class="mb2left4_23">
+      <div class="mb2left4_23" v-for="(item, index) in sjsjData" :key="index" v-if="index===0 || index<2">
         <div class="main-left-4 ilist">
           <a title="【文博视窗】  山西文化 光影传达" href="/videos/show-5439.html" target="_blank"><span class="abs-bg">
-            </span><span class="mb1left4_2_1">【文博视窗】 山西文化 光影传达</span>
+            </span><span class="mb1left4_2_1">{{item.title}}</span>
             <img src="/upload/202008/31/202008310948505679.jpg">
           </a>
-
         </div>
       </div>
-
-      <div class="mb2left4_23">
-        <div class="main-left-4 ilist">
-
-          <a title="这才是正宗的绛州澄泥砚" href="/videos/show-5416.html" target="_blank"><span class="abs-bg">
-            </span><span class="mb1left4_2_1">这才是正宗的绛州澄泥砚</span>
-            <img src="/upload/202008/27/202008271555367710.png">
-          </a>
-
-        </div>
-      </div>
-    </div>
+	</div>
   </div>
   <div class="mb2right1">
     <div class="redb2">
@@ -132,6 +119,12 @@
 <script>
 export default {
   name: 'IndexMb2Right',
+   props: {
+    sjsjData: {
+      type: Array,
+      default: []
+    },
+  },
   data () {
     return {
       

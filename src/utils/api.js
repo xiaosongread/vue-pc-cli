@@ -3,8 +3,9 @@ import config from '@/config'
 var host = 'http://abcd.shanxiwenbow.com:8080/'
 export const urlMap = {
   // 首页左侧数据
-  channelDataListJson: 'wenbo/channel/dataListJson'
-
+  channelDataListJson: 'wenbo/channel/dataListJson',
+ // 二级栏目推荐数据
+  dataToJsonArticle: 'wenbo/channel/dataToJsonArticle'
 }
 const apiGetDouBanMovieList = 'https://douban.uieee.com/v2/movie/in_theaters_1'
 // 批量增加url前缀
@@ -19,7 +20,13 @@ export function channelDataListJson (parm) {
     params: parm || {}
   })
 }
-
+export function dataToJsonArticle (parm) {
+  return request({
+    url: urlMap['dataToJsonArticle'],
+    method: 'get',
+    params: parm || {}
+  })
+}
 export function getDouBanMovieList (parm) {
   return request({
     url: apiGetDouBanMovieList,

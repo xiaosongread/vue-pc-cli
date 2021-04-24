@@ -16,24 +16,24 @@
 				</a>
 			</ul>
 		</div>
-		<div class="tablist" v-for="(item, index) in listCYDJData" :key="index" v-if="index === mouseIndex">
-			<div class="mb2left4_2">
-				<div class="mb2left4_21">
+		<div class="tablist" >
+			<div class="mb2left3_2" v-for="(item, index) in listCYDJData" :key="index" v-if="index === mouseIndex">
+				<div class="mb2left3_21">
 					<div v-for="(item1, index1) in item.content" :key="index1" v-if="index1 < 2">
-						<div class="mb2le4_211">
+						<div class="mb2le3_211">
 							<ul>
 								<li>
-									<a title="" href="/dock/show-549.html" target="_blank">{{item1.title}}</a>
+									<a class="danhang" title="" href="/dock/show-549.html" target="_blank">{{item1.title}}</a>
 								</li>
 							</ul>
 						</div>
-						<div class="mb2le4_212">
+						<div class="mb2le3_212">
 							<p>
 								{{item1.zhaiyao}}</p>
 						</div>
 					</div>	
 				</div>
-				<div class="mb2left4_22">
+				<div class="mb2left3_22">
 					<div class="main-left1 ilist">
 						<a title="" href="/dock/show-463.html" target="_blank"><span
 								class="mb1left4_2">{{(listCYDJData[0]).content[0].title}}</span> <span class="txt2">
@@ -96,7 +96,7 @@ export default {
 
 	.mb3left2 {
 		margin-top: 35px;
-		height: 250px;
+		height: 300px;
 		width: 691px;
 		float: left;
 	}
@@ -277,15 +277,67 @@ export default {
 		font-weight: bold;
 		background: rgba(0, 0, 0, 0.6);
 	}
-	.mb2le4_212 li .mb1left4_2{
+	
+	.danhang{
 		overflow: hidden;
 		text-overflow:ellipsis;
 		white-space: nowrap;
 	}
-	.mb2le4_212 p{
+	.mb2le3_212 p{
 		display: -webkit-box;
 		-webkit-box-orient: vertical;
 		-webkit-line-clamp: 2;/*显示几行*/
 		overflow: hidden;
+	}
+
+	.mb2left3_2 {
+		margin-top: 5px;
+		height: 220px;
+		width: 691px;
+		float: left;
+	}
+
+	.mb2left3_21 {
+		height: 220px;
+		width: 300px;
+		float: left;
+	}
+
+	.mb2left3_22 {
+		margin-left: 40px;
+		height: 220px;
+		width: 300px;
+		float: left;
+	}
+
+	.mb2left3_23 {
+		height: 125px;
+		width: 175px;
+		float: left;
+	}
+
+	.mb2le3_211 {
+		margin-top: 23px;
+		height: 27px;
+		width: 330px;
+		float: left;
+		font-size: 17px;
+		font-weight: bold;
+		padding-top: 3px;
+	}
+
+	.mb2le3_211 ul {
+		padding-left: 15px;
+	}
+
+	.mb2le3_212 {
+		margin-top: 0px;
+		padding-left: 15px;
+		height: 50px;
+		width: 285px;
+		float: left;
+		font-size: 15px;
+		color: #707070;
+		line-height: 31px;
 	}
 </style>

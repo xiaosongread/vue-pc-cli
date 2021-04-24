@@ -1,159 +1,70 @@
 <template>
-<div style="overflow: hidden">
-	<!-- 标题 -->
-	<div class="mb2left40">
+<div>
+	<div class="mlsxpart5" v-if="type === 'one'">
+	  <div class="mlsxpart5-2">
+	    <ul id="test1" style="display: flex;justify-content: space-between;margin-top:20px;">
+	      <li v-for="(item, index) in listData" :key="index" @mouseover="mouseOver(index)">
+	        <div class="mlsxpart5-2-1">
+	          <a href="/photoss/92.html" target="_blank">
+							<img v-if="item.id===92" src="../assets/SXWB/img/box1.jpg"/>
+							<img v-if="item.id===93" src="../assets/SXWB/img/box2.jpg"/>
+							<img v-if="item.id===94" src="../assets/SXWB/img/box3.jpg"/>
+							<img v-if="item.id===95" src="../assets/SXWB/img/box4.jpg"/>
+							<img v-if="item.id===96" src="../assets/SXWB/img/box5.jpg"/>
+							<img v-if="item.id===97" src="../assets/SXWB/img/box6.jpg"/>
+							<img v-if="item.id===98" src="../assets/SXWB/img/box7.jpg"/>
+							<img v-if="item.id===99" src="../assets/SXWB/img/box8.jpg"/>
+							<img v-if="item.id===100" src="../assets/SXWB/img/box9.jpg"/>
+						</a>
+					</div>
+	      </li>
+	    </ul>
+	  </div>
+	</div>
+	<!-- 标题2 -->
+	<div class="mb2left40" v-if="type === 'two'">
 			<div class="mb2left40_1">
 					<ul id="test2_li_now_">
-							<a href="/photoss/102.html" target="_blank"><li class="now">晋商文化</li></a>
-							<a href="/photoss/103.html" target="_blank"><li>根祖文化</li></a>
-							<a href="/photoss/101.html" target="_blank"><li>古建文化</li></a>
-								<a href="/photoss/104.html" target="_blank"><li>晋醋文化</li></a>
-								<a href="/photoss/105.html" target="_blank"><li>晋酒文化</li></a>
-								<a href="/photoss/106.html" target="_blank"><li>面食文化</li></a>
-								<a href="/photoss/107.html" target="_blank"><li>佛道文化</li></a>
-								<a href="/photoss/108.html" target="_blank"><li>其他文化</li></a>
+							<a href="/photoss/102.html" target="_blank" v-for="(item, index) in listData" :key="index" @mouseover="mouseOver(index)"><li class="now">{{item.title}}</li></a>
 					</ul>
 			</div>
 	</div>
 	<!-- 内容 -->
-	<div id="test2_1" class="tablist block" style="display: block;">
-	  <div class="tssxpart1">
-	    <div class="tssxpart1img">
-	      <a title="常氏家族——万里茶路的先行者" href="/photoss/show-5626.html" target="_blank">
-	        <img src="../assets/SXWB/img/mb.jpg" width="340" height="230"></a></div>
-	    <div class="tssxpart1font">
-	      <div class="tssxpart1font1">
-	        <a title="常氏家族——万里茶路的先行者" href="/photoss/show-5626.html" target="_blank">常氏家族——万里茶路的先行者</a></div>
-	      <div class="tssxpart1font2">
-	        漫步常家庄园，品读着每一处细节，才能发现它钟灵毓秀的品格和含而不露的底蕴。</div>
-	      <div class="tssxpart1font3">
-	        2020年09月02日
-	        <div class="tssxxx">
-	          <a href="/photoss/show-5626.html">
-	            <img src="../assets/SXWB/img/xx.jpg"></a>
-	        </div>
-	      </div>
-	    </div>
-	  </div>
-
-	  <div class="tssxpart1">
-	    <div class="tssxpart1img">
-	      <a title="盛极一时的晋商“船帮”为何消失了？" href="/photoss/show-5622.html" target="_blank">
-	        <img src="../assets/SXWB/img/mb.jpg" width="340" height="230"></a></div>
-	    <div class="tssxpart1font">
-	      <div class="tssxpart1font1">
-	        <a title="盛极一时的晋商“船帮”为何消失了？" href="/photoss/show-5622.html" target="_blank">盛极一时的晋商“船帮”为何消失了？</a></div>
-	      <div class="tssxpart1font2">
-	        晋商发展到清代，先后建立了三座丰碑：“船帮”、“驼帮”和“票帮”。其中的“船帮”是从事对日本贸易的商帮，因用船作为交通工具故名。</div>
-	      <div class="tssxpart1font3">
-	        2020年08月24日
-	        <div class="tssxxx">
-	          <a href="/photoss/show-5622.html">
-	            <img src="../assets/SXWB/img/xx.jpg"></a>
-	        </div>
-	      </div>
-	    </div>
-	  </div>
-
-	  <div class="tssxpart1">
-	    <div class="tssxpart1img">
-	      <a title="晋商豪宅，看得出家底的“硬家当”" href="/photoss/show-5621.html" target="_blank">
-	        <img src="../assets/SXWB/img/mb.jpg" width="340" height="230"></a></div>
-	    <div class="tssxpart1font">
-	      <div class="tssxpart1font1">
-	        <a title="晋商豪宅，看得出家底的“硬家当”" href="/photoss/show-5621.html" target="_blank">晋商豪宅，看得出家底的“硬家当”</a></div>
-	      <div class="tssxpart1font2">
-	        曾经盛极一时的明清晋商虽然早已消失在历史的长河中，但也给山西人留下了宝贵的晋商精神，以及一座座恢宏的晋商大院。</div>
-	      <div class="tssxpart1font3">
-	        2020年08月21日
-	        <div class="tssxxx">
-	          <a href="/photoss/show-5621.html">
-	            <img src="../assets/SXWB/img/xx.jpg"></a>
-	        </div>
-	      </div>
-	    </div>
-	  </div>
-	</div>
-	<div id="test2_2" class="tablist">
-	  <div class="tssxpart1">
-	    <div class="tssxpart1img">
-	      <a title="常氏家族——万里茶路的先行者" href="/photoss/show-5626.html" target="_blank">
-	        <img src="../assets/SXWB/img/mb.jpg" width="340" height="230"></a></div>
-	    <div class="tssxpart1font">
-	      <div class="tssxpart1font1">
-	        <a title="常氏家族——万里茶路的先行者" href="/photoss/show-5626.html" target="_blank">22222222222</a></div>
-	      <div class="tssxpart1font2">
-	        222222222222222222</div>
-	      <div class="tssxpart1font3">
-	        2020年09月02日
-	        <div class="tssxxx">
-	          <a href="/photoss/show-5626.html">
-	            <img src="../assets/SXWB/img/xx.jpg"></a>
-	        </div>
-	      </div>
-	    </div>
-	  </div>
-
-	  <div class="tssxpart1">
-	    <div class="tssxpart1img">
-	      <a title="盛极一时的晋商“船帮”为何消失了？" href="/photoss/show-5622.html" target="_blank">
-	        <img src="../assets/SXWB/img/mb.jpg" width="340" height="230"></a></div>
-	    <div class="tssxpart1font">
-	      <div class="tssxpart1font1">
-	        <a title="盛极一时的晋商“船帮”为何消失了？" href="/photoss/show-5622.html" target="_blank">222222222222</a></div>
-	      <div class="tssxpart1font2">
-	        222222222222222</div>
-	      <div class="tssxpart1font3">
-	        2020年08月24日
-	        <div class="tssxxx">
-	          <a href="/photoss/show-5622.html">
-	            <img src="../assets/SXWB/img/xx.jpg"></a>
-	        </div>
-	      </div>
-	    </div>
-	  </div>
-
-	  <div class="tssxpart1">
-	    <div class="tssxpart1img">
-	      <a title="晋商豪宅，看得出家底的“硬家当”" href="/photoss/show-5621.html" target="_blank">
-	        <img src="../assets/SXWB/img/mb.jpg" width="340" height="230"></a></div>
-	    <div class="tssxpart1font">
-	      <div class="tssxpart1font1">
-	        <a title="晋商豪宅，看得出家底的“硬家当”" href="/photoss/show-5621.html" target="_blank">222222222222</a></div>
-	      <div class="tssxpart1font2">
-	        222222222222</div>
-	      <div class="tssxpart1font3">
-	        2020年08月21日
-	        <div class="tssxxx">
-	          <a href="/photoss/show-5621.html">
-	            <img src="../assets/SXWB/img/xx.jpg"></a>
-	        </div>
-	      </div>
-	    </div>
-	  </div>
+	<div class="" v-for="(item, index) in listData" :key="index" v-if="index===mouseIndex">
+		<PhotoTw :listData="item.content"></PhotoTw>
 	</div>
 </div>
 </template>
 <script>
-import {tab} from '@/utils/util.js'
+import PhotoTw from '@/components/PhotoTw'
+
 export default {
-  name: 'PhotoTwTab',
+	name: 'PhotoTwTab',
+	props: {
+		listData: {
+			type: Array,
+			default: []
+		},
+		type: {
+			type: String,
+			default: 'two'
+		}
+	},
   data () {
     return {
-      
+      mouseIndex: 0
     }
   },
-  components: { },
+  components: {
+		PhotoTw
+	},
   created () {
-		setTimeout(()=>{
-			new tab('test1_li_now_', '_', null, 'onmouseover');
-			new tab('test2_li_now_', '_', null, 'onmouseover');
-			new tab('test3_li_now_', '_', null, 'onmouseover');
-			new tab('test4_li_now_', '_', null, 'onmouseover');
-		},1000)
+		
   },
   methods: {
-
+		mouseOver(index) {
+			this.mouseIndex = index
+		}
   }
 }
 </script>

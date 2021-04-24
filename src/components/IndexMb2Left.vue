@@ -9,11 +9,14 @@
 	</div>
 	<div class="mb2left2">
 		<div id="ifocus">
-			<div id="ifocus_pic" v-if="item.id===87"  v-for="(item, index) in listMLSXData" :key="index">
+			<div id="ifocus_pic" v-if="item.id===87" v-for="(item, index) in listMLSXData" :key="index">
 				<div id="ifocus_piclist">
-					<ul >
-						<li><a href="/photos/show-5682.html" target="_blank">
-								<img src="../assets/SXWB/img/mb.jpg" alt=""></a></li>
+					<ul>
+						<li v-for="(item1, index1) in item.content" :key="index1" v-if="index1 < 5 && bannerIndex === index1">
+							<a href="/photos/show-5682.html" target="_blank">
+								<img src="../assets/SXWB/img/mb.jpg" alt="">
+							</a>
+						</li>
 						</ul>
 				</div>
 				<div id="ifocus_opdiv">
@@ -22,87 +25,54 @@
 				</div>
 				<div id="ifocus_tx">
 					<ul >
-						<li class="">{{(listMLSXData[index]).content[0].title}}</li>
+						<li class="" v-for="(item1, index1) in item.content" :key="index1" v-if="index1 < 5 && bannerIndex === index1">{{item1.title}}</li>
 					</ul>
 				</div>
 			</div>
 			<div id="ifocus_btn">
 				<ul v-if="item.id===87" v-for="(item, index) in listMLSXData" :key="index">
-					<div v-for="(item1, index1) in (listMLSXData[index]).content" :key="index1" v-if="index1<5">
-					<li class="normal">
-						<img src="../assets/SXWB/img/mb.jpg" alt="">{{item1.title}}</li>
+					<div v-for="(item1, index1) in item.content" :key="index1" v-if="index1<5">
+					<li :class="[index1 === bannerIndex ? 'current' : 'normal']" @mouseover="mouseOver(index1)">
+						<img src="../assets/SXWB/img/mb.jpg" alt=""></li>
 					</div>
 				</ul>
 			</div>
 		</div>
 	</div>
 	<!--特色文化-->
-	<div class="mb2left3">
-		<div class="mb2left3img">
-			<a href="/photoss/75.html " target="_blank">
-				<div class="mb2left3img_1">
-				</div>
-			</a>
-		</div>
-		<div class="mb2left3text">
-			<div class="mb1right2">
-				<a title="贾樟柯用镜头讲述家的温暖" href="/photoss/show-5612.html" target="_blank">贾樟柯用镜头讲述家的温暖</a></div>
-			<div class="mb1right3-1">
-				<p>
-					1月21日，贾樟柯导演的新作《有家小店叫童年》上线，这是一部在快手网络平台上播出的短片。</p>
-			</div>
-
-			<span id="mblr3">
-				<p>
-				</p>
-				<ul>
-					<li><img src="../assets/SXWB/img/dian.jpg">
-						<a title="长城在这里与黄河第一次邂逅" href="/photoss/show-5633.html" target="_blank">长城在这里与黄河第一次邂逅</a>
-					</li>
-					<li><img src="../assets/SXWB/img/dian.jpg">
-						<a title="这一座令人着迷的琉璃塔——飞虹塔" href="/photoss/show-5654.html" target="_blank">这一座令人着迷的琉璃塔——飞虹塔</a>
-					</li>
-				</ul>
-				<p></p>
-			</span>
-		</div>
-	</div>
 	<!--遍游山西-->
-	<div class="mb2left3">
+	<div class="mb2left3" v-for="(item, index) in listMLSXData" :key="index" v-if="item.id === 75 || item.id === 76">
 		<div class="mb2left3img1">
 			<a href="/photoss/76.html " target="_blank">
 				<div class="mb2left3img_1">
+					<img src="../assets/SXWB/img/tswh.jpg" v-if="item.id === 75">
+					<img src="../assets/SXWB/img/bysj.jpg" v-if="item.id === 76">
 				</div>
 			</a>
 		</div>
 		<div class="mb2left3text">
-
-			<div class="mb1right2">
-				<a title="“绿右玉”的“冷资源”，正热起来" href="/photoss/show-5609.html" target="_blank">“绿右玉”的“冷资源”，正热起来</a></div>
-			<div class="mb1right3-1">
-				<p>
-					山西右玉得天独厚的“冷资源”，正成为右玉引得游客络绎来的“冰雪旅游IP”。</p>
+			<div v-for="(item1, index1) in item.content" :key="index1" v-if="index1 === 0">
+				<div class="mb1right2">
+					<a :title="item1.title" href="/photoss/show-5609.html" target="_blank">{{item1.title}}</a></div>
+				<div class="mb1right3-1">
+					<p>{{item1.zhaiyao}}</p>
+				</div>
 			</div>
 
 			<span id="mblr3">
 				<p>
 				</p>
 				<ul>
-
-					<li><img src="../assets/SXWB/img/dian.jpg">
-						<a title="山西推荐8条线路申报全国“十大最美农村路”" href="/photoss/show-5610.html" target="_blank">山西推荐8条线路申报全国“十大最美农村路”</a>
+					<li v-for="(item1, index1) in item.content" :key="index1" v-if="index1 > 0 && index1 < 3">
+						<img src="../assets/SXWB/img/dian.jpg">
+						<a :title="item1.title" href="/photoss/show-5610.html" target="_blank">{{item1.title}}</a>
 					</li>
-
-					<li><img src="../assets/SXWB/img/dian.jpg">
-						<a title="全域旅游，助力山西“美丽资源”成为“美丽经济”" href="/photoss/show-5611.html"
-							target="_blank">全域旅游，助力山西“美丽资源”成为“美丽经济”</a>
-					</li>
-
 				</ul>
 				<p></p>
 			</span>
 		</div>
 	</div>
+
 	<!--文化会馆开始-->
 	<div class="mb2left1_1">
 		<div class="redb">
@@ -114,290 +84,22 @@
 	<div class="mb2left4">
 		<div class="mb2left4_1">
 			<ul id="test1_li_now_">
-				<a href="/hall/64.html" target="_blank">
-					<li class="">产业园区</li>
-				</a>
-				<a href="/hall/65.html" target="_blank">
-					<li>企业链接</li>
-				</a>
-				<a href="/hall/66.html" target="_blank">
-					<li class="">产品展示</li>
-				</a>
-				<a href="/hall/67.html" target="_blank">
-					<li class="">影视动漫</li>
-				</a>
-				<a href="/hall/68.html" target="_blank">
-					<li class="now">文化+</li>
+				<a href="/hall/64.html" target="_blank" v-for="(item, index) in listWHHGData">
+					<li class="" @mouseover="mouseOverWhhg(index)">{{item.title}}</li>
 				</a>
 			</ul>
-			<!--<div class="redj_1"></div>-->
 		</div>
-		<div id="test1_1" class="tablist block" style="display: none;">
-			<div class="mb2left4_2">
-				<!--产业园区-->
-				<div class="mb2left4_21">
-
-					<div class="mb2le4_211">
-						<ul>
-							<li><a title="碛口：昔日商贸重镇 今日黄河胜景" href="/hall/show-5660.html" target="_blank">碛口：昔日商贸重镇
-									今日黄河胜景</a></li>
-						</ul>
-					</div>
-					<div class="mb2le4_212">
-						<p>
-							碛口本无镇，只因黄河出现“断头路”，有“九曲黄河第一镇”之美誉。</p>
-					</div>
-
-					<div class="mb2le4_211">
-						<ul>
-							<li><a title="长城景观遗址研究保护和开发利用" href="/hall/show-5655.html" target="_blank">长城景观遗址研究保护和开发利用</a></li>
-						</ul>
-					</div>
-					<div class="mb2le4_212">
-						<p>
-							长城不仅是中国历史的名片，也是中华文明的象征。</p>
-					</div>
-				</div>
-				<div class="mb2left4_22">
-
-					<div class="mb2le4_211">
-						<ul>
-							<li><a title="长治经济开发区已成为我省新型产业园区" href="/hall/show-2894.html" target="_blank">长治经济开发区已成为我省新型产业园区</a></li>
-						</ul>
-					</div>
-					<div class="mb2le4_212">
-						<p>
-							新成立的长治经济开发区，已成为我省新型的产业园区。</p>
-					</div>
-
-					<div class="mb2le4_211">
-						<ul>
-							<li><a title="平定莹玉陶瓷“炫”出国门" href="/hall/show-2939.html" target="_blank">平定莹玉陶瓷“炫”出国门</a>
-							</li>
-						</ul>
-					</div>
-					<div class="mb2le4_212">
-						<p>
-							薄如纸，白如玉，声如磬的山西陶瓷“炫”出国门，走向世界。</p>
-					</div>
-
-				</div>
-			</div>
-		</div>
-		<div id="test1_2" class="tablist">
-			<div class="mb2left4_2">
-				<!--企业链接-->
-				<div class="mb2left4_21">
-
-					<div class="mb2le4_211">
-						<ul>
-							<li><a title="八路军文化园" href="/hall/show-3000.html " target="_blank">八路军文化园</a></li>
-						</ul>
-					</div>
-					<div class="mb2le4_212">
-						<p>
-							全国唯一八路军文化的主题公园——八路军文化园，位于长治市武乡县城内</p>
-					</div>
-
-					<div class="mb2le4_211">
-						<ul>
-							<li><a title="中华傅山园" href="/hall/show-1352.html " target="_blank">中华傅山园</a></li>
-						</ul>
-					</div>
-					<div class="mb2le4_212">
-						<p>
-							中华傅山园，来这里领略傅山先生在文学、艺术、医学等各个领域的巨大成就。</p>
-					</div>
-				</div>
-				<div class="mb2left4_22">
-
-					<div class="mb2le4_211">
-						<ul>
-							<li><a title="宇达青铜文化艺术股份有限公司" href="/hall/show-353.html" target="_blank">宇达青铜文化艺术股份有限公司</a>
-							</li>
-						</ul>
-					</div>
-					<div class="mb2le4_212">
-						<p>
-							本公司是从事青铜文化产业的专业化公司，被誉为中国的雕塑家之家。</p>
-					</div>
-
-					<div class="mb2le4_211">
-						<ul>
-							<li><a title="广灵剪纸文化产业园区" href="/hall/show-365.html" target="_blank">广灵剪纸文化产业园区</a></li>
-						</ul>
-					</div>
-					<div class="mb2le4_212">
-						<p>
-							大同市的广灵剪纸，在全国剪纸中独树一帜，被列入国家级非物质文化遗产名录。</p>
-					</div>
-
-				</div>
-			</div>
-		</div>
-		<div id="test1_3" class="tablist" style="display: none;">
-			<div class="mb2left4_2">
-				<!--产品展示-->
-				<div class="mb2left4_21">
-
-					<div class="mb2le4_211">
-						<ul>
-							<li><a title="非遗珍品新绛云雕漆器" href="/hall/show-4434.html" target="_blank">非遗珍品新绛云雕漆器</a></li>
-						</ul>
-					</div>
-					<div class="mb2le4_212">
-						<p>
-							这门千余年传承下来的技艺唯独新绛一地尚存，被视为中国漆器文化遗产中的珍品。</p>
-					</div>
-
-					<div class="mb2le4_211">
-						<ul>
-							<li><a title="以铜为纸 以刀代笔刻出诗书画" href="/hall/show-3063.html" target="_blank">以铜为纸 以刀代笔刻出诗书画</a>
-							</li>
-						</ul>
-					</div>
-					<div class="mb2le4_212">
-						<p>
-							所谓刻铜，就是直接用刀在非铸造铜器的平面上镌刻的工艺。</p>
-					</div>
-
-					<!--<div class="mb2le4_211"><ul><li><a href="#">根祖文化产业区</a></li></ul></div>
-				<div class="mb2le4_212">加大保护力度，强化联动发展，培育以文化旅游为重点的产业集群</div>-->
-				</div>
-				<div class="mb2left4_22">
-
-					<div class="mb2le4_211">
-						<ul>
-							<li><a title="上党堆锦" href="/hall/show-681.html" target="_blank">上党堆锦</a></li>
-						</ul>
-					</div>
-					<div class="mb2le4_212">
-						<p>
-							上党堆锦艺术，俗称“长治堆花”，是长治市特有的民间传统手工艺品。</p>
-					</div>
-
-					<div class="mb2le4_211">
-						<ul>
-							<li><a title="老醋坊里“老醋工”" href="/hall/show-1353.html" target="_blank">老醋坊里“老醋工”</a></li>
-						</ul>
-					</div>
-					<div class="mb2le4_212">
-						<p>
-							山西水塔醋业宝源老醋坊，身着明清工匠服饰的酿醋工正有条不紊地完成各道工序。</p>
-					</div>
-
-				</div>
-			</div>
-		</div>
-		<div id="test1_4" class="tablist" style="display: none;">
-			<div class="mb2left4_2">
-				<!--影视动漫-->
-				<div class="mb2left4_21">
-
-					<div class="mb2le4_211">
-						<ul>
-							<li><a title="6部优秀舞台艺术作品入选" href="/hall/show-5662.html" target="_blank">6部优秀舞台艺术作品入选</a>
-							</li>
-						</ul>
-					</div>
-					<div class="mb2le4_212">
-						<p>
-							“庆祝中国共产党成立100周年舞台艺术精品创作工程”我省6部舞台艺术作品入选。</p>
-					</div>
-
-					<div class="mb2le4_211">
-						<ul>
-							<li><a title="山西获第十一届中国曲艺牡丹奖两项大奖" href="/hall/show-5658.html" target="_blank">山西获第十一届中国曲艺牡丹奖两项大奖</a></li>
-						</ul>
-					</div>
-					<div class="mb2le4_212">
-						<p>
-							第十一届中国曲艺牡丹奖，我省已有23人次获得牡丹奖各奖项。</p>
-					</div>
-
-					<!--<div class="mb2le4_211"><ul><li><a href="#">根祖文化产业区</a></li></ul></div>
-				<div class="mb2le4_212">加大保护力度，强化联动发展，培育以文化旅游为重点的产业集群</div>-->
-				</div>
-				<div class="mb2left4_22">
-
-					<div class="mb2le4_211">
-						<ul>
-							<li><a title="电视剧《我们村里的年轻人》在汾阳开机" href="/hall/show-4424.html" target="_blank">电视剧《我们村里的年轻人》在汾阳开机</a></li>
-						</ul>
-					</div>
-					<div class="mb2le4_212">
-						<p>
-							8月28日，《我们村里的年轻人》开机仪式在汾阳市贾家庄体育场举行。</p>
-					</div>
-
-					<div class="mb2le4_211">
-						<ul>
-							<li><a title="浑源《神溪记忆》实景上演" href="/hall/show-4431.html" target="_blank">浑源《神溪记忆》实景上演</a>
-							</li>
-						</ul>
-					</div>
-					<div class="mb2le4_212">
-						<p>
-							8月下旬，《神溪记忆》实景演出在恒山脚下的浑源县神溪村震撼上演。</p>
-					</div>
-
-				</div>
-			</div>
-		</div>
-		<div id="test1_5" class="tablist" style="display: block;">
-			<div class="mb2left4_2">
-				<!--文化+-->
-				<div class="mb2left4_21">
-
-					<div class="mb2le4_211">
-						<ul>
-							<li><a title="“品牌行”外延效应持续扩大" href="/hall/show-5663.html" target="_blank">“品牌行”外延效应持续扩大</a>
-							</li>
-						</ul>
-					</div>
-					<div class="mb2le4_212">
-						<p>
-							山西品牌中华行，以展览展示、药茶品鉴、现场体验、等形式扩大展会外延效应。</p>
-					</div>
-
-					<div class="mb2le4_211">
-						<ul>
-							<li><a title="借进博“东风”，推进更高水平对外开放" href="/hall/show-5656.html" target="_blank">借进博“东风”，推进更高水平对外开放</a></li>
-						</ul>
-					</div>
-					<div class="mb2le4_212">
-						<p>
-							11月4日，第三届中国国际进口博览会如约而至。</p>
-					</div>
-				</div>
-				<div class="mb2left4_22">
-
-					<div class="mb2le4_211">
-						<ul>
-							<li><a title="《流浪地球》原著电子书引领数字阅读" href="/hall/show-3963.html" target="_blank">《流浪地球》原著电子书引领数字阅读</a></li>
-						</ul>
-					</div>
-					<div class="mb2le4_212">
-						<p>
-							电影《流浪地球》改编自山西籍著名科幻作家刘慈欣的同名科幻小说。</p>
-					</div>
-
-					<div class="mb2le4_211">
-						<ul>
-							<li><a title="平遥古城启用机器人导游" href="/hall/show-3996.html" target="_blank">平遥古城启用机器人导游</a></li>
-						</ul>
-					</div>
-					<div class="mb2le4_212">
-						<p>
-							3月3日，首批26台智能机器人导游在平遥古城亮相。</p>
-					</div>
-				</div>
+		<div class="tablist" v-for="(item, index) in listWHHGData" :key="index" v-if="index === whhgIndex">
+			<div class="tablistItem" v-for="(item1, index1) in item.content" :key="index1" v-if="index1 < 4">
+				<div class="tablistItemTit">{{item1.title}}</div>
+				<div class="tablistItemdes">{{item1.zhaiyao}}</div>
 			</div>
 		</div>
 	</div>
 </div>
 </template>
 <script>
+var _that
 export default {
   name: 'IndexMb2Left',
   props: {
@@ -405,22 +107,47 @@ export default {
       type: Array,
       default: []
     },
-	listWHHGData: {
+		listWHHGData: {
       type: Array,
       default: []
     },
   },
   data () {
     return {
-      
+			mlsxBanner: [],
+			bannerIndex: 0,
+			whhgIndex: 0,
+			tswh: [],
+			bysj: [],
     }
   },
-  components: { },
+	components: { },
+	
   created () {
-
+		_that = this
+		console.log('banner1', this.listMLSXData)
+		this.listMLSXData.forEach((item, index)=>{
+			switch(item.id) {
+					case 87:
+						_that.mlsxBanner = item.content
+						break; 
+					case 75:
+						_that.tswh = item.content
+						break; 
+					case 76:
+						_that.bysj = item.content
+						break; 
+			}
+		})
+		console.log('banner', _that.mlsxBanner)
   },
   methods: {
-
+		mouseOver(index) {
+			this.bannerIndex = index
+		},
+		mouseOverWhhg(index) {
+			this.whhgIndex = index
+		}
   }
 }
 </script>
@@ -733,7 +460,7 @@ export default {
 		float: left;
 		color: #FFFFFF;
 		font-weight: bold;
-		background: url(../assets/SXWB/img/mb.jpg)
+		/* background: url(../assets/SXWB/img/tswh.jpg) */
 	}
 
 	.mb2left3img1 {
@@ -742,7 +469,7 @@ export default {
 		float: left;
 		color: #FFFFFF;
 		font-weight: bold;
-		background: url(../assets/SXWB/img/mb.jpg)
+		/* background: url(../assets/SXWB/img/bysj.jpg) */
 	}
 
 	.mb2left3img_1 {
@@ -807,7 +534,6 @@ export default {
 	.mb2left4_1 {
 		height: 45px;
 		width: 691px;
-		float: left;
 	}
 
 	.mb2left4_1 ul {
@@ -869,19 +595,31 @@ export default {
 	}
 
 	/*网上文博标签*/
-
-
-
-
-
 	.tablist {
-		width: 478px;
-		height: 100px;
 		padding: 0px;
 		font-size: 14px;
 		line-height: 24px;
 		border-top: 0;
-		display: none;
+		overflow: hidden;
+	}
+	.tablistItem{
+		width: 300px;
+		float: left;
+	}
+	.tablistItem:nth-of-type(2n+1){
+		margin-right: 40px;
+	}
+	.tablistItemTit{
+		margin-top: 23px;
+    height: 27px;
+    font-size: 17px;
+    font-weight: bold;
+    padding-top: 3px;
+	}
+	.tablistItemdes{
+    font-size: 15px;
+    color: #707070;
+    line-height: 31px;
 	}
 
 	.block {

@@ -7,7 +7,7 @@
       <IndexMb1Left :listData="wczxData"/>
       <NavYwsd :listData="wczxData"/>
       <img src="@/assets/SXWB/img/mbimg31.jpg" class="mbimg1">
-      <IndexMb2Left :listMLSXData="mlsxData" :listWHHGData="whhgData"/>
+      <IndexMb2Left :listMLSXData="mlsxData" :listWHHGData="whhgData" v-if="mlsxData"/>
       <IndexMb2Right/>
       <img src="@/assets/SXWB/img/mbimg31.jpg" class="mbimg1">
       <IndexMb3Left :listCYDJData="cydjData" :listWSWBData="wswbData" :listWHLTData="whltData"/>
@@ -83,7 +83,7 @@ export default {
             break; 
         }
       })
-      console.log('接口数据', data)
+      console.log('接口数据', _that.mlsxData)
     },
     durationNotify () {
       this.$notify.open({

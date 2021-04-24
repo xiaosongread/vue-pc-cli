@@ -1,144 +1,12 @@
 <template>
 <div class="mb3left">
-	<!--产业对接-->	
-	<div class="mb3left1">
-		<div class="redb">
-			<a href="/dock.html"><img src="../assets/SXWB/img/s4.jpg"></a>
-		</div>
-		<div class="garyb">
-		</div>
-	</div>
-	<div class="mb3left2">
-		<div class="mb2left4_1">
-			<ul id="test2_li_now_" v-for="(item, index) in listCYDJData" :key="index" v-if="index !== 0 && index<5">
-				<a href="/dock/69.html" target="_blank">
-					<li class="">{{item.title}}</li>
-				</a>
-			</ul>
-		</div>
-		<div id="test2_1" class="tablist block" style="display: block;">
-			<div class="mb2left4_2">
-				<div class="mb2left4_21">
-					<div v-for="(item1, index1) in (listCYDJData[0]).content" :key="index1" v-if="index1!==0 && index1 < 3">
-						<div class="mb2le4_211">
-							<ul>
-								<li><a title="" href="/dock/show-549.html" target="_blank">{{item1.title}}</a>
-								</li>
-							</ul>
-						</div>
-						<div class="mb2le4_212">
-							<p>
-								{{item1.zhaiyao}}</p>
-						</div>
-					</div>	
-				</div>
-				<div class="mb2left4_22">
-					<div class="main-left1 ilist">
-						<a title="" href="/dock/show-463.html" target="_blank"><span
-								class="mb1left4_2">{{(listCYDJData[0]).content[0].title}}</span> <span class="txt2">
-								<p></p>
-							</span>
-							<img src="../assets/SXWB/img/mb.jpg">
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	
-	</div>
-	<!--网上文博-->	
-	<div class="mb3left1_1">
-		<div class="redb">
-			<a href="/wenbo.html"><img src="../assets/SXWB/img/s5.jpg"></a>
-		</div>
-		<div class="garyb">
-		</div>
-	</div>
-	<div class="mb3left2">
-		<div class="mb2left4_1">
-			<ul id="test3_li_now_" v-for="(item, index) in listWSWBData" :key="index">
-				<a href="/wenbo/79.html" target="_blank">
-					<li class="">{{item.title}}</li>
-				</a>
-			</ul>
-		</div>
-		<div id="test3_1">
-			<div class="mb2left4_2" >
-				<div class="mb2left4_21">
-					<div v-for="(item1, index1) in (listWSWBData[0]).content" :key="index1" v-if="index1!==0 && index1 < 3" >
-						<div class="mb2le4_211">
-							<ul>
-								<li><a title="" href="/wenbo/show-1960.html" target="_blank">{{item1.title}}</a></li>
-							</ul>
-						</div>
-						<div class="mb2le4_212">
-							<p>
-								{{item1.zhaiyao}}</p>
-						</div>
-					</div>
-
-				</div>
-				<div class="mb2left4_22">
-					<div class="main-left1 ilist">
-						<a title="" href="/wenbo/show-1961.html" target="_blank"><span
-								class="mb1left4_2">{{(listWSWBData[0]).content[0].title}}</span> <span class="txt2">
-								<p></p>
-							</span>
-							<img src="../assets/SXWB/img/mb.jpg">
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!--文化论坛-->
-	<div class="mb3left1_1">
-		<div class="redb">
-			<a href="/BBS.html"><img src="../assets/SXWB/img/s6.jpg"></a>
-		</div>
-		<div class="garyb">
-		</div>
-	</div>
-	<div class="mb3left2" >
-		<div class="mb2left4_1">
-			<ul id="test4_li_now_"  v-for="(item, index) in listWHLTData" :key="index">
-				<a href="/BBS/82.html" target="_blank">
-					<li class="now">{{item.title}}</li>
-				</a>
-			</ul>
-		</div>
-		<div id="test4_1">
-			<div class="mb2left4_2">
-				<div class="mb2left4_21">
-					<div v-for="(item1, index1) in (listWHLTData[0]).content" :key="index1" v-if="index1!==0 && index1 < 3" >
-						<div class="mb2le4_211">
-							<ul>
-								<li><a title="" href="/BBS/show-5613.html" target="_blank">{{item1.title}}</a></li>
-							</ul>
-						</div>
-						<div class="mb2le4_212">
-							<p>
-								{{item1.zhaiyao}}</p>
-						</div>
-					</div>
-
-				</div>
-				<div class="mb2left4_22">
-					<div class="main-left1 ilist">
-						<a title="" href="/BBS/show-4840.html " target="_blank"><span class="mb1left4_2">
-								{{(listWHLTData[0]).content[0].title}}</span> <span class="txt2">
-								<p></p>
-							</span>
-							<img src="../assets/SXWB/img/mb.jpg">
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	<SelectTab :listCYDJData = 'listCYDJData'></SelectTab>
+	<SelectTab :listCYDJData = 'listWSWBData'></SelectTab>
+	<SelectTab :listCYDJData = 'listWHLTData'></SelectTab>
 </div>
 </template>
 <script>
+import SelectTab from '@/components/SelectTab'
 export default {
   name: 'IndexMb3Left',
   props: {
@@ -160,16 +28,18 @@ export default {
       
     }
   },
-  components: { },
+  components: {
+		SelectTab
+	},
   created () {
 
   },
   methods: {
-
+		
   }
 }
 </script>
-<style>
+<style scoped>
 	.mb3left {
 		height: 1115px;
 		width: 691px;

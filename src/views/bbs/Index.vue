@@ -6,10 +6,10 @@
   <!-- 主内容 -->
   <div class="secondm">
     <div class="secondleft">
-      <ArticleLeft></ArticleLeft>
-      <ArticleLeft></ArticleLeft>
-      <ArticleLeft></ArticleLeft>
-      <ArticleLeft></ArticleLeft>
+      <ArticleLeft :listData="whrp"></ArticleLeft>
+      <ArticleLeft :listData="xrxz"></ArticleLeft>
+      <ArticleLeft :listData="jyxc"></ArticleLeft>
+      <ArticleLeft :listData="hdjl"></ArticleLeft>
     </div>
     <div class="secondright">
       <FirstRightNav></FirstRightNav>
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-// import { getAllDict, getDouBanMovieList } from '@/utils/api'
+import { channelDataListJson } from '@/utils/api'
 import IndexLogoHeader from '@/components/IndexLogoHeader'
 import Header from '@/components/Header'
 import SwiperBanner from '@/components/SwiperBanner'
@@ -28,7 +28,7 @@ import ArticleLeft from '@/components/ArticleLeft'
 import FirstRightNav from '@/components/FirstRightNav'
 
 import Footer from '@/components/Footer'
-let that
+let _that
 export default {
   components: {
     IndexLogoHeader,
@@ -41,14 +41,43 @@ export default {
   },
   data () {
     return {
-
+      whltData: [],
+      whrp: [],
+      xrxz: [],
+      jyxc: [],
+      hdjl: [],
     }
   },
   created () {
-    
+       _that = this
+    this.channelDataListJson()
   },
   methods: {
-    
+    async channelDataListJson () {
+      const data = await channelDataListJson()
+      data.data.forEach((item, index)=>{
+        if (item.id === 20) {
+          _that.whltData = item.data
+        }
+      })
+      this.whltData.forEach((item, index)=>{
+        switch(item.id) {
+          case 82:
+            _that.whrp = item.content
+            break; 
+          case 83:
+            _that.xrxz = item.content
+            break; 
+          case 84:
+            _that.jyxc = item.content
+            break; 
+          case 85:
+            _that.hdjl = item.content
+            break;
+        }
+      })
+      console.log('接口数据', this.whrp)
+    },
   }
 }
 </script>

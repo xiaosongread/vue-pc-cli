@@ -9,33 +9,21 @@
         <img src="@/assets/SXWB/img/secondnav1.jpg">
       </a>
     </div>
-    <div class="secondli1">
-    </div>
-    <div class="secondli2">
-      <a title="擂鼓齐奏，2020年中国农民丰收节大同活动月喜庆丰收" href="/article/show-5487.html"
-        target="_blank">擂鼓齐奏，2020年中国农民丰收节大同活动月喜庆丰收</a></div>
-    <div class="secondad">
-    </div>
-    <div class="secondli1">
-    </div>
-    <div class="secondli2">
-      <a title="山西省第六次旅游发展大会在忻州召开" href="/article/show-5455.html" target="_blank">山西省第六次旅游发展大会在忻州召开</a></div>
-    <div class="secondad">
-    </div>
-    <div class="secondli1">
-    </div>
-    <div class="secondli2">
-      <a title="山西文化产业如何“破茧成蝶”？" href="/article/show-4944.html" target="_blank">山西文化产业如何“破茧成蝶”？</a></div>
-    <div class="secondad">
+    <div v-for="(item, index) in ywsd" :key="index" v-if="index<3">
+      <div class="secondli1"></div>
+      <div class="secondli2">
+        <a :title="item.title" href="/article/show-5487.html"
+        target="_blank">{{item.title}}</a>
+      </div>
     </div>
   </div>
   <!-- 主内容 -->
   <div class="secondm">
     <div class="secondleft">
-      <ArticleLeft></ArticleLeft>
-      <ArticleLeft></ArticleLeft>
-      <ArticleLeft></ArticleLeft>
-      <ArticleLeft></ArticleLeft>
+      <ArticleLeft :listData="whjj"></ArticleLeft>
+      <ArticleLeft :listData="cyzx"></ArticleLeft>
+      <ArticleLeft :listData="hyqy"></ArticleLeft>
+      <ArticleLeft :listData="dsdt"></ArticleLeft>
     </div>
     <div class="secondright">
       <FirstRightNav></FirstRightNav>
@@ -46,7 +34,7 @@
 </template>
 
 <script>
-// import { } from '@/utils/api'
+import { channelDataListJson } from '@/utils/api'
 import IndexLogoHeader from '@/components/IndexLogoHeader'
 import Header from '@/components/Header'
 import SwiperBanner from '@/components/SwiperBanner'
@@ -54,7 +42,7 @@ import ArticleLeft from '@/components/ArticleLeft'
 import FirstRightNav from '@/components/FirstRightNav'
 
 import Footer from '@/components/Footer'
-let that
+let _that
 export default {
   components: {
     IndexLogoHeader,
@@ -67,13 +55,47 @@ export default {
   },
   data () {
     return {
-
+      wczxData: [],
+      ywsd: [],
+      whjj: [],
+      cyzx: [],
+      hyqy: [],
+      dsdt: [],
     }
   },
   created () {
-    that = this
+    _that = this
+    this.channelDataListJson()
   },
   methods: {
+    async channelDataListJson () {
+      const data = await channelDataListJson()
+      data.data.forEach((item, index)=>{
+        if (item.id === 13) {
+          _that.wczxData = item.data
+        }
+      })
+      this.wczxData.forEach((item, index)=>{
+        switch(item.id) {
+          case 59:
+            _that.ywsd = item.content
+            break; 
+          case 60:
+            _that.whjj = item.content
+            break; 
+          case 61:
+            _that.cyzx = item.content
+            break; 
+          case 77:
+            _that.hyqy = item.content
+            break;
+          case 78:
+            _that.dsdt = item.content
+            break;
+        }
+      })
+      console.log('接口数据', this.ywsd)
+    },
   }
 }
 </script>

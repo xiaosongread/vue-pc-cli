@@ -6,11 +6,11 @@
   <!-- 主内容 -->
   <div class="secondm">
     <div class="secondleft">
-      <ArticleLeft></ArticleLeft>
-      <ArticleLeft></ArticleLeft>
-      <ArticleLeft></ArticleLeft>
-      <ArticleLeft></ArticleLeft>
-      <ArticleLeft></ArticleLeft>
+      <ArticleLeft :listData="cyyq"></ArticleLeft>
+      <ArticleLeft :listData="qylj"></ArticleLeft>
+      <ArticleLeft :listData="cpzs"></ArticleLeft>
+      <ArticleLeft :listData="ysdm"></ArticleLeft>
+      <ArticleLeft :listData="wh"></ArticleLeft>
     </div>
     <div class="secondright">
       <FirstRightNav></FirstRightNav>
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-// import { getAllDict, getDouBanMovieList } from '@/utils/api'
+import { channelDataListJson } from '@/utils/api'
 import IndexLogoHeader from '@/components/IndexLogoHeader'
 import Header from '@/components/Header'
 import SwiperBanner from '@/components/SwiperBanner'
@@ -29,7 +29,7 @@ import ArticleLeft from '@/components/ArticleLeft'
 import FirstRightNav from '@/components/FirstRightNav'
 
 import Footer from '@/components/Footer'
-let that
+let _that
 export default {
   components: {
     IndexLogoHeader,
@@ -42,25 +42,47 @@ export default {
   },
   data () {
     return {
-
+      whhgData: [],
+      cyyq: [],
+      qylj: [],
+      cpzs: [],
+      ysdm: [],
+      wh: [],
     }
   },
   created () {
-   
+    _that = this
+    this.channelDataListJson()
   },
   methods: {
-    // async getDict () {
-    //   const data = await getAllDict()
-    //   if (data.code === 1 && data.data) {
-    //     console.log('接口数据', data)
-    //   }
-    // },
-    // durationNotify () {
-    //   this.$notify.open({
-    //     content: '10秒后自动关闭！',
-    //     duration: 1000
-    //   })
-    // }
+    async channelDataListJson () {
+      const data = await channelDataListJson()
+      data.data.forEach((item, index)=>{
+        if (item.id === 17) {
+          _that.whhgData = item.data
+        }
+      })
+      this.whhgData.forEach((item, index)=>{
+        switch(item.id) {
+          case 64:
+            _that.cyyq = item.content
+            break; 
+          case 65:
+            _that.qylj = item.content
+            break; 
+          case 66:
+            _that.cpzs = item.content
+            break; 
+          case 67:
+            _that.ysdm = item.content
+            break;
+          case 68:
+            _that.wh = item.content
+            break;
+        }
+      })
+      console.log('接口数据', this.ywsd)
+    },
   }
 }
 </script>
@@ -90,14 +112,15 @@ export default {
   width: 1080px;
 }
 .secondm {
-  height: 2070px;
+  // height: 2070px;
   width: 1080px;
   margin: 0 auto;
+  overflow: hidden;
 }
 .secondleft{
 	margin-left:30px;
 	margin-right:30px;
-	height:2070px;
+	// height:2070px;
 	width:631px;
 	float:left;
 }

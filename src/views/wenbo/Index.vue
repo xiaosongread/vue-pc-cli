@@ -6,10 +6,10 @@
   <!-- 主内容 -->
   <div class="secondm">
     <div class="secondleft">
-      <ArticleLeft></ArticleLeft>
-      <ArticleLeft></ArticleLeft>
-      <ArticleLeft></ArticleLeft>
-      <ArticleLeft></ArticleLeft>
+      <ArticleLeft :listData="dyjwbh"></ArticleLeft>
+      <ArticleLeft :listData="drjwbh"></ArticleLeft>
+      <ArticleLeft :listData="dsjwbh"></ArticleLeft>
+      <ArticleLeft :listData="zwwb"></ArticleLeft>
     </div>
     <div class="secondright">
       <FirstRightNav></FirstRightNav>
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-// import { getAllDict, getDouBanMovieList } from '@/utils/api'
+import { channelDataListJson } from '@/utils/api'
 import IndexLogoHeader from '@/components/IndexLogoHeader'
 import Header from '@/components/Header'
 import SwiperBanner from '@/components/SwiperBanner'
@@ -28,7 +28,7 @@ import ArticleLeft from '@/components/ArticleLeft'
 import FirstRightNav from '@/components/FirstRightNav'
 
 import Footer from '@/components/Footer'
-let that
+let _that
 export default {
   components: {
     IndexLogoHeader,
@@ -41,25 +41,43 @@ export default {
   },
   data () {
     return {
-
+      wswbData: [],
+      dyjwbh: [],
+      drjwbh: [],
+      zwwb: [],
+      dsjwbh: [],
     }
   },
   created () {
-   
+   _that = this
+    this.channelDataListJson()
   },
   methods: {
-    // async getDict () {
-    //   const data = await getAllDict()
-    //   if (data.code === 1 && data.data) {
-    //     console.log('接口数据', data)
-    //   }
-    // },
-    // durationNotify () {
-    //   this.$notify.open({
-    //     content: '10秒后自动关闭！',
-    //     duration: 1000
-    //   })
-    // }
+    async channelDataListJson () {
+      const data = await channelDataListJson()
+      data.data.forEach((item, index)=>{
+        if (item.id === 19) {
+          _that.wswbData = item.data
+        }
+      })
+      this.wswbData.forEach((item, index)=>{
+        switch(item.id) {
+          case 79:
+            _that.dyjwbh = item.content
+            break; 
+          case 80:
+            _that.drjwbh = item.content
+            break; 
+          case 81:
+            _that.zwwb = item.content
+            break; 
+          case 150:
+            _that.dsjwbh = item.content
+            break;
+        }
+      })
+      console.log('接口数据', this.dyjwbh)
+    },
   }
 }
 </script>

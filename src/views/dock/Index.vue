@@ -6,11 +6,11 @@
   <!-- 主内容 -->
   <div class="secondm">
     <div class="secondleft">
-      <ArticleLeft></ArticleLeft>
-      <ArticleLeft></ArticleLeft>
-      <ArticleLeft></ArticleLeft>
-      <ArticleLeft></ArticleLeft>
-      <ArticleLeft></ArticleLeft>
+      <ArticleLeft :listData="gxpt"></ArticleLeft>
+      <ArticleLeft :listData="xmtj"></ArticleLeft>
+      <ArticleLeft :listData="xmpg"></ArticleLeft>
+      <ArticleLeft :listData="qyld"></ArticleLeft>
+      <ArticleLeft :listData="dxal"></ArticleLeft>
     </div>
     <div class="secondright">
       <FirstRightNav></FirstRightNav>
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-// import { getAllDict, getDouBanMovieList } from '@/utils/api'
+import { channelDataListJson } from '@/utils/api'
 import IndexLogoHeader from '@/components/IndexLogoHeader'
 import Header from '@/components/Header'
 import SwiperBanner from '@/components/SwiperBanner'
@@ -29,7 +29,7 @@ import ArticleLeft from '@/components/ArticleLeft'
 import FirstRightNav from '@/components/FirstRightNav'
 
 import Footer from '@/components/Footer'
-let that
+let _that
 export default {
   components: {
     IndexLogoHeader,
@@ -42,25 +42,47 @@ export default {
   },
   data () {
     return {
-
+      cydjData: [],
+      dxal: [],
+      qyld: [],
+      xmpg: [],
+      xmtj: [],
+      gxpt: [],
     }
   },
   created () {
-    
+     _that = this
+    this.channelDataListJson()
   },
   methods: {
-    // async getDict () {
-    //   const data = await getAllDict()
-    //   if (data.code === 1 && data.data) {
-    //     console.log('接口数据', data)
-    //   }
-    // },
-    // durationNotify () {
-    //   this.$notify.open({
-    //     content: '10秒后自动关闭！',
-    //     duration: 1000
-    //   })
-    // }
+    async channelDataListJson () {
+      const data = await channelDataListJson()
+      data.data.forEach((item, index)=>{
+        if (item.id === 18) {
+          _that.cydjData = item.data
+        }
+      })
+      this.cydjData.forEach((item, index)=>{
+        switch(item.id) {
+          case 86:
+            _that.dxal = item.content
+            break; 
+          case 72:
+            _that.qyld = item.content
+            break; 
+          case 71:
+            _that.xmpg = item.content
+            break; 
+          case 70:
+            _that.xmtj = item.content
+            break;
+          case 69:
+            _that.gxpt = item.content
+            break;
+        }
+      })
+      console.log('接口数据', this.dxal)
+    },
   }
 }
 </script>

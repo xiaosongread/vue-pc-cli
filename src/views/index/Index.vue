@@ -5,12 +5,12 @@
   <div class="mbmain">
     <div class="mb1">
       <IndexMb1Left :listData="wczxData"/>
-      <NavYwsd/>
+      <NavYwsd :listData="wczxData"/>
       <img src="@/assets/SXWB/img/mbimg31.jpg" class="mbimg1">
-      <IndexMb2Left/>
+      <IndexMb2Left :listMLSXData="mlsxData" :listWHHGData="whhgData"/>
       <IndexMb2Right/>
       <img src="@/assets/SXWB/img/mbimg31.jpg" class="mbimg1">
-      <IndexMb3Left/>
+      <IndexMb3Left :listCYDJData="cydjData" :listWSWBData="wswbData" :listWHLTData="whltData"/>
       <IndexMb3Right/>
       <img src="@/assets/SXWB/img/mg3.jpg" class="mg3">
     </div>

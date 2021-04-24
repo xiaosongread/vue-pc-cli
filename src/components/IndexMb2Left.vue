@@ -9,64 +9,29 @@
 	</div>
 	<div class="mb2left2">
 		<div id="ifocus">
-			<div id="ifocus_pic">
-				<div id="ifocus_piclist" style="left: 0px; top: -760px;">
-					<ul>
+			<div id="ifocus_pic" v-if="item.id===87"  v-for="(item, index) in listMLSXData" :key="index">
+				<div id="ifocus_piclist">
+					<ul >
 						<li><a href="/photos/show-5682.html" target="_blank">
-								<img src="../assets/SXWB/img/mb.jpg" alt="《如银岁月 美意延年—山西传统银饰展》（三）">《如银岁月
-								美意延年—山西传统银饰展》（三）</a></li>
-						<li><a href="/photos/show-5681.html" target="_blank">
-								<img src="../assets/SXWB/img/mb.jpg" alt="《如银岁月 美意延年—山西传统银饰展》（二）">《如银岁月
-								美意延年—山西传统银饰展》（二）</a></li>
-						<li><a href="/photos/show-5680.html" target="_blank">
-								<img src="../assets/SXWB/img/mb.jpg" alt="《如银岁月 美意延年—山西传统银饰展》（一）">《如银岁月
-								美意延年—山西传统银饰展》（一）</a></li>
-						<li><a href="/photos/show-5649.html" target="_blank">
-								<img src="../assets/SXWB/img/mb.jpg" alt="雕镂蕴千古，土木显华章">雕镂蕴千古，土木显华章</a>
-						</li>
-						<li><a href="/photos/show-4936.html" target="_blank">
-								<img src="../assets/SXWB/img/mb.jpg" alt="壁上乾坤——（三）古韵新彩">壁上乾坤——（三）古韵新彩</a></li>
-					</ul>
+								<img src="../assets/SXWB/img/mb.jpg" alt=""></a></li>
+						</ul>
 				</div>
 				<div id="ifocus_opdiv">
 				</div>
 				<div id="ifocus_opdiv1">
 				</div>
 				<div id="ifocus_tx">
-					<ul>
-
-						<li class="normal">《如银岁月 美意延年—山西传统银饰展》（三）</li>
-
-						<li class="normal">《如银岁月 美意延年—山西传统银饰展》（二）</li>
-
-						<li class="current">《如银岁月 美意延年—山西传统银饰展》（一）</li>
-
-						<li class="normal">雕镂蕴千古，土木显华章</li>
-
-						<li class="normal">壁上乾坤——（三）古韵新彩</li>
-
+					<ul >
+						<li class="">{{(listMLSXData[index]).content[0].title}}</li>
 					</ul>
 				</div>
 			</div>
 			<div id="ifocus_btn">
-				<ul>
-
+				<ul v-if="item.id===87" v-for="(item, index) in listMLSXData" :key="index">
+					<div v-for="(item1, index1) in (listMLSXData[index]).content" :key="index1" v-if="index1<5">
 					<li class="normal">
-						<img src="../assets/SXWB/img/mb.jpg" alt=""></li>
-
-					<li class="normal">
-						<img src="../assets/SXWB/img/mb.jpg" alt=""></li>
-
-					<li class="current">
-						<img src="../assets/SXWB/img/mb.jpg" alt=""></li>
-
-					<li class="normal">
-						<img src="../assets/SXWB/img/mb.jpg" alt=""></li>
-
-					<li class="normal">
-						<img src="../assets/SXWB/img/mb.jpg" alt=""></li>
-
-
+						<img src="../assets/SXWB/img/mb.jpg" alt="">{{item1.title}}</li>
+					</div>
 				</ul>
 			</div>
 		</div>
@@ -435,6 +400,16 @@
 <script>
 export default {
   name: 'IndexMb2Left',
+  props: {
+    listMLSXData: {
+      type: Array,
+      default: []
+    },
+	listWHHGData: {
+      type: Array,
+      default: []
+    },
+  },
   data () {
     return {
       

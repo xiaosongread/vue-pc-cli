@@ -59,6 +59,12 @@ export default new Router({
           name: 'SecondIndex',
           component: () => import('@/views/secondIndex/Index'),
           meta: { title: '二级首页' }
+        },
+        {
+          path: 'detail',
+          name: 'Detail',
+          component: () => import('@/views/detail/Index'),
+          meta: { title: '详情页面' }
         }
       ]
     }

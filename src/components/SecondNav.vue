@@ -188,21 +188,26 @@
 </div>
 </template>
 <script>
+import { dataToJsonArticle } from '@/utils/api'
 export default {
   name: 'SecondNav',
   data () {
     return {
-      
+      rtjlData: [],
     }
   },
   components: {
 
   },
   created () {
-
+	this.rtjldataToJsonArticle()
   },
   methods: {
-
+	  async rtjldataToJsonArticle () {
+      const data = await dataToJsonArticle({categoryId:62})
+      _that.zcfgData=data,
+      console.log('接口数据59', data)
+    },
   }
 }
 </script>

@@ -40,7 +40,7 @@
     <!--二维码-->
     <div class="mb3right4">
       <div class="mb3r4_1">
-        <div class="mb3r4_11"></div>
+        <div class="mb3r4_11"><img src="../assets/SXWB/img/sxwbh.jpg" /></div>
         <div class="mb3r4_12">
           <img src="../assets/SXWB/img/ewm1.jpg" />
         </div>
@@ -53,7 +53,7 @@
         </div>
       </div>
       <div class="mb3r4_2">
-        <div class="mb3r4_21"></div>
+        <div class="mb3r4_21"><img src="../assets/SXWB/img/zswb.jpg" /></div>
         <div class="mb3r4_12">
           <img src="../assets/SXWB/img/ewm2.jpg" />
         </div>

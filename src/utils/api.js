@@ -5,9 +5,9 @@ export const urlMap = {
   // 首页左侧数据
   channelDataListJson: 'wenbo/channel/dataListJson',
  // 二级栏目推荐数据
-  dataToJsonArticle: 'wenbo/channel/dataToJsonArticle'
+  dataToJsonArticle: 'wenbo/channel/dataToJsonArticle',
+  dataToJsonArticlePage: 'wenbo/channel/dataToJsonArticlePage',
 }
-const apiGetDouBanMovieList = 'https://douban.uieee.com/v2/movie/in_theaters_1'
 // 批量增加url前缀
 Object.keys(urlMap).forEach(key => {
   urlMap[key] = host + urlMap[key]
@@ -27,13 +27,11 @@ export function dataToJsonArticle (parm) {
     params: parm || {}
   })
 }
-export function getDouBanMovieList (parm) {
+export function dataToJsonArticlePage (parm) {
   return request({
-    url: apiGetDouBanMovieList,
+    url: urlMap['dataToJsonArticlePage'],
     method: 'get',
-    params: {
-      start: 0,
-      count: 10
-    }
+    params: parm || {}
   })
 }
+

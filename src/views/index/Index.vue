@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { channelDataListJson,dataToJsonArticle, getDouBanMovieList } from '@/utils/api'
+import { channelDataListJson,dataToJsonArticle } from '@/utils/api'
 import IndexLogoHeader from '@/components/IndexLogoHeader'
 import Header from '@/components/Header'
 import IndexMb1Left from '@/components/IndexMb1Left'

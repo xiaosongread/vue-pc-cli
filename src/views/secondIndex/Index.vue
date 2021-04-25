@@ -1,11 +1,11 @@
 <template>
 <div>
   <IndexLogoHeader/>
-  <Header/>
+  <!-- <Header/> -->
   <div class="listmain1">
     <img src="../../assets/SXWB/img/listad1.jpg" class="headerImg">
     <div class="listmain1left">
-      <SecondItem></SecondItem>
+      <SecondItem :list="secondListData"></SecondItem>
     </div>
     <SecondNav></SecondNav>
   </div>
@@ -14,14 +14,11 @@
 </template>
 
 <script>
-// import { getAllDict, getDouBanMovieList } from '@/utils/api'
+import { dataToJsonArticlePage } from '@/utils/api'
 import IndexLogoHeader from '@/components/IndexLogoHeader'
 import Header from '@/components/Header'
 import SecondItem from '@/components/SecondItem'
 import SecondNav from '@/components/SecondNav'
-
-
-
 
 import Footer from '@/components/Footer'
 let that
@@ -36,25 +33,23 @@ export default {
   },
   data () {
     return {
-
+      secondListData: []
     }
   },
   created () {
-    
+    this.dataToJsonArticlePage()
   },
   methods: {
-    // async getDict () {
-    //   const data = await getAllDict()
-    //   if (data.code === 1 && data.data) {
-    //     console.log('接口数据', data)
-    //   }
-    // },
-    // durationNotify () {
-    //   this.$notify.open({
-    //     content: '10秒后自动关闭！',
-    //     duration: 1000
-    //   })
-    // }
+    async dataToJsonArticlePage () {
+      var id = this.$route.query.id
+      const data = await dataToJsonArticlePage({
+        categoryId: id,
+        page: 1,
+        limit: 10
+      })
+      this.secondListData = data.data
+      console.log(123,this.this.secondListData)
+    },
   }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
 <div>
   <IndexLogoHeader/>
-  <Header/>
+  <Header :list="cydjData"/>
   <SwiperBanner></SwiperBanner>
   <!-- 主内容 -->
   <div class="secondm">

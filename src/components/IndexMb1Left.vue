@@ -98,7 +98,7 @@
 <script>
 import Swiper from "swiper";
 import "../../node_modules/swiper/css/swiper.min.css";
-import { tab } from "@/utils/util.js";
+// import { tab } from "@/utils/util.js";
 // import Swiper from 'swiper/js/swiper.min.js'
 // import 'swiper/css/swiper.min.css'
 export default {
@@ -130,11 +130,11 @@ export default {
           clickable: true,
         },
       });
-      new tab("test1_li_now_", "_", null, "onmouseover");
-      new tab("test2_li_now_", "_", null, "onmouseover");
-      new tab("test3_li_now_", "_", null, "onmouseover");
-      new tab("test4_li_now_", "_", null, "onmouseover");
-      new tab("test5_li_now_", "_", null, "onmouseover");
+      // new tab("test1_li_now_", "_", null, "onmouseover");
+      // new tab("test2_li_now_", "_", null, "onmouseover");
+      // new tab("test3_li_now_", "_", null, "onmouseover");
+      // new tab("test4_li_now_", "_", null, "onmouseover");
+      // new tab("test5_li_now_", "_", null, "onmouseover");
     }, 1000);
   },
   methods: {},

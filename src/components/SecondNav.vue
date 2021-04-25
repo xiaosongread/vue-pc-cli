@@ -203,9 +203,9 @@ export default {
 	this.rtjldataToJsonArticle()
   },
   methods: {
-	  async rtjldataToJsonArticle () {
+	async rtjldataToJsonArticle () {
       const data = await dataToJsonArticle({categoryId:62})
-      _that.zcfgData=data,
+      this.zcfgData=data
       console.log('接口数据59', data)
     },
   }

@@ -2,20 +2,28 @@
 <div class="nav">
   <div class="nav1">
     <div class="navb1"><center><a href="/index.html">首页</a></center></div>
-        <!--<div class="navb4"><center><a href="/wenbohuinew.html">第三届文博会</a></center></div>-->
-    <div class="navb2"><center><a href="/article.html">文产时讯</a></center></div>
-    <div class="navb2"><center><a href="/photos.html">美丽山西</a></center></div>
-    <div class="navb2"><center><a href="/hall.html">文化会馆</a></center></div>
-    <div class="navb2"><center><a href="/dock.html">产业对接</a></center></div>
-    <div class="navb2"><center><a href="/wenbo.html">网上文博</a></center></div>
-    <div class="navb2"><center><a href="/BBS.html">文化论坛</a></center></div>
-    <div class="navb3"><center> <a href="https://shop145668320.taobao.com" target="_blank">山西文博馆</a></center></div>
+    <div :class="index === (list.length-1) && type=='index' ? 'navb1 lastNav' : 'navb1'" v-for="(item, index) in list" :key="index">
+      <center>
+        <a href="/index.html">{{item.title}}</a>
+      </center>
+    </div>
+    <div class="navb1 lastNav" v-if="type!='index'"><center> <a href="https://shop145668320.taobao.com" target="_blank">山西文博馆</a></center></div>
   </div>
 </div>
 </template>
 <script>
 export default {
   name: 'Header',
+  props: {
+    list: {
+      type: Array,
+      default: []
+    },
+    type: {
+      type: String,
+      default: "second"
+    }
+  },
   data () {
     return {
       
@@ -48,16 +56,22 @@ export default {
   margin-left: 0px;
   border: 2px solid #FFFFFF;
   height: 29px;
-  width: 85px;
+  // width: 85px;
   color: #FFFFFF;
   font-size: 23px;
   float: left;
   font-weight: bold;
-  padding-top: 3px;
+  padding: 3px 10px 0;
   border-top: 0px;
   border-left: 0px;
   border-bottom: 0px;
   line-height: 23px;
+}
+.navb1.lastNav {
+ border: 0;
+}
+.navb1:nth-child(){
+  border: 0 !important;
 }
 .navb2 {
   margin-top: 16px;

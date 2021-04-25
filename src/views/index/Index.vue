@@ -1,7 +1,7 @@
 <template>
 <div>
   <IndexLogoHeader/>
-  <Header/>
+  <Header :list="data" type="index"/>
   <div class="mbmain">
     <div class="mb1">
       <IndexMb1Left :listData="wczxData"/>
@@ -45,6 +45,7 @@ export default {
   },
   data () {
     return {
+      data: [],
       whltData: [],
       wswbData: [],
       cydjData: [],
@@ -71,6 +72,7 @@ export default {
   methods: {
     async channelDataListJson () {
       const data = await channelDataListJson()
+      this.data = data.data
       data.data.forEach((item, index)=>{
         switch(item.id) {
           case 20:
@@ -93,7 +95,7 @@ export default {
             break; 
         }
       })
-      console.log('接口数据', _that.mlsxData)
+      console.log('接口数据', this.data, _that.mlsxData)
     },
     async zcfgdataToJsonArticle () {
       const data = await dataToJsonArticle({categoryId:62})

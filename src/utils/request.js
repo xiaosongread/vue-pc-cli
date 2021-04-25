@@ -84,12 +84,6 @@ service.interceptors.response.use(
       //   //   duration: 5 * 1000
       //   // })
       // }
-      Message({
-        showClose: true,
-        message: res.desc,
-        type: 'error',
-        duration: 5 * 1000
-      })
       return response.data
     } else {
       return response.data

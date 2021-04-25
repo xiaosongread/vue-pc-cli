@@ -1,7 +1,7 @@
 <template>
 <div>
   <IndexLogoHeader type="article"/>
-  <Header/>
+  <Header :list="wczxData"/>
   <SwiperBanner></SwiperBanner>
   <div class="secondnav">
     <div class="secondnavimg">

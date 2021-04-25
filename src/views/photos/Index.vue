@@ -1,7 +1,7 @@
 <template>
 <div>
   <IndexLogoHeader/>
-  <Header/>
+  <Header :list="mlsxData"/>
   <SwiperBanner></SwiperBanner>
   <!-- 主内容 -->
   <!-- 图说文博 -->

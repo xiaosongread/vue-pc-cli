@@ -1,27 +1,35 @@
 <template>
-<div class="listItem">
-	<div class="listdet1">
-		<div class="listdet1-11">
-			<p style="width: 590px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
-				<a href="/article/show-5718.html" target="_blank">100余件文物展示垣曲北白鹅考古成果</a>
-			</p>
-		</div>
-		<div class="buttonxx">
-			<a href="/article/show-5718.html" target="_blank">
-				<img src="../assets/SXWB/img/buttonxx.jpg">
-			</a>
-		</div>
-	</div>
-	<div class="listdet2">近日，山西省考古研究院举办“燕姬的嫁妆——垣曲北白鹅考古揭示的周代女性生活”展览媒体开放日活动。</div>
-	<div class="listdet3">
-		<div class="underline"></div>
-		<div class="underdata">2021年04月22日</div>
-	</div>
+<div>
+    <div class="listItem" v-for="(item, index) in list" :key="index">
+        <div class="listdet1">
+            <div class="listdet1-11">
+                <p style="width: 590px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                    <a href="/article/show-5718.html" target="_blank">{{item.title}}</a>
+                </p>
+            </div>
+            <div class="buttonxx">
+                <a href="/article/show-5718.html" target="_blank">
+                    <img src="../assets/SXWB/img/buttonxx.jpg">
+                </a>
+            </div>
+        </div>
+        <div class="listdet2">{{item.zhaiyao}}</div>
+        <div class="listdet3">
+            <div class="underline"></div>
+            <div class="underdata">2021年04月22日</div>
+        </div>
+    </div>
 </div>
 </template>
 <script>
 export default {
   name: 'SecondItem',
+  props: {
+      list: {
+          type: Array,
+          default: []
+      }
+  },
   data () {
     return {
       

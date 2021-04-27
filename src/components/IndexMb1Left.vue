@@ -4,26 +4,12 @@
       <div id="header">
         <div class="wrap">
           <div class="swiper-container">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
+            <div class="swiper-wrapper" >
+              <div class="swiper-slide" v-for="(item, index) in ListsData" :key="index">
                 <div class="swiper-slide">
                   <img src="../assets/SXWB/img/mb.jpg" />
                   <div class="swiper-tit">
-                    第十六届深圳文博会开幕 山西线上VR展馆正式亮相“云上文博会”
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="swiper-slide">
-                  <img src="../assets/SXWB/img/mb.jpg" />
-                  <div class="swiper-tit">1111111”</div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="swiper-slide">
-                  <img src="../assets/SXWB/img/mb.jpg" />
-                  <div class="swiper-tit">
-                    asdasdadadasdas馆正式亮相“云上文博会”
+                    {{item.title}}
                   </div>
                 </div>
               </div>
@@ -97,10 +83,12 @@
 </template>
 <script>
 import Swiper from "swiper";
+import { pictureCarousel } from '@/utils/api'
 import "../../node_modules/swiper/css/swiper.min.css";
 // import { tab } from "@/utils/util.js";
 // import Swiper from 'swiper/js/swiper.min.js'
 // import 'swiper/css/swiper.min.css'
+let _that
 export default {
   name: "IndexMb1Left",
   props: {
@@ -110,10 +98,14 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      ListsData: [],
+    };
   },
   components: {},
   created() {
+    _that = this
+    this.pictureCarousel(),
     setTimeout(() => {
       var mySwiper = new Swiper(".swiper-container", {
         direction: "horizontal", // 垂直切换选项
@@ -137,7 +129,13 @@ export default {
       // new tab("test5_li_now_", "_", null, "onmouseover");
     }, 1000);
   },
-  methods: {},
+  methods: {
+     async pictureCarousel () {
+      const data = await pictureCarousel({id:0})
+      _that.ListsData=data,
+      console.log('接口数据59', data)
+    },
+  },
 };
 </script>
 <style>

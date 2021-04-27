@@ -8,8 +8,11 @@ export const urlMap = {
   dataToJsonArticle: 'wenbo/channel/dataToJsonArticle',
   // 详情
   dataarticleData: 'wenbo/channel/articleData',
+  //列表
   dataToJsonArticlePage: 'wenbo/channel/dataToJsonArticlePage',
   secondLeveldata: 'wenbo/channel/secondLeveldata',
+  //首页轮播
+  pictureCarousel: 'wenbo/channel/pictureCarousel',
 }
 // 批量增加url前缀
 Object.keys(urlMap).forEach(key => {
@@ -37,7 +40,14 @@ export function articleData (parm) {
     params: parm || {}
   })
 }
-export function dataToJsonArticlePage (parm) {
+export function pictureCarousel (parm) {
+  return request({
+    url: urlMap['pictureCarousel'],
+    method: 'get',
+    params: parm || {}
+  })
+}
+export function getDouBanMovieList (parm) {
   return request({
     url: urlMap['dataToJsonArticlePage'],
     method: 'get',

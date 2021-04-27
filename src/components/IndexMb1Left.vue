@@ -3,9 +3,9 @@
     <div class="mb1left1">
       <div id="header">
         <div class="wrap">
-          <div class="swiper-container">
-            <div class="swiper-wrapper" >
-              <div class="swiper-slide" v-for="(item, index) in ListsData" :key="index">
+          <div class="swiper-container" >
+            <div class="swiper-wrapper" v-for="(item, index) in ListsData" :key="index">
+              <div class="swiper-slide" >
                 <div class="swiper-slide">
                   <img src="../assets/SXWB/img/mb.jpg" />
                   <div class="swiper-tit">
@@ -132,7 +132,7 @@ export default {
   methods: {
      async pictureCarousel () {
       const data = await pictureCarousel({id:0})
-      _that.ListsData=data,
+      _that.ListsData=data.data,
       console.log('接口数据59', data)
     },
   },

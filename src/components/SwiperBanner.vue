@@ -51,7 +51,7 @@ export default {
   methods: {
 async pictureCarousel () {
       const data = await pictureCarousel({id:1})
-      _that.ListsData=data,
+      _that.ListsData=data.data,
       console.log('接口数据59', data)
     },
   }

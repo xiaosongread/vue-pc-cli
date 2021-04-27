@@ -132,8 +132,8 @@ export default {
   methods: {
      async pictureCarousel () {
       const data = await pictureCarousel({id:0})
-      _that.ListsData=data,
-      console.log('接口数据59', data)
+      _that.ListsData=data.data,
+      console.log('接口数据123', data)
     },
   },
 };

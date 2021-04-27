@@ -9,6 +9,7 @@ export const urlMap = {
   // 详情
   dataarticleData: 'wenbo/channel/articleData',
   dataToJsonArticlePage: 'wenbo/channel/dataToJsonArticlePage',
+  secondLeveldata: 'wenbo/channel/secondLeveldata',
 }
 // 批量增加url前缀
 Object.keys(urlMap).forEach(key => {
@@ -43,3 +44,11 @@ export function dataToJsonArticlePage (parm) {
     params: parm || {}
   })
 }
+export function secondLeveldata (parm) {
+  return request({
+    url: urlMap['secondLeveldata'],
+    method: 'get',
+    params: parm || {}
+  })
+}
+

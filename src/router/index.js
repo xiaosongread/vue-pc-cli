@@ -61,10 +61,11 @@ export default new Router({
           meta: { title: '二级首页' }
         },
         {
+          // path: 'detail/:id',
           path: 'detail',
-          name: 'Detail',
+          name: 'detail',
           component: () => import('@/views/detail/Index'),
-          meta: { title: '详情页面' }
+          meta: { title: '详情页面' },
         }
       ]
     }

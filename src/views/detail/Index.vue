@@ -1,10 +1,13 @@
 <template>
   <div>
     <IndexLogoHeader />
-    <Header />
+    <Header :list="headerListData"/>
     <div class="listmain1">
       <img src="../../assets/SXWB/img/listad1.jpg" class="headerImg" />
-      <div class="listmain1left">
+      <div class="path" v-if="articleData.length">
+        {{articleData[0].position}}
+      </div>
+      <div class="listmain1left" v-if="articleData.length">
         <div class="title">{{ articleData[0].title }}</div>
         <div class="time">
           <span>时间：{{ articleData[0].addtime }}</span>
@@ -15,7 +18,7 @@
           <span>来源：山西日报</span>
           <span>【责任编辑：lcx】</span>
         </div>
-        <div class="thirdtext2">
+        <div class="thirdtext2" v-if="articleData.length">
           <p
             style="
               width: 800px;
@@ -24,7 +27,7 @@
               text-overflow: ellipsis;
             "
           >
-            【上一篇】<a href="/hall/show-5607.html">以特色演艺助力文旅融合</a>
+            【上一篇】<a @click="loadFn(articleData[0].UpId)">{{articleData[0].UpTitle}}</a>
           </p>
           <p
             style="
@@ -34,9 +37,7 @@
               text-overflow: ellipsis;
             "
           >
-            【下一篇】<a href="/hall/show-5663.html"
-              >“品牌行”外延效应持续扩大</a
-            >
+            【下一篇】<a @click="loadFn(articleData[0].DownId)">{{articleData[0].DownTitle}}</a>
           </p>
         </div>
       </div>
@@ -47,7 +48,7 @@
 </template>
 
 <script>
-import { articleData } from "@/utils/api";
+import { articleData,secondLeveldata } from "@/utils/api";
 import IndexLogoHeader from "@/components/IndexLogoHeader";
 import Header from "@/components/Header";
 import SecondItem from "@/components/SecondItem";
@@ -65,24 +66,59 @@ export default {
   },
   data() {
     return {
+      UpId: '',
       articleData: [],
+      headerListData: []
     };
   },
+  watch: {
+    // UpId() {
+    //   this.init()
+    // }
+  },
   created() {
-    this.getarticleData(), 
     _that = this
+    this.init()
   },
   methods: {
-    async getarticleData() {
-      const data = await articleData({ id: 93 });
-      (_that.articleData = data.data), console.log("接口数据59", data);
+    init() {
+      this.secondLeveldata()
+      this.getarticleData()
     },
+    async getarticleData() {
+      var id = this.$route.query.id
+      const {data} = await articleData({ id });
+      console.log('详情的数据', data)
+      this.articleData = data
+      this.UpId = data.UpId
+    },
+    async secondLeveldata () {
+      var id = this.$route.query.id
+      const data = await secondLeveldata({
+        categoryId: id,
+      })
+      this.headerListData = data.data
+    },
+    loadFn(id) {
+      this.$router.push({ path:'detail',query: {
+        id
+      }})
+    }
   },
 };
 </script>
 <style scoped>
 .conBox {
   overflow: hidden;
+}
+.path{
+  padding-left: 30px;
+  margin: 20px auto 0;
+  width: 1050px;
+  height: 32px;
+  background: #EEEEEE;
+  font-size: 15px;
+  line-height: 33px;
 }
 .listmain1 {
   width: 1080px;

@@ -1,7 +1,7 @@
 <template>
 <div>
   <IndexLogoHeader/>
-  <!-- <Header/> -->
+  <Header :list="headerListData"/>
   <div class="listmain1">
     <img src="../../assets/SXWB/img/listad1.jpg" class="headerImg">
     <div class="listmain1left">
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { dataToJsonArticlePage } from '@/utils/api'
+import { dataToJsonArticlePage, secondLeveldata } from '@/utils/api'
 import IndexLogoHeader from '@/components/IndexLogoHeader'
 import Header from '@/components/Header'
 import SecondItem from '@/components/SecondItem'
@@ -33,11 +33,13 @@ export default {
   },
   data () {
     return {
-      secondListData: []
+      secondListData: [],
+      headerListData: []
     }
   },
   created () {
     this.dataToJsonArticlePage()
+    this.secondLeveldata()
   },
   methods: {
     async dataToJsonArticlePage () {
@@ -48,6 +50,13 @@ export default {
         limit: 10
       })
       this.secondListData = data.data
+    },
+    async secondLeveldata () {
+      var id = this.$route.query.id
+      const data = await secondLeveldata({
+        categoryId: id,
+      })
+      this.headerListData = data.data
     },
   }
 }

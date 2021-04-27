@@ -10,6 +10,8 @@ export const urlMap = {
   dataarticleData: 'wenbo/channel/articleData',
   //列表
   dataToJsonArticlePage: 'wenbo/channel/dataToJsonArticlePage',
+  //首页轮播
+  pictureCarousel: 'wenbo/channel/pictureCarousel',
 }
 // 批量增加url前缀
 Object.keys(urlMap).forEach(key => {
@@ -33,6 +35,13 @@ export function dataToJsonArticle (parm) {
 export function articleData (parm) {
   return request({
     url: urlMap['dataarticleData'],
+    method: 'get',
+    params: parm || {}
+  })
+}
+export function pictureCarousel (parm) {
+  return request({
+    url: urlMap['pictureCarousel'],
     method: 'get',
     params: parm || {}
   })

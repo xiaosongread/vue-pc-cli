@@ -10,6 +10,7 @@ export const urlMap = {
   dataarticleData: 'wenbo/channel/articleData',
   //列表
   dataToJsonArticlePage: 'wenbo/channel/dataToJsonArticlePage',
+  secondLeveldata: 'wenbo/channel/secondLeveldata',
   //首页轮播
   pictureCarousel: 'wenbo/channel/pictureCarousel',
 }
@@ -53,3 +54,11 @@ export function getDouBanMovieList (parm) {
     params: parm || {}
   })
 }
+export function secondLeveldata (parm) {
+  return request({
+    url: urlMap['secondLeveldata'],
+    method: 'get',
+    params: parm || {}
+  })
+}
+

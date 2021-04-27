@@ -8,10 +8,7 @@ export const urlMap = {
   dataToJsonArticle: 'wenbo/channel/dataToJsonArticle',
   // 详情
   dataarticleData: 'wenbo/channel/articleData',
-<<<<<<< HEAD
   //列表
-=======
->>>>>>> 7d8fe61b0af45cac224c14b35a25dbce2fee20c3
   dataToJsonArticlePage: 'wenbo/channel/dataToJsonArticlePage',
 }
 // 批量增加url前缀
@@ -40,11 +37,7 @@ export function articleData (parm) {
     params: parm || {}
   })
 }
-<<<<<<< HEAD
 export function getDouBanMovieList (parm) {
-=======
-export function dataToJsonArticlePage (parm) {
->>>>>>> 7d8fe61b0af45cac224c14b35a25dbce2fee20c3
   return request({
     url: urlMap['dataToJsonArticlePage'],
     method: 'get',

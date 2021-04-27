@@ -48,7 +48,6 @@ export default {
         limit: 10
       })
       this.secondListData = data.data
-      console.log(123,this.this.secondListData)
     },
   }
 }

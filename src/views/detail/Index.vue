@@ -7,38 +7,40 @@
       <div class="path" v-if="articleData.length">
         {{articleData[0].position}}
       </div>
-      <div class="listmain1left" v-if="articleData.length">
-        <div class="title">{{ articleData[0].title }}</div>
-        <div class="time">
-          <span>时间：{{ articleData[0].addtime }}</span>
-          <span>作者：{{ articleData[0].userName }}</span>
-        </div>
-        <div class="cons" v-html="articleData[0].content"></div>
-        <div class="subTit">
-          <span>来源：山西日报</span>
-          <span>【责任编辑：lcx】</span>
-        </div>
-        <div class="thirdtext2" v-if="articleData.length">
-          <p
-            style="
-              width: 800px;
-              overflow: hidden;
-              white-space: nowrap;
-              text-overflow: ellipsis;
-            "
-          >
-            【上一篇】<a @click="loadFn(articleData[0].UpId)">{{articleData[0].UpTitle}}</a>
-          </p>
-          <p
-            style="
-              width: 800px;
-              overflow: hidden;
-              white-space: nowrap;
-              text-overflow: ellipsis;
-            "
-          >
-            【下一篇】<a @click="loadFn(articleData[0].DownId)">{{articleData[0].DownTitle}}</a>
-          </p>
+      <div class="listmain1left">
+        <div v-if="articleData.length">
+          <div class="title">{{ articleData[0].title }}</div>
+          <div class="time">
+            <span>时间：{{ articleData[0].addtime }}</span>
+            <span>作者：{{ articleData[0].userName }}</span>
+          </div>
+          <div class="cons" v-html="articleData[0].content"></div>
+          <div class="subTit">
+            <span>来源：山西日报</span>
+            <span>【责任编辑：lcx】</span>
+          </div>
+          <div class="thirdtext2" v-if="articleData.length">
+            <p
+              style="
+                width: 800px;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+              "
+            >
+              【上一篇】<a @click="loadFn(articleData[0].UpId)">{{articleData[0].UpTitle}}</a>
+            </p>
+            <p
+              style="
+                width: 800px;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+              "
+            >
+              【下一篇】<a @click="loadFn(articleData[0].DownId)">{{articleData[0].DownTitle}}</a>
+            </p>
+          </div>
         </div>
       </div>
       <SecondNav></SecondNav>
@@ -135,6 +137,7 @@ export default {
 }
 .listmain1left {
   width: 691px;
+  min-height: 400px;
   float: left;
   font-size: 14px;
 }

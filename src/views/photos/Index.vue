@@ -1,6 +1,6 @@
 <template>
 <div>
-  <IndexLogoHeader/>
+  <IndexLogoHeader type="photos"/>
   <Header :list="mlsxData"/>
   <SwiperBanner></SwiperBanner>
   <!-- 主内容 -->

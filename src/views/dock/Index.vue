@@ -1,6 +1,6 @@
 <template>
 <div>
-  <IndexLogoHeader/>
+  <IndexLogoHeader type="dock"/>
   <Header :list="cydjData"/>
   <SwiperBanner></SwiperBanner>
   <!-- 主内容 -->

@@ -1,6 +1,6 @@
 <template>
 <div>
-  <IndexLogoHeader/>
+  <IndexLogoHeader type="BBS"/>
   <Header :list="whltData"/>
   <SwiperBanner></SwiperBanner>
   <!-- 主内容 -->

@@ -1,6 +1,6 @@
 <template>
 <div>
-  <IndexLogoHeader/>
+  <IndexLogoHeader type="hall"/>
   <Header :list="whhgData"/>
   <SwiperBanner></SwiperBanner>
   <!-- 主内容 -->

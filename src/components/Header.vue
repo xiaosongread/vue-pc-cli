@@ -4,7 +4,7 @@
     <div class="navb1"><center><a href="/index.html">首页</a></center></div>
     <div :class="index === (list.length-1) && type=='index' ? 'navb1 lastNav' : 'navb1'" v-for="(item, index) in list" :key="index">
       <center>
-        <a href="/index.html">{{item.title}}</a>
+        <router-link :to="{path: item.templateAlias, query: {id: item.id }}">{{item.title}}</router-link>
       </center>
     </div>
     <div class="navb1 lastNav" v-if="type!='index'"><center> <a href="https://shop145668320.taobao.com" target="_blank">山西文博馆</a></center></div>

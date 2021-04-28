@@ -1,7 +1,7 @@
 <template>
 <div>
   <IndexLogoHeader type="photos"/>
-  <Header :list="mlsxData"/>
+  <Header :list="menuList"/>
   <SwiperBanner></SwiperBanner>
   <!-- 主内容 -->
   <!-- 图说文博 -->
@@ -59,7 +59,7 @@
 </template>
 
 <script>
-import { channelDataListJson } from '@/utils/api'
+import { channelDataListJson, menuDataList } from '@/utils/api'
 import IndexLogoHeader from '@/components/IndexLogoHeader'
 import Header from '@/components/Header'
 import SwiperBanner from '@/components/SwiperBanner'
@@ -81,6 +81,7 @@ export default {
   },
   data () {
     return {
+      menuList: [],
       mlsxData: [],
       tswb: [],
       tssx: [],
@@ -91,9 +92,16 @@ export default {
   },
   created () {
     _that = this
+    this.menuDataList()
     this.channelDataListJson()
   },
   methods: {
+    async menuDataList() {
+      const data = await menuDataList()
+      this.menuList = data.data.filter((item,index)=>{
+        return item.id === 15
+      })[0].data
+    },
     async channelDataListJson () {
       const data = await channelDataListJson()
       data.data.forEach((item, index)=>{

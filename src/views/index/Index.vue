@@ -1,7 +1,7 @@
 <template>
 <div>
   <IndexLogoHeader/>
-  <Header :list="data" type="index"/>
+  <Header :list="menuList" type="index"/>
   <div class="mbmain">
     <div class="mb1">
       <IndexMb1Left :listData="wczxData"/>
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { channelDataListJson,dataToJsonArticle } from '@/utils/api'
+import { channelDataListJson,dataToJsonArticle, menuDataList } from '@/utils/api'
 import IndexLogoHeader from '@/components/IndexLogoHeader'
 import Header from '@/components/Header'
 import IndexMb1Left from '@/components/IndexMb1Left'
@@ -45,6 +45,7 @@ export default {
   },
   data () {
     return {
+      menuList: [],
       data: [],
       whltData: [],
       wswbData: [],
@@ -60,16 +61,21 @@ export default {
     }
   },
   created () {
-    this.channelDataListJson(),
-    this.zcfgdataToJsonArticle(),
-    this.ywsddataToJsonArticle(),
-    this.ggtzdataToJsonArticle(),
-    this.sjsjdataToJsonArticle(),
-    this.dxaldataToJsonArticle(),
+    this.menuDataList()
+    this.channelDataListJson()
+    this.zcfgdataToJsonArticle()
+    this.ywsddataToJsonArticle()
+    this.ggtzdataToJsonArticle()
+    this.sjsjdataToJsonArticle()
+    this.dxaldataToJsonArticle()
     _that = this
     // this.getDouBanMovieList()
   },
   methods: {
+    async menuDataList() {
+      const data = await menuDataList()
+      this.menuList = data.data
+    },
     async channelDataListJson () {
       const data = await channelDataListJson()
       this.data = data.data
@@ -99,34 +105,23 @@ export default {
     },
     async zcfgdataToJsonArticle () {
       const data = await dataToJsonArticle({categoryId:62})
-      _that.zcfgData=data,
-      console.log('接口数据59', data)
+      _that.zcfgData=data
     },
     async ywsddataToJsonArticle () {
       const data = await dataToJsonArticle({categoryId:59})
-      _that.ywsdData=data,
-      console.log('接口数据59', data)
+      _that.ywsdData=data
     },
     async ggtzdataToJsonArticle () {
       const data = await dataToJsonArticle({categoryId:63})
-      _that.ggtzData=data,
-      console.log('接口数据59', data)
+      _that.ggtzData=data
     },
     async sjsjdataToJsonArticle () {
       const data = await dataToJsonArticle({categoryId:90})
-      _that.sjsjData=data,
-      console.log('接口数据59', data)
+      _that.sjsjData=data
     },
     async dxaldataToJsonArticle () {
       const data = await dataToJsonArticle({categoryId:86})
-      _that.dxalData=data,
-      console.log('接口数据59', data)
-    },
-    durationNotify () {
-      this.$notify.open({
-        content: '10秒后自动关闭！',
-        duration: 1000
-      })
+      _that.dxalData=data
     }
   }
 }

@@ -1,7 +1,7 @@
 <template>
 <div>
   <IndexLogoHeader type="hall"/>
-  <Header :list="whhgData"/>
+  <Header :list="menuList"/>
   <SwiperBanner></SwiperBanner>
   <!-- 主内容 -->
   <div class="secondm">
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { channelDataListJson } from '@/utils/api'
+import { channelDataListJson, menuDataList } from '@/utils/api'
 import IndexLogoHeader from '@/components/IndexLogoHeader'
 import Header from '@/components/Header'
 import SwiperBanner from '@/components/SwiperBanner'
@@ -42,6 +42,7 @@ export default {
   },
   data () {
     return {
+      menuList: [],
       whhgData: [],
       cyyq: [],
       qylj: [],
@@ -52,9 +53,16 @@ export default {
   },
   created () {
     _that = this
+    this.menuDataList()
     this.channelDataListJson()
   },
   methods: {
+    async menuDataList() {
+      const data = await menuDataList()
+      this.menuList = data.data.filter((item,index)=>{
+        return item.id === 17
+      })[0].data
+    },
     async channelDataListJson () {
       const data = await channelDataListJson()
       data.data.forEach((item, index)=>{

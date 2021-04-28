@@ -13,6 +13,8 @@ export const urlMap = {
   secondLeveldata: 'wenbo/channel/secondLeveldata',
   //首页轮播
   pictureCarousel: 'wenbo/channel/pictureCarousel',
+  //一二级导航
+  menuDataList: 'wenbo/channel/menuDataList',
 }
 // 批量增加url前缀
 Object.keys(urlMap).forEach(key => {
@@ -61,4 +63,9 @@ export function secondLeveldata (parm) {
     params: parm || {}
   })
 }
-
+export function menuDataList () {
+  return request({
+    url: urlMap['menuDataList'],
+    method: 'get',
+  })
+}

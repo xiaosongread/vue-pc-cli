@@ -1,7 +1,7 @@
 <template>
 <div>
   <IndexLogoHeader type="article"/>
-  <Header :list="wczxData"/>
+  <Header :list="menuList"/>
   <SwiperBanner></SwiperBanner>
   <div class="secondnav">
     <div class="secondnavimg">
@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { channelDataListJson } from '@/utils/api'
+import { channelDataListJson, menuDataList } from '@/utils/api'
 import IndexLogoHeader from '@/components/IndexLogoHeader'
 import Header from '@/components/Header'
 import SwiperBanner from '@/components/SwiperBanner'
@@ -55,6 +55,7 @@ export default {
   },
   data () {
     return {
+      menuList: [],
       wczxData: [],
       ywsd: [],
       whjj: [],
@@ -65,9 +66,16 @@ export default {
   },
   created () {
     _that = this
+    this.menuDataList()
     this.channelDataListJson()
   },
   methods: {
+    async menuDataList() {
+      const data = await menuDataList()
+      this.menuList = data.data.filter((item,index)=>{
+        return item.id === 13
+      })[0].data
+    },
     async channelDataListJson () {
       const data = await channelDataListJson()
       data.data.forEach((item, index)=>{

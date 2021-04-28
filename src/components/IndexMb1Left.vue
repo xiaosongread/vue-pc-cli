@@ -68,12 +68,7 @@
           </div>
           <div class="mb1left5" v-if="index1 !== 0 && index1 < 5">
             <p>
-              <a
-                :title="item1.title"
-                href="/article/show-5671.html"
-                target="_blank"
-                >{{ item1.title }}</a
-              >
+              <router-link :to="{path: 'detail', query: {id: item1.id }}">{{ item1.title }}</router-link>
             </p>
           </div>
         </div>

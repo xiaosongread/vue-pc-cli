@@ -82,14 +82,15 @@ export default {
   },
   methods: {
     init() {
-      this.secondLeveldata()
+      // this.secondLeveldata()
       this.getarticleData()
     },
     async getarticleData() {
       var id = this.$route.query.id
-      const {data} = await articleData({ id });
+      const {data, channerData} = await articleData({ id });
       console.log('详情的数据', data)
       this.articleData = data
+      this.headerListData = channerData
       this.UpId = data.UpId
     },
     async secondLeveldata () {
@@ -122,9 +123,10 @@ export default {
 }
 .listmain1 {
   width: 1080px;
-  height: 2040px;
+  /* height: 2040px; */
   margin: 0 auto;
   margin-top: 5px;
+  overflow: hidden;
 }
 .headerImg {
   margin-top: 10px;

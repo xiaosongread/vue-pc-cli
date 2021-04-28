@@ -3,7 +3,7 @@
   <div class="secondlefttitle">
     <div class="secondlefttitle1"></div>
     <div class="secondlefttitle2">
-      <a href="/article/60.html"><img src="../assets/SXWB/img/w1.jpg" alt=""></a></div>
+      <a href="/article/60.html"><img :src="require('../assets/SXWB/img/'+titlog+'.jpg')" alt=""></a></div>
   </div>
 
 	<div v-for="(item, index) in listData" :key="index" v-if="index<2">
@@ -22,23 +22,27 @@
 export default {
 	name: 'ArticleLeft',
 	props: {
-    listData: {
-      type: Array,
-      default: []
-    },
-  },
-  data () {
-    return {
-      
-    }
-  },
-  components: { },
-  created () {
+		listData: {
+			type: Array,
+			default: []
+		},
+		titlog: {
+			type: String,
+			default: ''
+		}
+  	},
+	data () {
+		return {
+		
+		}
+	},
+	components: { },
+	created () {
 
-  },
-  methods: {
+	},
+	methods: {
 
-  }
+	}
 }
 </script>
 <style scoped>

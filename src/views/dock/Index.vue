@@ -6,11 +6,11 @@
   <!-- 主内容 -->
   <div class="secondm">
     <div class="secondleft">
-      <ArticleLeft :listData="gxpt"></ArticleLeft>
-      <ArticleLeft :listData="xmtj"></ArticleLeft>
-      <ArticleLeft :listData="xmpg"></ArticleLeft>
-      <ArticleLeft :listData="qyld"></ArticleLeft>
-      <ArticleLeft :listData="dxal"></ArticleLeft>
+      <ArticleLeft :listData="gxpt" titlog="cy1"></ArticleLeft>
+      <ArticleLeft :listData="xmtj" titlog="cy2"></ArticleLeft>
+      <ArticleLeft :listData="xmpg" titlog="cy3"></ArticleLeft>
+      <ArticleLeft :listData="qyld" titlog="cy4"></ArticleLeft>
+      <ArticleLeft :listData="dxal" titlog="cy5"></ArticleLeft>
     </div>
     <div class="secondright">
       <FirstRightNav></FirstRightNav>

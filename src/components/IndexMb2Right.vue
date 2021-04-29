@@ -15,7 +15,7 @@
     <div class="tssxpart1" v-if="item.id===5418" v-for="(item, index) in sjsjData" :key="index">
       <div class="tssxpart1img">
         <a title="朝元窑，为珐华而“生”" href="/videos/show-5418.html" target="_blank">
-          <img src="../assets/SXWB/img/mb.jpg" width="350" height="230"></a></div>
+          <img :src="item.imgUrl" width="350" height="230"></a></div>
       <div class="tssxpart1font">
         <a title="朝元窑，为珐华而“生”" href="/videos/show-5418.html" target="_blank">{{item.title}}</a>
         <p>{{item.zhaiyao}}</p>
@@ -28,7 +28,7 @@
         <div class="main-left-4 ilist">
           <a title="【文博视窗】  山西文化 光影传达" href="/videos/show-5439.html" target="_blank"><span class="abs-bg">
             </span><span class="mb1left4_2_1">{{item.title}}</span>
-            <img src="/upload/202008/31/202008310948505679.jpg">
+            <img :src="item.imgUrl">
           </a>
         </div>
       </div>

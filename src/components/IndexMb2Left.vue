@@ -14,7 +14,7 @@
 					<ul>
 						<li v-for="(item1, index1) in item.content" :key="index1" v-if="index1 < 5 && bannerIndex === index1">
 							<a href="/photos/show-5682.html" target="_blank">
-								<img src="../assets/SXWB/img/mb.jpg" alt="">
+								<img :src="item1.imgUrl" alt="">
 							</a>
 						</li>
 						</ul>
@@ -33,7 +33,7 @@
 				<ul v-if="item.id===87" v-for="(item, index) in listMLSXData" :key="index">
 					<div v-for="(item1, index1) in item.content" :key="index1" v-if="index1<5">
 					<li :class="[index1 === bannerIndex ? 'current' : 'normal']" @mouseover="mouseOver(index1)">
-						<img src="../assets/SXWB/img/mb.jpg" alt=""></li>
+						<img :src="item1.imgUrl" alt=""></li>
 					</div>
 				</ul>
 			</div>

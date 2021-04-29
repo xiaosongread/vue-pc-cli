@@ -5,11 +5,15 @@
         <div class="wrap">
           <div class="swiper-container">
             <div class="swiper-wrapper">
-              <div class="swiper-slide" v-for="(item, index) in ListsData" :key="index">
+              <div
+                class="swiper-slide"
+                v-for="(item, index) in ListsData"
+                :key="index"
+              >
                 <div class="swiper-slide">
                   <img :src="item.imgUrl" />
                   <div class="swiper-tit">
-                    {{item.title}}
+                    {{ item.title }}
                   </div>
                 </div>
               </div>
@@ -63,12 +67,14 @@
               href="/article/show-5685.html"
               target="_blank"
               ><span class="mb1left4_2">{{ item1.title }}</span>
-              <img src="../assets/SXWB/img/mb.jpg" />
+              <img :src="item1.imgUrl" />
             </a>
           </div>
           <div class="mb1left5" v-if="index1 !== 0 && index1 < 5">
             <p>
-              <router-link :to="{path: 'detail', query: {id: item1.id }}">{{ item1.title }}</router-link>
+              <router-link :to="{ path: 'detail', query: { id: item1.id } }">{{
+                item1.title
+              }}</router-link>
             </p>
           </div>
         </div>
@@ -78,12 +84,12 @@
 </template>
 <script>
 import Swiper from "swiper";
-import { pictureCarousel } from '@/utils/api'
+import { pictureCarousel } from "@/utils/api";
 import "../../node_modules/swiper/css/swiper.min.css";
 // import { tab } from "@/utils/util.js";
 // import Swiper from 'swiper/js/swiper.min.js'
 // import 'swiper/css/swiper.min.css'
-let _that
+let _that;
 export default {
   name: "IndexMb1Left",
   props: {
@@ -95,41 +101,39 @@ export default {
   data() {
     return {
       ListsData: [],
-      
     };
   },
   components: {},
   created() {
-    _that = this
+    _that = this;
     this.pictureCarousel(),
-    setTimeout(() => {
-      var mySwiper = new Swiper(".swiper-container", {
-        direction: "horizontal", // 垂直切换选项
-        loop: true, // 循环模式选项
-        speed: 2000,
-        observer: true,
-        observeParents: true,
-        autoplayDisableOnInteraction: false,
-        autoplay: 1500,
-        effect: "fade",
-        // 如果需要分页器
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
-      });
-      // new tab("test1_li_now_", "_", null, "onmouseover");
-      // new tab("test2_li_now_", "_", null, "onmouseover");
-      // new tab("test3_li_now_", "_", null, "onmouseover");
-      // new tab("test4_li_now_", "_", null, "onmouseover");
-      // new tab("test5_li_now_", "_", null, "onmouseover");
-    }, 1000);
+      setTimeout(() => {
+        var mySwiper = new Swiper(".swiper-container", {
+          direction: "horizontal", // 垂直切换选项
+          loop: true, // 循环模式选项
+          speed: 2000,
+          observer: true,
+          observeParents: true,
+          autoplayDisableOnInteraction: false,
+          autoplay: 1500,
+          effect: "fade",
+          // 如果需要分页器
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+        });
+        // new tab("test1_li_now_", "_", null, "onmouseover");
+        // new tab("test2_li_now_", "_", null, "onmouseover");
+        // new tab("test3_li_now_", "_", null, "onmouseover");
+        // new tab("test4_li_now_", "_", null, "onmouseover");
+        // new tab("test5_li_now_", "_", null, "onmouseover");
+      }, 1000);
   },
   methods: {
-     async pictureCarousel () {
-      const data = await pictureCarousel({id:0})
-      _that.ListsData=data.data,
-      console.log('接口数据59', data)
+    async pictureCarousel() {
+      const data = await pictureCarousel({ id: 0 });
+      (_that.ListsData = data.data), console.log("接口数据59", data);
     },
   },
 };

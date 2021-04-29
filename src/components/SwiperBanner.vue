@@ -1,10 +1,10 @@
 <template>
 <div class="wrap">
   <div class="swiper-container">
-    <div class="swiper-wrapper" v-for="(item, index) in ListsData" :key="index">
-        <div class="swiper-slide">
+    <div class="swiper-wrapper" >
+        <div class="swiper-slide" v-for="(item, index) in ListsData" :key="index">
           <div class="swiper-slide">
-            <img src="../assets/SXWB/img/mb.jpg">
+            <img :src="item.imgUrl">
             <div class="swiper-tit">{{item.title}}</div>
           </div>
         </div>
@@ -21,6 +21,12 @@ import "../../node_modules/swiper/css/swiper.min.css";
 let _that
 export default {
   name: 'SwiperBanner',
+  props: {
+    id: {
+      type: String,
+      default: ''
+    },
+  },
   data () {
     return {
       ListsData: [],
@@ -50,7 +56,7 @@ export default {
   },
   methods: {
 async pictureCarousel () {
-      const data = await pictureCarousel({id:1})
+      const data = await pictureCarousel({id:_that.id})
       _that.ListsData=data.data,
       console.log('接口数据59', data)
     },

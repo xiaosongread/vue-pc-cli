@@ -3,11 +3,11 @@
     <div class="mb1left1">
       <div id="header">
         <div class="wrap">
-          <div class="swiper-container" >
-            <div class="swiper-wrapper" v-for="(item, index) in ListsData" :key="index">
-              <div class="swiper-slide" >
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide" v-for="(item, index) in ListsData" :key="index">
                 <div class="swiper-slide">
-                  <img src="../assets/SXWB/img/mb.jpg" />
+                  <img :src="item.imgUrl" />
                   <div class="swiper-tit">
                     {{item.title}}
                   </div>
@@ -95,6 +95,7 @@ export default {
   data() {
     return {
       ListsData: [],
+      
     };
   },
   components: {},

@@ -2,7 +2,7 @@
 <div>
   <IndexLogoHeader type="hall"/>
   <Header :list="menuList"/>
-  <SwiperBanner></SwiperBanner>
+  <SwiperBanner :id="id"></SwiperBanner>
   <!-- 主内容 -->
   <div class="secondm">
     <div class="secondleft">
@@ -49,6 +49,7 @@ export default {
       cpzs: [],
       ysdm: [],
       wh: [],
+      id:"17"
     }
   },
   created () {

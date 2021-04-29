@@ -1,7 +1,7 @@
 <template>
 <div class="nav">
   <div class="nav1">
-    <div class="navb1"><center><a href="/index.html">首页</a></center></div>
+    <div class="navb1"><center><router-link :to="{path: 'index'}">首页</router-link></center></div>
     <div :class="index === (list.length-1) && type=='index' ? 'navb1 lastNav' : 'navb1'" v-for="(item, index) in list" :key="index">
       <center>
         <router-link :to="{path: item.templateAlias, query: {id: item.id }}">{{item.title}}</router-link>

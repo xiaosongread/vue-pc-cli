@@ -23,7 +23,7 @@
 						<div class="mb2le3_211">
 							<ul>
 								<li>
-									<a class="danhang" title="" href="/dock/show-549.html" target="_blank">{{item1.title}}</a>
+									<router-link :to="{path: 'detail', query: {id: item1.id }}">{{item1.title}}</router-link>
 								</li>
 							</ul>
 						</div>
@@ -35,12 +35,13 @@
 				</div>
 				<div class="mb2left3_22">
 					<div class="main-left1 ilist">
-						<a title="" href="/dock/show-463.html" target="_blank"><span
+						<router-link :to="{path: 'detail', query: {id: (listCYDJData[0]).content[0].id }}">
+								<span
 								class="mb1left4_2">{{(listCYDJData[0]).content[0].title}}</span> <span class="txt2">
 								<p></p>
 							</span>
 							<img src="../assets/SXWB/img/mb.jpg">
-						</a>
+						</router-link>
 					</div>
 				</div>
 			</div>

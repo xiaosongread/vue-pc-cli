@@ -38,13 +38,13 @@
           <div class="mbr3left1">
             <div class="redb3">
               <a
-                href="/article/60.html"
+                href=""
                 target="_blank"
                 v-if="item.id === 60"
                 >{{ item.title }}</a
               ><span id="red3"> Focus</span>
               <a
-                href="/article/61.html"
+                href=""
                 target="_blank"
                 v-if="item.id === 61"
                 >{{ item.title }}</a
@@ -58,13 +58,10 @@
           v-if="index1 === 0 || index1 !== 0 || index1 < 5"
         >
           <div class="main-left ilist" v-if="index1 === 0">
-            <a
-              :title="item1.title"
-              href="/article/show-5685.html"
-              target="_blank"
-              ><span class="mb1left4_2">{{ item1.title }}</span>
+            <router-link :to="{path: 'detail', query: {id: item1.id }}">
+              <span class="mb1left4_2">{{ item1.title }}</span>
               <img src="../assets/SXWB/img/mb.jpg" />
-            </a>
+            </router-link>
           </div>
           <div class="mb1left5" v-if="index1 !== 0 && index1 < 5">
             <p>

@@ -20,10 +20,10 @@
   <!-- 主内容 -->
   <div class="secondm">
     <div class="secondleft">
-      <ArticleLeft :listData="whjj" :titlog="w1"></ArticleLeft>
-      <ArticleLeft :listData="cyzx" :titlog="w2"></ArticleLeft>
-      <ArticleLeft :listData="hyqy" :titlog="w3"></ArticleLeft>
-      <ArticleLeft :listData="dsdt" :titlog="w4"></ArticleLeft>
+      <ArticleLeft :listData="whjj" titlog="w1"></ArticleLeft>
+      <ArticleLeft :listData="cyzx" titlog="w2"></ArticleLeft>
+      <ArticleLeft :listData="hyqy" titlog="w3"></ArticleLeft>
+      <ArticleLeft :listData="dsdt" titlog="w4"></ArticleLeft>
     </div>
     <div class="secondright">
       <FirstRightNav></FirstRightNav>

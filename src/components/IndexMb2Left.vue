@@ -53,7 +53,7 @@
 		<div class="mb2left3text">
 			<div v-for="(item1, index1) in item.content" :key="index1" v-if="index1 === 0">
 				<div class="mb1right2">
-					<a :title="item1.title" href="/photoss/show-5609.html" target="_blank">{{item1.title}}</a></div>
+					<router-link :to="{path: 'detail', query: {id: item1.id }}">{{item1.title}}</router-link></div>
 				<div class="mb1right3-1">
 					<p>{{item1.zhaiyao}}</p>
 				</div>
@@ -65,7 +65,7 @@
 				<ul>
 					<li v-for="(item1, index1) in item.content" :key="index1" v-if="index1 > 0 && index1 < 3">
 						<img src="../assets/SXWB/img/dian.jpg">
-						<a :title="item1.title" href="/photoss/show-5610.html" target="_blank">{{item1.title}}</a>
+						<router-link :to="{path: 'detail', query: {id: item1.id }}">{{item1.title}}</router-link>
 					</li>
 				</ul>
 				<p></p>
@@ -91,7 +91,9 @@
 		</div>
 		<div class="tablist" v-for="(item, index) in listWHHGData" :key="index" v-if="index === whhgIndex">
 			<div class="tablistItem" v-for="(item1, index1) in item.content" :key="index1" v-if="index1 < 4">
-				<div class="tablistItemTit">{{item1.title}}</div>
+				<div class="tablistItemTit">
+					<router-link :to="{path: 'detail', query: {id: item1.id }}">{{item1.title}}</router-link>
+				</div>
 				<div class="tablistItemdes">{{item1.zhaiyao}}</div>
 			</div>
 		</div>

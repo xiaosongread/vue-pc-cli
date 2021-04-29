@@ -42,13 +42,13 @@
           <div class="mbr3left1">
             <div class="redb3">
               <a
-                href="/article/60.html"
+                href=""
                 target="_blank"
                 v-if="item.id === 60"
                 >{{ item.title }}</a
               ><span id="red3"> Focus</span>
               <a
-                href="/article/61.html"
+                href=""
                 target="_blank"
                 v-if="item.id === 61"
                 >{{ item.title }}</a

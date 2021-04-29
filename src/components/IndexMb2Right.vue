@@ -28,7 +28,7 @@
         <div class="main-left-4 ilist">
           <a title="【文博视窗】  山西文化 光影传达" href="/videos/show-5439.html" target="_blank"><span class="abs-bg">
             </span><span class="mb1left4_2_1">{{item.title}}</span>
-            <img :src="item.imgUrl">
+            <img src="/upload/202008/31/202008310948505679.jpg">
           </a>
         </div>
       </div>

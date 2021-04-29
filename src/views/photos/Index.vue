@@ -2,7 +2,7 @@
 <div>
   <IndexLogoHeader type="photos"/>
   <Header :list="menuList"/>
-  <SwiperBanner></SwiperBanner>
+  <SwiperBanner :id="id"></SwiperBanner>
   <!-- 主内容 -->
   <!-- 图说文博 -->
   <div class="photoBox">
@@ -87,7 +87,8 @@ export default {
       tssx: [],
       tswh: [],
       bysj: [],
-      sjsj: []
+      sjsj: [],
+      id:"15"
     }
   },
   created () {

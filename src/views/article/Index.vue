@@ -2,7 +2,7 @@
 <div>
   <IndexLogoHeader type="article"/>
   <Header :list="menuList"/>
-  <SwiperBanner></SwiperBanner>
+  <SwiperBanner :id="id"></SwiperBanner>
   <div class="secondnav">
     <div class="secondnavimg">
       <a href="#">
@@ -20,10 +20,10 @@
   <!-- 主内容 -->
   <div class="secondm">
     <div class="secondleft">
-      <ArticleLeft :listData="whjj" titlog="w1"></ArticleLeft>
-      <ArticleLeft :listData="cyzx" titlog="w2"></ArticleLeft>
-      <ArticleLeft :listData="hyqy" titlog="w3"></ArticleLeft>
-      <ArticleLeft :listData="dsdt" titlog="w4"></ArticleLeft>
+      <ArticleLeft :listData="whjj" :titlog="w1"></ArticleLeft>
+      <ArticleLeft :listData="cyzx" :titlog="w2"></ArticleLeft>
+      <ArticleLeft :listData="hyqy" :titlog="w3"></ArticleLeft>
+      <ArticleLeft :listData="dsdt" :titlog="w4"></ArticleLeft>
     </div>
     <div class="secondright">
       <FirstRightNav></FirstRightNav>
@@ -50,7 +50,6 @@ export default {
     SwiperBanner,
     ArticleLeft,
     FirstRightNav,
-
     Footer
   },
   data () {
@@ -62,6 +61,7 @@ export default {
       cyzx: [],
       hyqy: [],
       dsdt: [],
+      id:"13"
     }
   },
   created () {

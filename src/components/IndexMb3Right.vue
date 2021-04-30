@@ -23,7 +23,7 @@
       <div class="garyb2"></div>
     </div>
     <div v-for="(item, index) in dxalData" :key="index" v-if="index<2">
-      <div class="mb1right2-3">
+      <div class="mb1right2-3 danhang">
         <a
           title="晋阳湖文旅项目：水中曼舞 绿中嬗变"
           href="/dock/show-4318.html"
@@ -31,7 +31,7 @@
           >{{item.title}}</a
         >
       </div>
-      <div class="mb1right3">
+      <div class="mb1right3 duohan">
         <p>
           {{item.zhaiyao}}
         </p>
@@ -190,4 +190,15 @@ export default {
   width: 353px;
   float: left;
 }
+.danhang{
+		overflow: hidden;
+		text-overflow:ellipsis;
+		white-space: nowrap;
+	}
+	.mb2le3_212 p{
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;/*显示几行*/
+		overflow: hidden;
+	}
 </style>

@@ -26,8 +26,8 @@
     <div class="mb2right2_3">
       <div class="mb2left4_23" v-for="(item, index) in sjsjData" :key="index" v-if="index===0 || index<2">
         <div class="main-left-4 ilist">
-          <a title="【文博视窗】  山西文化 光影传达" href="/videos/show-5439.html" target="_blank"><span class="abs-bg">
-            </span><span class="mb1left4_2_1">{{item.title}}</span>
+          <a title="【文博视窗】  山西文化 光影传达" href="/videos/show-5439.html" target="_blank">
+		  <span class="mb1left4_2_1">{{item.title}}</span>
             <img :src="item.imgUrl">
           </a>
         </div>

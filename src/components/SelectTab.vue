@@ -20,9 +20,9 @@
 			<div class="mb2left3_2" v-for="(item, index) in listCYDJData" :key="index" v-if="index === mouseIndex">
 				<div class="mb2left3_21">
 					<div v-for="(item1, index1) in item.content" :key="index1" v-if="index1 < 2">
-						<div class="mb2le3_211">
+						<div class="mb2le3_211 danhang">
 							<ul>
-								<li>
+								<li  class="danhang" width="300px" >
 									<router-link :to="{path: 'detail', query: {id: item1.id }}">{{item1.title}}</router-link>
 								</li>
 							</ul>
@@ -37,10 +37,8 @@
 					<div class="main-left1 ilist">
 						<router-link :to="{path: 'detail', query: {id: (listCYDJData[0]).content[0].id }}">
 								<span
-								class="mb1left4_2">{{(listCYDJData[0]).content[0].title}}</span> <span class="txt2">
-								<p></p>
-							</span>
-							<img src="../assets/SXWB/img/mb.jpg">
+								class="mb1left4_2 danhang" >{{(listCYDJData[0]).content[0].title}}</span>
+							<img :src="(listCYDJData[0]).content[0].imgUrl" />
 						</router-link>
 					</div>
 				</div>
@@ -271,7 +269,7 @@ export default {
 		padding: 0 5px;
 		line-height: 35px;
 		height: 33px;
-		width: 326px;
+		width: 295px;
 		float: left;
 		color: #FFFFFF;
 		font-size: 16px;
@@ -320,7 +318,7 @@ export default {
 	.mb2le3_211 {
 		margin-top: 23px;
 		height: 27px;
-		width: 330px;
+		width: 300px;
 		float: left;
 		font-size: 17px;
 		font-weight: bold;

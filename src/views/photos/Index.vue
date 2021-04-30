@@ -19,11 +19,9 @@
     <PhotoTit type="sjsj"></PhotoTit>
     <div class="mlsxpart3">
       <div class="mlsxpart2-video">
-        <div class="vid">
           <a :title="sjsj[0].title" href="/videos/show-5417.html" target="_blank">
-            <img src="../../assets/SXWB/img/mb.jpg" width="700" height="420">
+            <img :src="sjsj[0].imgUrl" width="700" height="420">
           </a>
-        </div>
       </div>
       <div class="mlsxpart2-font">
         <div v-for="(item, index) in sjsj" :key="index" v-if="index !== 1 && index < 4">
@@ -86,6 +84,7 @@ export default {
       tswb: [],
       tssx: [],
       tswh: [],
+      wszg: [],
       bysj: [],
       sjsj: [],
       id:"15"

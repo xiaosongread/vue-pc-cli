@@ -158,6 +158,7 @@ export default {
 		height: 1245px;
 		width: 691px;
 		float: left;
+		margin-top: 4px;
 	}
 
 	.mb2left1 {

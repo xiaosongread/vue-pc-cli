@@ -11,7 +11,7 @@
 			<a :title="item.title" href="/article/show-5548.html" target="_blank">{{item.title}}</a></div>
 		<div class="main-left1 ilist">
 			<a :title="item.title" href="/article/show-5548.html" target="_blank">
-				<img src="../assets/SXWB/img/mb.jpg">
+				<img :src="item.imgUrl"/>
 			</a>
 		</div>
 		<div class="secfont2font1">{{item.zhaiyao}}</div>

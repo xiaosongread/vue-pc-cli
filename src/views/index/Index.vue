@@ -133,7 +133,7 @@ export default {
   margin: 0px auto;
 }
 .mb1 {
-  margin-top: 20px;
+  margin-top: 30px;
   width: 1080px;
 }
 .mbimg1 {

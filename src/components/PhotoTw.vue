@@ -4,7 +4,7 @@
 		<div class="tssxpart1" v-for="(item, index) in listData" :key="index" v-if="index<3">
 			<div class="tssxpart1img">
 				<a :title="item.title" href="/photos/show-4805.html" target="_blank">
-					<img src="../assets/SXWB/img/mb.jpg" width="340" height="230">
+					<img :src="item.imgUrl" width="340" height="230">
 				</a>
 			</div>
 			<div class="tssxpart1font">

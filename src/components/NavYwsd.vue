@@ -10,10 +10,10 @@
   </div>
 
   <div v-for="(item, index) in ywsdData" :key="index" v-if="index===0 || index<2">
-    <div class="mb1right2-1">
+    <div class="mb1right2-1 danhang">
       <a title="山西：文化旅游强势推进" href="/article/show-5601.html" target="_blank">{{item.title}}</a>
     </div>
-    <div class="mb1right3">
+    <div class="mb1right3 duohan">
       <p>{{item.zhaiyao}}</p>
     </div>
     <div class="space1">
@@ -115,7 +115,7 @@ a:active{
     margin-left: 34px;
 }
 .mb1right1 {
-    margin-top: 6px;
+    margin-top: 8px;
     height: 40px;
     width: 350px;
     float: left;
@@ -221,4 +221,14 @@ a:active{
 	float:left;
 	padding-left:3px;
 }
+.danhang{
+		overflow: hidden;
+		text-overflow:ellipsis;
+		white-space: nowrap;
+	}
+	.duohan{
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 3;/*显示几行*/
+	}
 </style>

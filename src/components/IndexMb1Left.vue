@@ -297,10 +297,8 @@ export default {
   background: rgba(0, 0, 0, 0.6);
 }
 .mb1left5 {
-  /* padding-top:10px;
+  padding-top:6px;
 	padding-left:5px;
-	margin-top:5px;
-	height:105px; */
   width: 326px;
   float: left;
   font-size: 15px;

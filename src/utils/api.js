@@ -49,7 +49,7 @@ export function pictureCarousel (parm) {
     params: parm || {}
   })
 }
-export function getDouBanMovieList (parm) {
+export function dataToJsonArticlePage (parm) {
   return request({
     url: urlMap['dataToJsonArticlePage'],
     method: 'get',

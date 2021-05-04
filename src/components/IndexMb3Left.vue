@@ -1,8 +1,8 @@
 <template>
 <div class="mb3left">
-	<SelectTab :listCYDJData = 'listCYDJData'></SelectTab>
-	<SelectTab :listCYDJData = 'listWSWBData'></SelectTab>
-	<SelectTab :listCYDJData = 'listWHLTData'></SelectTab>
+	<SelectTab :listCYDJData = 'listCYDJData' id="18" titlog="s4" paths="dock"></SelectTab>
+	<SelectTab :listCYDJData = 'listWSWBData' id="19" titlog="s5" paths="wenbo"></SelectTab>
+	<SelectTab :listCYDJData = 'listWHLTData' id="20" titlog="s6" paths="bbs"></SelectTab>
 </div>
 </template>
 <script>

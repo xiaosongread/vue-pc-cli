@@ -12,18 +12,19 @@
     <div v-for="(item, index) in ywsd" :key="index" v-if="index<3">
       <div class="secondli1"></div>
       <div class="secondli2">
-        <a :title="item.title" href="/article/show-5487.html"
-        target="_blank">{{item.title}}</a>
+        <router-link :to="{ path: 'detail', query: { id: item.id } }">{{
+          item.title
+        }}</router-link>
       </div>
     </div>
   </div>
   <!-- 主内容 -->
   <div class="secondm">
     <div class="secondleft">
-      <ArticleLeft :listData="whjj" titlog="w1"></ArticleLeft>
-      <ArticleLeft :listData="cyzx" titlog="w2"></ArticleLeft>
-      <ArticleLeft :listData="hyqy" titlog="w3"></ArticleLeft>
-      <ArticleLeft :listData="dsdt" titlog="w4"></ArticleLeft>
+      <ArticleLeft :listData="whjj" id="60" titlog="w1"></ArticleLeft>
+      <ArticleLeft :listData="cyzx" id="61" titlog="w2"></ArticleLeft>
+      <ArticleLeft :listData="hyqy" id="77" titlog="w3"></ArticleLeft>
+      <ArticleLeft :listData="dsdt" id="78" titlog="w4"></ArticleLeft>
     </div>
     <div class="secondright">
       <FirstRightNav></FirstRightNav>
@@ -188,4 +189,15 @@ export default {
 	float:left;
 	margin-left:34px;
 }
+.danhang{
+		overflow: hidden;
+		text-overflow:ellipsis;
+		white-space: nowrap;
+	}
+	.mb2le3_212 p{
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;/*显示几行*/
+		overflow: hidden;
+	}
 </style>

@@ -91,10 +91,10 @@
 		</div>
 		<div class="tablist" v-for="(item, index) in listWHHGData" :key="index" v-if="index === whhgIndex">
 			<div class="tablistItem" v-for="(item1, index1) in item.content" :key="index1" v-if="index1 < 4">
-				<div class="tablistItemTit">
+				<div class="tablistItemTit danghan">
 					<router-link :to="{path: 'detail', query: {id: item1.id }}">{{item1.title}}</router-link>
 				</div>
-				<div class="tablistItemdes">{{item1.zhaiyao}}</div>
+				<div class="tablistItemdes duohan">{{item1.zhaiyao}}</div>
 			</div>
 		</div>
 	</div>
@@ -266,7 +266,9 @@ export default {
 		bottom: 8px;
 		color: #FFF;
 	}
-
+	#ifocus_tx li {
+		font-weight:bold;
+	}
 	#ifocus_tx .normal {
 		display: none;
 	}
@@ -759,5 +761,16 @@ export default {
 		font-size: 15px;
 		color: #707070;
 		line-height: 31px;
+	}
+	.danghan{
+		overflow: hidden;
+		text-overflow:ellipsis;
+		white-space: nowrap;
+	}
+	.duohan{
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;/*显示几行*/
+		overflow: hidden;
 	}
 </style>

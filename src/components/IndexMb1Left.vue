@@ -41,18 +41,14 @@
           <!--产业咨询-->
           <div class="mbr3left1">
             <div class="redb3">
-              <a
-                href=""
-                target="_blank"
-                v-if="item.id === 60"
-                >{{ item.title }}</a
-              ><span id="red3"> Focus</span>
-              <a
-                href=""
-                target="_blank"
-                v-if="item.id === 61"
-                >{{ item.title }}</a
-              ><span id="red3"> Information</span>
+              <div v-if="item.id === 60">
+                <a href="" target="_blank">{{ item.title }}</a
+                ><span id="red3">Focus </span>
+              </div>
+              <div v-if="item.id === 61">
+                <a href="" target="_blank">{{ item.title }}</a
+                ><span id="red3">Information </span>
+              </div>
             </div>
           </div>
         </div>
@@ -297,8 +293,8 @@ export default {
   background: rgba(0, 0, 0, 0.6);
 }
 .mb1left5 {
-  padding-top:6px;
-	padding-left:5px;
+  padding-top: 6px;
+  padding-left: 5px;
   width: 326px;
   float: left;
   font-size: 15px;

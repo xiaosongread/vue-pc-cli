@@ -6,10 +6,10 @@
   <!-- 主内容 -->
   <div class="secondm">
     <div class="secondleft">
-      <ArticleLeft :listData="whrp" titlog="whlt1"></ArticleLeft>
-      <ArticleLeft :listData="xrxz" titlog="whlt2"></ArticleLeft>
-      <ArticleLeft :listData="jyxc" titlog="whlt3"></ArticleLeft>
-      <ArticleLeft :listData="hdjl" titlog="whlt4"></ArticleLeft>
+      <ArticleLeft :listData="whrp" id="82" titlog="whlt1"></ArticleLeft>
+      <ArticleLeft :listData="xrxz" id="83" titlog="whlt2"></ArticleLeft>
+      <ArticleLeft :listData="jyxc" id="84" titlog="whlt3"></ArticleLeft>
+      <ArticleLeft :listData="hdjl" id="85" titlog="whlt4"></ArticleLeft>
     </div>
     <div class="secondright">
       <FirstRightNav></FirstRightNav>

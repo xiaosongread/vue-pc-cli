@@ -21,12 +21,10 @@
               text-overflow: ellipsis;
             "
           >
-            <img src="../assets/SXWB//img/dian.jpg" />&nbsp;<a
-              title=""
-              href="/article/show-5678.html"
-              target="_blank"
-              >{{ item.title }}</a
-            >
+            <img src="../assets/SXWB//img/dian.jpg" />&nbsp;
+            <router-link :to="{ path: 'detail', query: { id: item.id } }">{{
+              item.title
+            }}</router-link>
           </p>
         </li>
       </ul>
@@ -115,13 +113,10 @@
         <div class="sbox2_11">
           <ul>
             <li>
-              <span id="sbox2_11font">热评：</span
-              ><a
-                title="“平遥之夜”点亮首届平遥国际电影展"
-                href="/article/show-2397.html"
-                target="_blank"
-                >{{ item.title }}</a
-              >
+              <span id="sbox2_11font">热评：</span>
+              <router-link :to="{ path: 'detail', query: { id: item.id } }">{{
+                item.title
+              }}</router-link>
             </li>
           </ul>
         </div>

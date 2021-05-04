@@ -2,7 +2,7 @@
 <div>
   <IndexLogoHeader type="dock"/>
   <Header :list="menuList"/>
-  <SwiperBanner :id="id"></SwiperBanner>
+  <SwiperBanner :id="18"></SwiperBanner>
   <!-- 主内容 -->
   <div class="secondm">
     <div class="secondleft">
@@ -27,7 +27,6 @@ import Header from '@/components/Header'
 import SwiperBanner from '@/components/SwiperBanner'
 import ArticleLeft from '@/components/ArticleLeft'
 import FirstRightNav from '@/components/FirstRightNav'
-
 import Footer from '@/components/Footer'
 let _that
 export default {
@@ -49,7 +48,6 @@ export default {
       xmpg: [],
       xmtj: [],
       gxpt: [],
-      id:"18"
     }
   },
   created () {

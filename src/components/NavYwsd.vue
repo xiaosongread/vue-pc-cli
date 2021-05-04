@@ -11,7 +11,9 @@
 
   <div v-for="(item, index) in ywsdData" :key="index" v-if="index===0 || index<2">
     <div class="mb1right2-1 danhang">
-      <a title="山西：文化旅游强势推进" href="/article/show-5601.html" target="_blank">{{item.title}}</a>
+      <router-link :to="{ path: 'detail', query: { id: item.id } }">{{
+                item.title
+              }}</router-link>
     </div>
     <div class="mb1right3 duohan">
       <p>{{item.zhaiyao}}</p>
@@ -36,8 +38,11 @@
     <ul v-for="(item, index) in zcfgData" :key="index" v-if="index===0 || index<4">
       <li>
         <p style="width: 335px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"><img
-            src="../assets/SXWB/img/dian.jpg">&nbsp;<a title="国务院办公厅关于加强石窟寺保护利用工作的指导意见" href="/article/show-5678.html"
-            target="_blank">{{item.title}}</a></p>
+            src="../assets/SXWB/img/dian.jpg">&nbsp;
+            <router-link :to="{ path: 'detail', query: { id: item.id } }">{{
+                item.title
+              }}</router-link>
+            </p>
       </li>
     </ul>
   </div>
@@ -52,8 +57,10 @@
     <ul v-for="(item, index) in ggtzData" :key="index" v-if="index===0 || index<4">
       <li>
         <p style="width: 335px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"><img
-            src="../assets/SXWB/img/dian.jpg">&nbsp;<a title="关于开展2021年度国家社会科学基金艺术学项目申报工作和2021年度国家社会科学基金艺术学重大项目招标公告的通知"
-            href="/article/show-5666.html" target="_blank">{{item.title}}</a>
+            src="../assets/SXWB/img/dian.jpg">&nbsp;
+            <router-link :to="{ path: 'detail', query: { id: item.id } }">{{
+                item.title
+              }}</router-link>
         </p>
       </li>
     </ul>

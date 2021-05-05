@@ -6,6 +6,12 @@
     <img src="../../assets/SXWB/img/listad1.jpg" class="headerImg">
     <div class="listmain1left">
       <SecondItem :list="secondListData"></SecondItem>
+      <pagination :records="records" 
+                  :per-page="perPage" 
+                  @paginate="clickPage" 
+                  v-model="page" 
+                  :options="options">
+      </pagination>
     </div>
     <SecondNav></SecondNav>
   </div>
@@ -33,8 +39,17 @@ export default {
   },
   data () {
     return {
+      page: 1,	//默认第一页
+      perPage:10,//每页多少条
+      pageNo:1,//当前页
+      records: 0,//总数
       secondListData: [],
-      headerListData: []
+      headerListData: [],
+      options: {
+        chunk: 10,
+        edgeNavigation: true,
+        theme: 'bootstrap4'
+      }
     }
   },
   created () {
@@ -42,13 +57,18 @@ export default {
     this.secondLeveldata()
   },
   methods: {
+    clickPage() {
+      this.dataToJsonArticlePage()
+    },
     async dataToJsonArticlePage () {
       var id = this.$route.query.id
       const data = await dataToJsonArticlePage({
         categoryId: id,
-        page: 1,
-        limit: 10
+        page: this.pageNo,
+        limit: this.perPage
       })
+      this.records = data.total
+      this.pageNo = this.pageNo + 1
       this.secondListData = data.data
     },
     async secondLeveldata () {
@@ -79,5 +99,23 @@ export default {
 .listmain1left {
     width: 691px;
     float: left;
+}
+
+</style>
+<style>
+.pagination {
+    font-size: 16px;
+}
+.VuePagination {
+  margin-top: 15px;
+}
+.VuePagination__count{
+  display: none;
+}
+.pagination a {
+  color: #000;
+}
+.pagination a.page-link.active{
+  color: rgb(133, 133, 133);
 }
 </style>

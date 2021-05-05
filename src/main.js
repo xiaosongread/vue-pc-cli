@@ -7,6 +7,8 @@ import store from './store'
 import '@/utils/request'
 import VueBlu from 'vue-blu'
 import 'vue-blu/dist/css/vue-blu.min.css'
+import Pagination from 'vue-pagination-2'
+Vue.component('pagination', Pagination)
 
 // import { Message } from 'element-ui'
 // Vue.prototype.$message = Message

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="overflow: hidden">
     <div class="listItem" v-for="(item, index) in list" :key="index">
       <div class="listdet1">
         <div class="listdet1-11">

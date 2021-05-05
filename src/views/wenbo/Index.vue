@@ -1,15 +1,15 @@
 <template>
 <div>
   <LogoHeader  type="wenbo"/>
-  <Header :list="menuList"/>
+  <Header :list="menuList" type="wenbo"/>
   <SwiperBanner :id="id"></SwiperBanner>
   <!-- 主内容 -->
   <div class="secondm">
     <div class="secondleft">
-      <ArticleLeft :listData="dyjwbh" titlog="ws1"></ArticleLeft>
-      <ArticleLeft :listData="drjwbh" titlog="ws2"></ArticleLeft>
-      <ArticleLeft :listData="dsjwbh" titlog="ws4"></ArticleLeft>
-      <ArticleLeft :listData="zwwb" titlog="ws3"></ArticleLeft>
+      <ArticleLeft :listData="dyjwbh" id="79"  type="wenbo" titlog="ws1"></ArticleLeft>
+      <ArticleLeft :listData="drjwbh" id="80"  type="wenbo" titlog="ws2"></ArticleLeft>
+      <ArticleLeft :listData="dsjwbh" id="150"  type="wenbo" titlog="ws4"></ArticleLeft>
+      <ArticleLeft :listData="zwwb" id="81"  type="wenbo" titlog="ws3"></ArticleLeft>
     </div>
     <div class="secondright">
       <FirstRightNav></FirstRightNav>

@@ -2,8 +2,10 @@
   <div class="mb2right">
     <div class="mb2right1">
       <div class="redb2">
-        <a href="/videos/90.html" target="_blank"> 视觉三晋</a
-        ><span id="redb2"> Video</span>
+        <router-link :to="{ path: 'photos' , query: { } }">
+          视觉三晋
+        </router-link>
+        <span id="redb2"> Video</span>
       </div>
       <div class="garyb2"></div>
     </div>
@@ -17,13 +19,10 @@
         :key="index"
       >
         <div class="tssxpart1img">
-          <a
-            title="朝元窑，为珐华而“生”"
-            href="/videos/show-5418.html"
-            target="_blank"
-          >
-            <img :src="item.imgUrl" class="tssxpart1img1"
-          /></a>
+          <router-link :to="{ path: 'detail' , query: {id : item.id } }">
+          <img :src="item.imgUrl" class="tssxpart1img1"
+          />
+        </router-link>
         </div>
         <div class="tssxpart1font">
           <router-link class="tssxpart1fonttitle" :to="{ path: 'detail', query: { id: item.id } }">{{
@@ -41,71 +40,69 @@
           v-if="index === 0 || index < 2"
         >
           <div class="main-left-4 ilist">
-            <a
-              title="【文博视窗】  山西文化 光影传达"
-              href="/videos/show-5439.html"
-              target="_blank"
-            >
+            <router-link :to="{ path: 'detail' , query: {id:item.id } }">
               <span class="mb1left4_2_1">{{ item.title }}</span>
               <img :src="item.imgUrl" />
-            </a>
+            </router-link>
           </div>
         </div>
       </div>
     </div>
     <div class="mb2right1">
       <div class="redb2">
-        <a href="/photoss/89.html " target="_blank"> 非遗大展</a
-        ><span id="redb2"> Video</span>
+        <router-link :to="{ path: 'photos' , query: { } }">
+          非遗大展
+        </router-link>
+        <span id="redb2"> Video</span>
       </div>
       <div class="garyb2"></div>
     </div>
     <!--九宫格-->
     <div class="mb2right3">
       <div class="mb9-1">
-        <a href="/photoss/92.html" target="_blank">
+        <router-link :to="{ path: 'photos' , query: { } }">
           <img src="../assets/SXWB/img/box1.jpg"
-        /></a>
+        /></router-link>
       </div>
       <div class="mb9">
-        <a href="/photoss/93.html" target="_blank">
+        <router-link :to="{ path: 'photos' , query: { } }">
           <img src="../assets/SXWB/img/box2.jpg"
-        /></a>
+        /></router-link>
       </div>
       <div class="mb9">
-        <a href="/photoss/94.html" target="_blank">
+        <router-link :to="{ path: 'photos' , query: { } }">
           <img src="../assets/SXWB/img/box3.jpg"
-        /></a>
+        /></router-link>
       </div>
       <div class="mb9-1">
-        <a href="/photoss/95.html" target="_blank">
+        <router-link :to="{ path: 'photos' , query: { } }">
           <img src="../assets/SXWB/img/box4.jpg"
-        /></a>
+        /></router-link>
       </div>
       <div class="mb9">
-        <a href="/photoss/96.html" target="_blank">
+        <router-link :to="{ path: 'photos' , query: { } }">
           <img src="../assets/SXWB/img/box5.jpg"
-        /></a>
+        /></router-link>
       </div>
       <div class="mb9">
-        <a href="/photoss/97.html" target="_blank">
+        <router-link :to="{ path: 'photos' , query: { } }">
           <img src="../assets/SXWB/img/box6.jpg"
-        /></a>
+        /></router-link>
       </div>
       <div class="mb9-1">
-        <a href="/photoss/98.html" target="_blank">
+<router-link :to="{ path: 'photos' , query: { } }">
           <img src="../assets/SXWB/img/box7.jpg"
-        /></a>
+        /></router-link>
       </div>
       <div class="mb9">
-        <a href="/photoss/99.html" target="_blank">
+        <router-link :to="{ path: 'photos' , query: { } }">
           <img src="../assets/SXWB/img/box8.jpg"
-        /></a>
+        /></router-link>
       </div>
       <div class="mb9">
-        <a href="/photoss/100.html" target="_blank">
+        <router-link :to="{ path: 'photos' , query: { } }">
           <img src="../assets/SXWB/img/box9.jpg"
-        /></a>
+        /></router-link>
       </div>
     </div>
     <div class="mb2right4">

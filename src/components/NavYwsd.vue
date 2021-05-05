@@ -3,7 +3,11 @@
   <!--新闻速递-->
   <div class="mb1right1">
     <div class="redb2">
-      <a href="/article.html" target="_blank">要闻速递</a><span id="redb2"> News</span>
+      <router-link :to="{ path: 'article' , query: { } }">
+          要闻速递
+        </router-link>
+      <span id="redb2"> News</span>
+      
     </div>
     <div class="garyb2">
     </div>
@@ -27,9 +31,10 @@
   <a href="http://118.190.153.110/login" target="_blank"><img src="../assets/SXWB/img/whcy.jpg"></a>
   <div class="mb1right1">
     <div class="redb2">
-      <a href="/article/62.html" target="_blank">
-        政策法规
-      </a><span id="redb2"> Law</span>
+      <router-link :to="{ path: 'article' , query: {} }">
+          政策法规
+        </router-link>
+      <span id="redb2"> Law</span>
     </div>
     <div class="garyb2">
     </div>
@@ -48,7 +53,10 @@
   </div>
   <div class="mb1right1">
     <div class="redb2">
-      <a href="/article/63.html" target="_blank">公告通知</a><span id="redb2"> Notice</span>
+      <router-link :to="{ path: 'article' , query: {} }">
+          公告通知
+        </router-link>
+      <span id="redb2"> Notice</span>
     </div>
     <div class="garyb2">
     </div>

@@ -1,16 +1,16 @@
 <template>
 <div>
   <LogoHeader type="hall"/>
-  <Header :list="menuList"/>
+  <Header :list="menuList"  type="hall"/>
   <SwiperBanner :id="id"></SwiperBanner>
   <!-- 主内容 -->
   <div class="secondm">
     <div class="secondleft">
-      <ArticleLeft :listData="cyyq" titlog="wh1"></ArticleLeft>
-      <ArticleLeft :listData="qylj" titlog="wh2"></ArticleLeft>
-      <ArticleLeft :listData="cpzs" titlog="wh3"></ArticleLeft>
-      <ArticleLeft :listData="ysdm" titlog="wh4"></ArticleLeft>
-      <ArticleLeft :listData="wh" titlog="wh5"></ArticleLeft>
+      <ArticleLeft :listData="cyyq" id="64" type="hall" titlog="wh1"></ArticleLeft>
+      <ArticleLeft :listData="qylj" id="65" type="hall"  titlog="wh2"></ArticleLeft>
+      <ArticleLeft :listData="cpzs" id="66" type="hall"  titlog="wh3"></ArticleLeft>
+      <ArticleLeft :listData="ysdm" id="67" type="hall"  titlog="wh4"></ArticleLeft>
+      <ArticleLeft :listData="wh" id="68" type="hall"  titlog="wh5"></ArticleLeft>
     </div>
     <div class="secondright">
       <FirstRightNav></FirstRightNav>

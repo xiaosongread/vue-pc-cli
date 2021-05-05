@@ -2,12 +2,11 @@
 <div class="nav">
   <div class="nav1">
     <div class="navb1"><center><router-link :to="{path: 'index'}">首页</router-link></center></div>
-    <div :class="index === (list.length-1) && type=='index' ? 'navb1 lastNav' : 'navb1'" v-for="(item, index) in list" :key="index">
+    <div :class="index === (list.length-1)  ? 'navb1 lastNav' : 'navb1'" v-for="(item, index) in list" :key="index">
       <center>
-        <router-link :to="{path: item.templateAlias, query: {id: item.id }}">{{item.title}}</router-link>
+        <router-link :to="{path: item.templateAlias, query: {id: item.id ,type:type}}">{{item.title}}</router-link>
       </center>
     </div>
-    <div class="navb1 lastNav" v-if="type!='index'"><center> <a href="https://shop145668320.taobao.com" target="_blank">山西文博馆</a></center></div>
   </div>
 </div>
 </template>
@@ -21,7 +20,7 @@ export default {
     },
     type: {
       type: String,
-      default: "second"
+      default: ""
     }
   },
   data () {
@@ -58,10 +57,10 @@ export default {
   height: 29px;
   // width: 85px;
   color: #FFFFFF;
-  font-size: 23px;
+  font-size: 25px;
   float: left;
   font-weight: bold;
-  padding: 3px 10px 0;
+  padding: 3px 18px 0;
   border-top: 0px;
   border-left: 0px;
   border-bottom: 0px;

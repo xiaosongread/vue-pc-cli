@@ -1,13 +1,15 @@
 <template>
 <div>
-  <LogoHeader/>
-  <Header :list="headerListData"/>
+  <LogoHeader :type="types"/>
+  <Header :list="headerListData" :type="types"/>
   <div class="listmain1">
     <img src="../../assets/SXWB/img/listad1.jpg" class="headerImg">
     <div class="listmain1left">
       <SecondItem :list="secondListData"></SecondItem>
     </div>
-    <SecondNav></SecondNav>
+    <div class="secondright">
+      <FirstRightNav></FirstRightNav>
+    </div>
   </div>
   <Footer/>
 </div>
@@ -18,7 +20,7 @@ import { dataToJsonArticlePage, secondLeveldata } from '@/utils/api'
 import LogoHeader from '@/components/LogoHeader'
 import Header from '@/components/Header'
 import SecondItem from '@/components/SecondItem'
-import SecondNav from '@/components/SecondNav'
+import FirstRightNav from '@/components/FirstRightNav'
 
 import Footer from '@/components/Footer'
 let that
@@ -26,7 +28,7 @@ export default {
   components: {
     LogoHeader,
     Header,
-    SecondNav,
+    FirstRightNav,
     SecondItem,
 
     Footer
@@ -34,10 +36,12 @@ export default {
   data () {
     return {
       secondListData: [],
-      headerListData: []
+      headerListData: [],
+      types:""
     }
   },
   created () {
+    this.types = this.$route.query.type
     this.dataToJsonArticlePage()
     this.secondLeveldata()
   },
@@ -67,7 +71,7 @@ export default {
 }
 .listmain1 {
     width: 1080px;
-    height: 2040px;
+    height: 2250px;
     margin: 0 auto;
     margin-top: 5px;
 }
@@ -79,5 +83,11 @@ export default {
 .listmain1left {
     width: 691px;
     float: left;
+}
+.secondright{
+	height:2070px;
+	width:350px;
+	float:left;
+	margin-left:34px;
 }
 </style>

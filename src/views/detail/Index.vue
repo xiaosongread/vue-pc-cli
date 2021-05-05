@@ -11,13 +11,13 @@
         <div v-if="articleData.length">
           <div class="title">{{ articleData[0].title }}</div>
           <div class="time">
-            <span>时间：{{ articleData[0].addtime }}</span>
-            <span>作者：{{ articleData[0].userName }}</span>
+            <span style="float: left;">时间：{{ articleData[0].addtime }}</span>
+            <span style="float: right;">作者：{{ articleData[0].userName }}</span>
           </div>
           <div class="cons" v-html="articleData[0].content"></div>
           <div class="subTit">
-            <span>来源：山西日报</span>
-            <span>【责任编辑：lcx】</span>
+            <span style="flex-grow: 1">来源：山西日报</span>
+            <span style="">【责任编辑：lcx】</span>
           </div>
           <div class="thirdtext2" v-if="articleData.length">
             <p
@@ -43,7 +43,9 @@
           </div>
         </div>
       </div>
-      <SecondNav></SecondNav>
+      <div class="secondright">
+      <FirstRightNav></FirstRightNav>
+    </div>
     </div>
     <Footer />
   </div>
@@ -54,7 +56,7 @@ import { articleData,secondLeveldata } from "@/utils/api";
 import LogoHeader from "@/components/LogoHeader";
 import Header from "@/components/Header";
 import SecondItem from "@/components/SecondItem";
-import SecondNav from "@/components/SecondNav";
+import FirstRightNav from "@/components/FirstRightNav";
 
 import Footer from "@/components/Footer";
 let _that
@@ -62,7 +64,7 @@ export default {
   components: {
     LogoHeader,
     Header,
-    SecondNav,
+    FirstRightNav,
     SecondItem,
     Footer,
   },
@@ -140,6 +142,7 @@ export default {
   min-height: 400px;
   float: left;
   font-size: 14px;
+  display: flex;
 }
 .title {
   line-height: 39px;
@@ -149,18 +152,32 @@ export default {
   margin-top: 37px;
 }
 .cons {
-  margin-left: 30px;
+      height: auto;
+    width: 661px;
+    float: left;
+    margin-left: 30px;
+    margin-top: 5px;
+    font-size: 15px;
+    line-height: 30px;
+    text-indent: 2em;
+    font-family: SimSun;
+    letter-spacing: 0.5px;
+    font-weight: bold;
+    color: #000;
 }
-.time,
-.subTit {
+.time{
   height: 40px;
   margin-left: 30px;
   margin-top: 35px;
   border-bottom: 3px solid #efefef;
 }
 .subTit {
-  display: flex;
-  justify-content: space-between;
+  height: 40px;
+  width: 661px;
+  margin-left: 30px;
+  margin-top: 35px;
+  display: inline-flex;
+  border-bottom: 3px solid #efefef;
 }
 .thirdtext2 {
   padding-left: 45px;
@@ -171,5 +188,12 @@ export default {
   line-height: 32px;
   color: #6e0a0a;
   margin-bottom: 40px;
+  margin-top: 30px;
+}
+.secondright{
+	height:2100px;
+	width:350px;
+	float:left;
+	margin-left:34px;
 }
 </style>

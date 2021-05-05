@@ -1,7 +1,7 @@
 <template>
   <div>
     <LogoHeader type="photos" />
-    <Header :list="menuList" />
+    <Header :list="menuList" type="photos" />
     <SwiperBanner :id="id"></SwiperBanner>
     <!-- 主内容 -->
     <!-- 图说文博 -->

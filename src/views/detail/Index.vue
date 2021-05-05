@@ -1,6 +1,6 @@
 <template>
   <div>
-    <IndexLogoHeader />
+    <LogoHeader />
     <Header :list="headerListData"/>
     <div class="listmain1">
       <img src="../../assets/SXWB/img/listad1.jpg" class="headerImg" />
@@ -51,7 +51,7 @@
 
 <script>
 import { articleData,secondLeveldata } from "@/utils/api";
-import IndexLogoHeader from "@/components/IndexLogoHeader";
+import LogoHeader from "@/components/LogoHeader";
 import Header from "@/components/Header";
 import SecondItem from "@/components/SecondItem";
 import SecondNav from "@/components/SecondNav";
@@ -60,7 +60,7 @@ import Footer from "@/components/Footer";
 let _that
 export default {
   components: {
-    IndexLogoHeader,
+    LogoHeader,
     Header,
     SecondNav,
     SecondItem,

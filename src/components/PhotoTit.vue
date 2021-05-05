@@ -57,7 +57,6 @@ export default {
 }
 /* 标题 */
 .secondlefttitle{
-	margin-left:20px;
 	margin-top:50px;
 	height:54px;
 	width:1080px;

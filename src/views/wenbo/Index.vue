@@ -1,15 +1,15 @@
 <template>
 <div>
-  <IndexLogoHeader/>
-  <Header :list="menuList"/>
+  <LogoHeader  type="wenbo"/>
+  <Header :list="menuList" type="wenbo"/>
   <SwiperBanner :id="id"></SwiperBanner>
   <!-- 主内容 -->
   <div class="secondm">
     <div class="secondleft">
-      <ArticleLeft :listData="dyjwbh" titlog="ws1"></ArticleLeft>
-      <ArticleLeft :listData="drjwbh" titlog="ws2"></ArticleLeft>
-      <ArticleLeft :listData="dsjwbh" titlog="ws4"></ArticleLeft>
-      <ArticleLeft :listData="zwwb" titlog="ws3"></ArticleLeft>
+      <ArticleLeft :listData="dyjwbh" id="79"  type="wenbo" titlog="ws1"></ArticleLeft>
+      <ArticleLeft :listData="drjwbh" id="80"  type="wenbo" titlog="ws2"></ArticleLeft>
+      <ArticleLeft :listData="dsjwbh" id="150"  type="wenbo" titlog="ws4"></ArticleLeft>
+      <ArticleLeft :listData="zwwb" id="81"  type="wenbo" titlog="ws3"></ArticleLeft>
     </div>
     <div class="secondright">
       <FirstRightNav></FirstRightNav>
@@ -21,17 +21,16 @@
 
 <script>
 import { channelDataListJson, menuDataList } from '@/utils/api'
-import IndexLogoHeader from '@/components/IndexLogoHeader'
+import LogoHeader from '@/components/LogoHeader'
 import Header from '@/components/Header'
 import SwiperBanner from '@/components/SwiperBanner'
 import ArticleLeft from '@/components/ArticleLeft'
 import FirstRightNav from '@/components/FirstRightNav'
-
 import Footer from '@/components/Footer'
 let _that
 export default {
   components: {
-    IndexLogoHeader,
+    LogoHeader,
     Header,
     SwiperBanner,
     ArticleLeft,
@@ -116,9 +115,10 @@ export default {
   width: 1080px;
 }
 .secondm {
-  height: 2070px;
+  // height: 2070px;
   width: 1080px;
   margin: 0 auto;
+  overflow: hidden;
 }
 .secondleft{
 	margin-left:30px;

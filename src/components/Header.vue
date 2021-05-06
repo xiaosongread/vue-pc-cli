@@ -2,12 +2,29 @@
 <div class="nav">
   <div class="nav1">
     <div class="navb1"><center><router-link :to="{path: 'index'}">首页</router-link></center></div>
-    <div :class="index === (list.length-1) && type=='index' ? 'navb1 lastNav' : 'navb1'" v-for="(item, index) in list" :key="index">
+    <div :class="index === (list.length-1)  ? 'navb1 lastNav' : 'navb1'" v-for="(item, index) in list" :key="index" v-if="list.length">
       <center>
-        <router-link :to="{path: item.templateAlias, query: {id: item.id }}">{{item.title}}</router-link>
+        <router-link :to="{path: item.templateAlias, query: {id: item.id ,type:type}}">{{item.title}}</router-link>
       </center>
     </div>
-    <div class="navb1 lastNav" v-if="type!='index'"><center> <a href="https://shop145668320.taobao.com" target="_blank">山西文博馆</a></center></div>
+    <div class="navb1" v-if="list.length===0">
+      <center><router-link :to="{path: 'bbs', query: {id: 20 ,type:'index'}}">文化论坛</router-link></center>
+    </div>
+    <div class="navb1" v-if="list.length===0">
+      <center><router-link :to="{path: 'wenbo', query: {id: 19 ,type:'index'}}">网上文博</router-link></center>
+    </div>
+    <div class="navb1" v-if="list.length===0">
+      <center><router-link :to="{path: 'dock', query: {id: 18 ,type:'index'}}">产业对接</router-link></center>
+    </div>
+    <div class="navb1" v-if="list.length===0">
+      <center><router-link :to="{path: 'hall', query: {id: 17 ,type:'index'}}">文化会馆</router-link></center>
+    </div>
+    <div class="navb1" v-if="list.length===0">
+      <center><router-link :to="{path: 'photos', query: {id: 15 ,type:'index'}}">美丽山西</router-link></center>
+    </div>
+    <div class="navb1 lastNav" v-if="list.length===0">
+      <center><router-link :to="{path: 'article', query: {id: 13 ,type:'index'}}">文产资讯</router-link></center>
+    </div>
   </div>
 </div>
 </template>
@@ -21,7 +38,7 @@ export default {
     },
     type: {
       type: String,
-      default: "second"
+      default: ""
     }
   },
   data () {
@@ -40,7 +57,7 @@ export default {
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
 .nav{
-	margin-top:5px;
+	margin-top:35px;
 	height:61px;
 	width:100%;
 	background:#B28147;
@@ -58,10 +75,10 @@ export default {
   height: 29px;
   // width: 85px;
   color: #FFFFFF;
-  font-size: 23px;
+  font-size: 25px;
   float: left;
   font-weight: bold;
-  padding: 3px 10px 0;
+  padding: 3px 18px 0;
   border-top: 0px;
   border-left: 0px;
   border-bottom: 0px;

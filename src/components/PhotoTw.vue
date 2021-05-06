@@ -4,7 +4,7 @@
 		<div class="tssxpart1" v-for="(item, index) in listData" :key="index" v-if="index<3">
 			<div class="tssxpart1img">
 				<a :title="item.title" href="/photos/show-4805.html" target="_blank">
-					<img :src="item.imgUrl" width="340" height="230">
+					<img :src="item.imgUrl">
 				</a>
 			</div>
 			<div class="tssxpart1font">
@@ -54,7 +54,7 @@ export default {
 }
 .tssxpart1{
 	height:auto;
-	width:350px;
+	width:360px;
 	float:left;
 }
 .tssxpart2{
@@ -74,13 +74,17 @@ export default {
 	height:230px;
 	width:350px;
 	float:left;
-	margin-left:20px;
+	margin-left:0px;
+}
+.tssxpart1img img{
+	height:230px;
+	width:340px;
 }
 .tssxpart1font{
 	height:147px;
 	width:333px;
 	float:left;
-	margin-left:25px;
+	margin-left:5px;
 }
 .tssxpart1font1{
 	margin-top:18px;

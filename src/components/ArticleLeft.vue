@@ -3,11 +3,10 @@
     <div class="secondlefttitle">
       <div class="secondlefttitle1"></div>
       <div class="secondlefttitle2">
-         <router-link :to="{ path: 'secondIndex', query: { id: id } }">
-          <img
-            :src="require('../assets/SXWB/img/' + titlog + '.jpg')"
-            alt=""
-          />
+        <router-link
+          :to="{ path: 'secondIndex', query: { id: id, type: type } }"
+        >
+          <img :src="require('../assets/SXWB/img/' + titlog + '.jpg')" alt="" />
         </router-link>
       </div>
     </div>
@@ -36,6 +35,14 @@ export default {
       default: [],
     },
     titlog: {
+      type: String,
+      default: "",
+    },
+    id: {
+      type: String,
+      default: "",
+    },
+    type: {
       type: String,
       default: "",
     },
@@ -185,15 +192,15 @@ export default {
   height: 107px;
   overflow: hidden;
 }
-.danhang{
-		overflow: hidden;
-		text-overflow:ellipsis;
-		white-space: nowrap;
-	}
-	.mb2le3_212 p{
-		display: -webkit-box;
-		-webkit-box-orient: vertical;
-		-webkit-line-clamp: 2;/*显示几行*/
-		overflow: hidden;
-	}
+.danhang {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.mb2le3_212 p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /*显示几行*/
+  overflow: hidden;
+}
 </style>

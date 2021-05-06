@@ -16,9 +16,9 @@
           v-for="(item, index) in listCYDJData"
           :key="index"
         >
-          <a href="/dock/69.html" target="_blank">
-            <li class="" @mouseover="mouseOver(index)">{{ item.title }}</li>
-          </a>
+        <router-link :to="{ path: paths , query: { id: id } }">
+          <li class="" @mouseover="mouseOver(index)">{{ item.title }}</li>
+        </router-link>
         </ul>
       </div>
       <div class="tablist">

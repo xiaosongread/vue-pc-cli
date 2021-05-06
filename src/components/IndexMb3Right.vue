@@ -17,8 +17,10 @@
     </div>
     <div class="mb3right2">
       <div class="redb2">
-        <a href="/dock/86.html" 　target="_blank">典型案例</a
-        ><span id="redb2"> News</span>
+         <router-link :to="{ path: 'dock' , query: { } }">
+          典型案例
+        </router-link>
+        <span id="redb2"> News</span>
       </div>
       <div class="garyb2"></div>
     </div>

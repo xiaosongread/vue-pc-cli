@@ -1,16 +1,16 @@
 <template>
 <div>
-  <IndexLogoHeader type="hall"/>
-  <Header :list="menuList"/>
+  <LogoHeader type="hall"/>
+  <Header :list="menuList"  type="hall"/>
   <SwiperBanner :id="id"></SwiperBanner>
   <!-- 主内容 -->
   <div class="secondm">
     <div class="secondleft">
-      <ArticleLeft :listData="cyyq" titlog="wh1"></ArticleLeft>
-      <ArticleLeft :listData="qylj" titlog="wh2"></ArticleLeft>
-      <ArticleLeft :listData="cpzs" titlog="wh3"></ArticleLeft>
-      <ArticleLeft :listData="ysdm" titlog="wh4"></ArticleLeft>
-      <ArticleLeft :listData="wh" titlog="wh5"></ArticleLeft>
+      <ArticleLeft :listData="cyyq" id="64" type="hall" titlog="wh1"></ArticleLeft>
+      <ArticleLeft :listData="qylj" id="65" type="hall"  titlog="wh2"></ArticleLeft>
+      <ArticleLeft :listData="cpzs" id="66" type="hall"  titlog="wh3"></ArticleLeft>
+      <ArticleLeft :listData="ysdm" id="67" type="hall"  titlog="wh4"></ArticleLeft>
+      <ArticleLeft :listData="wh" id="68" type="hall"  titlog="wh5"></ArticleLeft>
     </div>
     <div class="secondright">
       <FirstRightNav></FirstRightNav>
@@ -22,7 +22,7 @@
 
 <script>
 import { channelDataListJson, menuDataList } from '@/utils/api'
-import IndexLogoHeader from '@/components/IndexLogoHeader'
+import LogoHeader from '@/components/LogoHeader'
 import Header from '@/components/Header'
 import SwiperBanner from '@/components/SwiperBanner'
 import ArticleLeft from '@/components/ArticleLeft'
@@ -32,7 +32,7 @@ import Footer from '@/components/Footer'
 let _that
 export default {
   components: {
-    IndexLogoHeader,
+    LogoHeader,
     Header,
     SwiperBanner,
     ArticleLeft,

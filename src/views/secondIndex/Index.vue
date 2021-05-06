@@ -1,7 +1,7 @@
 <template>
 <div>
-  <IndexLogoHeader/>
-  <Header :list="headerListData"/>
+  <LogoHeader :type="types"/>
+  <Header :list="headerListData" :type="types"/>
   <div class="listmain1">
     <img src="../../assets/SXWB/img/listad1.jpg" class="headerImg">
     <div class="listmain1left">
@@ -13,7 +13,9 @@
                   :options="options">
       </pagination>
     </div>
-    <SecondNav></SecondNav>
+    <div class="secondright">
+      <FirstRightNav></FirstRightNav>
+    </div>
   </div>
   <Footer/>
 </div>
@@ -21,18 +23,18 @@
 
 <script>
 import { dataToJsonArticlePage, secondLeveldata } from '@/utils/api'
-import IndexLogoHeader from '@/components/IndexLogoHeader'
+import LogoHeader from '@/components/LogoHeader'
 import Header from '@/components/Header'
 import SecondItem from '@/components/SecondItem'
-import SecondNav from '@/components/SecondNav'
+import FirstRightNav from '@/components/FirstRightNav'
 
 import Footer from '@/components/Footer'
 let that
 export default {
   components: {
-    IndexLogoHeader,
+    LogoHeader,
     Header,
-    SecondNav,
+    FirstRightNav,
     SecondItem,
 
     Footer
@@ -49,10 +51,12 @@ export default {
         chunk: 10,
         edgeNavigation: true,
         theme: 'bootstrap4'
-      }
+      },
+      types:""
     }
   },
   created () {
+    this.types = this.$route.query.type
     this.dataToJsonArticlePage()
     this.secondLeveldata()
   },
@@ -87,7 +91,7 @@ export default {
 }
 .listmain1 {
     width: 1080px;
-    height: 2040px;
+    height: 2250px;
     margin: 0 auto;
     margin-top: 5px;
 }
@@ -117,5 +121,11 @@ export default {
 }
 .pagination a.page-link.active{
   color: rgb(133, 133, 133);
+}
+.secondright{
+	height:2070px;
+	width:350px;
+	float:left;
+	margin-left:34px;
 }
 </style>

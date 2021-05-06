@@ -1,16 +1,16 @@
 <template>
 <div>
-  <IndexLogoHeader type="dock"/>
-  <Header :list="menuList"/>
+  <LogoHeader type="dock"/>
+  <Header :list="menuList" type="dock"/>
   <SwiperBanner :id="18"></SwiperBanner>
   <!-- 主内容 -->
   <div class="secondm">
     <div class="secondleft">
-      <ArticleLeft :listData="gxpt" titlog="cy1"></ArticleLeft>
-      <ArticleLeft :listData="xmtj" titlog="cy2"></ArticleLeft>
-      <ArticleLeft :listData="xmpg" titlog="cy3"></ArticleLeft>
-      <ArticleLeft :listData="qyld" titlog="cy4"></ArticleLeft>
-      <ArticleLeft :listData="dxal" titlog="cy5"></ArticleLeft>
+      <ArticleLeft :listData="gxpt" type="dock" id="69" titlog="cy1"></ArticleLeft>
+      <ArticleLeft :listData="xmtj" type="dock" id="70" titlog="cy2"></ArticleLeft>
+      <ArticleLeft :listData="xmpg" type="dock" id="71" titlog="cy3"></ArticleLeft>
+      <ArticleLeft :listData="qyld" type="dock" id="72" titlog="cy4"></ArticleLeft>
+      <ArticleLeft :listData="dxal" type="dock" id="86" titlog="cy5"></ArticleLeft>
     </div>
     <div class="secondright">
       <FirstRightNav></FirstRightNav>
@@ -22,7 +22,7 @@
 
 <script>
 import { channelDataListJson, menuDataList } from '@/utils/api'
-import IndexLogoHeader from '@/components/IndexLogoHeader'
+import LogoHeader from '@/components/LogoHeader'
 import Header from '@/components/Header'
 import SwiperBanner from '@/components/SwiperBanner'
 import ArticleLeft from '@/components/ArticleLeft'
@@ -31,7 +31,7 @@ import Footer from '@/components/Footer'
 let _that
 export default {
   components: {
-    IndexLogoHeader,
+    LogoHeader,
     Header,
     SwiperBanner,
     ArticleLeft,
@@ -119,9 +119,10 @@ export default {
   width: 1080px;
 }
 .secondm {
-  height: 2070px;
+  // height: 2070px;
   width: 1080px;
   margin: 0 auto;
+  overflow: hidden;
 }
 .secondleft{
 	margin-left:30px;

@@ -14,12 +14,12 @@
   </div>
 
   <div v-for="(item, index) in ywsdData" :key="index" v-if="index===0 || index<2">
-    <div class="mb1right2-1 danhang">
+    <div class="mb1right2-1 yaowendanhang">
       <router-link :to="{ path: 'detail', query: { id: item.id } }">{{
                 item.title
               }}</router-link>
     </div>
-    <div class="mb1right3 duohan">
+    <div class="mb1right3 yaowenduohan">
       <p>{{item.zhaiyao}}</p>
     </div>
     <div class="space1">
@@ -236,12 +236,12 @@ a:active{
 	float:left;
 	padding-left:3px;
 }
-.danhang{
+.yaowendanhang{
 		overflow: hidden;
 		text-overflow:ellipsis;
 		white-space: nowrap;
 	}
-	.duohan{
+	.yaowenduohan{
 		display: -webkit-box;
 		-webkit-box-orient: vertical;
 		-webkit-line-clamp: 3;/*显示几行*/

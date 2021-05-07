@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { channelDataListJson,dataToJsonArticle, menuDataList } from '@/utils/api'
+import { channelDataListJson,dataToJsonArticle, menuDataList,topDataListJson } from '@/utils/api'
 import IndexLogoHeader from '@/components/IndexLogoHeader'
 import Header from '@/components/Header'
 import IndexMb1Left from '@/components/IndexMb1Left'
@@ -62,12 +62,18 @@ export default {
   },
   created () {
     this.menuDataList()
-    this.channelDataListJson()
+    //this.channelDataListJson()
     this.zcfgdataToJsonArticle()
     this.ywsddataToJsonArticle()
     this.ggtzdataToJsonArticle()
     this.sjsjdataToJsonArticle()
     this.dxaldataToJsonArticle()
+    this.whltDataListJson()
+    this.wswbDataListJson()
+    this.cydjDataListJson()
+    this.whhgDataListJson()
+    this.mlsxDataListJson()
+    this.wczxDataListJson()
     _that = this
     // this.getDouBanMovieList()
   },
@@ -75,6 +81,30 @@ export default {
     async menuDataList() {
       const data = await menuDataList()
       this.menuList = data.data
+    },
+    async whltDataListJson() {
+      const data = await topDataListJson({channelId:20})
+      this.whltData = data.data[0].data
+    },
+    async wswbDataListJson() {
+      const data = await topDataListJson({channelId:19})
+      this.wswbData = data.data[0].data
+    },
+    async cydjDataListJson() {
+      const data = await topDataListJson({channelId:18})
+      this.cydjData = data.data[0].data
+    },
+    async whhgDataListJson() {
+      const data = await topDataListJson({channelId:17})
+      this.whhgData = data.data[0].data
+    },
+    async mlsxDataListJson() {
+      const data = await topDataListJson({channelId:15})
+      this.mlsxData = data.data[0].data
+    },
+    async wczxDataListJson() {
+      const data = await topDataListJson({channelId:13})
+      this.wczxData = data.data[0].data
     },
     async channelDataListJson () {
       const data = await channelDataListJson()

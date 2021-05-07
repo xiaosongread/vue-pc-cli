@@ -2,7 +2,7 @@
 <div class="mb3left">
 	<SelectTab :listCYDJData = 'listCYDJData' id="18" titlog="s4" paths="dock"></SelectTab>
 	<SelectTab :listCYDJData = 'listWSWBData' id="19" titlog="s5" paths="wenbo"></SelectTab>
-	<SelectTab :listCYDJData = 'listWHLTData' id="20" titlog="s6" paths="bbs"></SelectTab>
+	<SelectTab :listCYDJData = 'listWHLTData' id="20" titlog="s6" paths="BBS"></SelectTab>
 </div>
 </template>
 <script>

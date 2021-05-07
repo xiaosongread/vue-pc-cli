@@ -19,14 +19,17 @@
     <PhotoTit type="sjsj"></PhotoTit>
     <div class="mlsxpart3">
       <div class="mlsxpart2-video">
-          <a href="/videos/show-5417.html" target="_blank" v-for="(item, index) in sjsj" :key="index" v-if="index === 0">
+          <router-link :to="{ path: 'detail', query: { id: item.id } }" v-for="(item, index) in sjsj" :key="index" v-if="index === 0">
             <img :src="item.imgUrl" >
-          </a>
+            </router-link>
       </div>
       <div class="mlsxpart2-font">
         <div v-for="(item, index) in sjsj" :key="index" v-if="index !== 1 && index < 4">
           <div class="mlsxpart2-font1">
-            <a :title="item.title" href="/videos/show-5550.html" target="_blank">{{item.title}}</a></div>
+            <router-link :to="{ path: 'detail', query: { id: item.id } }">{{
+              item.title
+            }}</router-link>
+            </div>
           <div class="mlsxpart2-font2">{{item.zhaiyao}}</div>
         </div>
       </div>
@@ -42,11 +45,11 @@
       <PhotoTit type="tswh"></PhotoTit>
       <PhotoTwTab :listData="tswh"></PhotoTwTab>
     </div>
-    <!-- 网上展馆 -->
+    <!-- 网上展馆 
     <div class="photoBox">
       <PhotoTit type="wszg"></PhotoTit>
       <PhotoTw :listData="wszg"></PhotoTw>
-    </div>
+    </div>-->
     <!-- 便游三晋 -->
     <div class="photoBox">
       <PhotoTit type="bysj"></PhotoTit>
@@ -57,7 +60,7 @@
 </template>
 
 <script>
-import { channelDataListJson, menuDataList } from "@/utils/api";
+import { redDataListJson, menuDataList,dataToJsonThreeAndArticle } from "@/utils/api";
 import LogoHeader from "@/components/LogoHeader";
 import Header from "@/components/Header";
 import SwiperBanner from "@/components/SwiperBanner";
@@ -94,7 +97,11 @@ export default {
   created() {
     _that = this;
     this.menuDataList();
-    this.channelDataListJson();
+    this.DataListJson();
+    //this.wszgdataToJsonThreeAndArticle();
+    this.tswhdataToJsonThreeAndArticle();
+    this.bysjdataToJsonThreeAndArticle();
+    this.fydzdataToJsonThreeAndArticle();
   },
   methods: {
     async menuDataList() {
@@ -103,36 +110,38 @@ export default {
         return item.id === 15;
       })[0].data;
     },
-    async channelDataListJson() {
-      const data = await channelDataListJson();
-      data.data.forEach((item, index) => {
-        if (item.id === 15) {
-          _that.mlsxData = item.data;
-        }
-      });
+    async wszgdataToJsonThreeAndArticle() {
+      const data = await dataToJsonThreeAndArticle({ categoryId: 183 });
+      console.log("·························",data);
+      _that.wszg = data.data;
+    },
+    async tswhdataToJsonThreeAndArticle() {
+      const data = await dataToJsonThreeAndArticle({ categoryId: 75 });
+      _that.tswh = data.data;
+    },
+    async bysjdataToJsonThreeAndArticle() {
+      const data = await dataToJsonThreeAndArticle({ categoryId: 76 });
+      _that.bysj = data.data;
+    },
+    async fydzdataToJsonThreeAndArticle() {
+      const data = await dataToJsonThreeAndArticle({ categoryId: 89 });
+      _that.fydz = data.data;
+    },
+    async DataListJson() {
+      const data = await redDataListJson({ channelId: 15 });
+      _that.mlsxData = data.data[0].data;
       this.mlsxData.forEach((item, index) => {
         switch (item.id) {
           case 148:
-            _that.tswb = item.content;
+            _that.tswb = item.data;
             break;
           case 87:
-            _that.tssx = item.content;
-            break;
-          case 183:
-            _that.wszg = item.data;
-            break;
-          case 75:
-            _that.tswh = item.data;
-            break;
-          case 76:
-            _that.bysj = item.data;
+            _that.tssx = item.data;
             break;
           case 90:
-            _that.sjsj = item.content;
+            _that.sjsj = item.data;
             break;
-          case 89:
-            _that.fydz = item.data;
-            break;
+          
         }
       });
       console.log("接口数据", this.sjsj);
@@ -147,7 +156,7 @@ export default {
 }
 
 .mlsxpart3 {
-  margin-left: 20px;
+  margin-left: 10px;
   margin-top: 33px;
   height: 450px;
   width: 1080px;

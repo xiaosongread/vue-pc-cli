@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { channelDataListJson, menuDataList } from '@/utils/api'
+import { redDataListJson, menuDataList } from '@/utils/api'
 import LogoHeader from '@/components/LogoHeader'
 import Header from '@/components/Header'
 import SwiperBanner from '@/components/SwiperBanner'
@@ -55,7 +55,7 @@ export default {
   created () {
     _that = this
     this.menuDataList()
-    this.channelDataListJson()
+    this.DataListJson()
   },
   methods: {
     async menuDataList() {
@@ -64,29 +64,25 @@ export default {
         return item.id === 17
       })[0].data
     },
-    async channelDataListJson () {
-      const data = await channelDataListJson()
-      data.data.forEach((item, index)=>{
-        if (item.id === 17) {
-          _that.whhgData = item.data
-        }
-      })
+    async DataListJson () {
+      const data = await redDataListJson({ channelId: 17 });
+      _that.whhgData = data.data[0].data;
       this.whhgData.forEach((item, index)=>{
         switch(item.id) {
           case 64:
-            _that.cyyq = item.content
+            _that.cyyq = item.data
             break; 
           case 65:
-            _that.qylj = item.content
+            _that.qylj = item.data
             break; 
           case 66:
-            _that.cpzs = item.content
+            _that.cpzs = item.data
             break; 
           case 67:
-            _that.ysdm = item.content
+            _that.ysdm = item.data
             break;
           case 68:
-            _that.wh = item.content
+            _that.wh = item.data
             break;
         }
       })

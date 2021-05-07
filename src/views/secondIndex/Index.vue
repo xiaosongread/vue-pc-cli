@@ -108,16 +108,22 @@ export default {
 </style>
 <style>
 .pagination {
-    font-size: 16px;
+    font-size: 18px;
+    
 }
 .VuePagination {
-  margin-top: 15px;
+  margin-top: 80px;
+  margin-left: -80px;
+  
 }
 .VuePagination__count{
   display: none;
+  
 }
 .pagination a {
-  color: #000;
+  color: #FFF;
+  font-weight: bold;
+  background-color: #6E0A0A;
 }
 .pagination a.page-link.active{
   color: rgb(133, 133, 133);

@@ -3,7 +3,7 @@
   <div class="secondlefttitle">
     <div class="secondlefttitle1"></div>
     <div class="secondlefttitle2">
-      <a href="/photos/148.html" target="_blank" v-if="type === 'tswb'">
+      <a href="/photos/148.html#/photos?id=76&type=photos" target="_blank" v-if="type === 'tswb'">
 				<img src="../assets/SXWB/img/tswb.jpg" alt="">
 			</a>
 			<a href="/photos/148.html" target="_blank" v-if="type === 'tssx'">

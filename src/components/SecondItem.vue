@@ -25,7 +25,7 @@
       <div class="listdet2">{{ item.zhaiyao }}</div>
       <div class="listdet3">
         <div class="underline"></div>
-        <div class="underdata">2021年04月22日</div>
+        <div class="underdata">{{item.addtime}}</div>
       </div>
     </div>
   </div>

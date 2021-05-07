@@ -113,7 +113,7 @@ export default {
 }
 .VuePagination {
   margin-top: 80px;
-  margin-left: -80px;
+  margin-left: -55px;
   
 }
 .VuePagination__count{

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <LogoHeader />
-    <Header :list="headerListData"/>
+    <LogoHeader :type="Jumptype"/>
+    <Header :list="headerListData" :type="Jumptype"/>
     <div class="listmain1">
       <img src="../../assets/SXWB/img/listad1.jpg" class="headerImg" />
       <div class="path" v-if="articleData.length">
@@ -143,7 +143,7 @@
 import Swiper from "swiper"
 import { pictureCarousel } from '@/utils/api'
 import "../../../node_modules/swiper/css/swiper.min.css";
-import { articleData,secondLeveldata } from "@/utils/api";
+import { articleData,secondLeveldata,formArticleIdToChannelData } from "@/utils/api";
 import LogoHeader from "@/components/LogoHeader";
 import Header from "@/components/Header";
 import SecondItem from "@/components/SecondItem";
@@ -163,6 +163,7 @@ export default {
     return {
       type: 1, // 1 富文本；2 视频 3 图片
       UpId: '',
+      Jumptype:'',
       articleData: [],
       headerListData: []
     };
@@ -193,23 +194,24 @@ export default {
   },
   methods: {
     init() {
-      this.secondLeveldata()
+      this.formArticleIdToChannelData()
       this.getarticleData()
     },
     async getarticleData() {
       var id = this.$route.query.id
       const {data, channerData} = await articleData({ id });
-      console.log('详情的数据', data)
+      console.log('详情的数据', channerData)
       this.articleData = data
-      this.headerListData = channerData
       this.UpId = data.UpId
     },
-    async secondLeveldata () {
+    async formArticleIdToChannelData () {
       var id = this.$route.query.id
-      const data = await secondLeveldata({
-        categoryId: id,
+      const data = await formArticleIdToChannelData({
+        articleId: id,
       })
-      this.headerListData = data.data
+      this.Jumptype=data.data[0].templateAlias
+      this.headerListData = data.data[0].data
+       console.log('--------------', this.headerListData)
     },
     loadFn(id) {
       this.$router.push({ path:'detail',query: {

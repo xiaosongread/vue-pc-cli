@@ -169,7 +169,7 @@ export default {
   },
   data() {
     return {
-      type: 1, // 1 图文； 2 图片； 3 视频；
+      type: "1", // 1 图文； 2 图片； 3 视频；
       UpId: '',
       Jumptype:'',
       articleData: [],
@@ -222,6 +222,7 @@ export default {
       console.log('详情的数据', channerData)
       this.articleData = data
       this.UpId = data.UpId
+      this.type = data[0].dataType
     },
     async formArticleIdToChannelData () {
       var id = this.$route.query.id

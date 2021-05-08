@@ -1,171 +1,132 @@
 <template>
-  <div>
-    <LogoHeader type="photos" />
-    <Header :list="menuList" type="photos" />
-    <SwiperBanner :id="id"></SwiperBanner>
-    <!-- 主内容 -->
-    <Footer />
+<div>
+  <LogoHeader :type="types"/>
+  <Header :list="headerListData" :type="types"/>
+  <div class="listmain1">
+    <img src="../../assets/SXWB/img/listad1.jpg" class="headerImg">
+
+    <div class="listmain1left">
+      <PhotoTw :listData="secondListData" type="list"></PhotoTw>
+      <pagination :records="records" 
+                  :per-page="perPage" 
+                  @paginate="clickPage" 
+                  v-model="page" 
+                  :options="options">
+      </pagination>
+    </div>
   </div>
+
+  <Footer/>
+</div>
 </template>
 
 <script>
-import { redDataListJson, menuDataList,dataToJsonThreeAndArticle } from "@/utils/api";
-import LogoHeader from "@/components/LogoHeader";
-import Header from "@/components/Header";
-import SwiperBanner from "@/components/SwiperBanner";
-import PhotoTit from "@/components/PhotoTit";
+import { dataToJsonArticlePage, secondLeveldata } from '@/utils/api'
+import LogoHeader from '@/components/LogoHeader'
+import Header from '@/components/Header'
 import PhotoTw from "@/components/PhotoTw";
-import PhotoTwTab from "@/components/PhotoTwTab";
-import Footer from "@/components/Footer";
-let _that;
+import SecondItem from '@/components/SecondItem'
+import FirstRightNav from '@/components/FirstRightNav'
+
+import Footer from '@/components/Footer'
+let that
 export default {
   components: {
     LogoHeader,
     Header,
-    SwiperBanner,
-    PhotoTit,
     PhotoTw,
-    PhotoTwTab,
+    FirstRightNav,
+    SecondItem,
 
-    Footer,
+    Footer
   },
-  data() {
+  data () {
     return {
-      menuList: [],
-      mlsxData: [],
-      tswb: [],
-      tssx: [],
-      tswh: [],
-      wszg: [],
-      bysj: [],
-      sjsj: [],
-      fydz: [],
-      id: "15",
-    };
+      page: 1,	//默认第一页
+      perPage:6,//每页多少条
+      pageNo:1,//当前页
+      records: 0,//总数
+      secondListData: [],
+      headerListData: [],
+      options: {
+        chunk: 10,
+        edgeNavigation: true,
+        theme: 'bootstrap4'
+      },
+      types:""
+    }
   },
-  created() {
-    _that = this;
-    this.menuDataList();
-    this.DataListJson();
-    //this.wszgdataToJsonThreeAndArticle();
-    this.tswhdataToJsonThreeAndArticle();
-    this.bysjdataToJsonThreeAndArticle();
-    this.fydzdataToJsonThreeAndArticle();
+  created () {
+    this.types = this.$route.query.type
+    this.dataToJsonArticlePage()
+    this.secondLeveldata()
   },
   methods: {
-    async menuDataList() {
-      const data = await menuDataList();
-      this.menuList = data.data.filter((item, index) => {
-        return item.id === 15;
-      })[0].data;
+    clickPage() {
+      this.dataToJsonArticlePage()
     },
-    async wszgdataToJsonThreeAndArticle() {
-      const data = await dataToJsonThreeAndArticle({ categoryId: 183 });
-      console.log("·························",data);
-      _that.wszg = data.data;
+    async dataToJsonArticlePage () {
+      var id = this.$route.query.id
+      const data = await dataToJsonArticlePage({
+        categoryId: id,
+        page: this.pageNo,
+        limit: this.perPage
+      })
+      this.records = data.total
+      this.pageNo = this.pageNo + 1
+      this.secondListData = data.data
     },
-    async tswhdataToJsonThreeAndArticle() {
-      const data = await dataToJsonThreeAndArticle({ categoryId: 75 });
-      _that.tswh = data.data;
+    async secondLeveldata () {
+      var id = this.$route.query.id
+      const data = await secondLeveldata({
+        categoryId: id,
+      })
+      this.headerListData = data.data
     },
-    async bysjdataToJsonThreeAndArticle() {
-      const data = await dataToJsonThreeAndArticle({ categoryId: 76 });
-      _that.bysj = data.data;
-    },
-    async fydzdataToJsonThreeAndArticle() {
-      const data = await dataToJsonThreeAndArticle({ categoryId: 89 });
-      _that.fydz = data.data;
-    },
-    async DataListJson() {
-      const data = await redDataListJson({ channelId: 15 });
-      _that.mlsxData = data.data[0].data;
-      this.mlsxData.forEach((item, index) => {
-        switch (item.id) {
-          case 148:
-            _that.tswb = item.data;
-            break;
-          case 87:
-            _that.tssx = item.data;
-            break;
-          case 90:
-            _that.sjsj = item.data;
-            break;
-          
-        }
-      });
-      console.log("接口数据", this.sjsj);
-    },
-  },
-};
+  }
+}
 </script>
-<style rel="stylesheet/scss" lang="scss" scoped>
-.photoBox {
-  width: 1060px;
-  margin: 0 auto;
+<style scoped>
+.conBox{
+  overflow: hidden;
+}
+.listmain1 {
+    width: 1080px;
+    height: 2250px;
+    margin: 0 auto;
+    margin-top: 5px;
+}
+.headerImg{
+  margin-top: 10px;
+  width: 1080px;
+  height: 114px;
+}
+.listmain1left {
+    width: 691px;
+    float: left;
 }
 
-.mlsxpart3 {
-  margin-left: 10px;
-  margin-top: 33px;
-  height: 450px;
-  width: 1080px;
+</style>
+<style>
+.pagination {
+    font-size: 16px;
 }
-.mlsxpart2-video {
-  float: left;
-  height: 420px;
-  width: 700px;
+.VuePagination {
+  margin-top: 15px;
 }
-.mlsxpart2-video img {
-  height: 420px;
-  width: 700px;
+.VuePagination__count{
+  display: none;
 }
-.mlsxpart2-font {
-  margin-left: 35px;
-  float: left;
-  height: 490px;
-  width: 325px;
+.pagination a {
+  color: #000;
 }
-.mlsxpart2-font1 {
-  margin-top: 1px;
-  float: left;
-  height: 18px;
-  width: 325px;
-  font-size: 18px;
-  font-weight: bold;
-  line-height: 18px;
+.pagination a.page-link.active{
+  color: rgb(133, 133, 133);
 }
-.mlsxpart2-font1 a:link {
-  color: #6e0a0a;
-}
-.mlsxpart2-font2 {
-  float: left;
-  height: 110px;
-  width: 320px;
-  font-size: 14px;
-  line-height: 28px;
-  margin-top: 20px;
-  color: #878787;
-}
-.mlsxpart2-font3 {
-  margin-top: 45px;
-  float: left;
-  height: 18px;
-  width: 325px;
-  font-size: 18px;
-  font-weight: bold;
-  line-height: 18px;
-}
-.mlsxpart2-font3 a:link {
-  color: #6e0a0a;
-}
-.mlsxpart2-font4 {
-  float: left;
-  height: 50px;
-  width: 320px;
-  font-size: 14px;
-  font-weight: bold;
-  line-height: 28px;
-  margin-top: 25px;
-  color: #878787;
+.secondright{
+	height:2070px;
+	width:350px;
+	float:left;
+	margin-left:34px;
 }
 </style>

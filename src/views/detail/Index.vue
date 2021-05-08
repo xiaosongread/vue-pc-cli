@@ -7,7 +7,7 @@
       <div class="path" v-if="articleData.length">
         {{articleData[0].position}}
       </div>
-      <div v-if="type===1" style="display: flex">
+      <div v-if="type==1" style="display: flex">
         <div class="listmain1left">
         <div v-if="articleData.length">
           <div class="title">{{ articleData[0].title }}</div>
@@ -46,40 +46,36 @@
         </div>
         <FirstRightNav></FirstRightNav>
       </div>
-      <div v-if="type===2">
+      <div v-if="type==3">
         <div>
           <div class="video_box">
-            <video controls="controls" src="https://www.shanxiwenbow.com/upload/202007/13/202007131041525992.mp4" id="video_v1" width="100%" height="100%"></video>
+            <video controls="controls" :src="articleData[0].videoSrc" id="video_v1" width="100%" height="100%"></video>
             <div class="video_box_meta">
-              <h1>《晋阳传奇·古墓幻影》</h1>
-              <p>1979年的春天是个充满希望的季节，这一年，刚成立的山西省考古研究所正在对省内的文物进行普查，太原市郊的晋源区是晋阳古城遗址的所在地，当地还流传着晋王陵就在这里的说法，因此，自然成了这次普查的一个重点。地方志上说，晋王陵位于悬瓮山麓，晋祠以南五里路是晋人祖先唐叔虞的墓。</p>
+              <h1>{{ articleData[0].title }}</h1>
+              <p v-html="articleData[0].content"></p>
               <div class="video_box_meta_text">
-                责任编辑：冯江涛<br/>
-                发布时间：2020年05月26日
+                责任编辑：{{ articleData[0].userName }}<br/>
+                发布时间：{{ articleData[0].addtime }}
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div v-if="type===3">
+      <div v-if="type==2">
         <div class="photo-swiper">
-          <h1>媒体深度融合，打造中央厨房</h1>
-          <div class="photo-swiper-tim">内容来源：山西文博网责任编辑：冯江涛发布时间：2019年12月10日</div>
+          <h1>{{ articleData[0].title }}</h1>
+          <div class="photo-swiper-tim">内容来源：山西文博网责任编辑：{{ articleData[0].userName }}发布时间：{{ articleData[0].addtime }}</div>
           <div>
             <div class="swiper-container1">
               <div class="swiper-wrapper">
-                <div class="swiper-slide">
+                <div class="swiper-slide" v-for="(item, index) in articleData[0].dataImg" :key="index">
                   <img src="https://www.shanxiwenbow.com/upload/202007/13/202007130940259742.jpg">
-                  <p>媒体深度融合展区重点展示近年来我省在推动传统媒体与新兴媒体深度融合、打造新型传播平台、建设新型主流媒体等方面取得的新突破，由山西日报、山西广播电视台和山西云媒体发展有限公司共同布展。</p>
-                </div>
-                <div class="swiper-slide">
-                  <img src="https://www.shanxiwenbow.com/upload/202008/27/202008272103045210.png">
-                  <p>媒体深度融合展区重点展示近年来我省在推动传统媒体与新兴媒体深度融合、打造新型传播平台、建设新型主流媒体等方面取得的新突破，由山西日报、山西广播电视台和山西云媒体发展有限公司共同布展。</p>
+                  <p>{{item.remark}}</p>
                 </div>
               </div>
             </div>
           </div>
-          <!-- <div class="photo-swiper-trol">
+          <div class="photo-swiper-trol" v-if="articleData[0].dataImg && articleData[0].dataImg.length">
             <div>
               <div class="photo-swiper-trol-per">
                 <img src="https://www.shanxiwenbow.com/upload/201912/23/201912231147134515.JPG">
@@ -87,7 +83,19 @@
               <p class="nextp">上一篇</p>
             </div>
             <div class="photo-swiper-trol-cons">
-              123123
+              <div class="swiper-container2">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide" v-for="(item, index) in articleData[0].dataImg" :key="index">
+                    <img src="https://www.shanxiwenbow.com/upload/201912/23/201912231147134515.JPG">
+                  </div>
+                </div>
+                <div class="swiper-button-prev">
+                  <img src="../../assets/SXWB/img/prevBtn.png">
+                </div>
+                <div class="swiper-button-next">
+                  <img src="../../assets/SXWB/img/nextBtn1.png">
+                </div>
+              </div>
             </div>
             <div>
               <div class="photo-swiper-trol-next">
@@ -95,11 +103,11 @@
               </div>
               <p class="nextp">下一篇</p>
             </div>
-          </div> -->
+          </div>
         </div>
       </div>
     </div>
-    <div class="swiper_trol" v-if="type===2">
+    <div class="swiper_trol" v-if="type==3">
       <div class="swiper-container">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
@@ -161,7 +169,7 @@ export default {
   },
   data() {
     return {
-      type: 1, // 1 富文本；2 视频 3 图片
+      type: 1, // 1 图文； 2 图片； 3 视频；
       UpId: '',
       articleData: [],
       headerListData: []
@@ -185,9 +193,20 @@ export default {
           prevEl: '.swiper-button-prev',
         },
       })
-      var mySwiper = new Swiper ('.swiper-container1', {
+      var mySwiper1 = new Swiper ('.swiper-container1', {
         direction: 'horizontal', // 水平切换选项
+        loop: true,
         autoplay:true,
+      })
+      var mySwiper2 = new Swiper ('.swiper-container2', {
+        direction: 'horizontal', // 水平切换选项
+        slidesPerView: 5,
+        loop: true,
+        autoplay:true,
+        navigation: {
+          nextEl: '.swiper-button-next2',
+          prevEl: '.swiper-button-prev2',
+        },
       })
     },1000)
   },
@@ -201,6 +220,7 @@ export default {
       const {data, channerData} = await articleData({ id });
       console.log('详情的数据', data)
       this.articleData = data
+      this.type = data[0].dataType
       this.headerListData = channerData
       this.UpId = data.UpId
     },
@@ -426,6 +446,43 @@ export default {
     }
     .nextp{
       text-align: center;
+    }
+  }
+  .photo-swiper-trol-cons{
+    position: relative;
+    .swiper-container2{
+      width: 685px;
+      height: 86px;
+      margin-left: 45px;
+      overflow: hidden;
+      .swiper-wrapper{
+        width: 100%;
+        height: 82px;
+        .swiper-slide{
+          width: 127px !important;
+          height: 100%;
+          padding: 0 5px;
+          img{
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+    .swiper-button-prev, .swiper-button-next{
+      top: 40px;
+    }
+    .swiper-button-prev:after, .swiper-button-next:after {
+      display: none;
+    }
+    .swiper-slide{
+      -webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
+      filter: grayscale(100%);
+    }
+    .swiper-slide.swiper-slide-active{
+      border: 2px solid #999  ;
+      -webkit-filter: grayscale(0%); /* Chrome, Safari, Opera */
+      filter: grayscale(0%);
     }
   }
 }

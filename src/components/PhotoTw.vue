@@ -1,7 +1,7 @@
 <template>
   <!-- 图文 -->
 	<div class="tssxpart">
-		<div class="tssxpart1" v-for="(item, index) in listData" :key="index" v-if="index<3">
+		<div class="tssxpart1" v-for="(item, index) in listData" :key="index" v-if="type==='secondIndex' && index<3 || type==='list'">
 			<div class="tssxpart1img">
 				<a :title="item.title" href="/photos/show-4805.html" target="_blank">
 					<img :src="item.imgUrl">
@@ -29,7 +29,11 @@ export default {
 		listData: {
 			type: Array,
 			default: []
-		}
+		},
+		type: {
+			type: String,
+			default: 'secondIndex'
+		},
 	},
   data () {
     return {

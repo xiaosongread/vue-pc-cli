@@ -1,22 +1,22 @@
 <template>
   <div>
     <LogoHeader type="photos" />
-    <Header :list="menuList" type="photos" />
+    <Header :list="menuList" type="photoList" />
     <SwiperBanner :id="id"></SwiperBanner>
     <!-- 主内容 -->
     <!-- 图说文博 -->
     <div class="photoBox">
-      <PhotoTit type="tswb"></PhotoTit>
+      <PhotoTit titlog="tswb" id="148" type="photoList"></PhotoTit>
       <PhotoTw :listData="tswb"></PhotoTw>
     </div>
     <!-- 图说山西 -->
     <div class="photoBox">
-      <PhotoTit type="tssx"></PhotoTit>
+      <PhotoTit titlog="mm1" id="87" type="photoList"></PhotoTit>
       <PhotoTw :listData="tssx"></PhotoTw>
     </div>
     <!-- 视觉三晋 -->
   <div class="photoBox">
-    <PhotoTit type="sjsj"></PhotoTit>
+    <PhotoTit titlog="mm2" id="90" type="photoList"></PhotoTit>
     <div class="mlsxpart3">
       <div class="mlsxpart2-video">
           <router-link :to="{ path: 'detail', query: { id: item.id } }" v-for="(item, index) in sjsj" :key="index" v-if="index === 0">
@@ -37,12 +37,12 @@
   </div>
     <!-- 非遗大展 -->
     <div class="photoBox">
-      <PhotoTit type="fydz"></PhotoTit>
+      <PhotoTit titlog="mm3" id="89" type="photoList"></PhotoTit>
       <PhotoTwTab :listData="fydz" type="one"></PhotoTwTab>
     </div>
     <!-- 特色文化 -->
     <div class="photoBox">
-      <PhotoTit type="tswh"></PhotoTit>
+      <PhotoTit titlog="mm4" id="75" type="photoList"></PhotoTit>
       <PhotoTwTab :listData="tswh"></PhotoTwTab>
     </div>
     <!-- 网上展馆 
@@ -52,7 +52,7 @@
     </div>-->
     <!-- 便游三晋 -->
     <div class="photoBox">
-      <PhotoTit type="bysj"></PhotoTit>
+      <PhotoTit titlog="mm5" id="76" type="photoList"></PhotoTit>
       <PhotoTwTab :listData="bysj"></PhotoTwTab>
     </div>
     <Footer />

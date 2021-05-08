@@ -3,16 +3,19 @@
 	<div class="tssxpart">
 		<div class="tssxpart1" v-for="(item, index) in listData" :key="index" v-if="type==='secondIndex' && index<3 || type==='list'">
 			<div class="tssxpart1img">
-				<a :title="item.title" href="/photos/show-4805.html" target="_blank">
-					<img :src="item.imgUrl">
-				</a>
+				 <router-link :to="{ path: 'detail', query: { id: item.id } }">
+					 <img :src="item.imgUrl">
+				 </router-link>
 			</div>
 			<div class="tssxpart1font">
-				<div class="tssxpart1font1">
-					<a :title="item.title" href="/photos/show-4805.html" target="_blank">{{item.title}}</a></div>
-				<div class="tssxpart1font2">{{item.zhaiyao}}</div>
+				<div class="tssxpart1font1 twdanghan">
+					<router-link :to="{ path: 'detail', query: { id: item.id } }">
+					 {{item.title}}
+				 </router-link>
+				</div>
+				<div class="tssxpart1font2 twduohan">{{item.zhaiyao}}</div>
 				<div class="tssxpart1font3">
-					2019年12月09日
+					{{item.addtime}}
 					<div class="tssxxx">
 						<a href="/photos/show-4805.html">
 							<img src="../assets/SXWB/img/xx.jpg"></a>
@@ -60,7 +63,7 @@ export default {
 	height:auto;
 	width:360px;
 	float:left;
-	padding: 0px 10px 0px 10px;
+	padding:15px 10px 15px 10px;
 }
 .tssxpart2{
 	margin-left:15px;
@@ -93,7 +96,7 @@ export default {
 }
 .tssxpart1font1{
 	margin-top:18px;
-	height:15px;
+	height:20px;
 	width:333px;
 	float:left;
 	font-size:15px;
@@ -127,5 +130,16 @@ export default {
 	width:34px;
 	float:right;
 	margin-right:13px;
+}
+.twdanghan {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.twduohan {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; /*显示几行*/
+  overflow: hidden;
 }
 </style>

@@ -2,9 +2,9 @@
   <div class="mb2left">
     <div class="mb2left1">
       <div class="redb">
-        <router-link :to="{ path: 'photos', query: {} }"
-          ><img src="../assets/SXWB/img/s2.jpg"
-        /></router-link>
+        <router-link :to="{ path: 'photos', query: {} }">
+          <img src="../assets/SXWB/img/s2.jpg"/>
+        </router-link>
       </div>
       <div class="garyb"></div>
     </div>
@@ -75,7 +75,7 @@
       v-if="item.id === 75 || item.id === 76"
     >
       <div class="mb2left3img1">
-        <router-link :to="{ path: 'photos', query: {} }">
+        <router-link :to="{ path: 'photoList', query: {id:item.id,type:'photoList'} }">
           <div class="mb2left3img_1">
             <img src="../assets/SXWB/img/tswh.jpg" v-if="item.id === 75" />
             <img src="../assets/SXWB/img/bysj.jpg" v-if="item.id === 76" />

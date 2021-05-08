@@ -7,7 +7,7 @@
   <div class="first" title="山西文化产业博览交易网">
     <img v-if="type === 'index'" src="@/assets/SXWB/img/logo9.jpg" >
     <img v-if="type === 'article'" src="@/assets/SXWB/img/article_logo.jpg" style="width:423px;height:63px;">
-    <img v-if="type === 'photos'" src="@/assets/SXWB/img/photos.jpg" style="width:423px;height:63px;">
+    <img v-if="type === 'photos'||type === 'photoList'" src="@/assets/SXWB/img/photos.jpg" style="width:423px;height:63px;">
     <img v-if="type === 'hall'" src="@/assets/SXWB/img/hall.jpg" style="width:423px;height:63px;">
     <img v-if="type === 'dock'" src="@/assets/SXWB/img/dock.jpg" style="width:423px;height:63px;">
     <img v-if="type === 'wenbo'" src="@/assets/SXWB/img/wenbo.jpg" style="width:423px;height:63px;">

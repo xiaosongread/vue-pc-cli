@@ -2,7 +2,7 @@
   <div class="mb2right">
     <div class="mb2right1">
       <div class="redb2">
-        <router-link :to="{ path: 'photos' , query: { } }">
+        <router-link :to="{ path: 'photoList' , query: {id:'90',type:'photoList' } }">
           视觉三晋
         </router-link>
         <span id="redb2"> Video</span>
@@ -50,7 +50,7 @@
     </div>
     <div class="mb2right1">
       <div class="redb2">
-        <router-link :to="{ path: 'photos' , query: { } }">
+        <router-link :to="{ path: 'photoList' , query: {id:'89',type:'photoList' }  }">
           非遗大展
         </router-link>
         <span id="redb2"> Video</span>

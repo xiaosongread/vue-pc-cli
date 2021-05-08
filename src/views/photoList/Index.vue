@@ -58,8 +58,8 @@ export default {
   },
   created () {
     this.types = this.$route.query.type
-    this.dataToJsonArticlePage()
     this.secondLeveldata()
+    this.dataToJsonArticlePage()
   },
   methods: {
     clickPage() {
@@ -92,7 +92,7 @@ export default {
 }
 .listmain1 {
     width: 1080px;
-    height: 2250px;
+    height: 1100px;
     margin: 0 auto;
     margin-top: 5px;
 }
@@ -109,12 +109,14 @@ export default {
 </style>
 <style>
 .pagination {
-    font-size: 16px;
+    font-size: 18px;
 }
 .VuePagination {
-  margin-top: 15px;
+  width: 1080px;
+  margin-top: 40px;
 }
 .VuePagination__count{
+  
   display: none;
 }
 .pagination a {

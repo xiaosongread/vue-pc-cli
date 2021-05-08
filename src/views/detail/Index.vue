@@ -86,7 +86,7 @@
               <div class="swiper-container2">
                 <div class="swiper-wrapper">
                   <div class="swiper-slide" v-for="(item, index) in articleData[0].dataImg" :key="index">
-                    <img src="https://www.shanxiwenbow.com/upload/201912/23/201912231147134515.JPG">
+                    <img src="https://www.shanxiwenbow.com/upload/201912/23/201912231147134515.JPG" @click="lineTo(index)">
                   </div>
                 </div>
                 <div class="swiper-button-prev">
@@ -185,7 +185,7 @@ export default {
     _that = this
     this.init()
     setTimeout(()=>{
-      var mySwiper = new Swiper ('.swiper-container', {
+      this.mySwiper = new Swiper ('.swiper-container', {
         direction: 'horizontal', // 水平切换选项
         loop: true, // 循环模式选项
         autoplay:true,
@@ -194,16 +194,21 @@ export default {
           prevEl: '.swiper-button-prev',
         },
       })
-      var mySwiper1 = new Swiper ('.swiper-container1', {
+      this.mySwiper1 = new Swiper ('.swiper-container1', {
         direction: 'horizontal', // 水平切换选项
         loop: true,
         autoplay:true,
       })
-      var mySwiper2 = new Swiper ('.swiper-container2', {
+      this.mySwiper2 = new Swiper ('.swiper-container2', {
         direction: 'horizontal', // 水平切换选项
         slidesPerView: 5,
         loop: true,
         autoplay:true,
+        on: {
+          // click: function (swiper, event) {
+          //   console.log('你点了Swiper', swiper, event);
+          // }
+        },
         navigation: {
           nextEl: '.swiper-button-next2',
           prevEl: '.swiper-button-prev2',
@@ -232,6 +237,11 @@ export default {
       this.Jumptype=data.data[0].templateAlias
       this.headerListData = data.data[0].data
        console.log('--------------', this.headerListData)
+    },
+    lineTo(index) {
+      console.log(index + 1)
+      this.mySwiper1.slideTo(index+1, 500)
+      this.mySwiper2.slideTo(index+1, 500)
     },
     loadFn(id) {
       this.$router.push({ path:'detail',query: {

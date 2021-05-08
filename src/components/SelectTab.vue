@@ -16,7 +16,7 @@
           v-for="(item, index) in listCYDJData"
           :key="index"
         >
-        <router-link :to="{ path: paths , query: { id: id } }">
+        <router-link :to="{ path: 'secondIndex' , query: { id: item.id,type: paths} }">
           <li class="" @mouseover="mouseOver(index)">{{ item.title }}</li>
         </router-link>
         </ul>
@@ -30,7 +30,7 @@
         >
           <div class="mb2left3_21">
             <div
-              v-for="(item1, index1) in item.content"
+              v-for="(item1, index1) in item.dataList"
               :key="index1"
               v-if="index1 < 2"
             >
@@ -56,13 +56,13 @@
               <router-link
                 :to="{
                   path: 'detail',
-                  query: { id: listCYDJData[0].content[0].id },
+                  query: { id: listCYDJData[mouseIndex].topData[0].id },
                 }"
               >
                 <span class="mb1left4_2 danhang">{{
-                  listCYDJData[0].content[0].title
+                  listCYDJData[mouseIndex].topData[0].title
                 }}</span>
-                <img :src="listCYDJData[0].content[0].imgUrl" />
+                <img :src="listCYDJData[mouseIndex].topData[0].imgUrl" />
               </router-link>
             </div>
           </div>

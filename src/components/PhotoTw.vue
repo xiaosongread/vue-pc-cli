@@ -56,6 +56,7 @@ export default {
 	height:auto;
 	width:360px;
 	float:left;
+	padding: 0px 10px 0px 10px;
 }
 .tssxpart2{
 	margin-left:15px;

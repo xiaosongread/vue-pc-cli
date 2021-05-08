@@ -57,7 +57,7 @@ export default {
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
 .nav{
-	margin-top:35px;
+	margin-top:10px;
 	height:61px;
 	width:100%;
 	background:#B28147;

@@ -44,13 +44,13 @@
           <div class="mbr3left1">
             <div class="redb3">
               <div v-if="item.id === 60">
-                <router-link :to="{ path: 'article', query: {} }">{{
+                <router-link :to="{ path: 'secondIndex', query: {id:'60',type:'article'} }">{{
                   item.title
                 }}</router-link>
                 <span id="red3">Focus </span>
               </div>
               <div v-if="item.id === 61">
-                <router-link :to="{ path: 'article', query: {} }">{{
+                <router-link :to="{ path: 'secondIndex', query: {id:'61',type:'article'} }">{{
                   item.title
                 }}</router-link>
                 <span id="red3">Information </span>
@@ -59,17 +59,19 @@
           </div>
         </div>
         <div
-          v-for="(item1, index1) in item.content"
+          v-for="(item1, index1) in item.dataList"
           :key="index1"
-          v-if="index1 === 0 || index1 !== 0 || index1 < 5"
+          v-if="index1 === 0 || index1 < 4"
         >
           <div class="main-left ilist" v-if="index1 === 0">
-            <router-link :to="{ path: 'detail', query: { id: item1.id } }">
-              <span class="mb1left4_2">{{ item1.title }}</span>
-              <img :src="item1.imgUrl"
+            <router-link
+              :to="{ path: 'detail', query: { id: item.topData[0].id } }"
+            >
+              <span class="mb1left4_2">{{ item.topData[0].title }}</span>
+              <img :src="item.topData[0].imgUrl"
             /></router-link>
           </div>
-          <div class="mb1left5" v-if="index1 !== 0 && index1 < 5">
+          <div class="mb1left5" v-if="index1 === 0 || index1 < 4">
             <p>
               <router-link :to="{ path: 'detail', query: { id: item1.id } }">{{
                 item1.title
@@ -132,7 +134,7 @@ export default {
   methods: {
     async pictureCarousel() {
       const data = await pictureCarousel({ id: 0 });
-      (_that.ListsData = data.data), console.log("接口数据59", data);
+      _that.ListsData = data.data;
     },
   },
 };

@@ -17,7 +17,7 @@
     </div>
     <div class="mb3right2">
       <div class="redb2">
-         <router-link :to="{ path: 'dock' , query: { } }">
+         <router-link :to="{ path: 'secondIndex' , query: { id:'86',type:'dock'} }">
           典型案例
         </router-link>
         <span id="redb2"> News</span>
@@ -25,12 +25,12 @@
       <div class="garyb2"></div>
     </div>
     <div v-for="(item, index) in dxalData" :key="index" v-if="index<2">
-      <div class="mb1right2-3 danhang">
+      <div class="mb1right2-3 r3danhang">
               <router-link :to="{ path: 'detail', query: { id: item.id } }">{{
                 item.title
               }}</router-link>
       </div>
-      <div class="mb1right3 duohan">
+      <div class="mb1right3 r3duohan">
         <p>
           {{item.zhaiyao}}
         </p>
@@ -189,15 +189,14 @@ export default {
   width: 353px;
   float: left;
 }
-.danhang{
+.r3danhang{
 		overflow: hidden;
 		text-overflow:ellipsis;
 		white-space: nowrap;
 	}
-	.mb2le3_212 p{
+	.r3duohan{
 		display: -webkit-box;
 		-webkit-box-orient: vertical;
-		-webkit-line-clamp: 2;/*显示几行*/
-		overflow: hidden;
+		-webkit-line-clamp: 3;/*显示几行*/
 	}
 </style>

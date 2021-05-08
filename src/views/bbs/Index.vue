@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { channelDataListJson,menuDataList } from '@/utils/api'
+import { redDataListJson,menuDataList } from '@/utils/api'
 import LogoHeader from '@/components/LogoHeader'
 import Header from '@/components/Header'
 import SwiperBanner from '@/components/SwiperBanner'
@@ -53,7 +53,7 @@ export default {
   created () {
        _that = this
        this.menuDataList()
-    this.channelDataListJson()
+    this.DataListJson()
   },
   methods: {
     async menuDataList() {
@@ -62,26 +62,22 @@ export default {
         return item.id === 20
       })[0].data
     },
-    async channelDataListJson () {
-      const data = await channelDataListJson()
-      data.data.forEach((item, index)=>{
-        if (item.id === 20) {
-          _that.whltData = item.data
-        }
-      })
+    async DataListJson () {
+      const data = await redDataListJson({ channelId: 20 });
+      _that.whltData = data.data[0].data;
       this.whltData.forEach((item, index)=>{
         switch(item.id) {
           case 82:
-            _that.whrp = item.content
+            _that.whrp = item.data
             break; 
           case 83:
-            _that.xrxz = item.content
+            _that.xrxz = item.data
             break; 
           case 84:
-            _that.jyxc = item.content
+            _that.jyxc = item.data
             break; 
           case 85:
-            _that.hdjl = item.content
+            _that.hdjl = item.data
             break;
         }
       })

@@ -2,7 +2,7 @@
 <div>
   <LogoHeader type="dock"/>
   <Header :list="menuList" type="dock"/>
-  <SwiperBanner :id="18"></SwiperBanner>
+  <SwiperBanner :id="id"></SwiperBanner>
   <!-- 主内容 -->
   <div class="secondm">
     <div class="secondleft">
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { channelDataListJson, menuDataList } from '@/utils/api'
+import { redDataListJson, menuDataList } from '@/utils/api'
 import LogoHeader from '@/components/LogoHeader'
 import Header from '@/components/Header'
 import SwiperBanner from '@/components/SwiperBanner'
@@ -48,12 +48,13 @@ export default {
       xmpg: [],
       xmtj: [],
       gxpt: [],
+      id: "18",
     }
   },
   created () {
      _that = this
      this.menuDataList()
-    this.channelDataListJson()
+    this.DataListJson()
   },
   methods: {
     async menuDataList() {
@@ -62,29 +63,25 @@ export default {
         return item.id === 18
       })[0].data
     },
-    async channelDataListJson () {
-      const data = await channelDataListJson()
-      data.data.forEach((item, index)=>{
-        if (item.id === 18) {
-          _that.cydjData = item.data
-        }
-      })
+    async DataListJson () {
+      const data = await redDataListJson({ channelId: 18 });
+      _that.cydjData = data.data[0].data;
       this.cydjData.forEach((item, index)=>{
         switch(item.id) {
           case 86:
-            _that.dxal = item.content
+            _that.dxal = item.data
             break; 
           case 72:
-            _that.qyld = item.content
+            _that.qyld = item.data
             break; 
           case 71:
-            _that.xmpg = item.content
+            _that.xmpg = item.data
             break; 
           case 70:
-            _that.xmtj = item.content
+            _that.xmtj = item.data
             break;
           case 69:
-            _that.gxpt = item.content
+            _that.gxpt = item.data
             break;
         }
       })
@@ -127,7 +124,6 @@ export default {
 .secondleft{
 	margin-left:30px;
 	margin-right:30px;
-	height:2070px;
 	width:631px;
 	float:left;
 }

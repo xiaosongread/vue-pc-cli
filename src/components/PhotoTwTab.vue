@@ -7,7 +7,9 @@
           style="
             display: flex;
             justify-content: space-between;
-            margin-top: 20px;
+            margin-top: 25px;
+            margin-left: 10px;
+            width:1060px;
           "
         >
           <li
@@ -16,7 +18,7 @@
             @mouseover="mouseOver(index)"
           >
             <div class="mlsxpart5-2-1">
-              <a href="/photoss/92.html" target="_blank">
+              <a href="" target="_blank">
                 <img v-if="item.id === 92" src="../assets/SXWB/img/box1.jpg" />
                 <img v-if="item.id === 93" src="../assets/SXWB/img/box2.jpg" />
                 <img v-if="item.id === 94" src="../assets/SXWB/img/box3.jpg" />
@@ -54,7 +56,7 @@
       :key="index"
       v-if="index === mouseIndex"
     >
-      <PhotoTw :listData="item.content"></PhotoTw>
+      <PhotoTw :listData="item.dataList"></PhotoTw>
     </div>
   </div>
 </template>
@@ -91,14 +93,14 @@ export default {
 </script>
 <style scoped>
 .mb2left40 {
-  margin-left: 25px;
+  margin-left: 10px;
   margin-top: 35px;
   height: 45px;
   width: 1075px;
 }
 .mb2left40_1 {
   height: 45px;
-  width: 1030px;
+  width: 1060px;
   float: left;
 }
 .mb2left40_1 ul {
@@ -106,11 +108,11 @@ export default {
   list-style: none;
 }
 .mb2left40_1 li {
-  padding: 5px 7px 5px 7px;
+  padding: 5px 10px 5px 10px;
   float: left;
   font-size: 20px;
   font-weight: bold;
-  margin-right: 18px;
+  margin-right: 16px;
   background: #6e0a0a;
   color: #ffffff;
 }

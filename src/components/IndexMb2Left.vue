@@ -19,7 +19,7 @@
           <div id="ifocus_piclist">
             <ul>
               <li
-                v-for="(item1, index1) in item.content"
+                v-for="(item1, index1) in item.dataList"
                 :key="index1"
                 v-if="index1 < 5 && bannerIndex === index1"
               >
@@ -35,7 +35,7 @@
             <ul>
               <li
                 class=""
-                v-for="(item1, index1) in item.content"
+                v-for="(item1, index1) in item.dataList"
                 :key="index1"
                 v-if="index1 < 5 && bannerIndex === index1"
               >
@@ -51,7 +51,7 @@
             :key="index"
           >
             <div
-              v-for="(item1, index1) in item.content"
+              v-for="(item1, index1) in item.dataList"
               :key="index1"
               v-if="index1 < 5"
             >
@@ -84,7 +84,7 @@
       </div>
       <div class="mb2left3text">
         <div
-          v-for="(item1, index1) in item.content"
+          v-for="(item1, index1) in item.topData"
           :key="index1"
           v-if="index1 === 0"
         >
@@ -102,13 +102,13 @@
           <p></p>
           <ul>
             <li
-              v-for="(item1, index1) in item.content"
-              :key="index1"
-              v-if="index1 > 0 && index1 < 3"
+              v-for="(item2, index2) in item.dataList"
+              :key="index2"
+              v-if="index2 === 0 || index2 < 2"
             >
               <img src="../assets/SXWB/img/dian.jpg" />
-              <router-link :to="{ path: 'detail', query: { id: item1.id } }">{{
-                item1.title
+              <router-link :to="{ path: 'detail', query: { id: item2.id } }">{{
+                item2.title
               }}</router-link>
             </li>
           </ul>
@@ -130,7 +130,7 @@
       <div class="mb2left4_1">
         <ul id="test1_li_now_">
 			<div v-for="(item, index) in listWHHGData">
-          <router-link :to="{ path: 'hall', query: {} }" >
+          <router-link :to="{ path: 'secondIndex', query: {id:item.id,type:'article'} }" >
             <li class="" @mouseover="mouseOverWhhg(index)">{{ item.title }}</li>
           </router-link>
 		  </div>
@@ -144,16 +144,16 @@
       >
         <div
           class="tablistItem"
-          v-for="(item1, index1) in item.content"
+          v-for="(item1, index1) in item.dataList"
           :key="index1"
           v-if="index1 < 4"
         >
-          <div class="tablistItemTit danghan">
+          <div class="tablistItemTit l2danghan">
             <router-link :to="{ path: 'detail', query: { id: item1.id } }">{{
               item1.title
             }}</router-link>
           </div>
-          <div class="tablistItemdes duohan">{{ item1.zhaiyao }}</div>
+          <div class="tablistItemdes l2duohan">{{ item1.zhaiyao }}</div>
         </div>
       </div>
     </div>
@@ -664,6 +664,7 @@ mb2left4_11 li {
 }
 .tablistItem {
   width: 300px;
+  height: 112px;
   float: left;
 }
 .tablistItem:nth-of-type(2n + 1) {
@@ -817,12 +818,12 @@ mb2left4_11 li {
   color: #707070;
   line-height: 31px;
 }
-.danghan {
+.l2danghan {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.duohan {
+.l2duohan {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2; /*显示几行*/

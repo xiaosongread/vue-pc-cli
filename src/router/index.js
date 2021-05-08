@@ -61,6 +61,12 @@ export default new Router({
           meta: { title: '二级首页' }
         },
         {
+          path: 'photoList',
+          name: 'photoList',
+          component: () => import('@/views/photoList/Index'),
+          meta: { title: '图片列表' }
+        },
+        {
           // path: 'detail/:id',
           path: 'detail',
           name: 'detail',

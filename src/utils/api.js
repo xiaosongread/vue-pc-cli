@@ -8,6 +8,8 @@ export const urlMap = {
   dataToJsonArticle: 'wenbo/channel/dataToJsonArticle',
   // 详情
   dataarticleData: 'wenbo/channel/articleData',
+    // 详情获得栏目
+    formArticleIdToChannelData: 'wenbo/channel/formArticleIdToChannelData',
   //列表
   dataToJsonArticlePage: 'wenbo/channel/dataToJsonArticlePage',
   secondLeveldata: 'wenbo/channel/secondLeveldata',
@@ -30,6 +32,13 @@ Object.keys(urlMap).forEach(key => {
 export function channelDataListJson(parm) {
   return request({
     url: urlMap['channelDataListJson'],
+    method: 'get',
+    params: parm || {}
+  })
+}
+export function formArticleIdToChannelData(parm) {
+  return request({
+    url: urlMap['formArticleIdToChannelData'],
     method: 'get',
     params: parm || {}
   })

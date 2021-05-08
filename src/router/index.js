@@ -5,6 +5,13 @@ import Layout from '../views/layout/Layout'
 Vue.use(Router)
 
 export default new Router({
+  scrollBehavior(to, from, saveTop) {
+    if (saveTop) {
+      return saveTop;
+    } else {
+      return { x: 0, y: 0 }
+    }
+  },
   routes: [
     {
       path: '/',

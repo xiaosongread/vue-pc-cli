@@ -603,9 +603,7 @@ export default {
 }
 
 .mb2left4_1 li {
-  height: 30px;
-  width: 105px;
-  padding-top: 5px;
+  padding: 2px 10px 2px 10px;
   float: left;
   text-align: center;
 

@@ -108,7 +108,7 @@ export default {
   list-style: none;
 }
 .mb2left40_1 li {
-  padding: 5px 10px 5px 10px;
+  padding: 4px 8px 4px 8px;
   float: left;
   font-size: 20px;
   font-weight: bold;

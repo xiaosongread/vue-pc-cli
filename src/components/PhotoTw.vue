@@ -17,8 +17,9 @@
 				<div class="tssxpart1font3">
 					{{item.addtime}}
 					<div class="tssxxx">
-						<a href="/photos/show-4805.html">
-							<img src="../assets/SXWB/img/xx.jpg"></a>
+						 <router-link :to="{ path: 'detail', query: { id: item.id } }">
+					 <img src="../assets/SXWB/img/xx.jpg">
+				 </router-link>
 					</div>
 				</div>
 			</div>
@@ -112,7 +113,6 @@ export default {
 	width:333px;
 	float:left;
 	font-size:14px;
-	
 	color:#6C6C6C;
 	line-height:24px;
 }

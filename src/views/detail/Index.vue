@@ -5,20 +5,22 @@
     <div class="listmain1">
       <img src="../../assets/SXWB/img/listad1.jpg" class="headerImg" />
       <div class="path" v-if="articleData.length">
-        {{articleData[0].position}}
+        <router-link :to="{ path: 'index', query: { } }" >首页</router-link> >
+        <router-link :to="{ path: articleData[0].channelTemplateAlias, query: {id:articleData[0].categoryId, type:articleData[0].channelTemplateAlias} }" >{{articleData[0].channelTitle}}</router-link> >
+        <router-link :to="{ path: articleData[0].categoryTemplateAlias, query: {id:articleData[0].categoryId,type:articleData[0].channelTemplateAlias } }" >{{articleData[0].categoryTitle}}</router-link> 
       </div>
       <div v-if="type==1" style="display: flex">
         <div class="listmain1left">
         <div v-if="articleData.length">
           <div class="title">{{ articleData[0].title }}</div>
           <div class="time">
-            <span style="float: left;">时间：{{ articleData[0].addtime }}</span>
-            <span style="float: right;">作者：{{ articleData[0].userName }}</span>
+            <span style="float: left;margin-left: 25px;">时间：{{ articleData[0].addtime }}</span>
+            <span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作者：{{ articleData[0].author }}</span>
           </div>
           <div class="cons" v-html="articleData[0].content"></div>
           <div class="subTit">
-            <span style="flex-grow: 1">来源：山西日报</span>
-            <span style="">【责任编辑：lcx】</span>
+            <span style="flex-grow: 1;font-weight: bold;">来源：{{ articleData[0].source }}</span>
+            <span style="font-weight: bold;margin-right: 55px;">【责任编辑：{{ articleData[0].zb }}】</span>
             </div>
             <div class="thirdtext2" v-if="articleData.length">
               <p
@@ -54,7 +56,7 @@
               <h1>{{ articleData[0].title }}</h1>
               <p v-html="articleData[0].content"></p>
               <div class="video_box_meta_text">
-                责任编辑：{{ articleData[0].userName }}<br/>
+                责任编辑：{{ articleData[0].zb }}<br/>
                 发布时间：{{ articleData[0].addtime }}
               </div>
             </div>
@@ -64,12 +66,12 @@
       <div v-if="type==2">
         <div class="photo-swiper">
           <h1>{{ articleData[0].title }}</h1>
-          <div class="photo-swiper-tim">内容来源：山西文博网责任编辑：{{ articleData[0].userName }}发布时间：{{ articleData[0].addtime }}</div>
+          <div class="photo-swiper-tim">内容来源：{{ articleData[0].source }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    责任编辑：{{ articleData[0].zb }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布时间：{{ articleData[0].addtime }}</div>
           <div>
             <div class="swiper-container1">
               <div class="swiper-wrapper">
-                <div class="swiper-slide" v-for="(item, index) in articleData[0].dataImg" :key="index">
-                  <img src="https://www.shanxiwenbow.com/upload/202007/13/202007130940259742.jpg">
+                <div class="swiper-slide setwh" v-for="(item, index) in articleData[0].dataImg" :key="index">
+                  <img :src="item.originalPath"/>
                   <p>{{item.remark}}</p>
                 </div>
               </div>
@@ -86,7 +88,7 @@
               <div class="swiper-container2">
                 <div class="swiper-wrapper">
                   <div class="swiper-slide" v-for="(item, index) in articleData[0].dataImg" :key="index">
-                    <img src="https://www.shanxiwenbow.com/upload/201912/23/201912231147134515.JPG" @click="lineTo(index)">
+                    <img :src="item.originalPath" @click="lineTo(index)">
                   </div>
                 </div>
                 <div class="swiper-button-prev">
@@ -228,13 +230,14 @@ export default {
       this.articleData = data
       this.UpId = data.UpId
       this.type = data[0].dataType
+      this.Jumptype=data[0].channelTemplateAlias
     },
     async formArticleIdToChannelData () {
       var id = this.$route.query.id
       const data = await formArticleIdToChannelData({
         articleId: id,
       })
-      this.Jumptype=data.data[0].templateAlias
+      
       this.headerListData = data.data[0].data
        console.log('--------------', this.headerListData)
     },
@@ -255,10 +258,13 @@ export default {
 .conBox {
   overflow: hidden;
 }
+span{
+     font-family: SimSun;
+}
 .path{
   padding-left: 30px;
   margin: 20px auto 0;
-  width: 1050px;
+  width: 1080px;
   height: 32px;
   background: #EEEEEE;
   font-size: 15px;
@@ -282,21 +288,19 @@ export default {
   float: left;
   font-size: 14px;
   display: flex;
-  margin-right: 35px;
+  margin-right: 40px;
 }
 .title {
   line-height: 39px;
   font-size: 28px;
   font-weight: bold;
-  margin-left: 30px;
+  margin-left: 25px;
   margin-top: 37px;
 }
 .cons {
-      height: auto;
-    width: 661px;
+    height: auto;
     float: left;
-    margin-left: 30px;
-    margin-top: 5px;
+    margin-top: 20px;
     font-size: 15px;
     line-height: 30px;
     text-indent: 2em;
@@ -304,18 +308,40 @@ export default {
     letter-spacing: 0.5px;
     font-weight: bold;
     color: #000;
+    padding: 25px;
+}
+.video_box{
+  padding: 0px 15px 15px 15px;
+}
+.video_box_meta {
+  font-weight: bold;
+}
+.video_box_meta h1{
+  font-weight: bold;
+}
+.video_box_meta p{
+  font-weight: bold;
+  font-size: 16px;
+}
+.video_box_meta div{
+  font-weight: bold;
+  font-size: 14px;
+}
+.setwh p{
+  margin: 20px 0;
+  font-weight: bold;
+  font-size: 16px;
 }
 .time{
   height: 40px;
-  margin-left: 30px;
-  margin-top: 35px;
+  margin-top: 55px;
   border-bottom: 3px solid #efefef;
 }
 .subTit {
   height: 40px;
   width: 661px;
   margin-left: 30px;
-  margin-top: 35px;
+  margin-top: 25px;
   display: inline-flex;
   border-bottom: 3px solid #efefef;
 }
@@ -411,7 +437,7 @@ export default {
 }
 .photo-swiper{
   width: 1080px;
-  margin-top: 30px;
+  margin-top: 20px;
   padding: 15px;
   border: 2px solid #EFEFEF;
   h1{

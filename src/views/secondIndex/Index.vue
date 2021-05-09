@@ -4,9 +4,15 @@
   <Header :list="headerListData" :type="types"/>
   <div class="listmain1">
     <img src="../../assets/SXWB/img/listad1.jpg" class="headerImg">
+    <div class="path">
+        <router-link :to="{ path: 'index', query: { } }" >首页</router-link> >
+        <router-link :to="{ path: paths1, query: {id:ids1, type:paths1} }" >{{channelTitle}}</router-link> >
+        <router-link :to="{ path: paths2, query: {id:ids2,type:paths1 } }" >{{categoryTitle}}</router-link> 
+      </div>
     <div class="listmain1left">
       <SecondItem :list="secondListData"></SecondItem>
-      <pagination :records="records" 
+      <pagination class="pagination1"
+       :records="records" 
                   :per-page="perPage" 
                   @paginate="clickPage" 
                   v-model="page" 
@@ -47,6 +53,12 @@ export default {
       records: 0,//总数
       secondListData: [],
       headerListData: [],
+      paths1:'',
+      ids1:'',
+      paths2:'',
+      ids2:'',
+      channelTitle:'',
+      categoryTitle:'',
       options: {
         chunk: 10,
         edgeNavigation: true,
@@ -74,6 +86,12 @@ export default {
       this.records = data.total
       this.pageNo = this.pageNo + 1
       this.secondListData = data.data
+       this.paths1=data.dataYiji.channelTemplateAlias
+       this.paths2=data.dataErji.categoryTemplateAlias
+       this.ids1=data.dataYiji.channelId
+       this.ids2=data.dataErji.categoryId
+       this.channelTitle=data.dataYiji.channelTitle
+       this.categoryTitle=data.dataErji.categoryTitle
     },
     async secondLeveldata () {
       var id = this.$route.query.id
@@ -81,6 +99,7 @@ export default {
         categoryId: id,
       })
       this.headerListData = data.data
+     
     },
   }
 }
@@ -88,6 +107,15 @@ export default {
 <style scoped>
 .conBox{
   overflow: hidden;
+}
+.path{
+  padding-left: 30px;
+  margin: 20px auto 0;
+  width: 1080px;
+  height: 32px;
+  background: #EEEEEE;
+  font-size: 15px;
+  line-height: 33px;
 }
 .listmain1 {
     width: 1080px;
@@ -104,16 +132,17 @@ export default {
     width: 691px;
     float: left;
 }
-
+.pagination1{
+  width: 640px;
+  margin-top: 80px;
+}
 </style>
 <style>
 .pagination {
-    font-size: 18px;
-    
+    font-size: 18px;  
 }
 .VuePagination {
-  margin-top: 80px;
-  margin-left: -55px;
+  
   
 }
 .VuePagination__count{

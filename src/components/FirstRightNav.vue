@@ -32,8 +32,8 @@
     <div class="smb1right1">
       <a href="/photos/89.html " target="_blank"> </a>
       <div class="redb2">
-        <router-link :to="{ path: 'photos' , query: { } }">
-          非遗大展<span id="redb2"> Video</span>
+       <router-link :to="{ path: 'photoList' , query: {id:'89',type:'photoList' }  }">
+          非遗大展
         </router-link>
       </div>
       <div class="garyb2"></div>
@@ -41,47 +41,47 @@
     <!--九宫格-->
     <div class="mb2right3">
       <div class="mb9-1">
-        <router-link :to="{ path: 'photos' , query: { } }">
+        <router-link :to="{ path: 'photoList' , query: {id:'92',type:'photos'} }">
           <img src="../assets/SXWB/img/box1.jpg"
         /></router-link>
       </div>
       <div class="mb9">
-        <router-link :to="{ path: 'photos' , query: { } }">
+        <router-link :to="{ path: 'photoList' , query: { id:'93',type:'photos'} }">
           <img src="../assets/SXWB/img/box2.jpg"
         /></router-link>
       </div>
       <div class="mb9">
-        <router-link :to="{ path: 'photos' , query: { } }">
+        <router-link :to="{ path: 'photoList' , query: { id:'94',type:'photos'} }">
           <img src="../assets/SXWB/img/box3.jpg"
         /></router-link>
       </div>
       <div class="mb9-1">
-        <router-link :to="{ path: 'photos' , query: { } }">
+        <router-link :to="{ path: 'photoList' , query: { id:'95',type:'photos'} }">
           <img src="../assets/SXWB/img/box4.jpg"
         /></router-link>
       </div>
       <div class="mb9">
-        <router-link :to="{ path: 'photos' , query: { } }">
+        <router-link :to="{ path: 'photoList' , query: { id:'96',type:'photos'} }">
           <img src="../assets/SXWB/img/box5.jpg"
         /></router-link>
       </div>
       <div class="mb9">
-        <router-link :to="{ path: 'photos' , query: { } }">
+        <router-link :to="{ path: 'photoList' , query: { id:'97',type:'photos'} }">
           <img src="../assets/SXWB/img/box6.jpg"
         /></router-link>
       </div>
       <div class="mb9-1">
-<router-link :to="{ path: 'photos' , query: { } }">
+      <router-link :to="{ path: 'photoList' , query: { id:'98',type:'photos'} }">
           <img src="../assets/SXWB/img/box7.jpg"
         /></router-link>
       </div>
       <div class="mb9">
-        <router-link :to="{ path: 'photos' , query: { } }">
+        <router-link :to="{ path: 'photoList' , query: {id:'99',type:'photos' } }">
           <img src="../assets/SXWB/img/box8.jpg"
         /></router-link>
       </div>
       <div class="mb9">
-        <router-link :to="{ path: 'photos' , query: { } }">
+        <router-link :to="{ path: 'photoList' , query: { id:'100',type:'photos'} }">
           <img src="../assets/SXWB/img/box9.jpg"
         /></router-link>
       </div>
@@ -103,12 +103,12 @@
       </div>
     </div>
     <div class="secondright0">
-      <router-link :to="{ path: 'article' , query: { } }">
+      <router-link :to="{ path: 'secondIndex' , query: { id:'82',type:'bbs'}}">
           <div class="redb3">文化热评<span id="redb3">Comment</span></div>
         </router-link>
       <div class="garyb3"></div>
       <div
-        v-for="(item, index) in zcfgData"
+        v-for="(item, index) in whrpData"
         :key="index"
         v-if="index === 0 || index < 3"
       >
@@ -116,7 +116,7 @@
           <ul>
             <li>
               <span id="sbox2_11font">热评：</span>
-              <router-link :to="{ path: 'detail', query: { id: item.id } }">{{
+              <router-link :to="{ path: 'detail', query: { id: item.id  } }">{{
                 item.title
               }}</router-link>
             </li>

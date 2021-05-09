@@ -60,47 +60,47 @@
     <!--九宫格-->
     <div class="mb2right3">
       <div class="mb9-1">
-        <router-link :to="{ path: 'photos' , query: { } }">
+        <router-link :to="{ path: 'photoList' , query: {id:'92',type:'photos'} }">
           <img src="../assets/SXWB/img/box1.jpg"
         /></router-link>
       </div>
       <div class="mb9">
-        <router-link :to="{ path: 'photos' , query: { } }">
+        <router-link :to="{ path: 'photoList' , query: { id:'93',type:'photos'} }">
           <img src="../assets/SXWB/img/box2.jpg"
         /></router-link>
       </div>
       <div class="mb9">
-        <router-link :to="{ path: 'photos' , query: { } }">
+        <router-link :to="{ path: 'photoList' , query: { id:'94',type:'photos'} }">
           <img src="../assets/SXWB/img/box3.jpg"
         /></router-link>
       </div>
       <div class="mb9-1">
-        <router-link :to="{ path: 'photos' , query: { } }">
+        <router-link :to="{ path: 'photoList' , query: { id:'95',type:'photos'} }">
           <img src="../assets/SXWB/img/box4.jpg"
         /></router-link>
       </div>
       <div class="mb9">
-        <router-link :to="{ path: 'photos' , query: { } }">
+        <router-link :to="{ path: 'photoList' , query: { id:'96',type:'photos'} }">
           <img src="../assets/SXWB/img/box5.jpg"
         /></router-link>
       </div>
       <div class="mb9">
-        <router-link :to="{ path: 'photos' , query: { } }">
+        <router-link :to="{ path: 'photoList' , query: { id:'97',type:'photos'} }">
           <img src="../assets/SXWB/img/box6.jpg"
         /></router-link>
       </div>
       <div class="mb9-1">
-<router-link :to="{ path: 'photos' , query: { } }">
+      <router-link :to="{ path: 'photoList' , query: { id:'98',type:'photos'} }">
           <img src="../assets/SXWB/img/box7.jpg"
         /></router-link>
       </div>
       <div class="mb9">
-        <router-link :to="{ path: 'photos' , query: { } }">
+        <router-link :to="{ path: 'photoList' , query: {id:'99',type:'photos' } }">
           <img src="../assets/SXWB/img/box8.jpg"
         /></router-link>
       </div>
       <div class="mb9">
-        <router-link :to="{ path: 'photos' , query: { } }">
+        <router-link :to="{ path: 'photoList' , query: { id:'100',type:'photos'} }">
           <img src="../assets/SXWB/img/box9.jpg"
         /></router-link>
       </div>

@@ -1,15 +1,15 @@
 <template>
 <div>
-  <LogoHeader type="BBS"/>
-  <Header :list="menuList" type="BBS"/>
+  <LogoHeader type="bbs"/>
+  <Header :list="menuList" type="bbs"/>
   <SwiperBanner :id="id"></SwiperBanner>
   <!-- 主内容 -->
   <div class="secondm">
     <div class="secondleft">
-      <ArticleLeft :listData="whrp" id="82" type="BBS" titlog="whlt1"></ArticleLeft>
-      <ArticleLeft :listData="xrxz" id="83" type="BBS" titlog="whlt2"></ArticleLeft>
-      <ArticleLeft :listData="jyxc" id="84" type="BBS" titlog="whlt3"></ArticleLeft>
-      <ArticleLeft :listData="hdjl" id="85" type="BBS" titlog="whlt4"></ArticleLeft>
+      <ArticleLeft :listData="whrp" id="82" type="bbs" titlog="whlt1"></ArticleLeft>
+      <ArticleLeft :listData="xrxz" id="83" type="bbs" titlog="whlt2"></ArticleLeft>
+      <ArticleLeft :listData="jyxc" id="84" type="bbs" titlog="whlt3"></ArticleLeft>
+      <ArticleLeft :listData="hdjl" id="85" type="bbs" titlog="whlt4"></ArticleLeft>
     </div>
     <div class="secondright">
       <FirstRightNav></FirstRightNav>

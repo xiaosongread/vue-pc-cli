@@ -57,7 +57,7 @@ export default new Router({
         },
         {
           path: 'bbs',
-          name: 'Bbs',
+          name: 'bbs',
           component: () => import('@/views/bbs/Index'),
           meta: { title: '文化论坛' }
         },

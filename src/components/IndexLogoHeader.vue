@@ -7,7 +7,7 @@
     <img v-if="type === 'hall'" src="@/assets/SXWB/img/hall.jpg" style="width:423px;height:63px;">
     <img v-if="type === 'dock'" src="@/assets/SXWB/img/dock.jpg" style="width:423px;height:63px;">
     <img v-if="type === 'wenbo'" src="@/assets/SXWB/img/wenbo.jpg" style="width:423px;height:63px;">
-    <img v-if="type === 'BBS'" src="@/assets/SXWB/img/BBS.jpg" style="width:423px;height:63px;">
+    <img v-if="type === 'bbs'" src="@/assets/SXWB/img/BBS.jpg" style="width:423px;height:63px;">
   </div>
   <div class="searchlist">
     <div id="menu">

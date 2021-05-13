@@ -52,7 +52,7 @@ export default {
       records: 0,//总数
       secondListData: [],
       headerListData: [],
-       paths1:'',
+      paths1:'',
       ids1:'',
       paths2:'',
       ids2:'',

@@ -17,7 +17,7 @@
             <span style="float: left;margin-left: 25px;">时间：{{ articleData[0].addtime }}</span>
             <span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作者：{{ articleData[0].author }}</span>
           </div>
-          <div class="cons" v-html="articleData[0].content"></div>
+          <p class="cons1" v-html="articleData[0].content"></p>
           <div class="subTit">
             <span style="flex-grow: 1;font-weight: bold;">来源：{{ articleData[0].source }}</span>
             <span style="font-weight: bold;margin-right: 55px;">【责任编辑：{{ articleData[0].zb }}】</span>
@@ -111,9 +111,9 @@
     </div>
     <div class="swiper_trol" v-if="type==3">
       <div class="swiper-container">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div class="swiper-slide-item">
+        <div class="swiper-wrapper" v-for="(item, index) in secondListData" :key="index">
+          <div class="swiper-slide"  v-for="(item, index1) in secondListData" :key="index1" :v-if="index1<4">
+            <div class="swiper-slide-item" >
               <img src="https://www.shanxiwenbow.com/upload/202007/13/202007130940259742.jpg">
             </div>
             <div class="swiper-slide-item">
@@ -151,7 +151,7 @@
 
 <script>
 import Swiper from "swiper"
-import { pictureCarousel } from '@/utils/api'
+import { dataToJsonArticlePage } from '@/utils/api'
 import "../../../node_modules/swiper/css/swiper.min.css";
 import { articleData,secondLeveldata,formArticleIdToChannelData } from "@/utils/api";
 import LogoHeader from "@/components/LogoHeader";
@@ -175,7 +175,12 @@ export default {
       UpId: '',
       Jumptype:'',
       articleData: [],
-      headerListData: []
+      secondListData:[],
+      headerListData: [],
+      page: 1,	//默认第一页
+      perPage:8,//每页多少条
+      pageNo:1,//当前页
+      records: 0,//总数
     };
   },
   watch: {
@@ -222,6 +227,18 @@ export default {
     init() {
       this.formArticleIdToChannelData()
       this.getarticleData()
+      this.dataToJsonArticlePage()
+    },
+    async dataToJsonArticlePage () {
+      var id = '90'
+      const data = await dataToJsonArticlePage({
+        categoryId: id,
+        page: this.pageNo,
+        limit: this.perPage
+      })
+      this.records = data.total
+      this.pageNo = this.pageNo + 1
+      this.secondListData = data.data
     },
     async getarticleData() {
       var id = this.$route.query.id
@@ -297,17 +314,15 @@ span{
   margin-left: 25px;
   margin-top: 37px;
 }
-.cons {
+.cons1 {
     height: auto;
     float: left;
     margin-top: 20px;
     font-size: 15px;
     line-height: 30px;
     text-indent: 2em;
-    font-family: SimSun;
     letter-spacing: 0.5px;
-    font-weight: bold;
-    color: #000;
+    font-family: SimSun;
     padding: 25px;
 }
 .video_box{

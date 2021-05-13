@@ -194,8 +194,8 @@ export default {
           // }
         },
         navigation: {
-          nextEl: '.swiper-button-next2',
-          prevEl: '.swiper-button-prev2',
+          nextEl: '.swiper-button-prev',
+          prevEl: '.swiper-button-next',
         },
       })
     },1000)

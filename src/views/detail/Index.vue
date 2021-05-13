@@ -111,33 +111,10 @@
     </div>
     <div class="swiper_trol" v-if="type==3">
       <div class="swiper-container">
-        <div class="swiper-wrapper" v-for="(item, index) in secondListData" :key="index">
-          <div class="swiper-slide"  v-for="(item, index1) in secondListData" :key="index1" :v-if="index1<4">
-            <div class="swiper-slide-item" >
-              <img src="https://www.shanxiwenbow.com/upload/202007/13/202007130940259742.jpg">
-            </div>
-            <div class="swiper-slide-item">
-              <img src="https://www.shanxiwenbow.com/upload/202007/13/202007130940259742.jpg">
-            </div>
-            <div class="swiper-slide-item">
-              <img src="https://www.shanxiwenbow.com/upload/202007/13/202007130940259742.jpg">
-            </div>
-            <div class="swiper-slide-item">
-              <img src="https://www.shanxiwenbow.com/upload/202007/13/202007130940259742.jpg">
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="swiper-slide-item">
-              <img src="https://www.shanxiwenbow.com/upload/202008/27/202008272103045210.png">
-            </div>
-            <div class="swiper-slide-item">
-              <img src="https://www.shanxiwenbow.com/upload/202008/27/202008272103045210.png">
-            </div>
-            <div class="swiper-slide-item">
-              <img src="https://www.shanxiwenbow.com/upload/202008/27/202008272103045210.png">
-            </div>
-            <div class="swiper-slide-item">
-              <img src="https://www.shanxiwenbow.com/upload/202008/27/202008272103045210.png">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"  v-for="(item, index) in secondListData" :key="index">
+            <div class="swiper-slide-item" v-for="(item1, index1) in secondListData.slice(index*4,index*4+4)" :key="index1">{{index}}
+              <img :src="item1.imgUrl">
             </div>
           </div>
         </div>
@@ -178,7 +155,7 @@ export default {
       secondListData:[],
       headerListData: [],
       page: 1,	//默认第一页
-      perPage:8,//每页多少条
+      perPage:20,//每页多少条
       pageNo:1,//当前页
       records: 0,//总数
     };

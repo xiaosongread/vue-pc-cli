@@ -113,7 +113,7 @@
       <div class="swiper-container">
         <div class="swiper-wrapper">
           <div class="swiper-slide"  v-for="(item, index) in secondListData" :key="index">
-            <div class="swiper-slide-item" v-for="(item1, index1) in secondListData.slice(index*4,index*4+4)" :key="index1">{{index}}
+            <div class="swiper-slide-item" v-for="(item1, index1) in secondListData.slice(index*4,index*4+4)" :key="index1">
               <img :src="item1.imgUrl">
             </div>
           </div>

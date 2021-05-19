@@ -603,13 +603,13 @@ export default {
 }
 
 .mb2left4_1 li {
-  padding: 2px 10px 2px 10px;
+  padding: 2px 8px 2px 8px;
   float: left;
   text-align: center;
 
-  font-size: 20px;
+  font-size: 19px;
   font-weight: bold;
-  margin-right: 20px;
+  margin-right: 14px;
   background: #6e0a0a;
   color: #ffffff;
 }

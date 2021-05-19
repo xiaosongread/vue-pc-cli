@@ -77,6 +77,7 @@ export default {
     _that = this
     // this.getDouBanMovieList()
   },
+
   methods: {
     async menuDataList() {
       const data = await menuDataList()

@@ -2,7 +2,7 @@
 <div class="bottom">
   <div class="bottomfont">
       <p>
-          <span id="bottomfb">主管单位</span>：山西省委宣传部</p>
+          <span id="bottomfb">主管单位</span>：中共山西省委宣传部</p>
       <p>
           <span id="bottomfb">主办单位</span>：中共山西省委党刊社</p>
       <p>
@@ -11,18 +11,20 @@
           <span id="bottomftab">山西晋云华媒会展有限公司</span>
       </p>
       <p>
-          <span id="bottomfb">支持单位</span>：山西省新闻出版广电局 山西省文物局 山西省体育局 山西日报报业集团 山西广播电视台 山西省社会科学院</p>
+          <span id="bottomfb">支持单位</span>：山西省新闻出版局  山西省广播电视局  山西省文物局  山西省体育局  山西日报报业集团  山西广播电视台</p>
       <p>
-          <span id="bottomftab">山西省文学艺术界联合会 中国（太原）煤炭交易中心 山西省工艺美术协会</span></p>
+          <span id="bottomftab"> 山西省社会科学院（山西省人民政府发展研究中心）</span></p>
       <p>
-          <span id="bottomftab">太原市委宣传部 大同市委宣传部 朔州市委宣传部 忻州市委宣传部 晋中市委宣传部 阳泉市委宣传部 吕梁市委宣传部</span></p>
+          <span id="bottomftab">山西省文学艺术界联合会  中国（太原）煤炭交易中心  山西省工艺美术协会</span></p>
       <p>
-          <span id="bottomftab">长治市委宣传部 晋城市委宣传部 临汾市委宣传部 运城市委宣传部</span></p>
+          <span id="bottomftab">中共太原市委宣传部  中共大同市委宣传部  中共朔州市委宣传部  中共忻州市委宣传部  中共晋中市委宣传部</span></p>
+       <p>
+          <span id="bottomftab">中共阳泉市委宣传部  中共吕梁市委宣传部  中共长治市委宣传部</span></p>    
       <p>
-          <span id="bottomftab1">本网站由山西文化产业博览交易网版权所有 <a href="https://beian.miit.gov.cn/" target="_blank" style="color:white;text-decoration:underline">晋ICP备16003297号-1</a></span>
-          <!-- <script type="text/javascript">
-              document.write(unescape("%3Cspan id='_ideConac' %3E%3C/span%3E%3Cscript src='http://dcs.conac.cn/js/06/000/0000/41078438/CA060000000410784380002.js' type='text/javascript'%3E%3C/script%3E"));
-          </script> -->
+          <span id="bottomftab">中共晋城市委宣传部  中共临汾市委宣传部  中共运城市委宣传部</span></p>
+      <p style="display: flex;align-items:center">
+          <span id="bottomftab1">本网站由山西文化产业博览交易网版权所有 <a href="https://beian.miit.gov.cn/" target="_blank" style="color:white;text-decoration:underline;">晋ICP备16003297号-1</a></span>
+          <span id="_ideConac"><a href="https://bszs.conac.cn/sitename?method=show&amp;id=547D8C81B3DA0FF5E053022819AC41B9" target="_blank"><img id="imgConac" vspace="0" hspace="0" border="0" src="https://dcs.conac.cn/image/blue.png" data-bd-imgshare-binded="1"></a></span>
       </p>
   </div>
 </div>
@@ -40,14 +42,14 @@ export default {
 
   },
   methods: {
-
+    
   }
 }
 </script>
 <style rel="stylesheet/scss" lang="scss" scoped>
 .bottom {
   margin-top: 30px;
-  height: 430px;
+  height: 500px;
   width: 100%;
   background: #6E0A0A;
   color: #FFFFFF;
@@ -59,7 +61,7 @@ export default {
   height: 285px;
   width: 900px;
   padding-top: 90px;
-  font-color: #FFFFFF;
+  color: #FFFFFF;
 }
 #bottomfb {
   font-weight: bold;

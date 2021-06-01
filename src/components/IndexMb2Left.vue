@@ -607,7 +607,7 @@ export default {
   float: left;
   text-align: center;
 
-  font-size: 19px;
+  font-size: 18px;
   font-weight: bold;
   margin-right: 14px;
   background: #6e0a0a;

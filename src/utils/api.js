@@ -1,6 +1,8 @@
 import request from '@/utils/request'
 import config from '@/config'
-var host = 'http://abcd.shanxiwenbow.com:8080/'
+//https://admin.shanxiwenbow.com/打包路径http://abcd.shanxiwenbow.com:8080/开发路径
+//var host = 'http://abcd.shanxiwenbow.com:8080/'
+var host = 'https://admin.shanxiwenbow.com/'
 export const urlMap = {
   // 首页左侧数据
   channelDataListJson: 'wenbo/channel/dataListJson',

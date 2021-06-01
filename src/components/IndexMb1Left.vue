@@ -10,12 +10,12 @@
                 v-for="(item, index) in ListsData"
                 :key="index"
               >
-                <div class="swiper-slide">
-                  <img :src="item.imgUrl" />
-                  <div class="swiper-tit">
-                    {{ item.title }}
-                  </div>
-                </div>
+                <router-link  v-if="(item.linkUrl).length===0" :to="{ path: 'detail', query: {id: item.id} }">
+                  <div class="swiper-slide"><img :src="item.imgUrl" /><div class="swiper-tit">{{ item.title }}</div></div>
+                </router-link>
+                <a v-if="(item.linkUrl).length!=0"  :href="item.linkUrl" target="_blank">
+                  <div class="swiper-slide"><img :src="item.imgUrl" /><div class="swiper-tit">{{ item.title }}</div></div>
+                </a>
               </div>
             </div>
             <!-- 如果需要分页器 -->
@@ -71,7 +71,7 @@
               <img :src="item.topData[0].imgUrl"
             /></router-link>
           </div>
-          <div class="mb1left5" v-if="index1 === 0 || index1 < 4">
+          <div class="mb1left5 l1danghan" v-if="index1 === 0 || index1 < 4">
             <p>
               <router-link :to="{ path: 'detail', query: { id: item1.id } }">{{
                 item1.title
@@ -136,6 +136,9 @@ export default {
       const data = await pictureCarousel({ id: 0 });
       _that.ListsData = data.data;
     },
+    See (e) {
+    window.location.href = e
+    }
   },
 };
 </script>
@@ -455,5 +458,16 @@ export default {
   background: #f90;
   border-color: #f90;
   cursor: default;
+}
+.l1danghan {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.l1duohan {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /*显示几行*/
+  overflow: hidden;
 }
 </style>

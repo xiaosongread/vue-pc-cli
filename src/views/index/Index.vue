@@ -12,7 +12,7 @@
       <img src="@/assets/SXWB/img/mbimg31.jpg" class="mbimg1">
       <IndexMb3Left :listCYDJData="cydjData" :listWSWBData="wswbData" :listWHLTData="whltData"/>
       <IndexMb3Right :dxalData="dxalData"/>
-      <img src="@/assets/SXWB/img/mg3.jpg" class="mg3">
+      <img src="" class="mg3">
     </div>
   </div>
   <Footer/>
@@ -179,7 +179,7 @@ export default {
 }
 .mg3{
   margin-top: 35px;
-  height: 546px;
+  height: 0px;
   width: 1080px;
 }
 </style>

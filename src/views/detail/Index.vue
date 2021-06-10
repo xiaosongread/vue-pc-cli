@@ -454,7 +454,6 @@ span{
   .swiper-container1{
     width: 1040px;
     overflow: hidden;
-    text-align:center;
   }
   .swiper-container1 img{
     max-width: 1012px;

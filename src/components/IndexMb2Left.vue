@@ -2,7 +2,7 @@
   <div class="mb2left">
     <div class="mb2left1">
       <div class="redb">
-        <router-link :to="{ path: 'photos', query: {} }">
+        <router-link :to="{ path: 'photos', query: {} }" target="_blank"  tag="a">
           <img src="../assets/SXWB/img/s2.jpg"/>
         </router-link>
       </div>
@@ -23,7 +23,7 @@
                 :key="index1"
                 v-if="index1 < 5 && bannerIndex === index1"
               >
-                <router-link :to="{ path: 'detail', query: { id: item1.id } }"
+                <router-link :to="{ path: 'detail', query: { id: item1.id } }" target="_blank"  tag="a"
                   ><img :src="item1.imgUrl" alt=""
                 /></router-link>
               </li>
@@ -75,7 +75,7 @@
       v-if="item.id === 75 || item.id === 76"
     >
       <div class="mb2left3img1">
-        <router-link :to="{ path: 'photoList', query: {id:item.id,type:'photoList'} }">
+        <router-link :to="{ path: 'photoList', query: {id:item.id,type:'photoList'} }" target="_blank"  tag="a">
           <div class="mb2left3img_1">
             <img src="../assets/SXWB/img/tswh.jpg" v-if="item.id === 75" />
             <img src="../assets/SXWB/img/bysj.jpg" v-if="item.id === 76" />
@@ -89,7 +89,7 @@
           v-if="index1 === 0"
         >
           <div class="mb1right2">
-            <router-link :to="{ path: 'detail', query: { id: item1.id } }">{{
+            <router-link :to="{ path: 'detail', query: { id: item1.id } }" target="_blank"  tag="a">{{
               item1.title
             }}</router-link>
           </div>
@@ -107,7 +107,7 @@
               v-if="index2 === 0 || index2 < 2"
             >
               <img src="../assets/SXWB/img/dian.jpg" />
-              <router-link :to="{ path: 'detail', query: { id: item2.id } }">{{
+              <router-link :to="{ path: 'detail', query: { id: item2.id } }" target="_blank"  tag="a">{{
                 item2.title
               }}</router-link>
             </li>
@@ -120,7 +120,7 @@
     <!--文化会馆开始-->
     <div class="mb2left1_1">
       <div class="redb">
-        <router-link :to="{ path: 'hall', query: {} }"
+        <router-link :to="{ path: 'hall', query: {} }" target="_blank"  tag="a"
           ><img src="../assets/SXWB/img/s3.jpg"
         /></router-link>
       </div>
@@ -130,7 +130,7 @@
       <div class="mb2left4_1">
         <ul id="test1_li_now_">
 			<div v-for="(item, index) in listWHHGData">
-          <router-link :to="{ path: 'secondIndex', query: {id:item.id,type:'article'} }" >
+          <router-link :to="{ path: 'secondIndex', query: {id:item.id,type:'article'} }"  target="_blank"  tag="a">
             <li class="" @mouseover="mouseOverWhhg(index)">{{ item.title }}</li>
           </router-link>
 		  </div>
@@ -149,7 +149,7 @@
           v-if="index1 < 4"
         >
           <div class="tablistItemTit l2danghan">
-            <router-link :to="{ path: 'detail', query: { id: item1.id } }">{{
+            <router-link :to="{ path: 'detail', query: { id: item1.id } }" target="_blank"  tag="a">{{
               item1.title
             }}</router-link>
           </div>

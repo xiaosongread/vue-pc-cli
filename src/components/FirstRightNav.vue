@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="smb1right1">
-      <router-link :to="{ path: 'secondIndex' , query: { id:'62',type:'article'} }">
+      <router-link :to="{ path: 'secondIndex' , query: { id:'62',type:'article'} }" target="_blank"  tag="a">
           <div class="redb2">政策法规<span id="redb2"> Law</span></div>
         </router-link>
       <div class="garyb2"></div>
@@ -22,7 +22,7 @@
             "
           >
             <img src="../assets/SXWB//img/dian.jpg" />&nbsp;
-            <router-link :to="{ path: 'detail', query: { id: item.id } }">{{
+            <router-link :to="{ path: 'detail', query: { id: item.id } }" target="_blank"  tag="a">{{
               item.title
             }}</router-link>
           </p>
@@ -32,7 +32,7 @@
     <div class="smb1right1">
       <a href="/photos/89.html " target="_blank"> </a>
       <div class="redb2">
-       <router-link :to="{ path: 'photoList' , query: {id:'89',type:'photoList' }  }">
+       <router-link :to="{ path: 'photoList' , query: {id:'89',type:'photoList' }  }" target="_blank"  tag="a">
           非遗大展
         </router-link>
       </div>
@@ -41,47 +41,47 @@
     <!--九宫格-->
     <div class="mb2right3">
       <div class="mb9-1">
-        <router-link :to="{ path: 'photoList' , query: {id:'92',type:'photos'} }">
+        <router-link :to="{ path: 'photoList' , query: {id:'92',type:'photos'} }" target="_blank"  tag="a">
           <img src="../assets/SXWB/img/box1.jpg"
         /></router-link>
       </div>
       <div class="mb9">
-        <router-link :to="{ path: 'photoList' , query: { id:'93',type:'photos'} }">
+        <router-link :to="{ path: 'photoList' , query: { id:'93',type:'photos'} }" target="_blank"  tag="a">
           <img src="../assets/SXWB/img/box2.jpg"
         /></router-link>
       </div>
       <div class="mb9">
-        <router-link :to="{ path: 'photoList' , query: { id:'94',type:'photos'} }">
+        <router-link :to="{ path: 'photoList' , query: { id:'94',type:'photos'} }" target="_blank"  tag="a">
           <img src="../assets/SXWB/img/box3.jpg"
         /></router-link>
       </div>
       <div class="mb9-1">
-        <router-link :to="{ path: 'photoList' , query: { id:'95',type:'photos'} }">
+        <router-link :to="{ path: 'photoList' , query: { id:'95',type:'photos'} }" target="_blank"  tag="a">
           <img src="../assets/SXWB/img/box4.jpg"
         /></router-link>
       </div>
       <div class="mb9">
-        <router-link :to="{ path: 'photoList' , query: { id:'96',type:'photos'} }">
+        <router-link :to="{ path: 'photoList' , query: { id:'96',type:'photos'} }" target="_blank"  tag="a">
           <img src="../assets/SXWB/img/box5.jpg"
         /></router-link>
       </div>
       <div class="mb9">
-        <router-link :to="{ path: 'photoList' , query: { id:'97',type:'photos'} }">
+        <router-link :to="{ path: 'photoList' , query: { id:'97',type:'photos'} }" target="_blank"  tag="a">
           <img src="../assets/SXWB/img/box6.jpg"
         /></router-link>
       </div>
       <div class="mb9-1">
-      <router-link :to="{ path: 'photoList' , query: { id:'98',type:'photos'} }">
+      <router-link :to="{ path: 'photoList' , query: { id:'98',type:'photos'} }" target="_blank"  tag="a">
           <img src="../assets/SXWB/img/box7.jpg"
         /></router-link>
       </div>
       <div class="mb9">
-        <router-link :to="{ path: 'photoList' , query: {id:'99',type:'photos' } }">
+        <router-link :to="{ path: 'photoList' , query: {id:'99',type:'photos' } }" target="_blank"  tag="a">
           <img src="../assets/SXWB/img/box8.jpg"
         /></router-link>
       </div>
       <div class="mb9">
-        <router-link :to="{ path: 'photoList' , query: { id:'100',type:'photos'} }">
+        <router-link :to="{ path: 'photoList' , query: { id:'100',type:'photos'} }" target="_blank"  tag="a">
           <img src="../assets/SXWB/img/box9.jpg"
         /></router-link>
       </div>
@@ -103,7 +103,7 @@
       </div>
     </div>
     <div class="secondright0">
-      <router-link :to="{ path: 'secondIndex' , query: { id:'82',type:'bbs'}}">
+      <router-link :to="{ path: 'secondIndex' , query: { id:'82',type:'bbs'}}" target="_blank"  tag="a">
           <div class="redb3">文化热评<span id="redb3">Comment</span></div>
         </router-link>
       <div class="garyb3"></div>
@@ -116,7 +116,7 @@
           <ul>
             <li>
               <span id="sbox2_11font">热评：</span>
-              <router-link :to="{ path: 'detail', query: { id: item.id  } }">{{
+              <router-link :to="{ path: 'detail', query: { id: item.id  } }" target="_blank"  tag="a">{{
                 item.title
               }}</router-link>
             </li>
@@ -399,7 +399,7 @@ export default {
   height: 19px;
   width: 145px;
   float: left;
-  background: url("~@/assets/SXWB/img/sxwbh.jpg");
+  background: url("../assets/SXWB/img/sxwbh.jpg");
 }
 .mb3r4_12 {
   margin-top: 18px;
@@ -433,6 +433,6 @@ export default {
   height: 19px;
   width: 145px;
   float: left;
-  background: url("~@/assets/SXWB/img/zswb.jpg");
+  background: url("../assets/SXWB/img/zswb.jpg");
 }
 </style>

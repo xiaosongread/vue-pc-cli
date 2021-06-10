@@ -19,14 +19,14 @@
     <PhotoTit titlog="mm2" id="90" type="photoList"></PhotoTit>
     <div class="mlsxpart3">
       <div class="mlsxpart2-video">
-          <router-link :to="{ path: 'detail', query: { id: item.id } }" v-for="(item, index) in sjsj" :key="index" v-if="index === 0">
+          <router-link target="_blank"  tag="a" :to="{ path: 'detail', query: { id: item.id } }" v-for="(item, index) in sjsj" :key="index" v-if="index === 0">
             <img :src="item.imgUrl" >
             </router-link>
       </div>
       <div class="mlsxpart2-font">
         <div v-for="(item, index) in sjsj" :key="index" v-if="index !== 1 && index < 4">
           <div class="mlsxpart2-font1">
-            <router-link :to="{ path: 'detail', query: { id: item.id } }">{{
+            <router-link target="_blank"  tag="a" :to="{ path: 'detail', query: { id: item.id } }">{{
               item.title
             }}</router-link>
             </div>

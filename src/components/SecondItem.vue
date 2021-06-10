@@ -11,13 +11,13 @@
               text-overflow: ellipsis;
             "
           >
-            <router-link :to="{ path: 'detail', query: { id: item.id } }">{{
+            <router-link target="_blank"  tag="a" :to="{ path: 'detail', query: { id: item.id } }">{{
               item.title
             }}</router-link>
           </p>
         </div>
         <div class="buttonxx">
-          <router-link :to="{ path: 'detail', query: { id: item.id } }"
+          <router-link target="_blank"  tag="a" :to="{ path: 'detail', query: { id: item.id } }"
             ><img src="../assets/SXWB/img/buttonxx.jpg"
           /></router-link>
         </div>

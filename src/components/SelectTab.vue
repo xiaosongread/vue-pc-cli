@@ -3,7 +3,7 @@
     <!--产业对接-->
     <div class="mb3left1">
       <div class="redb">
-        <router-link :to="{ path: paths , query: { id: id } }">
+        <router-link target="_blank"  tag="a" :to="{ path: paths , query: { id: id } }">
           <img :src="require('../assets/SXWB/img/' + titlog + '.jpg')" alt="" />
         </router-link>
       </div>
@@ -16,7 +16,7 @@
           v-for="(item, index) in listCYDJData"
           :key="index"
         >
-        <router-link :to="{ path: 'secondIndex' , query: { id: item.id,type: paths} }">
+        <router-link target="_blank"  tag="a" :to="{ path: 'secondIndex' , query: { id: item.id,type: paths} }">
           <li class="" @mouseover="mouseOver(index)">{{ item.title }}</li>
         </router-link>
         </ul>
@@ -37,7 +37,7 @@
               <div class="mb2le3_211 danhang">
                 <ul>
                   <li class="danhang" width="300px">
-                    <router-link
+                    <router-link target="_blank"  tag="a"
                       :to="{ path: 'detail', query: { id: item1.id } }"
                       >{{ item1.title }}</router-link
                     >
@@ -53,7 +53,7 @@
           </div>
           <div class="mb2left3_22">
             <div class="main-left1 ilist">
-              <router-link
+              <router-link target="_blank"  tag="a"
                 :to="{
                   path: 'detail',
                   query: { id: listCYDJData[mouseIndex].topData[0].id },

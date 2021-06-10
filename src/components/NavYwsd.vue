@@ -3,7 +3,7 @@
   <!--新闻速递-->
   <div class="mb1right1">
     <div class="redb2">
-      <router-link :to="{ path: 'article' , query: { } }">
+      <router-link :to="{ path: 'article' , query: { } }" target="_blank"  tag="a">
           要闻速递
         </router-link>
       <span id="redb2"> News</span>
@@ -15,7 +15,7 @@
 
   <div v-for="(item, index) in ywsdData" :key="index" v-if="index===0 || index<2">
     <div class="mb1right2-1 yaowendanhang">
-      <router-link :to="{ path: 'detail', query: { id: item.id } }">{{
+      <router-link :to="{ path: 'detail', query: { id: item.id } }" target="_blank"  tag="a">{{
                 item.title
               }}</router-link>
     </div>
@@ -31,7 +31,7 @@
   <a href="http://118.190.153.110/login" target="_blank"><img src="../assets/SXWB/img/whcy.jpg"></a>
   <div class="mb1right1">
     <div class="redb2">
-      <router-link :to="{ path: 'article' , query: {} }">
+      <router-link :to="{ path: 'article' , query: {} }" target="_blank"  tag="a">
           政策法规
         </router-link>
       <span id="redb2"> Law</span>
@@ -44,7 +44,7 @@
       <li>
         <p style="width: 335px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"><img
             src="../assets/SXWB/img/dian.jpg">&nbsp;
-            <router-link :to="{ path: 'detail', query: { id: item.id } }">{{
+            <router-link :to="{ path: 'detail', query: { id: item.id } }" target="_blank"  tag="a">{{
                 item.title
               }}</router-link>
             </p>
@@ -53,7 +53,7 @@
   </div>
   <div class="mb1right1">
     <div class="redb2">
-      <router-link :to="{ path: 'article' , query: {} }">
+      <router-link :to="{ path: 'article' , query: {} }" target="_blank"  tag="a">
           公告通知
         </router-link>
       <span id="redb2"> Notice</span>
@@ -66,7 +66,7 @@
       <li>
         <p style="width: 335px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"><img
             src="../assets/SXWB/img/dian.jpg">&nbsp;
-            <router-link :to="{ path: 'detail', query: { id: item.id } }">{{
+            <router-link :to="{ path: 'detail', query: { id: item.id } }" target="_blank"  tag="a">{{
                 item.title
               }}</router-link>
         </p>
@@ -124,7 +124,7 @@ a:active{
 	color:black;
 }
 .mb1right {
-    height: 840px;
+    height: 880px;
     width: 350px;
     float: left;
     margin-left: 34px;

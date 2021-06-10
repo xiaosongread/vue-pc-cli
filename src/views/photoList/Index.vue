@@ -5,9 +5,9 @@
   <div class="listmain1">
     <img src="../../assets/SXWB/img/listad1.jpg" class="headerImg">
    <div class="path">
-        <router-link :to="{ path: 'index', query: { } }" >首页</router-link> >
-        <router-link :to="{ path: paths1, query: {id:ids1, type:paths1} }" >{{channelTitle}}</router-link> >
-        <router-link :to="{ path: paths2, query: {id:ids2,type:paths1 } }" >{{categoryTitle}}</router-link> 
+        <router-link target="_blank"  tag="a" :to="{ path: 'index', query: { } }" >首页</router-link> >
+        <router-link target="_blank"  tag="a" :to="{ path: paths1, query: {id:ids1, type:paths1} }" >{{channelTitle}}</router-link> >
+        <router-link target="_blank"  tag="a" :to="{ path: paths2, query: {id:ids2,type:paths1 } }" >{{categoryTitle}}</router-link> 
       </div>
     <div class="listmain1left">
       <PhotoTw :listData="secondListData" type="list"></PhotoTw>
@@ -73,6 +73,7 @@ export default {
   },
   methods: {
     clickPage() {
+      this.pageNo = this.page
       this.dataToJsonArticlePage()
     },
     async dataToJsonArticlePage () {
@@ -83,7 +84,6 @@ export default {
         limit: this.perPage
       })
       this.records = data.total
-      this.pageNo = this.pageNo + 1
       this.secondListData = data.data
       this.paths1=data.dataYiji.channelTemplateAlias
        this.paths2=data.dataErji.categoryTemplateAlias

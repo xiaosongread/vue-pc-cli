@@ -107,33 +107,33 @@ export default {
       const data = await topDataListJson({channelId:13})
       this.wczxData = data.data[0].data
     },
-    async channelDataListJson () {
-      const data = await channelDataListJson()
-      this.data = data.data
-      data.data.forEach((item, index)=>{
-        switch(item.id) {
-          case 20:
-            _that.whltData = item.data
-            break; 
-          case 19:
-            _that.wswbData = item.data
-            break; 
-          case 18:
-            _that.cydjData = item.data
-            break; 
-          case 17:
-            _that.whhgData = item.data
-            break; 
-          case 15:
-            _that.mlsxData = item.data
-            break; 
-          case 13:
-            _that.wczxData = item.data
-            break; 
-        }
-      })
-      console.log('接口数据', this.data, _that.mlsxData)
-    },
+    // async channelDataListJson () {
+    //   const data = await channelDataListJson()
+    //   this.data = data.data
+    //   data.data.forEach((item, index)=>{
+    //     switch(item.id) {
+    //       case 20:
+    //         _that.whltData = item.data
+    //         break; 
+    //       case 19:
+    //         _that.wswbData = item.data
+    //         break; 
+    //       case 18:
+    //         _that.cydjData = item.data
+    //         break; 
+    //       case 17:
+    //         _that.whhgData = item.data
+    //         break; 
+    //       case 15:
+    //         _that.mlsxData = item.data
+    //         break; 
+    //       case 13:
+    //         _that.wczxData = item.data
+    //         break; 
+    //     }
+    //   })
+    //   console.log('接口数据', this.data, _that.mlsxData)
+    // },
     async zcfgdataToJsonArticle () {
       const data = await dataToJsonArticle({categoryId:62})
       _that.zcfgData=data

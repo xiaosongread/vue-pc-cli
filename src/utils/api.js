@@ -14,6 +14,7 @@ export const urlMap = {
     formArticleIdToChannelData: 'wenbo/channel/formArticleIdToChannelData',
   //列表
   dataToJsonArticlePage: 'wenbo/channel/dataToJsonArticlePage',
+  //获取列表页导航
   secondLeveldata: 'wenbo/channel/secondLeveldata',
   //首页轮播
   pictureCarousel: 'wenbo/channel/pictureCarousel',

@@ -29,12 +29,12 @@
       type="text"
       placeholder="站内搜索"
     />
-    <input
+    <!--<input
       type="image"
       name="submit"
       style="margin-top: 3px"
       src="@/assets/SXWB/img/search.png"
-    />
+    />-->
   </div>
 </div>
 </div>

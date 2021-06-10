@@ -3,13 +3,13 @@
 	<div class="tssxpart">
 		<div class="tssxpart1" v-for="(item, index) in listData" :key="index" v-if="type==='secondIndex' && index<3 || type==='list'">
 			<div class="tssxpart1img">
-				 <router-link :to="{ path: 'detail', query: { id: item.id } }">
+				 <router-link target="_blank"  tag="a" :to="{ path: 'detail', query: { id: item.id } }">
 					 <img :src="item.imgUrl">
 				 </router-link>
 			</div>
 			<div class="tssxpart1font">
 				<div class="tssxpart1font1 twdanghan">
-					<router-link :to="{ path: 'detail', query: { id: item.id } }">
+					<router-link target="_blank"  tag="a" :to="{ path: 'detail', query: { id: item.id } }">
 					 {{item.title}}
 				 </router-link>
 				</div>
@@ -17,7 +17,7 @@
 				<div class="tssxpart1font3">
 					{{item.addtime}}
 					<div class="tssxxx">
-						 <router-link :to="{ path: 'detail', query: { id: item.id } }">
+						 <router-link target="_blank"  tag="a" :to="{ path: 'detail', query: { id: item.id } }">
 					 <img src="../assets/SXWB/img/xx.jpg">
 				 </router-link>
 					</div>

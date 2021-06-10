@@ -17,7 +17,7 @@
     </div>
     <div class="mb3right2">
       <div class="redb2">
-         <router-link :to="{ path: 'secondIndex' , query: { id:'86',type:'dock'} }">
+         <router-link target="_blank"  tag="a" :to="{ path: 'secondIndex' , query: { id:'86',type:'dock'} }">
           典型案例
         </router-link>
         <span id="redb2"> News</span>
@@ -26,7 +26,7 @@
     </div>
     <div v-for="(item, index) in dxalData" :key="index" v-if="index<2">
       <div class="mb1right2-3 r3danhang">
-              <router-link :to="{ path: 'detail', query: { id: item.id } }">{{
+              <router-link target="_blank"  tag="a" :to="{ path: 'detail', query: { id: item.id } }">{{
                 item.title
               }}</router-link>
       </div>
@@ -145,7 +145,7 @@ export default {
   height: 19px;
   width: 145px;
   float: left;
-  background: url("/assets/SXWB/img/sxwbh.jpg");
+  background: url("../assets/SXWB/img/sxwbh.jpg");
 }
 .mb3r4_12 {
   margin-top: 18px;
@@ -181,7 +181,7 @@ export default {
   width: 145px;
 
   float: left;
-  background: url("/assets/images/SXWB/img/zswb.jpg");
+  background: url("../assets/SXWB/img/zswb.jpg");
 }
 .mb3right5 {
   margin-top: 50px;

@@ -5,9 +5,9 @@
     <div class="listmain1">
       <img src="../../assets/SXWB/img/listad1.jpg" class="headerImg" />
       <div class="path" v-if="articleData.length">
-        <router-link :to="{ path: 'index', query: { } }" >首页</router-link> >
-        <router-link :to="{ path: articleData[0].channelTemplateAlias, query: {id:articleData[0].categoryId, type:articleData[0].channelTemplateAlias} }" >{{articleData[0].channelTitle}}</router-link> >
-        <router-link :to="{ path: articleData[0].categoryTemplateAlias, query: {id:articleData[0].categoryId,type:articleData[0].channelTemplateAlias } }" >{{articleData[0].categoryTitle}}</router-link> 
+        <router-link target="_blank"  tag="a" :to="{ path: 'index', query: { } }" >首页</router-link> >
+        <router-link target="_blank"  tag="a" :to="{ path: articleData[0].channelTemplateAlias, query: {id:articleData[0].categoryId, type:articleData[0].channelTemplateAlias} }" >{{articleData[0].channelTitle}}</router-link> >
+        <router-link target="_blank"  tag="a" :to="{ path: articleData[0].categoryTemplateAlias, query: {id:articleData[0].categoryId,type:articleData[0].channelTemplateAlias } }" >{{articleData[0].categoryTitle}}</router-link> 
       </div>
       <div v-if="type==1" style="display: flex">
         <div class="listmain1left">
@@ -80,7 +80,7 @@
           <div class="photo-swiper-trol" v-if="articleData[0].dataImg && articleData[0].dataImg.length">
             <div>
               <div class="photo-swiper-trol-per">
-                <img src="https://www.shanxiwenbow.com/upload/201912/23/201912231147134515.JPG">
+                <img src="http://www.shanxiwenbow.com:3306/upload/201912/23/201912231147134515.JPG">
               </div>
               <p class="nextp">上一篇</p>
             </div>
@@ -101,7 +101,7 @@
             </div>
             <div>
               <div class="photo-swiper-trol-next">
-                <img src="https://www.shanxiwenbow.com/upload/201912/23/201912231147134515.JPG">
+                <img src="http://www.shanxiwenbow.com:3306/upload/201912/23/201912231147134515.JPG">
               </div>
               <p class="nextp">下一篇</p>
             </div>
@@ -319,6 +319,7 @@ span{
   font-weight: bold;
   font-size: 14px;
 }
+
 .setwh p{
   margin: 20px 0;
   font-weight: bold;
@@ -453,10 +454,12 @@ span{
   .swiper-container1{
     width: 1040px;
     overflow: hidden;
+    
   }
-  img{
+  .swiper-container1 img{
     max-width: 1012px;
     max-height: 690px;
+    padding: 0px 16px;
   }
   .photo-swiper-trol{
     display: flex;

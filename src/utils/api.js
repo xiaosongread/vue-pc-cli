@@ -26,6 +26,8 @@ export const urlMap = {
   redDataListJson: 'wenbo/channel/redDataChannelId',
   //根据2级id获得3级及最新3条数据
   dataToJsonThreeAndArticle: 'wenbo/channel/dataToJsonThreeAndArticle',
+  //全局搜索
+  globalSearch: 'wenbo/channel/globalSearch',
 }
 // 批量增加url前缀
 Object.keys(urlMap).forEach(key => {
@@ -106,5 +108,12 @@ export function menuDataList() {
   return request({
     url: urlMap['menuDataList'],
     method: 'get',
+  })
+}
+export function globalSearch(parm) {
+  return request({
+    url: urlMap['globalSearch'],
+    method: 'get',
+    params: parm || {}
   })
 }

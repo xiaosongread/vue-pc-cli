@@ -75,10 +75,10 @@ export default {
   height: 29px;
   // width: 85px;
   color: #FFFFFF;
-  font-size: 26px;
+  font-size: 24px;
   float: left;
   font-weight: bold;
-  padding: 3px 14px 0;
+  padding: 3px 12px 0;
   border-top: 0px;
   border-left: 0px;
   border-bottom: 0px;

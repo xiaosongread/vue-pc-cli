@@ -24,7 +24,7 @@
             </router-link>
       </div>
       <div class="mlsxpart2-font">
-        <div v-for="(item, index) in sjsj" :key="index" v-if="index !== 1 && index < 4">
+        <div v-for="(item, index) in sjsj" :key="index" v-if="index !== 0 && index < 4">
           <div class="mlsxpart2-font1">
             <router-link target="_blank"  tag="a" :to="{ path: 'detail', query: { id: item.id } }">{{
               item.title

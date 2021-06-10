@@ -21,27 +21,23 @@
       >
     </div>
   </div>
-  <div class="search">
+    <div class="search">
     <input
       id="keywords"
       name="keywords"
       class="input"
       type="text"
       placeholder="站内搜索"
+      @keyup.enter="getsearch"
+      @input="search($event)"
     />
-    <!--<input
-      type="image"
-      name="submit"
-      style="margin-top: 3px"
-      src="@/assets/SXWB/img/search.png"
-    />-->
-  </div>
+</div>
 </div>
 </div>
 </template>
 <script>
 export default {
-  name: "IndexLogoHeader",
+  name: "IndexHeader",
   props: {
     // 1 首页  2 article
     type: {
@@ -50,11 +46,23 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      inputContent:''
+    };
   },
   components: {},
   created() {},
-  methods: {},
+  methods: {
+    async search(e){ 
+      this.inputContent=e.currentTarget.value;
+    },
+    async getsearch(){ 
+      if(this.inputContent!=""&&this.inputContent!=null&&this.inputContent!=undefined){
+        let routeData = this.$router.resolve({ path: "search", query: { name: this.inputContent } });
+        window.open(routeData.href, '_blank');
+      }
+    }
+    },
 };
 </script>
 

@@ -70,9 +70,11 @@
           <div>
             <div class="swiper-container1">
               <div class="swiper-wrapper">
-                <div class="swiper-slide setwh" v-for="(item, index) in articleData[0].dataImg" :key="index">
+                <div class="swiper-slide setwh" v-for="(item, index) in articleData[0].dataImg" :key="index" v-if="aIndex===index">
+                 
                   <img :src="item.originalPath"/>
                   <p>{{item.remark}}</p>
+                  
                 </div>
               </div>
             </div>
@@ -80,15 +82,17 @@
           <div class="photo-swiper-trol" v-if="articleData[0].dataImg && articleData[0].dataImg.length">
             <div>
               <div class="photo-swiper-trol-per">
-                <img src="http://www.shanxiwenbow.com:3306/upload/201912/23/201912231147134515.JPG">
               </div>
-              <p class="nextp">上一篇</p>
+              <router-link target="_blank"  tag="a" :to="{ path: 'detail', query: { id: articleData[0].DownId } }">
+               <p class="nextp">上一篇</p>
+            </router-link>
+             
             </div>
             <div class="photo-swiper-trol-cons">
               <div class="swiper-container2">
                 <div class="swiper-wrapper">
-                  <div class="swiper-slide" v-for="(item, index) in articleData[0].dataImg" :key="index">
-                    <img :src="item.originalPath" @click="lineTo(index)">
+                  <div class="swiper-slide" v-for="(item, index) in articleData[0].dataImg" :key="index" >
+                    <div @mouseover="mouseOver(index)"> <img :src="item.originalPath" @click="lineTo(index)" ></div>
                   </div>
                 </div>
                 <div class="swiper-button-prev">
@@ -101,9 +105,10 @@
             </div>
             <div>
               <div class="photo-swiper-trol-next">
-                <img src="http://www.shanxiwenbow.com:3306/upload/201912/23/201912231147134515.JPG">
               </div>
-              <p class="nextp">下一篇</p>
+              <router-link target="_blank"  tag="a" :to="{ path: 'detail', query: { id: articleData[0].UpId } }">
+               <p class="nextp">下一篇</p>
+            </router-link>
             </div>
           </div>
         </div>
@@ -114,7 +119,9 @@
         <div class="swiper-wrapper">
           <div class="swiper-slide"  v-for="(item, index) in secondListData" :key="index">
             <div class="swiper-slide-item" v-for="(item1, index1) in secondListData.slice(index*4,index*4+4)" :key="index1">
-              <img :src="item1.imgUrl">
+              <router-link target="_blank"  tag="a" :to="{ path: 'detail', query: { id: item1.id } }">
+                <img :src="item1.imgUrl">
+            </router-link>
             </div>
           </div>
         </div>
@@ -151,6 +158,7 @@ export default {
       type: "1", // 1 图文； 2 图片； 3 视频；
       UpId: '',
       Jumptype:'',
+      aIndex: 0,
       articleData: [],
       secondListData:[],
       headerListData: [],
@@ -205,6 +213,9 @@ export default {
       this.formArticleIdToChannelData()
       this.getarticleData()
       this.dataToJsonArticlePage()
+    },
+     mouseOver(index) {
+      this.aIndex = index;
     },
     async dataToJsonArticlePage () {
       var id = '90'

@@ -14,35 +14,38 @@
     <div class="mb2right2">
       <div
         class="tssxpart1"
-        v-if="item.id === 5418"
-        v-for="(item, index) in sjsjData"
+        v-for="(item, index) in mlsxData"
+        v-if="item.id === 90"
         :key="index"
       >
         <div class="tssxpart1img">
-          <router-link :to="{ path: 'detail' , query: {id : item.id } }" target="_blank"  tag="a">
-          <img :src="item.imgUrl" class="tssxpart1img1"
+          <router-link :to="{ path: 'detail' , query: {id : item.topData[0].id } }" target="_blank"  tag="a">
+          <img :src="item.topData[0].imgUrl" class="tssxpart1img1"
           />
         </router-link>
         </div>
         <div class="tssxpart1font-index">
-          <router-link class="tssxpart1fonttitle" :to="{ path: 'detail', query: { id: item.id } }" target="_blank"  tag="a">{{
-            item.title
+          <router-link class="tssxpart1fonttitle" :to="{ path: 'detail', query: { id: item.topData[0].id } }" target="_blank"  tag="a">{{
+            item.topData[0].title
           }}</router-link>
-          <p>{{ item.zhaiyao }}</p>
+          <p>{{ item.topData[0].zhaiyao }}</p>
           <div class="tssxpart1font1-index"></div>
         </div>
       </div>
-      <div class="mb2right2_3">
+      <div class="mb2right2_3" 
+          v-for="(item, index) in mlsxData"
+          :key="index+1"
+          v-if="item.id === 90">
         <div
           class="mb2left4_23"
-          v-for="(item, index) in sjsjData"
-          :key="index"
-          v-if="index === 0 || index < 2"
+          v-for="(item1, index1) in item.dataList"
+          :key="index1+2"
+          v-if="index1 === 0 || index1 < 2"
         >
           <div class="main-left-4 ilist">
-            <router-link :to="{ path: 'detail' , query: {id:item.id } }" target="_blank"  tag="a">
-              <span class="mb1left4_2_1">{{ item.title }}</span>
-              <img :src="item.imgUrl" />
+            <router-link :to="{ path: 'detail' , query: {id:item1.id } }" target="_blank"  tag="a">
+              <span class="mb1left4_2_1">{{ item1.title }}</span>
+              <img :src="item1.imgUrl" />
             </router-link>
           </div>
         </div>
@@ -167,7 +170,7 @@
 export default {
   name: "IndexMb2Right",
   props: {
-    sjsjData: {
+    mlsxData: {
       type: Array,
       default: [],
     },

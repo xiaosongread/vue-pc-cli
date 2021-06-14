@@ -9,7 +9,7 @@
         <router-link target="_blank"  tag="a" :to="{ path: articleData[0].channelTemplateAlias, query: {id:articleData[0].categoryId, type:articleData[0].channelTemplateAlias} }" >{{articleData[0].channelTitle}}</router-link> >
         <router-link target="_blank"  tag="a" :to="{ path: articleData[0].categoryTemplateAlias, query: {id:articleData[0].categoryId,type:articleData[0].channelTemplateAlias } }" >{{articleData[0].categoryTitle}}</router-link> 
       </div>
-      <div v-if="type==1" style="display: flex">
+      <div v-if="type==1">
         <div class="listmain1left">
         <div v-if="articleData.length">
           <div class="title">{{ articleData[0].title }}</div>
@@ -135,9 +135,8 @@
 
 <script>
 import Swiper from "swiper"
-import { dataToJsonArticlePage } from '@/utils/api'
 import "../../../node_modules/swiper/css/swiper.min.css";
-import { articleData,secondLeveldata,formArticleIdToChannelData } from "@/utils/api";
+import { articleData,sjsjArticleDataList,formArticleIdToChannelData } from "@/utils/api";
 import LogoHeader from "@/components/LogoHeader";
 import Header from "@/components/Header";
 import SecondItem from "@/components/SecondItem";
@@ -155,7 +154,7 @@ export default {
   },
   data() {
     return {
-      type: "1", // 1 图文； 2 图片； 3 视频；
+      type: "3", // 1 图文； 2 图片； 3 视频；
       UpId: '',
       Jumptype:'',
       aIndex: 0,
@@ -179,8 +178,8 @@ export default {
     setTimeout(()=>{
       this.mySwiper = new Swiper ('.swiper-container', {
         direction: 'horizontal', // 水平切换选项
-        loop: true, // 循环模式选项
-        autoplay:true,
+        autoplay:false,
+        loopFillGroupWithBlank:true,
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
@@ -212,21 +211,17 @@ export default {
     init() {
       this.formArticleIdToChannelData()
       this.getarticleData()
-      this.dataToJsonArticlePage()
+      this.sjsjArticleDataList()
     },
      mouseOver(index) {
       this.aIndex = index;
     },
-    async dataToJsonArticlePage () {
-      var id = '90'
-      const data = await dataToJsonArticlePage({
-        categoryId: id,
-        page: this.pageNo,
-        limit: this.perPage
+    async sjsjArticleDataList () {
+      var num = 8
+      const data = await sjsjArticleDataList({
+        num: num,
       })
-      this.records = data.total
-      this.pageNo = this.pageNo + 1
-      this.secondListData = data.data
+      this.secondListData = data
     },
     async getarticleData() {
       var id = this.$route.query.id
@@ -247,7 +242,7 @@ export default {
        console.log('--------------', this.headerListData)
     },
     lineTo(index) {
-      console.log(index + 1)
+      console.log(index + 1+"---------------------")
       this.mySwiper1.slideTo(index+1, 500)
       this.mySwiper2.slideTo(index+1, 500)
     },
@@ -288,7 +283,7 @@ span{
   height: 114px;
 }
 .listmain1left {
-  width: 691px;
+  width: 690px;
   min-height: 400px;
   float: left;
   font-size: 14px;

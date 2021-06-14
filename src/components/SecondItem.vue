@@ -22,7 +22,7 @@
           /></router-link>
         </div>
       </div>
-      <div class="listdet2">{{ item.zhaiyao }}</div>
+      <div class="listdet2 list-duohan">{{ item.zhaiyao }}</div>
       <div class="listdet3">
         <div class="underline"></div>
         <div class="underdata">{{item.addtime}}</div>
@@ -96,7 +96,7 @@ export default {
 }
 .underline {
   margin-top: 10px;
-  width: 518px;
+  width: 468px;
   height: 2px;
   border: 2px solid #f2f2f2;
   border-left: 0px;
@@ -106,9 +106,20 @@ export default {
 }
 .underdata {
   height: 20px;
-  width: 108px;
+  width: 140px;
   float: right;
   font-size: 14px;
   color: #5e5e5e;
+}
+.list-danghan {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.list-duohan {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /*显示几行*/
+  overflow: hidden;
 }
 </style>

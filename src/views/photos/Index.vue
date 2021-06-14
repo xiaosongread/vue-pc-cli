@@ -21,6 +21,7 @@
       <div class="mlsxpart2-video">
           <router-link target="_blank"  tag="a" :to="{ path: 'detail', query: { id: item.id } }" v-for="(item, index) in sjsj" :key="index" v-if="index === 0">
             <img :src="item.imgUrl" >
+            <div class="sjsj-title">{{item.title}}</div>
             </router-link>
       </div>
       <div class="mlsxpart2-font">
@@ -98,7 +99,6 @@ export default {
     _that = this;
     this.menuDataList();
     this.DataListJson();
-    //this.wszgdataToJsonThreeAndArticle();
     this.tswhdataToJsonThreeAndArticle();
     this.bysjdataToJsonThreeAndArticle();
     this.fydzdataToJsonThreeAndArticle();
@@ -109,11 +109,6 @@ export default {
       this.menuList = data.data.filter((item, index) => {
         return item.id === 15;
       })[0].data;
-    },
-    async wszgdataToJsonThreeAndArticle() {
-      const data = await dataToJsonThreeAndArticle({ categoryId: 183 });
-      console.log("·························",data);
-      _that.wszg = data.data;
     },
     async tswhdataToJsonThreeAndArticle() {
       const data = await dataToJsonThreeAndArticle({ categoryId: 75 });
@@ -154,7 +149,13 @@ export default {
   width: 1060px;
   margin: 0 auto;
 }
-
+.sjsj-title{
+  padding: 5px 10px;
+  margin-top: -35px;
+  font-size: 16px;
+  color: #fff;
+  font-weight: bold;
+}
 .mlsxpart3 {
   margin-left: 10px;
   margin-top: 33px;
@@ -186,7 +187,6 @@ export default {
   line-height: 18px;
 }
 .mlsxpart2-font1 a:link {
-  color: #6e0a0a;
 }
 .mlsxpart2-font2 {
   float: left;

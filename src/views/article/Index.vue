@@ -5,7 +5,7 @@
     <SwiperBanner :id="id"></SwiperBanner>
     <div class="secondnav">
       <div class="secondnavimg">
-        <router-link target="_blank"  tag="a" :to="{ path: 'secondIndex', query: { id: '59',type: 'article' } }"><img src="@/assets/SXWB/img/secondnav1.jpg" /></router-link>
+        <img src="@/assets/SXWB/img/secondnav1.jpg" />
       </div>
       <div v-for="(item, index) in ywsd" :key="index" v-if="index < 3">
         <div class="secondli1"></div>
@@ -101,7 +101,6 @@ export default {
         switch (item.id) {
           case 59:
             _that.ywsd = item.data;
-            
             break;
           case 60:
             _that.whjj = item.data;

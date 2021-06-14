@@ -31,6 +31,13 @@
       @keyup.enter="getsearch"
       @input="search($event)"
     />
+    <img
+      type="image"
+      name="submit"
+      @click="getsearch"
+      style="margin-top: 3px"
+      src="@/assets/SXWB/img/search.jpg"
+    />
 </div>
 </div>
 </div>
@@ -121,6 +128,7 @@ export default {
   float: right;
   border-radius: 2px;
   overflow: hidden;
+  display: flex;
 }
 .searchlist1 {
   margin-left: 28px;

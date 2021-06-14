@@ -3,9 +3,7 @@
   <!--新闻速递-->
   <div class="mb1right1">
     <div class="redb2">
-      <router-link :to="{ path: 'article' , query: { } }" target="_blank"  tag="a">
           要闻速递
-        </router-link>
       <span id="redb2"> News</span>
       
     </div>

@@ -105,7 +105,6 @@ export default {
 	line-height:20px;
 }
 .tssxpart1font a:link{
-	color:#6E0A0A;
 }
 .tssxpart1font2{
 	margin-top:8px;

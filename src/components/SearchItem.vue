@@ -1,31 +1,31 @@
 <template>
   <div style="overflow: hidden">
+  <div class="search-titlie">
+    <div style="float: left;font-size: 26px;">站内搜索</div>
+    <div style="float: left;font-size: 15px;margin-top: 12px;margin-left:150px">搜索关健字： &nbsp;&nbsp;</div>
+    <div style="float: left;font-size: 15px;margin-top: 12px;color: #1E7BB3">{{searchContent}}</div>
+    <div style="float: left;font-size: 15px;margin-top: 12px;"> &nbsp;&nbsp;，共有</div>
+    <div style="float: left;font-size: 15px;margin-top: 12px;color: #F00;"> &nbsp;&nbsp;{{records}} &nbsp;&nbsp;</div>
+    <div style="float: left;font-size: 15px;margin-top: 12px;">条记录</div>
+  </div>
     <div class="listItem" v-for="(item, index) in list" :key="index">
       <div class="listdet1">
         <div class="listdet1-11">
+          
           <p
             style="
-              width: 590px;
               overflow: hidden;
               white-space: nowrap;
               text-overflow: ellipsis;
+              
             "
           >
+            <img src="../assets/SXWB/img/dian.jpg">&nbsp;
             <router-link target="_blank"  tag="a" :to="{ path: 'detail', query: { id: item.id } }">{{
               item.title
             }}</router-link>
           </p>
         </div>
-        <div class="buttonxx">
-          <router-link target="_blank"  tag="a" :to="{ path: 'detail', query: { id: item.id } }"
-            ><img src="../assets/SXWB/img/buttonxx.jpg"
-          /></router-link>
-        </div>
-      </div>
-      <div class="listdet2 list-duohan">{{ item.zhaiyao }}</div>
-      <div class="listdet3">
-        <div class="underline"></div>
-        <div class="underdata">{{item.addtime}}</div>
       </div>
     </div>
   </div>
@@ -38,26 +38,43 @@ export default {
       type: Array,
       default: [],
     },
+    searchContent:{
+      type: String,
+      default: "",
+    },
+    records:{
+      type: Number,
+      default: "",
+    },
   },
   data() {
-    return {};
+    return {
+    };
   },
   components: {},
-  created() {},
+  created() {
+    console.log(this.searchContent+"``````````````````````")
+  },
   methods: {},
 };
 </script>
 
 <style lang="scss" scoped>
-.listdet1 {
+.search-titlie{
+  padding: 20px;
+  margin-top: 35px;
+}
+.listItem{
   margin-top: 50px;
-  padding-left: 15px;
+}
+.listdet1 {
   width: 650px;
-  height: 30px;
+  padding: 20px;
   float: left;
   font-size: 20px;
   font-weight: bold;
   line-height: 30px;
+  border-bottom: 1px solid #f0f0f0;
 }
 .listdet1-11 {
   width: 590px;
@@ -96,7 +113,7 @@ export default {
 }
 .underline {
   margin-top: 10px;
-  width: 468px;
+  width: 518px;
   height: 2px;
   border: 2px solid #f2f2f2;
   border-left: 0px;
@@ -106,20 +123,9 @@ export default {
 }
 .underdata {
   height: 20px;
-  width: 140px;
+  width: 108px;
   float: right;
   font-size: 14px;
   color: #5e5e5e;
-}
-.list-danghan {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.list-duohan {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2; /*显示几行*/
-  overflow: hidden;
 }
 </style>

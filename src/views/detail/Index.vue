@@ -5,11 +5,11 @@
     <div class="listmain1">
       <img src="../../assets/SXWB/img/listad1.jpg" class="headerImg" />
       <div class="path" v-if="articleData.length">
-        <router-link :to="{ path: 'index', query: { } }" >首页</router-link> >
-        <router-link :to="{ path: articleData[0].channelTemplateAlias, query: {id:articleData[0].categoryId, type:articleData[0].channelTemplateAlias} }" >{{articleData[0].channelTitle}}</router-link> >
-        <router-link :to="{ path: articleData[0].categoryTemplateAlias, query: {id:articleData[0].categoryId,type:articleData[0].channelTemplateAlias } }" >{{articleData[0].categoryTitle}}</router-link> 
+        <router-link target="_blank"  tag="a" :to="{ path: 'index', query: { } }" >首页</router-link> >
+        <router-link target="_blank"  tag="a" :to="{ path: articleData[0].channelTemplateAlias, query: {id:articleData[0].categoryId, type:articleData[0].channelTemplateAlias} }" >{{articleData[0].channelTitle}}</router-link> >
+        <router-link target="_blank"  tag="a" :to="{ path: articleData[0].categoryTemplateAlias, query: {id:articleData[0].categoryId,type:articleData[0].channelTemplateAlias } }" >{{articleData[0].categoryTitle}}</router-link> 
       </div>
-      <div v-if="type==1" style="display: flex">
+      <div v-if="type==1">
         <div class="listmain1left">
         <div v-if="articleData.length">
           <div class="title">{{ articleData[0].title }}</div>
@@ -116,9 +116,11 @@
           <div>
             <div class="swiper-container1" id="gallery">
               <div class="swiper-wrapper">
-                <div class="swiper-slide setwh" v-for="(item, index) in articleData[0].dataImg" :key="index">
+                <div class="swiper-slide setwh" v-for="(item, index) in articleData[0].dataImg" :key="index" v-if="aIndex===index">
+                 
                   <img :src="item.originalPath"/>
                   <p>{{item.remark}}</p>
+                  
                 </div>
               </div>
             </div>
@@ -126,15 +128,17 @@
           <div class="photo-swiper-trol" v-if="articleData[0].dataImg && articleData[0].dataImg.length">
             <div>
               <div class="photo-swiper-trol-per">
-                <img src="https://www.shanxiwenbow.com/upload/201912/23/201912231147134515.JPG">
               </div>
-              <p class="nextp">上一篇</p>
+              <router-link target="_blank"  tag="a" :to="{ path: 'detail', query: { id: articleData[0].DownId } }">
+               <p class="nextp">上一篇</p>
+            </router-link>
+             
             </div>
             <div class="photo-swiper-trol-cons">
               <div class="swiper-container2" id="thumbs">
                 <div class="swiper-wrapper">
-                  <div class="swiper-slide" v-for="(item, index) in articleData[0].dataImg" :key="index">
-                    <img :src="item.originalPath">
+                  <div class="swiper-slide" v-for="(item, index) in articleData[0].dataImg" :key="index" >
+                    <div @mouseover="mouseOver(index)"> <img :src="item.originalPath" @click="lineTo(index)" ></div>
                   </div>
                 </div>
                 <div class="swiper-button-prev">
@@ -147,9 +151,10 @@
             </div>
             <div>
               <div class="photo-swiper-trol-next">
-                <img src="https://www.shanxiwenbow.com/upload/201912/23/201912231147134515.JPG">
               </div>
-              <p class="nextp">下一篇</p>
+              <router-link target="_blank"  tag="a" :to="{ path: 'detail', query: { id: articleData[0].UpId } }">
+               <p class="nextp">下一篇</p>
+            </router-link>
             </div>
           </div>
         </div>
@@ -159,8 +164,10 @@
       <div class="swiper-container">
         <div class="swiper-wrapper">
           <div class="swiper-slide"  v-for="(item, index) in secondListData" :key="index">
-            <div class="swiper-slide-item" v-for="(item1, index1) in secondListData.slice(index*4,index*4+4)" :key="index1">{{index}}
-              <img :src="item1.imgUrl">
+            <div class="swiper-slide-item" v-for="(item1, index1) in secondListData.slice(index*4,index*4+4)" :key="index1">
+              <router-link target="_blank"  tag="a" :to="{ path: 'detail', query: { id: item1.id } }">
+                <img :src="item1.imgUrl">
+            </router-link>
             </div>
           </div>
         </div>
@@ -174,9 +181,8 @@
 
 <script>
 import Swiper from "swiper"
-import { dataToJsonArticlePage } from '@/utils/api'
 import "../../../node_modules/swiper/css/swiper.min.css";
-import { articleData,secondLeveldata,formArticleIdToChannelData } from "@/utils/api";
+import { articleData,sjsjArticleDataList,formArticleIdToChannelData } from "@/utils/api";
 import LogoHeader from "@/components/LogoHeader";
 import Header from "@/components/Header";
 import SecondItem from "@/components/SecondItem";
@@ -194,9 +200,10 @@ export default {
   },
   data() {
     return {
-      type: "1", // 1 图文； 2 图片； 3 视频；
+      type: "3", // 1 图文； 2 图片； 3 视频；
       UpId: '',
       Jumptype:'',
+      aIndex: 0,
       articleData: [],
       secondListData:[],
       headerListData: [],
@@ -217,8 +224,8 @@ export default {
     setTimeout(()=>{
       this.mySwiper = new Swiper ('.swiper-container', {
         direction: 'horizontal', // 水平切换选项
-        loop: true, // 循环模式选项
-        autoplay:true,
+        autoplay:false,
+        loopFillGroupWithBlank:true,
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
@@ -258,18 +265,17 @@ export default {
     init() {
       this.formArticleIdToChannelData()
       this.getarticleData()
-      this.dataToJsonArticlePage()
+      this.sjsjArticleDataList()
     },
-    async dataToJsonArticlePage () {
-      var id = '90'
-      const data = await dataToJsonArticlePage({
-        categoryId: id,
-        page: this.pageNo,
-        limit: this.perPage
+     mouseOver(index) {
+      this.aIndex = index;
+    },
+    async sjsjArticleDataList () {
+      var num = 8
+      const data = await sjsjArticleDataList({
+        num: num,
       })
-      this.records = data.total
-      this.pageNo = this.pageNo + 1
-      this.secondListData = data.data
+      this.secondListData = data
     },
     async getarticleData() {
       var id = this.$route.query.id
@@ -290,7 +296,7 @@ export default {
        console.log('--------------', this.headerListData)
     },
     lineTo(index) {
-      console.log(index + 1)
+      console.log(index + 1+"---------------------")
       this.mySwiper1.slideTo(index+1, 500)
       this.mySwiper2.slideTo(index+1, 500)
     },
@@ -331,7 +337,7 @@ span{
   height: 114px;
 }
 .listmain1left {
-  width: 691px;
+  width: 690px;
   min-height: 400px;
   float: left;
   font-size: 14px;
@@ -373,6 +379,7 @@ span{
   font-weight: bold;
   font-size: 14px;
 }
+
 .setwh p{
   margin: 20px 0;
   font-weight: bold;
@@ -530,9 +537,10 @@ span{
     width: 1040px;
     overflow: hidden;
   }
-  img{
+  .swiper-container1 img{
     max-width: 1012px;
     max-height: 690px;
+    padding: 0px 16px;
   }
   
   

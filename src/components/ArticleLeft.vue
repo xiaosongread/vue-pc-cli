@@ -4,7 +4,7 @@
       <div class="secondlefttitle1"></div>
       <div class="secondlefttitle2">
         <router-link
-          :to="{ path: 'secondIndex', query: { id: id, type: type } }"
+          :to="{ path: 'secondIndex', query: { id: id, type: type } }" target="_blank"  tag="a"
         >
           <img :src="require('../assets/SXWB/img/' + titlog + '.jpg')" alt="" />
         </router-link>
@@ -13,12 +13,12 @@
 
     <div v-for="(item, index) in listData" :key="index" v-if="index < 2">
       <div class="secfont1 danhang">
-        <router-link :to="{ path: 'detail', query: { id: item.id } }">{{
+        <router-link :to="{ path: 'detail', query: { id: item.id } }" target="_blank"  tag="a">{{
           item.title
         }}</router-link>
       </div>
       <div class="main-left1 ilist">
-        <router-link :to="{ path: 'detail', query: { id: item.id } }"
+        <router-link :to="{ path: 'detail', query: { id: item.id } }" target="_blank"  tag="a"
           ><img :src="item.imgUrl"
         /></router-link>
       </div>

@@ -3,7 +3,7 @@
   <div class="secondlefttitle">
     <div class="secondlefttitle1"></div>
     <div class="secondlefttitle2">
-		<router-link :to="{ path: 'photoList', query: { id: id, type: type } }">
+		<router-link target="_blank"  tag="a" :to="{ path: 'photoList', query: { id: id, type: type } }">
           <img :src="require('../assets/SXWB/img/' + titlog + '.jpg')" alt="" />
         </router-link>
       		

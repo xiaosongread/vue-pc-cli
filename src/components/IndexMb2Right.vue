@@ -2,7 +2,7 @@
   <div class="mb2right">
     <div class="mb2right1">
       <div class="redb2">
-        <router-link :to="{ path: 'photoList' , query: {id:'90',type:'photoList' } }">
+        <router-link :to="{ path: 'photoList' , query: {id:'90',type:'photoList' } }" target="_blank"  tag="a">
           视觉三晋
         </router-link>
         <span id="redb2"> Video</span>
@@ -14,35 +14,38 @@
     <div class="mb2right2">
       <div
         class="tssxpart1"
-        v-if="item.id === 5418"
-        v-for="(item, index) in sjsjData"
+        v-for="(item, index) in mlsxData"
+        v-if="item.id === 90"
         :key="index"
       >
         <div class="tssxpart1img">
-          <router-link :to="{ path: 'detail' , query: {id : item.id } }">
-          <img :src="item.imgUrl" class="tssxpart1img1"
+          <router-link :to="{ path: 'detail' , query: {id : item.topData[0].id } }" target="_blank"  tag="a">
+          <img :src="item.topData[0].imgUrl" class="tssxpart1img1"
           />
         </router-link>
         </div>
-        <div class="tssxpart1font">
-          <router-link class="tssxpart1fonttitle" :to="{ path: 'detail', query: { id: item.id } }">{{
-            item.title
+        <div class="tssxpart1font-index">
+          <router-link class="tssxpart1fonttitle" :to="{ path: 'detail', query: { id: item.topData[0].id } }" target="_blank"  tag="a">{{
+            item.topData[0].title
           }}</router-link>
-          <p>{{ item.zhaiyao }}</p>
-          <div class="tssxpart1font1"></div>
+          <p>{{ item.topData[0].zhaiyao }}</p>
+          <div class="tssxpart1font1-index"></div>
         </div>
       </div>
-      <div class="mb2right2_3">
+      <div class="mb2right2_3" 
+          v-for="(item, index) in mlsxData"
+          :key="index+1"
+          v-if="item.id === 90">
         <div
           class="mb2left4_23"
-          v-for="(item, index) in sjsjData"
-          :key="index"
-          v-if="index === 0 || index < 2"
+          v-for="(item1, index1) in item.dataList"
+          :key="index1+2"
+          v-if="index1 === 0 || index1 < 2"
         >
           <div class="main-left-4 ilist">
-            <router-link :to="{ path: 'detail' , query: {id:item.id } }">
-              <span class="mb1left4_2_1">{{ item.title }}</span>
-              <img :src="item.imgUrl" />
+            <router-link :to="{ path: 'detail' , query: {id:item1.id } }" target="_blank"  tag="a">
+              <span class="mb1left4_2_1">{{ item1.title }}</span>
+              <img :src="item1.imgUrl" />
             </router-link>
           </div>
         </div>
@@ -50,7 +53,7 @@
     </div>
     <div class="mb2right1">
       <div class="redb2">
-        <router-link :to="{ path: 'photoList' , query: {id:'89',type:'photoList' }  }">
+        <router-link :to="{ path: 'photoList' , query: {id:'89',type:'photoList' }  }" target="_blank"  tag="a">
           非遗大展
         </router-link>
         <span id="redb2"> Video</span>
@@ -60,47 +63,47 @@
     <!--九宫格-->
     <div class="mb2right3">
       <div class="mb9-1">
-        <router-link :to="{ path: 'photoList' , query: {id:'92',type:'photos'} }">
+        <router-link :to="{ path: 'photoList' , query: {id:'92',type:'photos'} }" target="_blank"  tag="a">
           <img src="../assets/SXWB/img/box1.jpg"
         /></router-link>
       </div>
       <div class="mb9">
-        <router-link :to="{ path: 'photoList' , query: { id:'93',type:'photos'} }">
+        <router-link target="_blank"  tag="a" :to="{ path: 'photoList' , query: { id:'93',type:'photos'} }">
           <img src="../assets/SXWB/img/box2.jpg"
         /></router-link>
       </div>
       <div class="mb9">
-        <router-link :to="{ path: 'photoList' , query: { id:'94',type:'photos'} }">
+        <router-link target="_blank"  tag="a" :to="{ path: 'photoList' , query: { id:'94',type:'photos'} }">
           <img src="../assets/SXWB/img/box3.jpg"
         /></router-link>
       </div>
       <div class="mb9-1">
-        <router-link :to="{ path: 'photoList' , query: { id:'95',type:'photos'} }">
+        <router-link target="_blank"  tag="a" :to="{ path: 'photoList' , query: { id:'95',type:'photos'} }">
           <img src="../assets/SXWB/img/box4.jpg"
         /></router-link>
       </div>
       <div class="mb9">
-        <router-link :to="{ path: 'photoList' , query: { id:'96',type:'photos'} }">
+        <router-link target="_blank"  tag="a" :to="{ path: 'photoList' , query: { id:'96',type:'photos'} }">
           <img src="../assets/SXWB/img/box5.jpg"
         /></router-link>
       </div>
       <div class="mb9">
-        <router-link :to="{ path: 'photoList' , query: { id:'97',type:'photos'} }">
+        <router-link target="_blank"  tag="a" :to="{ path: 'photoList' , query: { id:'97',type:'photos'} }">
           <img src="../assets/SXWB/img/box6.jpg"
         /></router-link>
       </div>
       <div class="mb9-1">
-      <router-link :to="{ path: 'photoList' , query: { id:'98',type:'photos'} }">
+      <router-link target="_blank"  tag="a" :to="{ path: 'photoList' , query: { id:'98',type:'photos'} }">
           <img src="../assets/SXWB/img/box7.jpg"
         /></router-link>
       </div>
       <div class="mb9">
-        <router-link :to="{ path: 'photoList' , query: {id:'99',type:'photos' } }">
+        <router-link target="_blank"  tag="a" :to="{ path: 'photoList' , query: {id:'99',type:'photos' } }">
           <img src="../assets/SXWB/img/box8.jpg"
         /></router-link>
       </div>
       <div class="mb9">
-        <router-link :to="{ path: 'photoList' , query: { id:'100',type:'photos'} }">
+        <router-link target="_blank"  tag="a" :to="{ path: 'photoList' , query: { id:'100',type:'photos'} }">
           <img src="../assets/SXWB/img/box9.jpg"
         /></router-link>
       </div>
@@ -167,7 +170,7 @@
 export default {
   name: "IndexMb2Right",
   props: {
-    sjsjData: {
+    mlsxData: {
       type: Array,
       default: [],
     },
@@ -246,7 +249,7 @@ export default {
 .tssxpart1img1 {
   height: 230px;
 }
-.tssxpart1font {
+.tssxpart1font-index {
   margin-top: 0px;
   height: 19px;
   width: 350px;
@@ -255,7 +258,7 @@ export default {
   text-align: center;
   color: #000;
 }
-.tssxpart1font p {
+.tssxpart1font-index p {
   padding-top: 5px;
   margin-top: 5px;
   font-size: 14px;
@@ -269,13 +272,13 @@ export default {
 .tssxpart1fonttitle {
   font-weight: bold;
 }
-.tssxpart1font a:link {
+.tssxpart1font-index a:link {
   color: #fff;
 }
-.tssxpart1font a:visited {
+.tssxpart1font-index a:visited {
   color: #fff;
 }
-.tssxpart1font1 {
+.tssxpart1font1-index {
   margin-top: 18px;
   height: 15px;
   width: 333px;
@@ -285,7 +288,7 @@ export default {
   line-height: 20px;
   text-align: center;
 }
-.tssxpart1font a:link {
+.tssxpart1font-index a:link {
   color: #fff;
 }
 .tssxpart1font2 {

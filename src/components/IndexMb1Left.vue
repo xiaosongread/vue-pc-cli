@@ -10,12 +10,12 @@
                 v-for="(item, index) in ListsData"
                 :key="index"
               >
-                <div class="swiper-slide">
-                  <img :src="item.imgUrl" />
-                  <div class="swiper-tit">
-                    {{ item.title }}
-                  </div>
-                </div>
+                <router-link  v-if="(item.linkUrl).length===0" :to="{ path: 'detail', query: {id: item.id} }" target="_blank"  tag="a">
+                  <div class="swiper-slide"><img :src="item.imgUrl" /><div class="swiper-tit">{{ item.title }}</div></div>
+                </router-link>
+                <a v-if="(item.linkUrl).length!=0"  :href="item.linkUrl" target="_blank">
+                  <div class="swiper-slide"><img :src="item.imgUrl" /><div class="swiper-tit">{{ item.title }}</div></div>
+                </a>
               </div>
             </div>
             <!-- 如果需要分页器 -->
@@ -26,7 +26,7 @@
     </div>
     <div class="mb1left2">
       <div class="redb">
-        <router-link :to="{ path: 'article', query: {} }"
+        <router-link :to="{ path: 'article', query: {} }" target="_blank"  tag="a"
           ><img src="../assets/SXWB/img/s1.jpg"
         /></router-link>
       </div>
@@ -44,13 +44,13 @@
           <div class="mbr3left1">
             <div class="redb3">
               <div v-if="item.id === 60">
-                <router-link :to="{ path: 'secondIndex', query: {id:'60',type:'article'} }">{{
+                <router-link :to="{ path: 'secondIndex', query: {id:'60',type:'article'} }" target="_blank"  tag="a">{{
                   item.title
                 }}</router-link>
                 <span id="red3">Focus </span>
               </div>
               <div v-if="item.id === 61">
-                <router-link :to="{ path: 'secondIndex', query: {id:'61',type:'article'} }">{{
+                <router-link :to="{ path: 'secondIndex', query: {id:'61',type:'article'} }" target="_blank"  tag="a">{{
                   item.title
                 }}</router-link>
                 <span id="red3">Information </span>
@@ -65,15 +65,15 @@
         >
           <div class="main-left ilist" v-if="index1 === 0">
             <router-link
-              :to="{ path: 'detail', query: { id: item.topData[0].id } }"
+              :to="{ path: 'detail', query: { id: item.topData[0].id } }" target="_blank"  tag="a"
             >
               <span class="mb1left4_2">{{ item.topData[0].title }}</span>
               <img :src="item.topData[0].imgUrl"
             /></router-link>
           </div>
-          <div class="mb1left5" v-if="index1 === 0 || index1 < 4">
+          <div class="mb1left5 l1danghan" v-if="index1 === 0 || index1 < 5">
             <p>
-              <router-link :to="{ path: 'detail', query: { id: item1.id } }">{{
+              <router-link :to="{ path: 'detail', query: { id: item1.id } }" target="_blank"  tag="a">{{
                 item1.title
               }}</router-link>
             </p>
@@ -136,12 +136,15 @@ export default {
       const data = await pictureCarousel({ id: 0 });
       _that.ListsData = data.data;
     },
+    See (e) {
+    window.location.href = e
+    }
   },
 };
 </script>
 <style>
 .mb1left {
-  height: 840px;
+  height: 880px;
   width: 691px;
   float: left;
 }
@@ -455,5 +458,16 @@ export default {
   background: #f90;
   border-color: #f90;
   cursor: default;
+}
+.l1danghan {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.l1duohan {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /*显示几行*/
+  overflow: hidden;
 }
 </style>

@@ -463,7 +463,6 @@ export default {
 	width:350px;
 	line-height:15px;
 	background:rgba(0,0,0,0.6);
-	text-align:center;
 	color:#000;
 }
 .tssxpart1font p{
@@ -491,7 +490,6 @@ export default {
 	font-size:15px;
 	font-weight:bold;
 	line-height:20px;
-	text-align:center;
 }
 .tssxpart1font a:link{
 	color:#fff;

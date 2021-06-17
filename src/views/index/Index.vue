@@ -8,19 +8,19 @@
       <NavYwsd :ywsdData="ywsdData" :zcfgData="zcfgData" :ggtzData="ggtzData"/>
       <img src="@/assets/SXWB/img/mbimg31.jpg" class="mbimg1">
       <IndexMb2Left :listMLSXData="mlsxData" :listWHHGData="whhgData" v-if="mlsxData"/>
-      <IndexMb2Right :sjsjData="sjsjData"/>
+      <IndexMb2Right :mlsxData="mlsxData"/>
       <img src="@/assets/SXWB/img/mbimg31.jpg" class="mbimg1">
       <IndexMb3Left :listCYDJData="cydjData" :listWSWBData="wswbData" :listWHLTData="whltData"/>
       <IndexMb3Right :dxalData="dxalData"/>
-      <img src="@/assets/SXWB/img/mg3.jpg" class="mg3">
+      <img src="" class="mg3">
     </div>
-  </div>
+  </div>  
   <Footer/>
 </div>
 </template>
 
 <script>
-import { channelDataListJson,dataToJsonArticle, menuDataList,topDataListJson } from '@/utils/api'
+import { dataToJsonArticle, menuDataList,topDataListJson } from '@/utils/api'
 import IndexLogoHeader from '@/components/IndexLogoHeader'
 import Header from '@/components/Header'
 import IndexMb1Left from '@/components/IndexMb1Left'
@@ -56,17 +56,14 @@ export default {
       ywsdData: [],
       zcfgData: [],
       ggtzData: [],
-      sjsjData: [],
       dxalData: [],
     }
   },
   created () {
     this.menuDataList()
-    //this.channelDataListJson()
     this.zcfgdataToJsonArticle()
     this.ywsddataToJsonArticle()
     this.ggtzdataToJsonArticle()
-    this.sjsjdataToJsonArticle()
     this.dxaldataToJsonArticle()
     this.whltDataListJson()
     this.wswbDataListJson()
@@ -75,8 +72,8 @@ export default {
     this.mlsxDataListJson()
     this.wczxDataListJson()
     _that = this
-    // this.getDouBanMovieList()
   },
+
   methods: {
     async menuDataList() {
       const data = await menuDataList()
@@ -106,48 +103,18 @@ export default {
       const data = await topDataListJson({channelId:13})
       this.wczxData = data.data[0].data
     },
-    async channelDataListJson () {
-      const data = await channelDataListJson()
-      this.data = data.data
-      data.data.forEach((item, index)=>{
-        switch(item.id) {
-          case 20:
-            _that.whltData = item.data
-            break; 
-          case 19:
-            _that.wswbData = item.data
-            break; 
-          case 18:
-            _that.cydjData = item.data
-            break; 
-          case 17:
-            _that.whhgData = item.data
-            break; 
-          case 15:
-            _that.mlsxData = item.data
-            break; 
-          case 13:
-            _that.wczxData = item.data
-            break; 
-        }
-      })
-      console.log('接口数据', this.data, _that.mlsxData)
+    async ywsddataToJsonArticle () {
+      const data = await dataToJsonArticle({categoryId:59})
+      _that.ywsdData=data
     },
     async zcfgdataToJsonArticle () {
       const data = await dataToJsonArticle({categoryId:62})
       _that.zcfgData=data
     },
-    async ywsddataToJsonArticle () {
-      const data = await dataToJsonArticle({categoryId:59})
-      _that.ywsdData=data
-    },
+    
     async ggtzdataToJsonArticle () {
       const data = await dataToJsonArticle({categoryId:63})
       _that.ggtzData=data
-    },
-    async sjsjdataToJsonArticle () {
-      const data = await dataToJsonArticle({categoryId:90})
-      _that.sjsjData=data
     },
     async dxaldataToJsonArticle () {
       const data = await dataToJsonArticle({categoryId:86})
@@ -178,7 +145,7 @@ export default {
 }
 .mg3{
   margin-top: 35px;
-  height: 546px;
+  height: 0px;
   width: 1080px;
 }
 </style>

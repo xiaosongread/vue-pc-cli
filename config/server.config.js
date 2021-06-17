@@ -5,7 +5,7 @@ module.exports = {
     // dev 地址
     '/devapi': {
       // mock 地址
-      target: 'http://abcd.shanxiwenbow.com:8080/',
+      target: 'https://admin.shanxiwenbow.com',
       changeOrigin: true,
       pathRewrite: { '^/devapi': '' }
     }

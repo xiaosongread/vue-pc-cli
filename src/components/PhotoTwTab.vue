@@ -18,17 +18,35 @@
             @mouseover="mouseOver(index)"
           >
             <div class="mlsxpart5-2-1">
-              <a href="" target="_blank">
-                <img v-if="item.id === 92" src="../assets/SXWB/img/box1.jpg" />
-                <img v-if="item.id === 93" src="../assets/SXWB/img/box2.jpg" />
-                <img v-if="item.id === 94" src="../assets/SXWB/img/box3.jpg" />
-                <img v-if="item.id === 95" src="../assets/SXWB/img/box4.jpg" />
-                <img v-if="item.id === 96" src="../assets/SXWB/img/box5.jpg" />
-                <img v-if="item.id === 97" src="../assets/SXWB/img/box6.jpg" />
-                <img v-if="item.id === 98" src="../assets/SXWB/img/box7.jpg" />
-                <img v-if="item.id === 99" src="../assets/SXWB/img/box8.jpg" />
-                <img v-if="item.id === 100" src="../assets/SXWB/img/box9.jpg" />
-              </a>
+                <router-link v-if="item.id === 93"  :to="{ path: 'photoList' , query: {id:'92',type:'photos'} }" target="_blank"  tag="a">
+          <img src="../assets/SXWB/img/box1.jpg"
+        /></router-link>
+        <router-link v-if="item.id === 94" :to="{ path: 'photoList' , query: { id:'93',type:'photos'} }" target="_blank"  tag="a">
+          <img src="../assets/SXWB/img/box2.jpg"
+        /></router-link>
+        <router-link v-if="item.id === 95"  :to="{ path: 'photoList' , query: { id:'94',type:'photos'} }" target="_blank"  tag="a">
+          <img src="../assets/SXWB/img/box3.jpg"
+        /></router-link>
+        <router-link v-if="item.id === 96"  :to="{ path: 'photoList' , query: { id:'95',type:'photos'} }" target="_blank"  tag="a">
+          <img src="../assets/SXWB/img/box4.jpg"
+        /></router-link>
+        <router-link v-if="item.id === 98"  :to="{ path: 'photoList' , query: { id:'96',type:'photos'} }" target="_blank"  tag="a">
+          <img src="../assets/SXWB/img/box5.jpg"
+        /></router-link>
+        <router-link v-if="item.id === 97"  :to="{ path: 'photoList' , query: { id:'97',type:'photos'} }" target="_blank"  tag="a">
+          <img src="../assets/SXWB/img/box6.jpg"
+        /></router-link>
+      <router-link v-if="item.id === 98"  :to="{ path: 'photoList' , query: { id:'98',type:'photos'} }" target="_blank"  tag="a">
+          <img src="../assets/SXWB/img/box7.jpg"
+        /></router-link>
+        <router-link v-if="item.id === 99"  :to="{ path: 'photoList' , query: {id:'99',type:'photos' } }" target="_blank"  tag="a">
+          <img src="../assets/SXWB/img/box8.jpg"
+        /></router-link>
+        <router-link v-if="item.id === 100"  :to="{ path: 'photoList' , query: { id:'100',type:'photos'} }" target="_blank"  tag="a">
+          <img src="../assets/SXWB/img/box9.jpg"
+        /></router-link>
+
+                
             </div>
           </li>
         </ul>
@@ -38,13 +56,12 @@
     <div class="mb2left40" v-if="type === 'two'">
       <div class="mb2left40_1">
         <ul id="test2_li_now_">
-          <a
-            href="/photoss/102.html"
-            target="_blank"
+          <li
             v-for="(item, index) in listData"
             :key="index"
             @mouseover="mouseOver(index)"
-            ><li class="now">{{ item.title }}</li></a
+            ><router-link class="photos-index-list" :to="{ path: 'photoList', query: { id: item.id ,type:'photos'} }" target="_blank"  tag="a"
+                  >{{ item.title }}</router-link></li
           >
         </ul>
       </div>
@@ -114,7 +131,7 @@ export default {
   font-weight: bold;
   margin-right: 16px;
   background: #6e0a0a;
-  color: #ffffff;
+  color: #757272;
 }
 .mb2left40_1 li.now {
   font-size: 20px;
@@ -122,7 +139,9 @@ export default {
   background: #6e0a0a;
   color: #ffffff;
 }
-
+.photos-index-list{
+  color: #fff;
+}
 .mb2left41 {
   margin-left: 25px;
   margin-top: 35px;

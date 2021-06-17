@@ -24,12 +24,15 @@
       class="input"
       type="text"
       placeholder="站内搜索"
+      @keyup.enter="getsearch"
+      @input="search($event)"
     />
-    <input
+    <img
       type="image"
       name="submit"
+      @click="getsearch"
       style="margin-top: 3px"
-      src="@/assets/SXWB/img/search.png"
+      src="@/assets/SXWB/img/search.jpg"
     />
   </div>
 </div>
@@ -45,11 +48,23 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      inputContent:''
+    };
   },
   components: {},
   created() {},
-  methods: {},
+  methods: {
+    async search(e){ 
+      this.inputContent=e.currentTarget.value;
+    },
+    async getsearch(){ 
+      if(this.inputContent!=""&&this.inputContent!=null&&this.inputContent!=undefined){
+        let routeData = this.$router.resolve({ path: "search", query: { name: this.inputContent } });
+        window.open(routeData.href, '_blank');
+      }
+    }
+  },
 };
 </script>
 
@@ -107,6 +122,7 @@ export default {
   float: right;
   border-radius: 2px;
   overflow: hidden;
+  display: flex;
 }
 .searchlist1 {
   margin-left: 28px;

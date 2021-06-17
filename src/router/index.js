@@ -24,6 +24,11 @@ export default new Router({
           name: 'Index',
           component: () => import('@/views/index/Index'),
           meta: { title: '首页' }
+        },{
+          path: 'search',
+          name: 'Search',
+          component: () => import('@/views/search/Index'),
+          meta: { title: '全局搜索' }
         },
         {
           path: 'article',

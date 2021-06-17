@@ -67,8 +67,54 @@
         <div class="photo-swiper">
           <h1>{{ articleData[0].title }}</h1>
           <div class="photo-swiper-tim">内容来源：{{ articleData[0].source }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    责任编辑：{{ articleData[0].zb }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布时间：{{ articleData[0].addtime }}</div>
+          <div class="swiper-container1" id="gallery">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide" v-for="(item, index) in articleData[0].dataImg" :key="index">
+                <img :src="item.originalPath" alt="轮播图">
+                <p>{{item.remark}}</p>
+              </div>
+            </div>
+            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+          </div>
+          <div class="photo-swiper-trol" v-if="articleData[0].dataImg && articleData[0].dataImg.length">
+              <div>
+                <div class="photo-swiper-trol-per">
+                  <img src="https://www.shanxiwenbow.com/upload/201912/23/201912231147134515.JPG">
+                </div>
+                <p class="nextp">上一篇</p>
+              </div>
+              <div class="photo-swiper-trol-cons">
+                <div class="swiper-container2 swiper-container-thumbs" id="thumbs">
+                  <!-- style="transition-duration: 0ms;" -->
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide" v-for="(item, index) in articleData[0].dataImg" :key="index">
+                      <img :src="item.originalPath" alt="轮播图">
+                    </div>
+                  </div>
+                  <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+                </div>
+                <div class="swiper-button-prev">
+                  <img src="../../assets/SXWB/img/prevBtn.png">
+                </div>
+                <div class="swiper-button-next">
+                  <img src="../../assets/SXWB/img/nextBtn1.png">
+                </div>
+              </div>
+              <div>
+                <div class="photo-swiper-trol-next">
+                  <img src="https://www.shanxiwenbow.com/upload/201912/23/201912231147134515.JPG">
+                </div>
+                <p class="nextp">下一篇</p>
+              </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div v-if="type==2">
+        <div class="photo-swiper">
+          <h1>{{ articleData[0].title }}</h1>
+          <div class="photo-swiper-tim">内容来源：{{ articleData[0].source }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    责任编辑：{{ articleData[0].zb }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布时间：{{ articleData[0].addtime }}</div>
           <div>
-            <div class="swiper-container1">
+            <div class="swiper-container1" id="gallery">
               <div class="swiper-wrapper">
                 <div class="swiper-slide setwh" v-for="(item, index) in articleData[0].dataImg" :key="index">
                   <img :src="item.originalPath"/>
@@ -85,10 +131,10 @@
               <p class="nextp">上一篇</p>
             </div>
             <div class="photo-swiper-trol-cons">
-              <div class="swiper-container2">
+              <div class="swiper-container2" id="thumbs">
                 <div class="swiper-wrapper">
                   <div class="swiper-slide" v-for="(item, index) in articleData[0].dataImg" :key="index">
-                    <img :src="item.originalPath" @click="lineTo(index)">
+                    <img :src="item.originalPath">
                   </div>
                 </div>
                 <div class="swiper-button-prev">
@@ -107,7 +153,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
     <div class="swiper_trol" v-if="type==3">
       <div class="swiper-container">
@@ -178,26 +224,34 @@ export default {
           prevEl: '.swiper-button-prev',
         },
       })
-      this.mySwiper1 = new Swiper ('.swiper-container1', {
-        direction: 'horizontal', // 水平切换选项
-        loop: true,
-        autoplay:true,
-      })
-      this.mySwiper2 = new Swiper ('.swiper-container2', {
-        direction: 'horizontal', // 水平切换选项
+      var thumbsSwiper = new Swiper('#thumbs', {
+        direction: 'horizontal',
         slidesPerView: 5,
+        observer: true,
+        observeParents:true,
+				watchSlidesVisibility: true, //防止不可点击
+			})
+			var gallerySwiper = new Swiper('#gallery', {
+				direction: 'horizontal', // 水平切换选项
+				slidesPerView: 1,
+				centeredSlides: true,
+        initialSlide :2,
         loop: true,
-        autoplay:true,
-        on: {
-          // click: function (swiper, event) {
-          //   console.log('你点了Swiper', swiper, event);
-          // }
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false
+        },
+        observer: true,
+        observeParents:true,
+        clickable: true,
+				thumbs: {
+					swiper: thumbsSwiper,
         },
         navigation: {
           nextEl: '.swiper-button-prev',
           prevEl: '.swiper-button-next',
         },
-      })
+			})
     },1000)
   },
   methods: {
@@ -427,6 +481,28 @@ span{
     font-size: 22px;
   }
 }
+.photo-swiper-trol{
+  display: flex;
+  margin-top: 20px;
+  // width: 783px;
+  &-cons{
+    flex: 1;
+  }
+  &-per,&-next{
+    width: 135px;
+    height: 105px;
+    background: url('~@/assets/SXWB/img/tttz.jpg') no-repeat;
+    img{
+      width: 122px;
+      height: 72px;
+      margin-top: 5px;
+      margin-left: 5px;
+    }
+  }
+  .nextp{
+    text-align: center;
+  }
+}
 .photo-swiper{
   width: 1080px;
   margin-top: 20px;
@@ -458,27 +534,11 @@ span{
     max-width: 1012px;
     max-height: 690px;
   }
-  .photo-swiper-trol{
-    display: flex;
-    &-cons{
-      flex: 1;
-    }
-    &-per,&-next{
-      width: 135px;
-      height: 105px;
-      background: url('~@/assets/SXWB/img/tttz.jpg') no-repeat;
-      img{
-        width: 122px;
-        height: 72px;
-        margin-top: 5px;
-        margin-left: 5px;
-      }
-    }
-    .nextp{
-      text-align: center;
-    }
-  }
-  .photo-swiper-trol-cons{
+  
+  
+}
+.photo-swiper-trol-cons{
+    width: 783px;
     position: relative;
     .swiper-container2{
       width: 685px;
@@ -499,21 +559,49 @@ span{
         }
       }
     }
-    .swiper-button-prev, .swiper-button-next{
-      top: 40px;
-    }
-    .swiper-button-prev:after, .swiper-button-next:after {
-      display: none;
-    }
-    .swiper-slide{
-      -webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
-      filter: grayscale(100%);
-    }
-    .swiper-slide.swiper-slide-active{
-      border: 2px solid #999  ;
-      -webkit-filter: grayscale(0%); /* Chrome, Safari, Opera */
-      filter: grayscale(0%);
+    
+  }
+.swiper-button-prev, .swiper-button-next{
+  top: 40px;
+}
+.swiper-button-prev:after, .swiper-button-next:after {
+  display: none;
+}
+.swiper-slide{
+  -webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
+  filter: grayscale(100%);
+}
+.swiper-slide.swiper-slide-active{
+  // border: 2px solid #999  ;
+  -webkit-filter: grayscale(0%); /* Chrome, Safari, Opera */
+  filter: grayscale(0%);
+}
+#gallery {
+  .swiper-slide{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    img{
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
     }
   }
+}
+
+#thumbs {
+  width: 685px;
+  height: 86px;
+  margin-left: 45px;
+  position: relative;
+  overflow: hidden;
+}
+
+#thumbs .swiper-slide {
+  opacity: 0.3;
+}
+
+#thumbs .swiper-slide-thumb-active{
+  opacity: 1;
 }
 </style>

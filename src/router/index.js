@@ -79,6 +79,12 @@ export default new Router({
           name: 'detail',
           component: () => import('@/views/detail/Index'),
           meta: { title: '详情页面' },
+        },
+        {
+          path: 'demo',
+          name: 'demo',
+          component: () => import('@/views/demo/Index'),
+          meta: { title: 'demo页面' },
         }
       ]
     }

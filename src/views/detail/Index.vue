@@ -71,7 +71,7 @@
             <div class="swiper-wrapper">
               <div class="swiper-slide" v-for="(item, index) in articleData[0].dataImg" :key="index">
                 <img :src="item.originalPath" alt="轮播图">
-                <p>{{item.remark}}</p>
+                <p style="margin-top: 20px;">{{item.remark}}</p>
               </div>
             </div>
             <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
@@ -79,9 +79,11 @@
           <div class="photo-swiper-trol" v-if="articleData[0].dataImg && articleData[0].dataImg.length">
               <div>
                 <div class="photo-swiper-trol-per">
-                  <img src="https://www.shanxiwenbow.com/upload/201912/23/201912231147134515.JPG">
+                  <img v-if="articleData[0].UpImgUrl!=''" :src="articleData[0].UpImgUrl">
                 </div>
-                <p class="nextp">上一篇</p>
+                <router-link target="_blank"  tag="a" :to="{ path: 'detail', query: { id: articleData[0].UpId } }">
+               <p class="nextp">上一篇</p>
+            </router-link>
               </div>
               <div class="photo-swiper-trol-cons">
                 <div class="swiper-container2 swiper-container-thumbs" id="thumbs">
@@ -102,63 +104,17 @@
               </div>
               <div>
                 <div class="photo-swiper-trol-next">
-                  <img src="https://www.shanxiwenbow.com/upload/201912/23/201912231147134515.JPG">
+                  <img v-if="articleData[0].DownImgUrl!=''"  :src="articleData[0].DownImgUrl">
                 </div>
-                <p class="nextp">下一篇</p>
+                <router-link target="_blank"  tag="a" :to="{ path: 'detail', query: { id: articleData[0].DownId } }">
+               <p class="nextp">下一篇</p>
+            </router-link>
               </div>
           </div>
         </div>
       </div>
-      <!-- <div v-if="type==2">
-        <div class="photo-swiper">
-          <h1>{{ articleData[0].title }}</h1>
-          <div class="photo-swiper-tim">内容来源：{{ articleData[0].source }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    责任编辑：{{ articleData[0].zb }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布时间：{{ articleData[0].addtime }}</div>
-          <div>
-            <div class="swiper-container1" id="gallery">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide setwh" v-for="(item, index) in articleData[0].dataImg" :key="index" v-if="aIndex===index">
-                 
-                  <img :src="item.originalPath"/>
-                  <p>{{item.remark}}</p>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="photo-swiper-trol" v-if="articleData[0].dataImg && articleData[0].dataImg.length">
-            <div>
-              <div class="photo-swiper-trol-per">
-              </div>
-              <router-link target="_blank"  tag="a" :to="{ path: 'detail', query: { id: articleData[0].DownId } }">
-               <p class="nextp">上一篇</p>
-            </router-link>
-             
-            </div>
-            <div class="photo-swiper-trol-cons">
-              <div class="swiper-container2" id="thumbs">
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide" v-for="(item, index) in articleData[0].dataImg" :key="index" >
-                    <div @mouseover="mouseOver(index)"> <img :src="item.originalPath" @click="lineTo(index)" ></div>
-                  </div>
-                </div>
-                <div class="swiper-button-prev">
-                  <img src="../../assets/SXWB/img/prevBtn.png">
-                </div>
-                <div class="swiper-button-next">
-                  <img src="../../assets/SXWB/img/nextBtn1.png">
-                </div>
-              </div>
-            </div>
-            <div>
-              <div class="photo-swiper-trol-next">
-              </div>
-              <router-link target="_blank"  tag="a" :to="{ path: 'detail', query: { id: articleData[0].UpId } }">
-               <p class="nextp">下一篇</p>
-            </router-link>
-            </div>
-          </div>
-        </div>
-      </div> -->
+      <div style="height: 1600px;" v-if="type==4">
+      </div>
     </div>
     <div class="swiper_trol" v-if="type==3">
       <div class="swiper-container">
@@ -200,7 +156,7 @@ export default {
   },
   data() {
     return {
-      type: "3", // 1 图文； 2 图片； 3 视频；
+      type: "4", // 1 图文； 2 图片； 3 视频；
       UpId: '',
       Jumptype:'',
       aIndex: 0,
@@ -243,7 +199,7 @@ export default {
 				direction: 'horizontal', // 水平切换选项
 				slidesPerView: 1,
 				centeredSlides: true,
-        initialSlide :2,
+        initialSlide :0,
         loop: true,
         autoplay: {
           delay: 3000,
@@ -256,11 +212,11 @@ export default {
 					swiper: thumbsSwiper,
         },
         navigation: {
-          nextEl: '.swiper-button-prev',
-          prevEl: '.swiper-button-next',
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
         },
 			})
-    },1000)
+    },2000)
   },
   methods: {
     init() {
@@ -533,7 +489,7 @@ span{
   padding: 15px;
   border: 2px solid #EFEFEF;
   h1{
-    margin-top: 30px;
+    margin-top: 20px;
     width: 1012px;
     height: 23px;
     font-size: 23px;

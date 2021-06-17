@@ -164,7 +164,7 @@
       <div class="swiper-container">
         <div class="swiper-wrapper">
           <div class="swiper-slide"  v-for="(item, index) in secondListData" :key="index">
-            <div class="swiper-slide-item" v-for="(item1, index1) in secondListData.slice(index*4,index*4+4)" :key="index1">
+            <div class="swiper-slide-item" v-for="(item1, index1) in item" :key="index1">
               <router-link target="_blank"  tag="a" :to="{ path: 'detail', query: { id: item1.id } }">
                 <img :src="item1.imgUrl">
             </router-link>
@@ -224,8 +224,9 @@ export default {
     setTimeout(()=>{
       this.mySwiper = new Swiper ('.swiper-container', {
         direction: 'horizontal', // 水平切换选项
-        autoplay:false,
-        loopFillGroupWithBlank:true,
+        autoplay:true,
+        loop: true,
+        // loopFillGroupWithBlank:true,
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
@@ -270,12 +271,19 @@ export default {
      mouseOver(index) {
       this.aIndex = index;
     },
+    groups(array, getLength) {
+      const newArray = []
+      for (let i = 0; i < array.length; i + getLength) {
+        newArray.push(array.slice(i, i += getLength))
+      }
+      return newArray
+    },
     async sjsjArticleDataList () {
       var num = 8
       const data = await sjsjArticleDataList({
         num: num,
       })
-      this.secondListData = data
+      this.secondListData = this.groups(data, 4)
     },
     async getarticleData() {
       var id = this.$route.query.id
@@ -478,6 +486,15 @@ span{
           height: 135px;
         }
       }
+    }
+    .swiper-button-prev, .swiper-button-next{
+      top: 80px;
+    }
+    .swiper-button-prev{
+      background: url(../../assets/SXWB/img/prevBtn.png) no-repeat center center #777;
+    }
+    .swiper-button-next{
+      background: url(../../assets/SXWB/img/nextBtn1.png) no-repeat center center #777;
     }
   }
   .swiper-button-prev,.swiper-button-next{

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="margin-left: 3px;">
     <div class="smb1right1">
       <router-link :to="{ path: 'secondIndex' , query: { id:'62',type:'article'} }" target="_blank"  tag="a">
           <div class="redb2">政策法规<span id="redb2"> Law</span></div>

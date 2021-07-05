@@ -9,7 +9,7 @@
         <router-link target="_blank"  tag="a" :to="{ path: articleData[0].channelTemplateAlias, query: {id:articleData[0].categoryId, type:articleData[0].channelTemplateAlias} }" >{{articleData[0].channelTitle}}</router-link> >
         <router-link target="_blank"  tag="a" :to="{ path: articleData[0].categoryTemplateAlias, query: {id:articleData[0].categoryId,type:articleData[0].channelTemplateAlias } }" >{{articleData[0].categoryTitle}}</router-link> 
       </div>
-      <div v-if="type==1">
+      <div v-if="type==1" style="display: flex;">
         <div class="listmain1left">
         <div v-if="articleData.length">
           <div class="title">{{ articleData[0].title }}</div>
@@ -302,6 +302,7 @@ span{
 }
 .listmain1left {
   width: 690px;
+  height: 100%;
   min-height: 400px;
   float: left;
   font-size: 14px;
@@ -549,8 +550,8 @@ span{
   display: none;
 }
 .swiper-slide{
-  -webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
-  filter: grayscale(100%);
+  // -webkit-filter: grayscale(100%); /* Chrome, Safari, Opera */
+  // filter: grayscale(100%);
 }
 .swiper-slide.swiper-slide-active{
   // border: 2px solid #999  ;
@@ -579,7 +580,7 @@ span{
 }
 
 #thumbs .swiper-slide {
-  opacity: 0.3;
+  opacity: 1;
 }
 
 #thumbs .swiper-slide-thumb-active{

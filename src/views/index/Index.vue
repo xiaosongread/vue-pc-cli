@@ -6,10 +6,10 @@
     <div class="mb1">
       <IndexMb1Left :listData="wczxData"/>
       <NavYwsd :ywsdData="ywsdData" :zcfgData="zcfgData" :ggtzData="ggtzData"/>
-      <img src="@/assets/SXWB/img/mbimg31.jpg" class="mbimg1">
+      <img src="@/assets/SXWB/img/mbimg30.jpeg" class="mbimg1">
       <IndexMb2Left :listMLSXData="mlsxData" :listWHHGData="whhgData" v-if="mlsxData"/>
       <IndexMb2Right :mlsxData="mlsxData"/>
-      <img src="@/assets/SXWB/img/mbimg31.jpg" class="mbimg1">
+      <img src="@/assets/SXWB/img/mbimg30.jpeg" class="mbimg1">
       <IndexMb3Left :listCYDJData="cydjData" :listWSWBData="wswbData" :listWHLTData="whltData"/>
       <IndexMb3Right :dxalData="dxalData"/>
       <img src="" class="mg3">
@@ -72,6 +72,7 @@ export default {
     this.mlsxDataListJson()
     this.wczxDataListJson()
     _that = this
+
   },
 
   methods: {

@@ -8,7 +8,20 @@
       <p class="search-header-title">人民数科党建信息平台</p>
       <div class="search-header-box">
         <div class="search-header-box-input">
-          搜索内容
+          <div class="search-header-box-input-left">
+            <div class="search-header-box-input-left-1">
+              <div class="label-text">全部</div>
+              <i class="el-icon-arrow-down"></i>
+            </div>
+            <div class="search-header-box-input-left-2">
+              <div class="label-text">全文</div>
+              <i class="el-icon-arrow-down"></i>
+            </div>
+          </div>
+          <div class="search-header-box-input-right">
+            <input type="text" placeholder="请输入内容">
+            <i class="el-icon-search"></i>
+          </div>
         </div>
       </div>
     </div>
@@ -45,7 +58,7 @@
             <div class="sw-lists">
               <div class="sw-lists__item is-icon is-dot">
                 <div class="sw-lists__item--label">
-                  <div class="sw-lists__item--text">踔厉奋发新征程勇毅前行向复兴</div>
+                  <div class="sw-lists__item--text" @click="goInfo()">踔厉奋发新征程勇毅前行向复兴</div>
                 </div>
               </div>
               <div class="sw-lists__item is-icon is-dot">
@@ -144,6 +157,14 @@ export default {
     async menuDataList () {
       const data = await menuDataList()
       this.menuList = data.data
+    },
+    goInfo () {
+      this.$router.push({
+        path: '/Info',
+        query: {
+          id: 1
+        }
+      })
     }
   }
 }
@@ -198,6 +219,7 @@ export default {
       margin: 40px 0 6px;
       .search-header-box-input {
         display: flex;
+        align-items: center;
         background-color: #fff;
         border-radius: 8px;
         border: 2px solid #cacaca;
@@ -205,6 +227,64 @@ export default {
         height: 52px;
         box-sizing: border-box;
         text-align: left;
+        .search-header-box-input-left {
+          width: 250px;
+          padding-left: 20px;
+          display: flex;
+          position: relative;
+          &::after {
+            content: "";
+            display: block;
+            width: 1px;
+            height: 44px;
+            position: absolute;
+            right: -15px;
+            top: -12px;
+            background: #ddd;
+          }
+          .search-header-box-input-left-1 {
+            display: flex;
+            flex: 1;
+            align-items: center;
+            justify-content: space-between;
+            .label-text {
+              margin-right: 10px;
+            }
+          }
+          .search-header-box-input-left-2 {
+            display: flex;
+            flex: 1;
+            align-items: center;
+            justify-content: space-between;
+            margin-left: 25px;
+            .label-text {
+              margin-right: 10px;
+            }
+          }
+        }
+        .search-header-box-input-right {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding-left: 30px;
+          padding-right: 30px;
+          flex: 1;
+          input {
+            flex: 1;
+            height: 30px;
+            border: 0;
+            font-size: 16px;
+            width: 450px;
+          }
+          input:focus {
+            outline: none; /* 移除默认的轮廓边框 */
+            border: 0; /* 设置新的边框样式 */
+          }
+          .el-icon-search {
+            font-size: 20px;
+            color: #d42a2a;
+          }
+        }
       }
     }
   }

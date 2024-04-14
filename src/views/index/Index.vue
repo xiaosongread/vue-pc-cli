@@ -27,28 +27,23 @@
     </div>
     <div class="section-box">
       <div class="sw-lists-button">
-        <div class="sw-lists-button__item">
-          <img src="../../assets/dj/zxjh.png" class="sw-lists-button__item--icon">
-          <span class="sw-lists-button__item--label">总书记重要讲话</span>
-        </div>
-        <div class="sw-lists-button__item">
-          <img src="../../assets/dj/rmrb.png" class="sw-lists-button__item--icon">
-          <span class="sw-lists-button__item--label">人民日报</span>
-        </div>
-        <div class="sw-lists-button__item">
-          <img src="../../assets/dj/mszk.png" class="sw-lists-button__item--icon">
-          <span class="sw-lists-button__item--label">民生周刊</span>
+        <div class="sw-lists-button__item" v-for="(item, index) in menuList" :key="index" @mouseenter="mouseenterFn(item, index)">
+          <img v-if="item.id === 1" src="../../assets/dj/zxjh.png" class="sw-lists-button__item--icon">
+          <img v-else-if="item.id === 13" src="../../assets/dj/rmrb.png" class="sw-lists-button__item--icon">
+          <img v-else-if="item.id === 33" src="../../assets/dj/mszk.png" class="sw-lists-button__item--icon">
+          <img v-else src="../../assets/dj/mszk.png" class="sw-lists-button__item--icon">
+          <span class="sw-lists-button__item--label">{{ item.title }}</span>
         </div>
       </div>
       <div class="mid_title">
         <img  src="../../assets/dj/index_title_l.svg" alt="">
-        <p class="mid_title_text">总书记重要讲话</p>
+        <p class="mid_title_text">{{ consTitle }}</p>
         <img src="../../assets/dj/index_title_r.svg" alt="">
       </div>
       <div class="el-tabs__content">
-        <div class="multi_list">
+        <div class="multi_list" v-if="selectItem.children && selectItem.children.length && index < 3" v-for="(item, index) in selectItem.children" :key="index">
           <div class="title">
-            <span>人民日报社论汇编</span>
+            <span>{{ item.title }}</span>
             <span class="refresh">
               <i class="el-icon-refresh"></i>
               换一批
@@ -56,60 +51,17 @@
           </div>
           <div class="content">
             <div class="sw-lists">
-              <div class="sw-lists__item is-icon is-dot">
+              <div class="sw-lists__item is-icon is-dot" v-for="(item1, index1) in item.children" :key="index1">
                 <div class="sw-lists__item--label">
-                  <div class="sw-lists__item--text" @click="goInfo()">踔厉奋发新征程勇毅前行向复兴</div>
-                </div>
-              </div>
-              <div class="sw-lists__item is-icon is-dot">
-                <div class="sw-lists__item--label">
-                  <div class="sw-lists__item--text">踔厉奋发新征程勇毅前行向复兴</div>
-                </div>
-              </div>
-              <div class="sw-lists__item is-icon is-dot">
-                <div class="sw-lists__item--label">
-                  <div class="sw-lists__item--text">踔厉奋发新征程勇毅前行向复兴</div>
+                  <div class="sw-lists__item--text" @click="goInfo(item1.sourceId)">{{ item1.title }}</div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="multi_list">
-          <div class="title">
-            <span>人民日报社论汇编</span>
-            <span class="refresh">
-              <i class="el-icon-refresh"></i>
-              换一批
-            </span>
-          </div>
-          <div class="content">
-            <div class="sw-lists">
-              <div class="sw-lists__item is-icon is-dot">
-                <div class="sw-lists__item--label">
-                  <div class="sw-lists__item--text">踔厉奋发新征程勇毅前行向复兴</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="multi_list">
-          <div class="title">
-            <span>人民日报社论汇编</span>
-            <span class="refresh">
-              <i class="el-icon-refresh"></i>
-              换一批
-            </span>
-          </div>
-          <div class="content">
-            <div class="sw-lists">
-              <div class="sw-lists__item is-icon is-dot">
-                <div class="sw-lists__item--label">
-                  <div class="sw-lists__item--text">踔厉奋发新征程勇毅前行向复兴</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      </div>
+      <div class="showAll" @click="showAllFn">
+        <p>{{showAll ? '收起' : '显示更多'}}</p>
       </div>
     </div>
   </div>
@@ -120,7 +72,10 @@
 </template>
 
 <script>
-import { dataToJsonArticle, menuDataList, topDataListJson } from '@/utils/api'
+import {
+  getCategoryList,
+  articlePage
+} from '@/api/index'
 import IndexLogoHeader from '@/components/IndexLogoHeader'
 import Header from '@/components/Header'
 import IndexMb1Left from '@/components/IndexMb1Left'
@@ -130,7 +85,6 @@ import IndexMb2Right from '@/components/IndexMb2Right'
 import IndexMb3Left from '@/components/IndexMb3Left'
 import IndexMb3Right from '@/components/IndexMb3Right'
 import Footer from '@/components/Footer'
-let _that
 export default {
   components: {
     IndexLogoHeader,
@@ -145,24 +99,63 @@ export default {
   },
   data () {
     return {
-
+      menuList: [],
+      consTitle: '',
+      selectItem: null,
+      selectIndex: 0,
+      showAll: false
     }
   },
   created () {
     this.menuDataList()
-    _that = this
   },
 
   methods: {
     async menuDataList () {
-      const data = await menuDataList()
+      const data = await getCategoryList()
       this.menuList = data.data
+      // .filter(item => item.id === 1 || item.id === 13 || item.id === 33)
+      this.menuList.forEach((item, index) => {
+        this.menuList[index].showAll = false
+        if (!item.children) {
+          item.children = []
+        }
+      })
+      this.consTitle = this.menuList[0].title
+      this.selectItem = this.menuList[0]
+      this.selectIndex = 0
+      console.log('分类：', this.menuList)
     },
-    goInfo () {
+    async getListFn (item) {
+      const data = await articlePage({
+        page: 1,
+        pageSize: 10,
+        categoryIds: this.selectItem.id
+      })
+      console.log('列表：', data)
+      return data.data.records
+    },
+    mouseenterFn (item, index) {
+      this.consTitle = item.title
+      this.selectItem = item
+      this.selectIndex = index
+      if (item.children && item.children.length) {
+        item.children.forEach(async (item1, index1) => {
+          item1.children = await this.getListFn(item, index) || []
+        })
+      }
+      console.log('总数据：', this.menuList)
+    },
+    showAllFn () {
+      // this.menuList[index].showAll = !this.menuList[index].showAll
+      // item.showAll = !item.showAll
+      this.showAll = !this.showAll
+    },
+    goInfo (id) {
       this.$router.push({
         path: '/Info',
         query: {
-          id: 1
+          id: id
         }
       })
     }
@@ -306,7 +299,7 @@ export default {
         align-items: center;
         justify-content: center;
         // flex: 1;
-        width: 160px;
+        width: 180px;
         height: 150px;
         border-radius: 8px;
         background: #fff;
@@ -360,12 +353,19 @@ export default {
     }
     .el-tabs__content {
       overflow: inherit;
-      min-height: 480px;
+      height: 480px;
       position: relative;
       display: flex;
+      flex-wrap: wrap;
       gap: 18px;
+      overflow: hidden;
+      &.showAllList {
+        height: auto !important;
+      }
       .multi_list {
         flex: 1;
+        min-width: 374px;
+        max-width: 591px;
         height: 480px;
         border-radius: 8px;
         overflow: hidden;
@@ -436,6 +436,15 @@ export default {
         }
       }
     }
+  }
+  .showAll {
+    height: 14px;
+    color: #d42a2a;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    cursor: pointer;
   }
 }
 .copyright_cont {

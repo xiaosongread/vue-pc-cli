@@ -1,11 +1,11 @@
 <template>
 <div class="body">
   <div class="header">
-    <span class="title">党建信息平台</span>
+    <span class="title">人民社区党建服务平台</span>
   </div>
   <div class="app-main appMainIndex">
     <div class="search-header">
-      <p class="search-header-title">党建信息平台</p>
+      <p class="search-header-title">人民社区党建服务平台</p>
       <div class="search-header-box">
         <div class="search-header-box-input">
           <div class="search-header-box-input-left">
@@ -142,8 +142,8 @@ export default {
       console.log('当前的页数', item.pageNum)
       console.log('当前请求的数据', item, this.selectItem)
       const data = await articlePage({
-        page: item.pageNum,
-        pageSize: 10,
+        current: item.pageNum,
+        size: 10,
         categoryIds: item.id
       })
       console.log('列表：', data)

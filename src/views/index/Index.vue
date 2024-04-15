@@ -1,11 +1,11 @@
 <template>
 <div class="body">
   <div class="header">
-    <span class="title">人民数科党建信息平台</span>
+    <span class="title">党建信息平台</span>
   </div>
   <div class="app-main appMainIndex">
     <div class="search-header">
-      <p class="search-header-title">人民数科党建信息平台</p>
+      <p class="search-header-title">党建信息平台</p>
       <div class="search-header-box">
         <div class="search-header-box-input">
           <div class="search-header-box-input-left">
@@ -41,10 +41,13 @@
         <img src="../../assets/dj/index_title_r.svg" alt="">
       </div>
       <div class="el-tabs__content">
-        <div class="multi_list" v-if="selectItem.children && selectItem.children.length && index < 3" v-for="(item, index) in selectItem.children" :key="index">
+        <div class="multi_list"
+          v-if="selectItem.children && selectItem.children.length && index < 3"
+          v-for="(item, index) in selectItem.children"
+          :key="index">
           <div class="title">
             <span>{{ item.title }}</span>
-            <span class="refresh">
+            <span class="refresh" @click="changePageFn(index)">
               <i class="el-icon-refresh"></i>
               换一批
             </span>
@@ -59,10 +62,11 @@
             </div>
           </div>
         </div>
+        <div class="empty">暂无数据</div>
       </div>
-      <div class="showAll" @click="showAllFn">
+      <!-- <div class="showAll" @click="showAllFn">
         <p>{{showAll ? '收起' : '显示更多'}}</p>
-      </div>
+      </div> -->
     </div>
   </div>
   <div class="copyright_cont">
@@ -114,42 +118,66 @@ export default {
     async menuDataList () {
       const data = await getCategoryList()
       this.menuList = data.data
-      // .filter(item => item.id === 1 || item.id === 13 || item.id === 33)
       this.menuList.forEach((item, index) => {
         this.menuList[index].showAll = false
-        if (!item.children) {
-          item.children = []
+        if (item.children) {
+          if (this.menuList[index].children) {
+            this.menuList[index].children.forEach((item1, index1) => {
+              this.$set(this.menuList[index].children[index1], 'children', [])
+              this.$set(this.menuList[index].children[index1], 'pageNum', 1)
+            })
+          }
         }
       })
       this.consTitle = this.menuList[0].title
       this.selectItem = this.menuList[0]
       this.selectIndex = 0
-      console.log('分类：', this.menuList)
+      this.menuList[0].children[0].children = await this.getListFn(this.menuList[0].children[0], 0) || []
+      this.menuList[0].children[1].children = await this.getListFn(this.menuList[0].children[1], 1) || []
+      this.menuList[0].children[2].children = await this.getListFn(this.menuList[0].children[2], 2) || []
+      console.log('第一次数据：', this.menuList)
+      console.log('渲染数据：', this.selectItem)
     },
-    async getListFn (item) {
+    async getListFn (item, index) {
+      console.log('当前的页数', item.pageNum)
+      console.log('当前请求的数据', item, this.selectItem)
       const data = await articlePage({
-        page: 1,
+        page: item.pageNum,
         pageSize: 10,
-        categoryIds: this.selectItem.id
+        categoryIds: item.id
       })
       console.log('列表：', data)
       return data.data.records
     },
     mouseenterFn (item, index) {
-      this.consTitle = item.title
-      this.selectItem = item
-      this.selectIndex = index
+      console.log(2220, item)
+      // if (item.id === this.selectIndex) return
       if (item.children && item.children.length) {
         item.children.forEach(async (item1, index1) => {
-          item1.children = await this.getListFn(item, index) || []
+          if (index1 < 3) {
+            console.log(1110, item)
+            let list = await this.getListFn(item1, index) || []
+            this.$set(this.menuList[index].children[index1], 'children', list)
+            this.$set(this.menuList[index].children[index1], 'pageNum', 1)
+            // this.menuList[index].children = await this.getListFn(item, index) || []
+          }
         })
       }
+      this.consTitle = item.title
+      this.selectIndex = index
+      this.selectItem = this.menuList[index]
       console.log('总数据：', this.menuList)
     },
     showAllFn () {
       // this.menuList[index].showAll = !this.menuList[index].showAll
       // item.showAll = !item.showAll
       this.showAll = !this.showAll
+    },
+    // 换一批
+    async changePageFn (index) {
+      this.menuList[this.selectIndex].children[index].pageNum += 1
+      console.log('当前切换的是：', this.menuList[this.selectIndex].title, this.menuList[this.selectIndex].children[index].title)
+      this.menuList[this.selectIndex].children[index].children = await this.getListFn(this.menuList[this.selectIndex].children[index], index)
     },
     goInfo (id) {
       this.$router.push({
@@ -460,5 +488,12 @@ export default {
     letter-spacing: .5px;
     word-wrap: break-word;
   }
+}
+.empty {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

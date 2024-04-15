@@ -576,6 +576,9 @@ export default {
     position: relative;
     overflow: hidden;
     cursor: pointer;
+    &:hover {
+      box-shadow: 0 2px 24px rgba(0,0,0,.4)
+    }
     .fm {
       width: 100%;
       height: 100%;

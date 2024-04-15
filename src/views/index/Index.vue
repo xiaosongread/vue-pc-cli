@@ -65,13 +65,13 @@
           </div>
         </div>
         <div v-else-if="selectItem.id == 126" class="video_list">
-          <div v-for="(item, index) in videoList" :key="index" class="video_list_item" @click="playFn(item, index)">
-            <img v-show="!item.isPlay" :src="'require(' + item.fmImg + ')'" class="fm">
-            <video v-show="item.isPlay" ref="video1" muted controls class="video-player vjs-custom-skin">
+          <div v-for="(item, index) in videoList" :key="index" class="video_list_item">
+            <img v-show="!item.isPlay" src="../../assets/dj/fm1.jpg" class="fm">
+            <!-- <video ref="video1" muted controls class="video-player-s">
               <source :src="item.src" type="video/mp4">
-            </video>
+            </video> -->
             <p class="video_tit">{{ item.title }}</p>
-            <div class="play" v-if="!item.isPlay">
+            <div class="play" v-show="!item.isPlay" @click="playFn(item, index)">
               <i class="el-icon-video-play"></i>
             </div>
           </div>
@@ -83,6 +83,20 @@
       </div> -->
     </div>
   </div>
+  <el-dialog
+    :title="selectVideoItem.title"
+    :visible.sync="dialogVisible"
+    width="50%"
+    :before-close="handleClose">
+    <div class="videoBox">
+      <video v-if="selectVideoItem.title" ref="video1" muted controls class="video-player-s">
+        <source :src="selectVideoItem.src" type="video/mp4">
+      </video>
+    </div>
+    <span slot="footer" class="dialog-footer">
+      <el-button @click="handleClose">关 闭</el-button>
+    </span>
+  </el-dialog>
   <div class="copyright_cont">
     <p>民生周刊版权所有 未经书面授权禁止使用</p>
   </div>
@@ -135,11 +149,23 @@ export default {
         poster: '../../assets/dj/fm1.jpg'// 视频封面
       },
       videoList: [{
-        title: '视频名称1',
+        title: '中国共产党为何能让旧中国焕然一新',
         src: 'http://7kuangtech.com/video/hryx.mp4',
         fmImg: '../../assets/dj/fm1.jpg',
         isPlay: false
-      }]
+      }, {
+        title: '中国共产党为什么能建立新中国',
+        src: 'http://7kuangtech.com/video/wsm.mp4',
+        fmImg: '../../assets/dj/fm1.jpg',
+        isPlay: false
+      }],
+      dialogVisible: false,
+      selectVideoItem: {
+        title: '',
+        src: '',
+        fmImg: '',
+        isPlay: false
+      }
     }
   },
   created () {
@@ -221,8 +247,19 @@ export default {
     },
     // 播放视频
     playFn (item, index) {
-      this.videoList[index].isPlay = !this.videoList[index].isPlay
-      this.$refs.video1.play()
+      // this.videoList[index].isPlay = !this.videoList[index].isPlay
+      this.selectVideoItem = item
+      this.dialogVisible = true
+      // this.$refs.video1.play()
+    },
+    handleClose () {
+      this.dialogVisible = false
+      this.selectVideoItem = {
+        title: '',
+        src: '',
+        fmImg: '../../assets/dj/fm1.jpg',
+        isPlay: false
+      }
     }
   }
 }
@@ -542,6 +579,10 @@ export default {
     .fm {
       width: 100%;
       height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
     }
     .video_tit {
       width: 100%;
@@ -553,6 +594,7 @@ export default {
       background: #000;
       color: #fff;
       padding-left: 20px;
+      z-index: 4;
     }
     .video-player.vjs-custom-skin {
       width: 100%;
@@ -560,6 +602,13 @@ export default {
     }
     .video-js {
       height: 100%;
+    }
+    .video-player-s {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
     }
     .play {
       width: 50px;
@@ -569,6 +618,7 @@ export default {
       left: 162px;
       cursor: pointer;
       font-size: 40px;
+      z-index: 2;
     }
   }
 }

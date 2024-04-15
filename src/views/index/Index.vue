@@ -41,28 +41,42 @@
         <img src="../../assets/dj/index_title_r.svg" alt="">
       </div>
       <div class="el-tabs__content">
-        <div class="multi_list"
-          v-if="selectItem.children && selectItem.children.length && index < 3"
-          v-for="(item, index) in selectItem.children"
-          :key="index">
-          <div class="title">
-            <span>{{ item.title }}</span>
-            <span class="refresh" @click="changePageFn(index)">
-              <i class="el-icon-refresh"></i>
-              换一批
-            </span>
-          </div>
-          <div class="content">
-            <div class="sw-lists">
-              <div class="sw-lists__item is-icon is-dot" v-for="(item1, index1) in item.children" :key="index1">
-                <div class="sw-lists__item--label">
-                  <div class="sw-lists__item--text" @click="goInfo(item1.sourceId)">{{ item1.title }}</div>
+        <div class="multi_list_box" v-if="selectItem.id != 126 && selectItem.children && selectItem.children.length">
+          <div class="multi_list"
+            v-if="index < 3"
+            v-for="(item, index) in selectItem.children"
+            :key="index">
+            <div class="title">
+              <span>{{ item.title }}</span>
+              <span class="refresh" @click="changePageFn(index)">
+                <i class="el-icon-refresh"></i>
+                换一批
+              </span>
+            </div>
+            <div class="content">
+              <div class="sw-lists">
+                <div class="sw-lists__item is-icon is-dot" v-for="(item1, index1) in item.children" :key="index1">
+                  <div class="sw-lists__item--label">
+                    <div class="sw-lists__item--text" @click="goInfo(item1.sourceId)">{{ item1.title }}</div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="empty">暂无数据</div>
+        <div v-else-if="selectItem.id == 126" class="video_list">
+          <div v-for="(item, index) in videoList" :key="index" class="video_list_item" @click="playFn(item, index)">
+            <img v-show="!item.isPlay" :src="'require(' + item.fmImg + ')'" class="fm">
+            <video v-show="item.isPlay" ref="video1" muted controls class="video-player vjs-custom-skin">
+              <source :src="item.src" type="video/mp4">
+            </video>
+            <p class="video_tit">{{ item.title }}</p>
+            <div class="play" v-if="!item.isPlay">
+              <i class="el-icon-video-play"></i>
+            </div>
+          </div>
+        </div>
+        <div v-else class="empty">暂无数据</div>
       </div>
       <!-- <div class="showAll" @click="showAllFn">
         <p>{{showAll ? '收起' : '显示更多'}}</p>
@@ -107,7 +121,25 @@ export default {
       consTitle: '',
       selectItem: null,
       selectIndex: 0,
-      showAll: false
+      showAll: false,
+      playerOptions: {
+        // 视频url设置,直播流为例
+        sources: [{
+          src: 'http://7kuangtech.com/video/hryx.mp4', // 视频文件地址
+          type: 'video/mp4'// 视频类型，这里可以不写，如果写一定要写对，否则会无法播放
+        }],
+        // 其他设置项
+        notSupportedMessage: '此视频暂无法播放，请稍后再试', // 提示信息
+        autoplay: false, // 是否自动播放
+        controls: true, // 是否显示控制栏
+        poster: '../../assets/dj/fm1.jpg'// 视频封面
+      },
+      videoList: [{
+        title: '视频名称1',
+        src: 'http://7kuangtech.com/video/hryx.mp4',
+        fmImg: '../../assets/dj/fm1.jpg',
+        isPlay: false
+      }]
     }
   },
   created () {
@@ -186,6 +218,11 @@ export default {
           id: id
         }
       })
+    },
+    // 播放视频
+    playFn (item, index) {
+      this.videoList[index].isPlay = !this.videoList[index].isPlay
+      this.$refs.video1.play()
     }
   }
 }
@@ -383,10 +420,12 @@ export default {
       overflow: inherit;
       height: 480px;
       position: relative;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px;
       overflow: hidden;
+      .multi_list_box {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+      }
       &.showAllList {
         height: auto !important;
       }
@@ -487,6 +526,50 @@ export default {
     font-size: 16px;
     letter-spacing: .5px;
     word-wrap: break-word;
+  }
+}
+.video_list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  .video_list_item {
+    width: 374px;
+    height: 300px;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    .fm {
+      width: 100%;
+      height: 100%;
+    }
+    .video_tit {
+      width: 100%;
+      font-size: 16px;
+      line-height: 35px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background: #000;
+      color: #fff;
+      padding-left: 20px;
+    }
+    .video-player.vjs-custom-skin {
+      width: 100%;
+      height: 100%;
+    }
+    .video-js {
+      height: 100%;
+    }
+    .play {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      top: 125px;
+      left: 162px;
+      cursor: pointer;
+      font-size: 40px;
+    }
   }
 }
 .empty {

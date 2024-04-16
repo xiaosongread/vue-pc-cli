@@ -48,10 +48,10 @@
             :key="index">
             <div class="title">
               <span>{{ item.title }}</span>
-              <span class="refresh" @click="changePageFn(index)">
+              <!-- <span class="refresh" @click="changePageFn(index)">
                 <i class="el-icon-refresh"></i>
                 换一批
-              </span>
+              </span> -->
             </div>
             <div class="content">
               <div class="sw-lists">
@@ -66,7 +66,7 @@
         </div>
         <div v-else-if="selectItem.id == 126" class="video_list">
           <div v-for="(item, index) in videoList" :key="index" class="video_list_item">
-            <img v-show="!item.isPlay" src="../../assets/dj/fm1.jpg" class="fm">
+            <img v-show="!item.isPlay" :src="item.fmImg" class="fm">
             <!-- <video ref="video1" muted controls class="video-player-s">
               <source :src="item.src" type="video/mp4">
             </video> -->
@@ -151,12 +151,12 @@ export default {
       videoList: [{
         title: '中国共产党为何能让旧中国焕然一新',
         src: 'http://7kuangtech.com/video/hryx.mp4',
-        fmImg: '../../assets/dj/fm1.jpg',
+        fmImg: 'https://qktech.oss-cn-huhehaote.aliyuncs.com/images/1.png',
         isPlay: false
       }, {
         title: '中国共产党为什么能建立新中国',
         src: 'http://7kuangtech.com/video/wsm.mp4',
-        fmImg: '../../assets/dj/fm1.jpg',
+        fmImg: 'https://qktech.oss-cn-huhehaote.aliyuncs.com/images/2.png',
         isPlay: false
       }],
       dialogVisible: false,
@@ -571,7 +571,7 @@ export default {
   gap: 18px;
   .video_list_item {
     width: 374px;
-    height: 300px;
+    height: 187px;
     border-radius: 8px;
     position: relative;
     overflow: hidden;
@@ -617,10 +617,12 @@ export default {
       width: 50px;
       height: 50px;
       position: absolute;
-      top: 125px;
+      top: 68px;
       left: 162px;
       cursor: pointer;
       font-size: 40px;
+      font-weight: bold;
+      color: #fff;
       z-index: 2;
     }
   }

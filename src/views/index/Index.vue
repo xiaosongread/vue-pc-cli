@@ -31,6 +31,10 @@
           <img v-if="item.id === 1" src="../../assets/dj/zxjh.png" class="sw-lists-button__item--icon">
           <img v-else-if="item.id === 13" src="../../assets/dj/rmrb.png" class="sw-lists-button__item--icon">
           <img v-else-if="item.id === 33" src="../../assets/dj/mszk.png" class="sw-lists-button__item--icon">
+          <img v-else-if="item.id === 126" src="../../assets/dj/szzt.png" class="sw-lists-button__item--icon">
+          <img v-else-if="item.id === 127" src="../../assets/dj/dzzl.png" class="sw-lists-button__item--icon">
+          <img v-else-if="item.id === 128" src="../../assets/dj/djal.png" class="sw-lists-button__item--icon">
+          <img v-else-if="item.id === 133" src="../../assets/dj/szpl.png" class="sw-lists-button__item--icon">
           <img v-else src="../../assets/dj/mszk.png" class="sw-lists-button__item--icon">
           <span class="sw-lists-button__item--label">{{ item.title }}</span>
         </div>
@@ -41,7 +45,7 @@
         <img src="../../assets/dj/index_title_r.svg" alt="">
       </div>
       <div class="el-tabs__content">
-        <div class="multi_list_box" v-if="selectItem.id != 126 && selectItem.children && selectItem.children.length">
+        <div class="multi_list_box" v-if="(selectItem.id != 126 && selectItem.id != 127 && selectItem.id != 13 && selectItem.id != 33 && selectItem.id != 131) && selectItem.children && selectItem.children.length">
           <div class="multi_list"
             v-if="index < 3"
             v-for="(item, index) in selectItem.children"
@@ -78,9 +82,60 @@
         </div>
         <div v-else-if="selectItem.id == 13 || selectItem.id == 33" class="video_list">
           <!-- 人民日报、民生周刊 -->
+          <div class="rmrb_list">
+            <div class="sw-lists-pictitle__imgcontainer">
+              <div class="slot_images">
+                <img v-if="selectItem.id == 13" src="http://7kuangtech.com/images/rmrb2024041701_b.jpg">
+                <img v-else src=" http://7kuangtech.com/images/mszk.png">
+              </div>
+            </div>
+            <ul class="sw-lists-pictitle__container">
+              <li class="sw-lists-pictitle__item is-refreshtitle">
+                <div data-v-63320d1e="" class="slot_header">
+                  <div data-v-63320d1e="" class="datebox">
+                    <img src="@/assets/dj/date.png" class="icon svg-icon" style="margin-right: 5px;" />
+                    <span>{{ getTodayDateTime }}</span>
+                  </div>
+                  <div class="operate"></div>
+                </div>
+              </li>
+              <li class="sw-lists-pictitle__item is-refresh"
+                v-for="(item, index) in selectItem.children[0].children"
+                :key="index"
+                @click="goInfo(item.sourceId)">
+                <p>{{ item.title }}</p>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div v-else-if="selectItem.id == 131" class="video_list">
+        <div v-else-if="selectItem.id == 131">
           <!-- 党建培训 -->
+          <div class="djpx_list">
+            <ul class="sw-lists-pictitle__container">
+              <li class="sw-lists-pictitle__item is-refresh"
+                v-for="(item, index) in selectItem.children[0].children"
+                :key="index">
+                <p>{{ item.title }}</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div v-else-if="selectItem.id == 127" class="dzzl_list">
+          <!-- 党政资料 -->
+          <div class="sw-lists-thumb is-collapse">
+            <div class="sw-lists-thumb__item">
+              <img src="http://7kuangtech.com/images/%E4%B9%A0%E8%BF%91%E5%B9%B3%E7%94%A8%E5%85%B8_20231208175535A010.png" title="《习近平用典》" class="sw-lists-thumb__item--icon">
+            </div>
+            <div class="sw-lists-thumb__item">
+              <img src="http://7kuangtech.com/images/%E6%B1%9F%E5%B1%B1%E5%B0%B1%E6%98%AF%E4%BA%BA%E6%B0%91%E4%BA%BA%E6%B0%91%E5%B0%B1%E6%98%AF%E6%B1%9F%E5%B1%B1_20231208175636A015.png" title="《江山就是人民 人民就是江山》" class="sw-lists-thumb__item--icon">
+            </div>
+            <div class="sw-lists-thumb__item">
+              <img src="http://7kuangtech.com/images/%E5%B7%A5%E4%BD%9C%E6%8A%A5%E5%91%8A_20231211175423A001.png" title="工作报告" class="sw-lists-thumb__item--icon">
+            </div>
+            <div class="sw-lists-thumb__item">
+              <img src="http://7kuangtech.com/images/%E4%B8%A4%E4%BC%9A%E8%A7%A3%E8%AF%BB_20231211175758A002.png" title="两会解读" class="sw-lists-thumb__item--icon">
+            </div>
+          </div>
         </div>
         <div v-else class="empty">暂无数据</div>
       </div>
@@ -145,7 +200,7 @@ export default {
       selectItem: null,
       selectIndex: 0,
       showAll: false,
-      getTodayDate: getTodayDate(),
+      getTodayDateTime: getTodayDate(),
       playerOptions: {
         // 视频url设置,直播流为例
         sources: [{
@@ -465,7 +520,7 @@ export default {
     }
     .el-tabs__content {
       overflow: inherit;
-      height: 480px;
+      height: 521px;
       position: relative;
       overflow: hidden;
       .multi_list_box {
@@ -643,5 +698,271 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.rmrb_list {
+  width: 1200px;
+  // height: 540px;
+  display: flex;
+  color: #3e3e3e;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+  margin: 0 auto;
+  .sw-lists-pictitle__imgcontainer {
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .slot_images {
+      width: 300px;
+      height: 450px;
+      padding: 30px 16px;
+      background-color: #fff;
+      margin: 15px 16px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px 0 rgba(0,0,0,.16);
+      display: flex;
+      justify-content: center;
+      img {
+          max-width: 100%;
+          cursor: pointer;
+      }
+    }
+  }
+  .sw-lists-pictitle__container {
+    flex: 1;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: auto;
+    font-size: 16px;
+    font-family: "Source Han Sans CN";
+    font-weight: 400;
+    word-wrap: break-word;
+    padding: 32px 16px 20px;
+    .sw-lists-pictitle__item.is-refreshtitle {
+        cursor: auto;
+        &:hover {
+          color: #3e3e3e;
+        }
+    }
+    .sw-lists-pictitle__item:nth-child(1) {
+        border-bottom: 1px solid #d6d6d6;
+        padding: 0 0 16px 0;
+        margin-bottom: 8px;
+    }
+    .sw-lists-pictitle__item {
+        width: 100%;
+        box-sizing: border-box;
+        line-height: 24px;
+        padding: 10px 0;
+        cursor: pointer;
+        font-family: "Source Han Sans CN";
+        word-wrap: break-word;
+    }
+    .slot_header {
+        line-height: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 14px;
+        .slot_header .datebox {
+            display: flex;
+            align-items: center;
+            line-height: 24px;
+            font-weight: 700;
+            .slot_header .datebox .icon {
+                vertical-align: middle;
+                font-size: 24px;
+                margin-right: 8px;
+            }
+            .svg-icon {
+                width: 1em;
+                height: 1em;
+                vertical-align: -.15em;
+                fill: currentColor;
+                overflow: hidden;
+                margin: 0 2px;
+            }
+        }
+    }
+    .sw-lists-pictitle__item.is-refresh {
+        color: #3e3e3e;
+        font-size: 16px;
+        font-family: "Source Han Sans CN";
+        font-weight: 500;
+        word-wrap: break-word;
+        position: relative;
+        padding: 9px 0 9px 24px;
+        &:hover {
+          color: #d42a2a
+        }
+    }
+    .sw-lists-pictitle__item.is-refresh::after {
+        content: "";
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: #3e3e3e;
+        left: 10px;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .slot_header .datebox {
+        display: flex;
+        align-items: center;
+        line-height: 24px;
+        font-weight: 700;
+    }
+  }
+
+}
+.djpx_list {
+  width: 1200px;
+  // height: 540px;
+  display: flex;
+  color: #3e3e3e;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+  margin: 0 auto;
+  .sw-lists-pictitle__imgcontainer {
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .slot_images {
+      width: 300px;
+      height: 450px;
+      padding: 30px 16px;
+      background-color: #fff;
+      margin: 15px 16px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px 0 rgba(0,0,0,.16);
+      display: flex;
+      justify-content: center;
+      img {
+          max-width: 100%;
+          cursor: pointer;
+      }
+    }
+  }
+  .sw-lists-pictitle__container {
+    flex: 1;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: auto;
+    font-size: 16px;
+    font-family: "Source Han Sans CN";
+    font-weight: 400;
+    word-wrap: break-word;
+    padding: 32px 16px 20px;
+    .sw-lists-pictitle__item.is-refreshtitle {
+        cursor: auto;
+        &:hover {
+          color: #3e3e3e;
+        }
+    }
+    // .sw-lists-pictitle__item:nth-child(1) {
+    //     border-bottom: 1px solid #d6d6d6;
+    //     padding: 0 0 16px 0;
+    //     margin-bottom: 8px;
+    // }
+    .sw-lists-pictitle__item {
+        width: 100%;
+        box-sizing: border-box;
+        line-height: 24px;
+        padding: 10px 0;
+        cursor: pointer;
+        font-family: "Source Han Sans CN";
+        word-wrap: break-word;
+    }
+    .slot_header {
+        line-height: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 14px;
+        .slot_header .datebox {
+            display: flex;
+            align-items: center;
+            line-height: 24px;
+            font-weight: 700;
+            .slot_header .datebox .icon {
+                vertical-align: middle;
+                font-size: 24px;
+                margin-right: 8px;
+            }
+            .svg-icon {
+                width: 1em;
+                height: 1em;
+                vertical-align: -.15em;
+                fill: currentColor;
+                overflow: hidden;
+                margin: 0 2px;
+            }
+        }
+    }
+    .sw-lists-pictitle__item.is-refresh {
+        color: #3e3e3e;
+        font-size: 16px;
+        font-family: "Source Han Sans CN";
+        font-weight: 500;
+        word-wrap: break-word;
+        position: relative;
+        padding: 9px 0 9px 24px;
+        &:hover {
+          color: #d42a2a
+        }
+    }
+    .sw-lists-pictitle__item.is-refresh::after {
+        content: "";
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: #3e3e3e;
+        left: 10px;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .slot_header .datebox {
+        display: flex;
+        align-items: center;
+        line-height: 24px;
+        font-weight: 700;
+    }
+  }
+
+}
+// 党政资料
+.dzzl_list{
+  .sw-lists-thumb.is-collapse {
+    justify-content: center;
+    align-items: center;
+  }
+  .sw-lists-thumb {
+    display: flex;
+    flex-wrap: wrap;
+    .sw-lists-thumb__item {
+        position: relative;
+        margin: 5px;
+        width: 268px;
+        border-radius: 8px;
+        transition: all 0.3s;
+        top: 0;
+        cursor: pointer;
+        overflow: hidden;
+        &:hover {
+          top: -4px;
+        }
+        img {
+          max-width: 100%;
+        }
+    }
+  }
+}
+.sw-lists-pictitle__item:hover{
+  color: #d42a2a
 }
 </style>

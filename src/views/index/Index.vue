@@ -1,11 +1,11 @@
 <template>
 <div class="body">
   <div class="header">
-    <span class="title">人民社区党建服务平台</span>
+    <span class="title">人民日报社主管主办</span>
   </div>
   <div class="app-main appMainIndex">
     <div class="search-header">
-      <p class="search-header-title">人民社区党建服务平台</p>
+      <p class="search-header-title">民生党建信息平台</p>
       <div class="search-header-box">
         <div class="search-header-box-input">
           <div class="search-header-box-input-left">

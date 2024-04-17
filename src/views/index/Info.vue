@@ -1,7 +1,7 @@
 <template>
 <div class="body">
   <div class="header">
-    <span class="title">人民社区党建服务平台</span>
+    <span class="title">民生党建信息平台</span>
   </div>
   <div class="conts">
     <!-- 标题： 行稳致远，中国号扬帆再出发

@@ -9,5 +9,5 @@ module.exports = merge(prodEnv, {
   COS_REGION: "'ap-shanghai'",
   COS_CDN_PREFIX: "'cos-data.wm-imotor.com'",
   CURRENT_ENV: "'MASTER环境'",
-  BASEURL: "'http://39.104.201.236:9013'"
+  BASEURL: "'http://39.104.201.236:9014'"
 })

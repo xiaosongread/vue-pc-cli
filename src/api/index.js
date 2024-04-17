@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 import config from '@/config'
-// var host = 'http://39.104.201.236:9013/'
+// var host = 'http://39.104.201.236:9014/'
 
 // user 相关的url
 const urlMap = {

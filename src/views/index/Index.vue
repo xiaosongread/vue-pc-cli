@@ -108,6 +108,9 @@ import {
   getCategoryList,
   articlePage
 } from '@/api/index'
+import {
+  getTodayDate
+} from '@/utils/date'
 import IndexLogoHeader from '@/components/IndexLogoHeader'
 import Header from '@/components/Header'
 import IndexMb1Left from '@/components/IndexMb1Left'
@@ -136,6 +139,7 @@ export default {
       selectItem: null,
       selectIndex: 0,
       showAll: false,
+      getTodayDate: getTodayDate(),
       playerOptions: {
         // 视频url设置,直播流为例
         sources: [{

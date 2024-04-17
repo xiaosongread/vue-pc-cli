@@ -76,6 +76,12 @@
             </div>
           </div>
         </div>
+        <div v-else-if="selectItem.id == 13 || selectItem.id == 33" class="video_list">
+          <!-- 人民日报、民生周刊 -->
+        </div>
+        <div v-else-if="selectItem.id == 131" class="video_list">
+          <!-- 党建培训 -->
+        </div>
         <div v-else class="empty">暂无数据</div>
       </div>
       <!-- <div class="showAll" @click="showAllFn">

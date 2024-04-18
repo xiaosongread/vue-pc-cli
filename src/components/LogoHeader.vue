@@ -4,7 +4,7 @@
     <img src="@/assets/SXWB/img/secondad.jpg" style="margin-top: 15px;">
   </div>
 <div class="top">
-  <div class="first" title="民生党建信息平台">
+  <div class="first" title="人民社区党建服务平台">
     <img v-if="type === 'index'" src="@/assets/SXWB/img/logo9.jpg" >
     <img v-if="type === 'article'" src="@/assets/SXWB/img/article_logo.jpg" style="width:423px;height:63px;">
     <img v-if="type === 'photos'||type === 'photoList'" src="@/assets/SXWB/img/photos.jpg" style="width:423px;height:63px;">

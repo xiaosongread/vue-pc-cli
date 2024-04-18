@@ -1,11 +1,17 @@
 <template>
 <div class="body">
   <div class="header">
-    <span class="title">人民日报社主管主办</span>
+    <div class="title">
+      <img src="@/assets/logo1.jpg" alt="" class="logo1">
+      <p class="tit">社民生周刊创建</p>
+    </div>
   </div>
   <div class="app-main appMainIndex">
     <div class="search-header">
-      <p class="search-header-title">人民社区党建服务平台</p>
+      <!-- 城市版是 民生党建信息平台 9014 -->
+      <p class="search-header-title">民生党建信息平台</p>
+      <!-- 社区版是 人民社区党建服务平台 9013 -->
+      <!-- <p class="search-header-title">人民社区党建服务平台</p> -->
       <div class="search-header-box">
         <div class="search-header-box-input">
           <div class="search-header-box-input-left">
@@ -335,7 +341,7 @@ export default {
 }
 .header {
   width: 100%;
-    height: 56px;
+    height: 114px;
     max-width: 100%;
     background-color: #D42A2A;
     color: #fff;
@@ -349,12 +355,21 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: hsla(0, 0%, 100%, .2);
+    background-color: #fff;
     .title {
-      color: rgb(255, 218, 128);
+      // color: rgb(255, 218, 128);
       font-weight: 600;
       font-family: 微软雅黑;
-      font-size: 18px;
+      font-size: 22px;
+      display: flex;
+      // align-items: center;
+      .logo1 {
+        width: 130px;
+      }
+      .tit {
+        margin-top: 38px;
+        color: #ca3a2c;
+      }
     }
 }
 .appMainIndex {

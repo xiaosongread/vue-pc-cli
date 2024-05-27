@@ -29,6 +29,11 @@ export default new Router({
           name: 'Info',
           component: () => import('@/views/index/Info'),
           meta: { title: '首页' }
+        },{
+          path: 'test',
+          name: 'Test',
+          component: () => import('@/views/test/index'),
+          meta: { title: '测试' }
         }
       ]
     }
